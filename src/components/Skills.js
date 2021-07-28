@@ -1,5 +1,6 @@
 import React from "react"
-
+import { Heading } from "@chakra-ui/react"
+import { MyContainer } from "./Layout"
 
 const skills = [
   "Python",
@@ -9,7 +10,6 @@ const skills = [
   "Bootstrap",
   "ES6",
   "C++",
-  "Flask",
   "Jinja2",
   "React.js",
   "Redux",
@@ -32,10 +32,12 @@ const Skill = props => {
 const Skills = () => {
   console.log (skills)
   return (
-    <div>
-      <h1>Skills</h1>
-      <ul>{skills.map(skill => <Skill key={skill} skill={skill} />)}</ul>
-    </div>
+    <MyContainer>
+      <Heading size="3xl">What am I skilled at?</Heading>
+      <ul>
+        {skills.map(skill => <Skill key={skill} skill={skill} />)}
+      </ul>
+    </MyContainer>
   )
 }
 

@@ -1,4 +1,6 @@
+import { Heading, Box, Link, Text, List, ListItem } from "@chakra-ui/react"
 import React from "react"
+import { MyContainer } from "./Layout"
 
 const projectList = [
   {
@@ -35,43 +37,32 @@ const projectList = [
   },
 ]
 
-const projectStyle = {
-  margin: 5,
-  padding: 5
-}
-
-const projectTitle = {
-  fontSize: 30,
-  fontWeight: "bold",
-  paddingBottom: 5
-}
-
 
 const ProjectCard = props => {
   return(
-    <li style={projectStyle}>
-      <div style={projectTitle}>
+    <ListItem>
+      <Heading size="lg">
         {props.project.name}
-      </div>
-      <div>
+      </Heading>
+      <Text>
         {props.project.description}
-      </div>
-      <div>
-        {props.project.link && <a href={props.project.link} style={{ margin:5 }}>Link</a>}
-        <a href={props.project.github} style={{ margin:5 }}>GitHub</a>
-      </div>
-    </li>
+      </Text>
+      <Box>
+        {props.project.link && <Link href={props.project.link}>Link</Link>}
+        <Link href={props.project.github} style={{ margin:5 }}>GitHub</Link>
+      </Box>
+    </ListItem>
   )
 }
 
 const Projects = () => {
   return(
-    <div>
-      <h1>Projects</h1>
-      <ul>
+    <MyContainer>
+      <Heading>Projects</Heading>
+      <List>
         {projectList.map(project => <ProjectCard key={project.name} project={project} />)}
-      </ul>
-    </div>
+      </List>
+    </MyContainer>
   )
 }
 

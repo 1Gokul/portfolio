@@ -3,5 +3,5 @@ module.exports = {
     siteUrl: "https://www.yourdomain.tld",
     title: "portfolio",
   },
-  plugins: ["gatsby-plugin-gatsby-cloud"],
-};
+  plugins: ["gatsby-plugin-gatsby-cloud", "@chakra-ui/gatsby-plugin"],
+}
