@@ -94,7 +94,7 @@ const MobileNavMenu = props => (
       flexDirection="column"
       marginTop="150px">
       {links.map (link => (
-        <NavLink key={link.title} to={link.to} my={5}>
+        <NavLink key={link.title} aria-label={link.title} to={link.to} my={5}>
           {link.title}
         </NavLink>
       ))}
@@ -120,6 +120,7 @@ const NavLink = props => (
 
 const ColourModeToggler = props => (
   <IconButton
+    aria-label="Toggle Colour Mode"
     marginX={10}
     onClick={props.toggler}
     icon={props.currentMode === "dark" ? <RiMoonClearFill /> : <RiSunFill />}
@@ -128,6 +129,7 @@ const ColourModeToggler = props => (
 
 const NavMenuToggler = props => (
   <IconButton
+    aria-label="Open Navigation Menu"
     display={{ base: "flex", md: "none" }}
     onClick={props.toggler}
     fontSize={30}

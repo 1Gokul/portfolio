@@ -11,7 +11,7 @@ const Contact = () => {
     Feel free to send an email my way!
       </Heading>
       <Link href="mailto:viswanath1gokul@gmail.com">
-        <Button p={6} >Let&apos;s work together!</Button>
+        <Button aria-label="Send Email" p={6} >Let&apos;s work together!</Button>
       </Link>
 
       <Box>
