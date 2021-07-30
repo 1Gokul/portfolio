@@ -5,7 +5,7 @@ import { MainContainer } from "./Layout"
 const Intro = () => {
   return (
     <MainContainer>
-      <Flex direction="column" justifyContent="space-between">
+      <Flex direction="column" justifyContent="space-between" marginBottom={5}>
         <Box>
           <Heading size="lg" marginY={5}>Hey there!</Heading>
           <Heading size="4xl" marginY={5}>I&apos;m Gokul.</Heading>
