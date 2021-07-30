@@ -7,8 +7,7 @@ const Contact = () => {
   return (
     <MainContainer align="center">
       <Heading>
-          Want to collab on a project? Got an idea but not sure how to begin?
-    Feel free to send an email my way!
+          Want to collab on a project? Feel free to send an email my way!
       </Heading>
       <Link href="mailto:viswanath1gokul@gmail.com">
         <Button aria-label="Send Email" p={6} >Let&apos;s work together!</Button>

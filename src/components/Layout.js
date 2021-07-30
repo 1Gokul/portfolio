@@ -40,9 +40,9 @@ export const MainContainer = props => {
   return (
     <Box
       marginX="auto"
+      marginBottom={24}
       minH="70vh"
       minW="70vw"
-      marginBottom={20}
       paddingX={10}
       {...props}
     >
