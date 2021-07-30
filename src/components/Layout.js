@@ -1,35 +1,34 @@
 import React from "react"
+import { Flex, Box } from "@chakra-ui/react"
+
+import "@fontsource/inter/variable.css"
+
 import Navbar from "./Header/Header"
-import { Flex,Box } from "@chakra-ui/react"
+
 
 const Layout = props => {
-  return(
-    <Flex
-      direction="column"
-      m="0 auto"
-      {...props}
-    >
+  return (
+    <Flex direction="column" m="0 auto" {...props}>
       <Navbar />
       {props.children}
-
     </Flex>
   )
 }
 
 export default Layout
 
-export const MyContainer = props => {
-  return(
+
+export const MainContainer = props => {
+  return (
     <Box
-      alignSelf="center"
-      minH="80vh"
+      marginX="auto"
+      minH="70vh"
       minW="70vw"
-      px={10}
-      mb={20}
+      marginBottom={20}
+      paddingX={10}
       {...props}
     >
       {props.children}
     </Box>
-
   )
 }

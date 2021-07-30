@@ -1,11 +1,11 @@
 import { Box, Button, Heading, Link } from "@chakra-ui/react"
 import React from "react"
-import { MyContainer } from "./Layout"
+import { MainContainer } from "./Layout"
 
 
 const Contact = () => {
   return (
-    <MyContainer align="center">
+    <MainContainer align="center">
       <Heading>
           Want to collab on a project? Got an idea but not sure how to begin?
     Feel free to send an email my way!
@@ -21,7 +21,7 @@ const Contact = () => {
         <a href="https://github.com/">GitHub</a> <br />
       </Box>
 
-    </MyContainer>
+    </MainContainer>
   )
 }
 
