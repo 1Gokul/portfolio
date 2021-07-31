@@ -5,7 +5,7 @@ import { MainContainer } from "./Layout"
 
 const Contact = () => {
   return (
-    <MainContainer align="center">
+    <MainContainer align="center" justifyContent="center">
       <Heading>
           Want to collab on a project? Feel free to send an email my way!
       </Heading>

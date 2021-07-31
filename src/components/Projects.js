@@ -58,7 +58,7 @@ const ProjectCard = props => {
 
 const Projects = () => {
   return(
-    <MainContainer>
+    <MainContainer justifyContent="center">
       <Heading>Projects</Heading>
       <List>
         {projectList.map(project => <ProjectCard key={project.name} project={project} />)}

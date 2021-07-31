@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Box } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
 import { Helmet } from "react-helmet"
 
 import "@fontsource/inter/variable.css"
@@ -38,7 +38,8 @@ export default Layout
 
 export const MainContainer = props => {
   return (
-    <Box
+    <Flex
+      flexDirection="column"
       marginX="auto"
       marginBottom={20}
       minH="100vh"
@@ -47,6 +48,6 @@ export const MainContainer = props => {
       {...props}
     >
       {props.children}
-    </Box>
+    </Flex>
   )
 }
