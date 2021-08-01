@@ -80,8 +80,15 @@ const largeIconSize = "100px"
 const Skills = () => {
   return (
     <MainContainer>
-      <Heading size="3xl" align="center">My Skills</Heading>
-      <Flex direction="row" marginY={10} justifyContent="space-evenly">
+      <Heading
+        size="3xl"
+        align="center">
+          My Skills
+      </Heading>
+      <Flex
+        direction={{ base: "column", md:"row" }}
+        marginY={10}
+        justifyContent="space-evenly">
 
         <SkillSet title="Frontend" skills={skills.frontend} />
         <SkillSet title="Backend" skills={skills.backend} />
@@ -94,7 +101,7 @@ const Skills = () => {
 const SkillSet = props => (
   <Flex direction="column" marginX={10}>
     <Heading alignSelf="center">{props.title}</Heading>
-    <SimpleGrid columns={2} spacing="30px" marginY={10}>
+    <SimpleGrid columns={2} spacing="50px" marginY={10}>
       {props.skills.map(skill =>
         <LargeSkill key={skill.name} icon={skill.icon} name={skill.name}/>
       )}
