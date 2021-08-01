@@ -21,6 +21,7 @@
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/inter": "^4.5.0",
+    "@fontsource/space-mono": "^4.5.0",
     "eslint": "^7.31.0",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.10.2",

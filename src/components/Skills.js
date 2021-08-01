@@ -82,12 +82,12 @@ const Skills = () => {
     <MainContainer>
       <Heading
         size="3xl"
-        align="center">
+        align="center"
+        marginBottom={10}>
           My Skills
       </Heading>
       <Flex
         direction={{ base: "column", md:"row" }}
-        marginY={10}
         justifyContent="space-evenly">
 
         <SkillSet title="Frontend" skills={skills.frontend} />
@@ -101,7 +101,7 @@ const Skills = () => {
 const SkillSet = props => (
   <Flex direction="column" marginX={10}>
     <Heading alignSelf="center">{props.title}</Heading>
-    <SimpleGrid columns={2} spacing="50px" marginY={10}>
+    <SimpleGrid columns={2} spacing={{ base:"50px", md:"30px" }} marginY={10}>
       {props.skills.map(skill =>
         <LargeSkill key={skill.name} icon={skill.icon} name={skill.name}/>
       )}

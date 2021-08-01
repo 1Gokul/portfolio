@@ -3,14 +3,14 @@ import { Flex } from "@chakra-ui/react"
 import { Helmet } from "react-helmet"
 
 import "@fontsource/inter/variable.css"
+import "@fontsource/space-mono"
 
 import Navbar from "./Header/Header"
 
 const meta = {
   title: "Gokul Viswanath",
   url: "https://gokulv.netlify.app/",
-  description: "I am a full-stack developer and game developer based in Pune, India. This is my portfolio!"
-
+  description: "I am a full-stack developer based in Pune, India. This is my portfolio!"
 }
 
 
@@ -44,7 +44,8 @@ export const MainContainer = props => {
       marginBottom={20}
       minH="100vh"
       minW="70vw"
-      paddingX={10}
+      maxW={{ base: "100vw", md: "75vw" }}
+      paddingX={{ base: 5, md: 10 }}
       {...props}
     >
       {props.children}
