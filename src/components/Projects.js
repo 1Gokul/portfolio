@@ -1,3 +1,5 @@
+
+import React from "react"
 import {
   Heading,
   Box,
@@ -9,7 +11,7 @@ import {
   Code,
 } from "@chakra-ui/react"
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
-import React from "react"
+import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
 
 import { MainContainer } from "./Layout"
 
@@ -20,6 +22,7 @@ const projectList = [
     tags: ["Flask", "Bootstrap", "JS", "TMDB API"],
     link: "https://mediascout.herokuapp.com/",
     github: "https://github.com/1Gokul/MediaScout",
+    source: "Portfolio/mediascout_screencap"
   },
   {
     name: "Table2Markdown",
@@ -27,12 +30,14 @@ const projectList = [
     tags: ["Flask", "Bootstrap", "PapaParse", "JQuery"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/table2markdown",
+    source: "Portfolio/table2markdown_screencap"
   },
   {
     name: "MedievalRPG",
     description: "A game that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
     tags: ["Unreal Engine 4", "C++"],
     github: "https://github.com/1Gokul/MedievalCombatProject",
+    source: "Portfolio/medievalrpg_screencap"
   },
   {
     name: "Pic2ASCII",
@@ -40,6 +45,7 @@ const projectList = [
     tags: ["Flask", "JS"],
     link: "https://pic-2ascii.herokuapp.com/",
     github: "https://github.com/1Gokul/ASCII-generator",
+    source: "Portfolio/pic2ascii_screencap"
   },
   {
     name: "insertcoin",
@@ -47,6 +53,7 @@ const projectList = [
     tags: ["GraphQL", "React.js"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/insertcoin",
+    source: "Portfolio/insertcoin_screencap"
   },
 ]
 
@@ -60,7 +67,7 @@ const ProjectCard = props => (
     color="white"
   >
     <ProjectInfo project={props.project}/>
-    <ProjectImage source={props.project.image} />
+    <ProjectImage source={props.project.source} />
     <Box />
   </SimpleGrid>
 )
@@ -68,7 +75,7 @@ const ProjectCard = props => (
 const ProjectInfo = ({ project }) => (
   <Box
     backgroundImage={{
-      base: "url('https://res.cloudinary.com/gokulv/image/upload/co_rgb:004358,e_colorize:74,o_100,q_48/v1627826157/Portfolio/firefox192500_npoqsm.jpg')",
+      base: `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${project.source}.jpg`,
       md: "none",
     }}
     backgroundPosition="center"
@@ -76,6 +83,7 @@ const ProjectInfo = ({ project }) => (
     backgroundSize="cover"
     borderRadius="sm"
     padding={10}
+    loading="lazy"
   >
     <Heading size="lg" marginBottom={5}>
       {project.name}
@@ -85,36 +93,35 @@ const ProjectInfo = ({ project }) => (
     </Text>
     <Tags tags={project.tags}/>
     <Flex>
-      <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
       <Link href={project.link} marginX={3}><VscLinkExternal size={20}/></Link>
+      <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
     </Flex>
   </Box>
 )
 
 const ProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
-    <Image
-      src="https://res.cloudinary.com/gokulv/image/upload/q_auto:low/v1627826157/Portfolio/firefox192500_npoqsm.jpg"
-      borderRadius="sm"
-      height="100%"
-      objectFit="cover"
-    />
+    <CNImage publicId={source} style={{ height:"100%" }} loading="lazy">
+      <Transformation quality="20" />
+    </CNImage>
   </Box>
 )
 
 const Projects = () => {
   return (
     <MainContainer>
-
       <Heading size="3xl" alignSelf="center" marginBottom={10}>
         Some of my projects
       </Heading>
 
-      <SimpleGrid flexGrow={1} columns={1} width="100%">
-        {projectList.map (project => (
-          <ProjectCard key={project.name} project={project} />
-        ))}
-      </SimpleGrid>
+      <CloudinaryContext cloudName="gokulv" secure="true">
+        <SimpleGrid flexGrow={1} columns={1} width="100%">
+          {projectList.map (project => (
+            <ProjectCard key={project.name} project={project} />
+          ))}
+        </SimpleGrid>
+      </CloudinaryContext>
+
 
     </MainContainer>
   )
