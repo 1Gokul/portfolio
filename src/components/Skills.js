@@ -111,7 +111,7 @@ const SkillSet = props => (
 
 const LargeSkill = props => (
   <Flex flexDirection="column" alignItems="center">
-    <Icon as={props.icon} height={largeIconSize} width={largeIconSize} />
+    <Icon as={props.icon} height={largeIconSize} width={largeIconSize} color="aqua.400" />
     {props.name}
   </Flex>
 )

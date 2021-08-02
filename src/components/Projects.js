@@ -6,7 +6,6 @@ import {
   Link,
   Text,
   Flex,
-  Image,
   SimpleGrid,
   Code,
 } from "@chakra-ui/react"
@@ -40,7 +39,7 @@ const projectList = [
     source: "Portfolio/medievalrpg_screencap"
   },
   {
-    name: "Pic2ASCII",
+    name: "pic2ASCII",
     description: "Front-end to an ASCII generator GitHub repository. Made with Python, Flask, HTML, CSS, and JavaScript.",
     tags: ["Flask", "JS"],
     link: "https://pic-2ascii.herokuapp.com/",
@@ -102,7 +101,7 @@ const ProjectInfo = ({ project }) => (
 const ProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage publicId={source} style={{ height:"100%" }} loading="lazy">
-      <Transformation quality="20" />
+      <Transformation quality="20" crop="scale" />
     </CNImage>
   </Box>
 )
