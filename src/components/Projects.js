@@ -29,8 +29,8 @@ const projectList = [
     github: "https://github.com/1Gokul/table2markdown",
   },
   {
-    name: "MedievalCombatProject",
-    description: "A that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
+    name: "MedievalRPG",
+    description: "A game that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
     tags: ["Unreal Engine 4", "C++"],
     github: "https://github.com/1Gokul/MedievalCombatProject",
   },
@@ -50,70 +50,57 @@ const projectList = [
   },
 ]
 
-const ProjectCard = props => {
-  return (
-  // <ListItem>
-  //   <Heading>
-  //     {props.project.name}
-  //   </Heading>
-  //   <Text>
-  //     {props.project.description}
-  //   </Text>
-  //   <Box>
-  //     {props.project.link && <Link href={props.project.link}>Link</Link>}
-  //     <Link href={props.project.github} style={{ margin:5 }}>GitHub</Link>
-  //   </Box>
-  // </ListItem>
+const ProjectCard = props => (
+  <SimpleGrid
+    marginY={5}
+    columns={{ base: 1, md: 2 }}
+    alignItems="center"
+    borderRadius="md"
+    bg={{ base: "none", md: "aqua.700" }}
+    color="white"
+  >
+    <ProjectInfo project={props.project}/>
+    <ProjectImage source={props.project.image} />
+    <Box />
+  </SimpleGrid>
+)
 
-    (
-      <SimpleGrid
-        padding={{ base: 0, md: 5 }}
-        marginBottom={5}
-        columns={{ base: 1, md: 2 }}
-        alignItems="center"
-        borderRadius="md"
-        bg={{ base: "none", md: "gray.500" }}
-        color="white"
-      >
-        <Box
-          backgroundImage={{
-            base: "url('https://res.cloudinary.com/gokulv/image/upload/co_rgb:004358,e_colorize:74,o_100,q_48/v1627826157/Portfolio/firefox192500_npoqsm.jpg')",
-            md: "none",
-          }}
-          backgroundPosition="center"
-          backgroundRepeat="no-repeat"
-          backgroundSize="cover"
-          borderRadius="md"
-          paddingX={5}
-          paddingY={10}
-          marginBottom={5}
-        >
-          <Heading size="lg" marginBottom={5}>
-            {props.project.name}
-          </Heading>
-          <Text>
-            {props.project.description}
-          </Text>
-          <Tags tags={props.project.tags}/>
-          <Flex>
-            <Link href={props.project.github} marginX={3}><VscGithubInverted size={20}/></Link>
-            <Link href={props.project.link} marginX={3}><VscLinkExternal size={20}/></Link>
-          </Flex>
-        </Box>
-        <Box display={{ base: "none", md: "block" }} padding={3}>
-          <Image
-            src="https://res.cloudinary.com/gokulv/image/upload/q_auto:eco/v1627826157/Portfolio/firefox192500_npoqsm.jpg"
-            height="300px"
-            width="600px"
-            borderRadius="lg"
-            fit="cover"
-          />
-        </Box>
-        <Box />
-      </SimpleGrid>
-    )
-  )
-}
+const ProjectInfo = ({ project }) => (
+  <Box
+    backgroundImage={{
+      base: "url('https://res.cloudinary.com/gokulv/image/upload/co_rgb:004358,e_colorize:74,o_100,q_48/v1627826157/Portfolio/firefox192500_npoqsm.jpg')",
+      md: "none",
+    }}
+    backgroundPosition="center"
+    backgroundRepeat="no-repeat"
+    backgroundSize="cover"
+    borderRadius="sm"
+    padding={10}
+  >
+    <Heading size="lg" marginBottom={5}>
+      {project.name}
+    </Heading>
+    <Text marginY={8}>
+      {project.description}
+    </Text>
+    <Tags tags={project.tags}/>
+    <Flex>
+      <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
+      <Link href={project.link} marginX={3}><VscLinkExternal size={20}/></Link>
+    </Flex>
+  </Box>
+)
+
+const ProjectImage = ({ source }) => (
+  <Box display={{ base: "none", md: "block" }} height="100%">
+    <Image
+      src="https://res.cloudinary.com/gokulv/image/upload/q_auto:low/v1627826157/Portfolio/firefox192500_npoqsm.jpg"
+      borderRadius="sm"
+      height="100%"
+      objectFit="cover"
+    />
+  </Box>
+)
 
 const Projects = () => {
   return (

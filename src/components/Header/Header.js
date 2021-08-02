@@ -1,8 +1,6 @@
 import React, { useState } from "react"
-import { Flex, useColorMode, IconButton, Button } from "@chakra-ui/react"
+import { Flex, IconButton, Button } from "@chakra-ui/react"
 import {
-  RiSunFill,
-  RiMoonClearFill,
   RiMenu3Line,
   RiCloseLine,
 } from "react-icons/ri"
@@ -26,7 +24,6 @@ const links = [
 ]
 
 const Navbar = () => {
-  const { colorMode, toggleColorMode } = useColorMode ()
   const [expanded, setExpanded] = useState (false)
 
   const toggleExpanded = () => {
@@ -51,15 +48,11 @@ const Navbar = () => {
         <Flex align="center">
           <DesktopNavMenu />
 
-          <ColourModeToggler
-            currentMode={colorMode}
-            toggler={toggleColorMode}
-          />
           <NavMenuToggler toggler={toggleExpanded} expanded={expanded} />
         </Flex>
       </Flex>
 
-      <MobileNavMenu expanded={expanded} colorMode={colorMode}/>
+      <MobileNavMenu expanded={expanded}/>
 
     </Flex>
   )
@@ -78,16 +71,16 @@ const DesktopNavMenu = () => (
 const MobileNavMenu = props => (
 
   <Flex
+    flexDir="column"
     display={{ base: props.expanded ? "flex" : "none", md: "none" }}
     w="100vw"
     h="100vh"
-    zIndex={19}
     pos="fixed"
-    bgColor={props.colorMode === "dark" ? "gray.800" : "gray.50"}
     top="0"
     left="0"
     overflowY="auto"
-    flexDir="column"
+    zIndex={19}
+    bgColor="gray.800"
   >
 
     <Flex
@@ -118,17 +111,9 @@ const NavLink = props => (
   </Link>
 )
 
-const ColourModeToggler = props => (
-  <IconButton
-    aria-label="Toggle Colour Mode"
-    marginX={10}
-    onClick={props.toggler}
-    icon={props.currentMode === "dark" ? <RiMoonClearFill /> : <RiSunFill />}
-  />
-)
-
 const NavMenuToggler = props => (
   <IconButton
+    variant="ghost"
     aria-label="Open Navigation Menu"
     display={{ base: "flex", md: "none" }}
     onClick={props.toggler}

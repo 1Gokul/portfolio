@@ -99,7 +99,7 @@ const Skills = () => {
 }
 
 const SkillSet = props => (
-  <Flex direction="column" marginX={10}>
+  <Flex direction="column" marginX={10} marginY={5}>
     <Heading alignSelf="center">{props.title}</Heading>
     <SimpleGrid columns={2} spacing={{ base:"50px", md:"30px" }} marginY={10}>
       {props.skills.map(skill =>
