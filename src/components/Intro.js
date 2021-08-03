@@ -14,8 +14,9 @@ const Intro = () => {
         </Box>
         <Flex marginTop={{ base: 12, md:28 }}>
           <Image
-            src="https://res.cloudinary.com/gokulv/image/upload/r_30/v1627663627/Portfolio/GV_StickPhoto_fjfu7i.png"
+            src="https://res.cloudinary.com/gokulv/image/upload/q_auto:low/v1627663627/Portfolio/GV_StickPhoto_fjfu7i.png"
             alt="My Photo"
+            borderRadius="xl"
             boxSize="100%"
           />
         </Flex>

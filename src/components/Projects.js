@@ -12,7 +12,7 @@ import {
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
 import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
 
-import { MainContainer } from "./Layout"
+import { MainContainer, SectionHeading } from "./Layout"
 
 const projectList = [
   {
@@ -81,7 +81,8 @@ const ProjectInfo = ({ project }) => (
     backgroundRepeat="no-repeat"
     backgroundSize="cover"
     borderRadius="sm"
-    padding={10}
+    paddingY={10}
+    paddingX={{ base:6, md: 10 }}
     loading="lazy"
   >
     <Heading size="lg" marginBottom={5}>
@@ -109,9 +110,9 @@ const ProjectImage = ({ source }) => (
 const Projects = () => {
   return (
     <MainContainer>
-      <Heading size="3xl" alignSelf="center" marginBottom={10}>
+      <SectionHeading>
         Some of my projects
-      </Heading>
+      </SectionHeading>
 
       <CloudinaryContext cloudName="gokulv" secure="true">
         <SimpleGrid flexGrow={1} columns={1} width="100%">

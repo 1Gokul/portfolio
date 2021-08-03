@@ -3,7 +3,7 @@ import { Flex, Heading, Icon, SimpleGrid } from "@chakra-ui/react"
 import { IoLogoHtml5, IoLogoCss3, IoLogoReact, IoLogoJavascript, IoLogoNodejs, IoLogoGithub } from "react-icons/io5"
 import { SiFlask, SiJinja, SiRedux, SiMongodb, SiPostgresql, SiUnrealengine, SiHeroku, SiGit } from "react-icons/si"
 
-import { MainContainer } from "./Layout"
+import { MainContainer, SectionHeading } from "./Layout"
 
 const skills = {
   frontend: [
@@ -80,12 +80,9 @@ const largeIconSize = "100px"
 const Skills = () => {
   return (
     <MainContainer>
-      <Heading
-        size="3xl"
-        align="center"
-        marginBottom={10}>
+      <SectionHeading>
           My Skills
-      </Heading>
+      </SectionHeading>
       <Flex
         direction={{ base: "column", md:"row" }}
         justifyContent="space-evenly">
