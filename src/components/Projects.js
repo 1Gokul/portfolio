@@ -7,7 +7,7 @@ import {
   Text,
   Flex,
   SimpleGrid,
-  Code,
+  Badge,
 } from "@chakra-ui/react"
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
 import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
@@ -129,7 +129,7 @@ const Projects = () => {
 
 const Tags = ({ tags }) => (
   <Flex marginY={5} flexWrap="wrap">
-    {tags.map(tag => <Code margin={2} key={tag}>{tag}</Code>)}
+    {tags.map(tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
   </Flex>
 
 )
