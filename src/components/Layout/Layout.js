@@ -6,6 +6,7 @@ import "@fontsource/inter/variable.css"
 import "@fontsource/space-mono"
 
 import Navbar from "./Header/Header"
+import Footer from "./Footer"
 
 const meta = {
   title: "Gokul Viswanath",
@@ -25,10 +26,14 @@ const Layout = props => {
         <meta property="og:description" content={meta.description} />
         <title>{meta.title}</title>
       </Helmet>
+
       <Flex direction="column" m="0 auto" {...props}>
         <Navbar />
         {props.children}
+        <Footer />
       </Flex>
+
+
     </>
   )
 }
@@ -57,15 +62,15 @@ export const MainContainer = props => {
 const sectionHeadingStyle = {
   content: `""`, // eslint-disable-line
   display: "inline-block",
-  width: "50%",
-  margin: "0 .5em 0 -50%",
+  width: "20%",
+  margin: "0 .5em 0 -55%",
   verticalAlign: "middle",
   borderBottom: "1px solid"
 }
 
 export const SectionHeading = props => (
   <Heading size="3xl"
-    alignSelf="center"
+    textAlign="center"
     marginBottom={10}
     display="inline-block"
     _before={{ base: "none", md:sectionHeadingStyle }}
@@ -73,7 +78,7 @@ export const SectionHeading = props => (
       base: "none",
       md: {
         ...sectionHeadingStyle,
-        margin: "0 -50% 0 .5em"
+        margin: "0 -55% 0 .5em"
       }
     }}
   >

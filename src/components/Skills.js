@@ -3,7 +3,7 @@ import { Flex, Heading, Icon, SimpleGrid } from "@chakra-ui/react"
 import { IoLogoHtml5, IoLogoCss3, IoLogoReact, IoLogoJavascript, IoLogoNodejs, IoLogoGithub } from "react-icons/io5"
 import { SiFlask, SiJinja, SiRedux, SiMongodb, SiPostgresql, SiUnrealengine, SiHeroku, SiGit } from "react-icons/si"
 
-import { MainContainer, SectionHeading } from "./Layout"
+import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const skills = {
   frontend: [

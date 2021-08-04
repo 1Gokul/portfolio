@@ -12,7 +12,7 @@ import {
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
 import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
 
-import { MainContainer, SectionHeading } from "./Layout"
+import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const projectList = [
   {
