@@ -83,7 +83,7 @@ const Skills = () => {
   return (
     <MainContainer minH="100vh">
       <SectionHeading>
-          I am skilled at
+          My skill set
       </SectionHeading>
       <Flex
         direction={{ base: "column", md:"row" }}
