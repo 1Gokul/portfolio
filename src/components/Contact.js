@@ -23,11 +23,8 @@ const Contact = () => {
       </Box>
 
       <Box>
-        <Heading textAlign="center">Or send a message here</Heading>
-        <Flex justifyContent="space-between" alignItems="center" padding={5}>
-          {/* <a href="https://twitter.com/1GokulV">Twitter</a> <br />
-          <a href="https://www.linkedin.com/in/gokul-viswanath-31383b193/">LinkedIn</a> <br />
-          <a href="https://github.com/1Gokul">GitHub</a> <br /> */}
+        <Heading align="center">Or send a message here</Heading>
+        <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
           <SocialIconLink icon={VscGithub} link="https://github.com/1Gokul"/>
           <SocialIconLink icon={IoLogoLinkedin} link="https://www.linkedin.com/in/gokul-viswanath-31383b193/"/>
@@ -43,7 +40,7 @@ const Contact = () => {
 
 const SocialIconLink = props => (
   <Link href={props.link}>
-    <Icon as={props.icon} height="60px" width="60px" marginX={4}/>
+    <Icon marginX={2} as={props.icon} height="60px" width="60px"/>
   </Link>
 )
 
