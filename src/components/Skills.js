@@ -77,11 +77,13 @@ const skills = {
 
 const largeIconSize = "100px"
 
+
+
 const Skills = () => {
   return (
-    <MainContainer>
+    <MainContainer minH="100vh">
       <SectionHeading>
-          My Skills
+          I am skilled at
       </SectionHeading>
       <Flex
         direction={{ base: "column", md:"row" }}

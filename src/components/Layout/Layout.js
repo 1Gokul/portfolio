@@ -47,7 +47,7 @@ export const MainContainer = props => {
       flexDirection="column"
       marginX="auto"
       marginBottom={20}
-      minH="100vh"
+      minH="80vh"
       minW="70vw"
       maxW={{ base: "100vw", md: "75vw" }}
       paddingX={{ base: 5, md: 10 }}
@@ -71,7 +71,7 @@ const sectionHeadingStyle = {
 export const SectionHeading = props => (
   <Heading size="3xl"
     textAlign="center"
-    marginBottom={10}
+    marginBottom={14}
     display="inline-block"
     _before={{ base: "none", md:sectionHeadingStyle }}
     _after={{

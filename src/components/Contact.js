@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import React from "react"
 import { IoLogoLinkedin } from "react-icons/io5"
+import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 
@@ -31,6 +32,7 @@ const Contact = () => {
           <SocialIconLink icon={VscGithub} link="https://github.com/1Gokul"/>
           <SocialIconLink icon={IoLogoLinkedin} link="https://www.linkedin.com/in/gokul-viswanath-31383b193/"/>
           <SocialIconLink icon={VscTwitter} link="https://twitter.com/1GokulV"/>
+          <SocialIconLink icon={RiRedditFill} link="https://twitter.com/1GokulV"/>
         </Flex>
       </Box>
 
@@ -41,7 +43,7 @@ const Contact = () => {
 
 const SocialIconLink = props => (
   <Link href={props.link}>
-    <Icon as={props.icon} height="75px" width="75px" marginX={5}/>
+    <Icon as={props.icon} height="60px" width="60px" marginX={4}/>
   </Link>
 )
 

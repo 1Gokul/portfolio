@@ -101,7 +101,7 @@ const ProjectInfo = ({ project }) => (
 
 const ProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
-    <CNImage publicId={source} style={{ height:"100%" }} loading="lazy">
+    <CNImage publicId={source} style={{ height:"100%", objectFit:"cover" }} loading="lazy">
       <Transformation quality="20" crop="scale" />
     </CNImage>
   </Box>
@@ -109,7 +109,7 @@ const ProjectImage = ({ source }) => (
 
 const Projects = () => {
   return (
-    <MainContainer>
+    <MainContainer minH="100vh">
       <SectionHeading>
         Some of my projects
       </SectionHeading>
