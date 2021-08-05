@@ -49,7 +49,7 @@ export const MainContainer = props => {
       marginBottom={20}
       minH="80vh"
       minW="70vw"
-      maxW={{ base: "100vw", md: "75vw" }}
+      maxW={{ base: "95vw", md: "75vw" }}
       paddingX={{ base: 5, md: 10 }}
       {...props}
     >
