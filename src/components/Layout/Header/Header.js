@@ -33,7 +33,7 @@ const Navbar = () => {
 
   return (
     <Flex position="fixed" width="100%"
-      bgColor="rgb(20, 9, 42, 0.8)" top="0" as="nav" zIndex="5"
+      bgColor="rgb(0, 27, 43, 0.8)" top="0" as="nav" zIndex="5"
     >
       <Flex
         zIndex="5"

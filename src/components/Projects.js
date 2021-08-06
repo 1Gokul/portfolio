@@ -83,7 +83,6 @@ const ProjectInfo = ({ project }) => (
     borderRadius="sm"
     paddingY={10}
     paddingX={{ base:6, md: 10 }}
-    loading="lazy"
   >
     <Heading size="lg" marginBottom={5}>
       {project.name}
