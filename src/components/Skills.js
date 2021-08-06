@@ -81,7 +81,7 @@ const largeIconSize = "100px"
 
 const Skills = () => {
   return (
-    <MainContainer minH="100vh">
+    <MainContainer>
       <SectionHeading>
           My skill set
       </SectionHeading>

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Flex, IconButton, Button } from "@chakra-ui/react"
+import { Flex, IconButton, Button, ButtonGroup } from "@chakra-ui/react"
 import {
   RiMenu3Line,
   RiCloseLine,
@@ -32,10 +32,12 @@ const Navbar = () => {
   }
 
   return (
-    <Flex position="sticky" as="nav" mb={10}>
+    <Flex position="fixed" width="100%"
+      bgColor="rgb(20, 9, 42, 0.8)" top="0" as="nav" zIndex="5"
+    >
       <Flex
-        zIndex={20}
-        paddingY={7}
+        zIndex="5"
+        paddingY={{ base: 5, md: 7 }}
         paddingX={10}
         justifyContent="space-between"
         alignItems="center"
@@ -60,11 +62,14 @@ const Navbar = () => {
 
 const DesktopNavMenu = () => (
   <Flex display={{ base: "none", md: "flex" }}>
-    {links.map (link => (
-      <NavLink key={link.title} to={link.to}>
-        {link.title}
-      </NavLink>
-    ))}
+    <ButtonGroup>
+      {links.map (link => (
+        <NavLink key={link.title} to={link.to}>
+          {link.title}
+        </NavLink>
+      ))}
+    </ButtonGroup>
+
   </Flex>
 )
 
@@ -79,7 +84,6 @@ const MobileNavMenu = props => (
     top="0"
     left="0"
     overflowY="auto"
-    zIndex={19}
     bgColor="gray.800"
   >
 
@@ -91,6 +95,7 @@ const MobileNavMenu = props => (
           {link.title}
         </NavLink>
       ))}
+
     </Flex>
   </Flex>
 )
@@ -98,7 +103,7 @@ const MobileNavMenu = props => (
 const NavLink = props => (
   <Link to="#">
     <Button
-      variant="ghost"
+      variant="nav"
       w="100%"
       paddingY={7}
       marginX={{ base: 0, md: 5 }}

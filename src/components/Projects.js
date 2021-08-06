@@ -109,7 +109,7 @@ const ProjectImage = ({ source }) => (
 
 const Projects = () => {
   return (
-    <MainContainer minH="100vh">
+    <MainContainer>
       <SectionHeading>
         Some of my projects
       </SectionHeading>

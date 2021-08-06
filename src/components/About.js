@@ -39,7 +39,7 @@ const About = () => {
             alt="My Photo"
             borderRadius="xl"
             width="300px"
-
+            loading="lazy"
           />
         </Flex>
       </SimpleGrid>

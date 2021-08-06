@@ -46,7 +46,7 @@ export const MainContainer = props => {
     <Flex
       flexDirection="column"
       marginX="auto"
-      marginBottom={20}
+      marginTop="8rem"
       minH="80vh"
       minW="70vw"
       maxW={{ base: "95vw", md: "75vw" }}
