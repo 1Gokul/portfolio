@@ -117,7 +117,7 @@ const ProjectCard = props => {
       color="white"
     >
       <ProjectInfo project={props.project} projectImage={lazyLoadedImage}/>
-      <DesktopProjectImage source={lazyLoadedImage} />
+      <DesktopProjectImage source={props.project.source} />
       <Box />
     </SimpleGrid>
   )
