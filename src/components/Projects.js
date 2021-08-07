@@ -13,6 +13,7 @@ import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
 import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
 
 import { MainContainer, SectionHeading } from "./Layout/Layout"
+import { useLazyImage } from "../hooks"
 
 const projectList = [
   {
@@ -56,55 +57,72 @@ const projectList = [
   },
 ]
 
-const ProjectCard = props => (
-  <SimpleGrid
-    marginY={5}
-    columns={{ base: 1, md: 2 }}
-    alignItems="center"
-    borderRadius="md"
-    bg={{ base: "none", md: "aqua.700" }}
-    color="white"
-  >
-    <ProjectInfo project={props.project}/>
-    <ProjectImage source={props.project.source} />
-    <Box />
-  </SimpleGrid>
-)
+const ProjectInfo = ({ project, projectImage }) => {
+  return (
+    <Box
+      backgroundImage={{
+        base: projectImage,
+        md: "none",
+      }}
+      backgroundPosition="center"
+      backgroundRepeat="no-repeat"
+      backgroundSize="cover"
+      borderRadius="sm"
+      paddingY={10}
+      paddingX={{ base:6, md: 10 }}
+    >
+      <Heading size="lg" marginBottom={5}>
+        {project.name}
+      </Heading>
+      <Text marginY={8}>
+        {project.description}
+      </Text>
+      <Tags tags={project.tags}/>
+      <Flex>
+        <Link href={project.link} marginX={3}><VscLinkExternal size={20}/></Link>
+        <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
+      </Flex>
+    </Box>
+  )
+}
 
-const ProjectInfo = ({ project }) => (
-  <Box
-    backgroundImage={{
-      base: `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${project.source}.jpg`,
-      md: "none",
-    }}
-    backgroundPosition="center"
-    backgroundRepeat="no-repeat"
-    backgroundSize="cover"
-    borderRadius="sm"
-    paddingY={10}
-    paddingX={{ base:6, md: 10 }}
-  >
-    <Heading size="lg" marginBottom={5}>
-      {project.name}
-    </Heading>
-    <Text marginY={8}>
-      {project.description}
-    </Text>
-    <Tags tags={project.tags}/>
-    <Flex>
-      <Link href={project.link} marginX={3}><VscLinkExternal size={20}/></Link>
-      <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
-    </Flex>
-  </Box>
-)
-
-const ProjectImage = ({ source }) => (
+const DesktopProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage publicId={source} style={{ height:"100%", objectFit:"cover" }} loading="lazy">
       <Transformation quality="20" crop="scale" />
     </CNImage>
   </Box>
 )
+
+const Tags = ({ tags }) => (
+  <Flex marginY={5} flexWrap="wrap">
+    {tags.map(tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
+  </Flex>
+
+)
+
+const ProjectCard = props => {
+
+  // Lazy load background image for mobile
+  const lazyLoadedImage = useLazyImage(
+    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`)
+
+  return(
+    <SimpleGrid
+      marginY={5}
+      columns={{ base: 1, md: 2 }}
+      alignItems="center"
+      borderRadius="md"
+      bg={{ base: "none", md: "aqua.700" }}
+      color="white"
+    >
+      <ProjectInfo project={props.project} projectImage={lazyLoadedImage}/>
+      <DesktopProjectImage source={lazyLoadedImage} />
+      <Box />
+    </SimpleGrid>
+  )
+}
+
 
 const Projects = () => {
   return (
@@ -125,12 +143,5 @@ const Projects = () => {
     </MainContainer>
   )
 }
-
-const Tags = ({ tags }) => (
-  <Flex marginY={5} flexWrap="wrap">
-    {tags.map(tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
-  </Flex>
-
-)
 
 export default Projects
