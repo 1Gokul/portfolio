@@ -11,6 +11,8 @@ const Intro = () => {
           <Heading
             marginBottom={5}
             fontSize={{ base:"6xl", md: "7xl" }}
+            fontWeight="extrabold"
+            letterSpacing="-3.5px"
             bgGradient="linear(to-r, #8000FF, #30FFB3, #07F49E)"
             bgClip="text">Gokul Viswanath.</Heading>
           <Heading size="xl"> I am a full-stack web developer.<br/>I also make games on the side.</Heading>
