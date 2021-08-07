@@ -29,7 +29,7 @@ const skills = {
     },
     {
       icon: SiJinja,
-      name: "Jinja2"
+      name: "Jinja"
     },
   ],
 
@@ -76,6 +76,7 @@ const skills = {
 
 
 const largeIconSize = "100px"
+const iconColour = "aqua.200"
 
 
 
@@ -110,7 +111,7 @@ const SkillSet = props => (
 
 const LargeSkill = props => (
   <Flex flexDirection="column" alignItems="center">
-    <Icon as={props.icon} height={largeIconSize} width={largeIconSize} color="aqua.400" />
+    <Icon as={props.icon} boxSize={largeIconSize} color={iconColour} />
     {props.name}
   </Flex>
 )

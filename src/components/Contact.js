@@ -8,7 +8,7 @@ import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const Contact = () => {
   return (
-    <MainContainer minH="80vh" alignItems="center" justifyContent="center">
+    <MainContainer alignItems="center" justifyContent="space-evenly">
       <SectionHeading>
         Say Hi
       </SectionHeading>
@@ -16,7 +16,7 @@ const Contact = () => {
           Want to collab on a project?<br/> Feel free to send an email my way!
       </Heading>
 
-      <Box marginY={20}>
+      <Box marginY={5}>
         <Link href="mailto:viswanath1gokul@gmail.com">
           <Button aria-label="Send Email" p={10} fontSize="2xl" >Let&apos;s work together!</Button>
         </Link>
@@ -40,7 +40,7 @@ const Contact = () => {
 
 const SocialIconLink = props => (
   <Link href={props.link}>
-    <Icon marginX={2} as={props.icon} height="60px" width="60px"/>
+    <Icon marginX={2} as={props.icon} boxSize="60px"/>
   </Link>
 )
 

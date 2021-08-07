@@ -26,7 +26,8 @@ const colors = {
     "600": "#0080CC",
     "700": "#006099",
     "800": "#004066",
-    "900": "#001b2b"
+    "900": "#002d47",
+    "1000": "#001b2b",
   },
   "cyan": {
     "50": "#E9F8FC",
@@ -45,7 +46,7 @@ const colors = {
 const styles = {
   global: {
     body: {
-      bg: "aqua.900",
+      bg: "aqua.1000",
       color: "gray.200"
     }
   }
@@ -65,21 +66,22 @@ const components = {
           color: "gray.200"
         }
       },
-      nav: {
-        _hover: {
-          color: "aqua.400"
-        }
-      }
-
-    },
-    SectionHeader: {
-      defaultProps: {
-        color: "teal"
-      }
 
     }
 
+  },
+  NavLink: {
+    baseStyle: {
+      bg: "pink.200",
+      padding: "50px",
+      margin: "50px",
+      _hover: {
+        color: "aqua.400"
+      },
+    }
   }
 }
+
+
 
 export default extendTheme ({ config, fonts, components, colors, styles })

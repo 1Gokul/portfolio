@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Flex, IconButton, Button, ButtonGroup } from "@chakra-ui/react"
+import { Flex, IconButton, Box, SimpleGrid } from "@chakra-ui/react"
 import {
   RiMenu3Line,
   RiCloseLine,
@@ -61,16 +61,14 @@ const Navbar = () => {
 }
 
 const DesktopNavMenu = () => (
-  <Flex display={{ base: "none", md: "flex" }}>
-    <ButtonGroup>
-      {links.map (link => (
-        <NavLink key={link.title} to={link.to}>
-          {link.title}
-        </NavLink>
-      ))}
-    </ButtonGroup>
+  <SimpleGrid rows={1} spacing={10} display={{ base: "none", md: "flex" }}>
+    {links.map (link => (
+      <NavLink key={link.title} to={link.to} padding={1} fontSize="xl" textAlign="center">
+        {link.title}
+      </NavLink>
+    ))}
 
-  </Flex>
+  </SimpleGrid>
 )
 
 const MobileNavMenu = props => (
@@ -84,14 +82,15 @@ const MobileNavMenu = props => (
     top="0"
     left="0"
     overflowY="auto"
-    bgColor="gray.800"
+    bgColor="aqua.900"
+    padding={3}
   >
 
     <Flex
       flexDirection="column"
-      marginTop="150px">
+      marginTop="100px">
       {links.map (link => (
-        <NavLink key={link.title} aria-label={link.title} to={link.to} my={5}>
+        <NavLink key={link.title} aria-label={link.title} to={link.to} padding={7} fontSize="2xl" textAlign="left" borderBottom="1px"borderColor="gray.500">
           {link.title}
         </NavLink>
       ))}
@@ -101,18 +100,19 @@ const MobileNavMenu = props => (
 )
 
 const NavLink = props => (
-  <Link to="#">
-    <Button
-      variant="nav"
+  <Link to="#" bg="pink">
+    <Box
+      as="button"
       w="100%"
-      paddingY={7}
-      marginX={{ base: 0, md: 5 }}
-      fontSize="xl"
-      fontWeight="normal"
+      fontWeight="medium"
+      transition= "0.2s ease-in-out"
+      _hover={{
+        color: "aqua.600",
+      }}
       {...props}
     >
       {props.children}
-    </Button>
+    </Box>
   </Link>
 )
 
