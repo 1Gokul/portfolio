@@ -103,11 +103,11 @@ const ProjectInfo = ({ project, projectImage }) => {
 const DesktopProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage
-      publicId={source}
+      publicId={`${source}.jpg`}
       style={{ height: "100%", objectFit: "cover" }}
       loading="lazy"
     >
-      <Transformation quality="20" crop="scale" />
+      <Transformation quality="10" crop="scale" />
     </CNImage>
   </Box>
 )
@@ -121,7 +121,7 @@ const Tags = ({ tags }) => (
 const ProjectCard = props => {
   // Lazy load background image for mobile
   const lazyLoadedImage = useLazyImage (
-    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`
+    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_10/v1627890100/${props.project.source}.jpg`
   )
 
   return (

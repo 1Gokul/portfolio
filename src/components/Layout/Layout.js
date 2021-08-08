@@ -29,13 +29,13 @@ const Layout = props => {
       </Helmet>
 
       <Flex direction="column" m="0 auto" {...props}>
-        <Navbar />
-
         <CloudinaryContext cloudName="gokulv" secure="true">
-          {props.children}
-        </CloudinaryContext>
+          <Navbar />
 
-        <Footer />
+          {props.children}
+
+          <Footer />
+        </CloudinaryContext>
       </Flex>
 
 

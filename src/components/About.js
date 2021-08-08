@@ -1,5 +1,7 @@
-import { Box, Flex, Image, SimpleGrid, Text } from "@chakra-ui/react"
 import React from "react"
+import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react"
+import { Image as CNImage, Transformation } from "cloudinary-react"
+
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const AboutDescription = [
@@ -30,13 +32,9 @@ const About = () => {
         </Box>
 
         <Flex justifyContent="center">
-          <Image
-            src="https://res.cloudinary.com/gokulv/image/upload/q_auto:low/v1627663627/Portfolio/GV_StickPhoto_fjfu7i.png"
-            alt="My Photo"
-            borderRadius="xl"
-            width="300px"
-            loading="lazy"
-          />
+          <CNImage publicId="Portfolio/GV_StickPhoto_fjfu7i.png" >
+            <Transformation quality="20" radius="10" alt="My photo" loading="lazy" width="300" crop="scale"/>
+          </CNImage>
         </Flex>
       </SimpleGrid>
     </MainContainer>

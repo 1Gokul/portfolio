@@ -25,9 +25,9 @@ const Intro = () => {
           </Heading>
         </Box>
         <Box flexGrow={1}>
-          <Link href="mailto:viswanath1gokul@gmail.com">
+          <Link href="https://github.com/1Gokul">
             <Button aria-label="Send Email" p={10} fontSize="2xl">
-              Let&apos;s talk!
+              My GitHub profile
             </Button>
           </Link>
         </Box>
