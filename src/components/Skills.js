@@ -1,7 +1,23 @@
 import React from "react"
 import { Flex, Heading, Icon, SimpleGrid } from "@chakra-ui/react"
-import { IoLogoHtml5, IoLogoCss3, IoLogoReact, IoLogoJavascript, IoLogoNodejs, IoLogoGithub } from "react-icons/io5"
-import { SiFlask, SiJinja, SiRedux, SiMongodb, SiPostgresql, SiUnrealengine, SiHeroku, SiGit } from "react-icons/si"
+import {
+  IoLogoHtml5,
+  IoLogoCss3,
+  IoLogoReact,
+  IoLogoJavascript,
+  IoLogoNodejs,
+  IoLogoGithub,
+} from "react-icons/io5"
+import {
+  SiFlask,
+  SiJinja,
+  SiRedux,
+  SiMongodb,
+  SiPostgresql,
+  SiUnrealengine,
+  SiHeroku,
+  SiGit,
+} from "react-icons/si"
 
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 
@@ -9,86 +25,83 @@ const skills = {
   frontend: [
     {
       icon: IoLogoHtml5,
-      name: "HTML5"
+      name: "HTML5",
     },
     {
       icon: IoLogoCss3,
-      name: "CSS3"
+      name: "CSS3",
     },
     {
       icon: IoLogoJavascript,
-      name: "Javascript"
+      name: "Javascript",
     },
     {
       icon: IoLogoReact,
-      name: "React.js"
+      name: "React.js",
     },
     {
       icon: SiRedux,
-      name: "Redux"
+      name: "Redux",
     },
     {
       icon: SiJinja,
-      name: "Jinja"
+      name: "Jinja",
     },
   ],
 
-  "backend": [
-
+  backend: [
     {
       icon: SiFlask,
-      name: "Flask"
+      name: "Flask",
     },
     {
       icon: IoLogoNodejs,
-      name: "Node.js"
+      name: "Node.js",
     },
     {
       icon: SiMongodb,
-      name: "MongoDB"
+      name: "MongoDB",
     },
     {
       icon: SiPostgresql,
-      name: "PostgreSQL"
+      name: "PostgreSQL",
     },
   ],
 
-  "others": [
+  others: [
     {
       icon: SiGit,
-      name: "Git"
+      name: "Git",
     },
     {
       icon: IoLogoGithub,
-      name: "GitHub"
+      name: "GitHub",
     },
 
     {
       icon: SiHeroku,
-      name: "Heroku"
+      name: "Heroku",
     },
     {
       icon: SiUnrealengine,
-      name: "Unreal Engine 4"
+      name: "Unreal Engine 4",
     },
-  ]
+  ],
 }
-
 
 const largeIconSize = "100px"
 const iconColour = "aqua.200"
-
-
 
 const Skills = () => {
   return (
     <MainContainer>
       <SectionHeading>
-          My skill set
+        My skill set
       </SectionHeading>
       <Flex
-        direction={{ base: "column", md:"row" }}
-        justifyContent="space-evenly">
+        direction={{ base: "column", md: "row" }}
+        justifyContent="space-evenly"
+      >
 
         <SkillSet title="Frontend" skills={skills.frontend} />
         <SkillSet title="Backend" skills={skills.backend} />
@@ -101,10 +114,10 @@ const Skills = () => {
 const SkillSet = props => (
   <Flex direction="column" marginX={10} marginY={5}>
     <Heading alignSelf="center">{props.title}</Heading>
-    <SimpleGrid columns={2} spacing={{ base:"50px", md:"30px" }} marginY={10}>
-      {props.skills.map(skill =>
-        <LargeSkill key={skill.name} icon={skill.icon} name={skill.name}/>
-      )}
+    <SimpleGrid columns={2} spacing={{ base: "50px", md: "30px" }} marginY={10}>
+      {props.skills.map (skill => (
+        <LargeSkill key={skill.name} icon={skill.icon} name={skill.name} />
+      ))}
     </SimpleGrid>
   </Flex>
 )
@@ -115,7 +128,5 @@ const LargeSkill = props => (
     {props.name}
   </Flex>
 )
-
-
 
 export default Skills

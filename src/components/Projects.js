@@ -69,7 +69,7 @@ const ProjectInfo = ({ project, projectImage }) => {
       backgroundSize="cover"
       borderRadius="sm"
       paddingY={10}
-      paddingX={{ base:6, md: 10 }}
+      paddingX={{ base: 6, md: 10 }}
     >
       <Heading size="lg" marginBottom={5}>
         {project.name}
@@ -77,10 +77,10 @@ const ProjectInfo = ({ project, projectImage }) => {
       <Text marginY={8}>
         {project.description}
       </Text>
-      <Tags tags={project.tags}/>
+      <Tags tags={project.tags} />
       <Flex>
-        <Link href={project.link} marginX={3}><VscLinkExternal size={20}/></Link>
-        <Link href={project.github} marginX={3}><VscGithubInverted size={20}/></Link>
+        <Link href={project.link} marginX={3}><VscLinkExternal size={20} /></Link>
+        <Link href={project.github} marginX={3}><VscGithubInverted size={20} /></Link>
       </Flex>
     </Box>
   )
@@ -88,7 +88,7 @@ const ProjectInfo = ({ project, projectImage }) => {
 
 const DesktopProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
-    <CNImage publicId={source} style={{ height:"100%", objectFit:"cover" }} loading="lazy">
+    <CNImage publicId={source} style={{ height: "100%", objectFit: "cover" }} loading="lazy">
       <Transformation quality="20" crop="scale" />
     </CNImage>
   </Box>
@@ -107,7 +107,7 @@ const ProjectCard = props => {
   const lazyLoadedImage = useLazyImage(
     `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`)
 
-  return(
+  return (
     <SimpleGrid
       marginY={5}
       columns={{ base: 1, md: 2 }}
@@ -116,7 +116,7 @@ const ProjectCard = props => {
       bg={{ base: "none", md: "aqua.700" }}
       color="white"
     >
-      <ProjectInfo project={props.project} projectImage={lazyLoadedImage}/>
+      <ProjectInfo project={props.project} projectImage={lazyLoadedImage} />
       <DesktopProjectImage source={props.project.source} />
       <Box />
     </SimpleGrid>
@@ -133,7 +133,7 @@ const Projects = () => {
 
       <CloudinaryContext cloudName="gokulv" secure="true">
         <SimpleGrid flexGrow={1} columns={1} width="100%">
-          {projectList.map (project => (
+          {projectList.map(project => (
             <ProjectCard key={project.name} project={project} />
           ))}
         </SimpleGrid>

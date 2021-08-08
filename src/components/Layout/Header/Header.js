@@ -1,9 +1,6 @@
 import React, { useState } from "react"
 import { Flex, IconButton, Box, SimpleGrid } from "@chakra-ui/react"
-import {
-  RiMenu3Line,
-  RiCloseLine,
-} from "react-icons/ri"
+import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 import { Link } from "gatsby"
 
 import Logo from "./Logo"
@@ -32,12 +29,17 @@ const Navbar = () => {
   }
 
   return (
-    <Flex position="fixed" width="100%"
-      bgColor="rgb(0, 27, 43, 0.8)" top="0" as="nav" zIndex="5"
+    <Flex
+      position="fixed"
+      width="100%"
+      bgColor="rgb(0, 27, 43, 0.8)"
+      top="0"
+      as="nav"
+      zIndex="5"
     >
       <Flex
         zIndex="5"
-        paddingY={{ base: 5, md: 7 }}
+        paddingY={{ base: 5, md: 5 }}
         paddingX={10}
         justifyContent="space-between"
         alignItems="center"
@@ -54,7 +56,7 @@ const Navbar = () => {
         </Flex>
       </Flex>
 
-      <MobileNavMenu expanded={expanded}/>
+      <MobileNavMenu expanded={expanded} />
 
     </Flex>
   )
@@ -63,7 +65,13 @@ const Navbar = () => {
 const DesktopNavMenu = () => (
   <SimpleGrid rows={1} spacing={10} display={{ base: "none", md: "flex" }}>
     {links.map (link => (
-      <NavLink key={link.title} to={link.to} padding={1} fontSize="xl" textAlign="center">
+      <NavLink
+        key={link.title}
+        to={link.to}
+        padding={1}
+        fontSize="xl"
+        textAlign="center"
+      >
         {link.title}
       </NavLink>
     ))}
@@ -72,7 +80,6 @@ const DesktopNavMenu = () => (
 )
 
 const MobileNavMenu = props => (
-
   <Flex
     flexDir="column"
     display={{ base: props.expanded ? "flex" : "none", md: "none" }}
@@ -86,15 +93,21 @@ const MobileNavMenu = props => (
     padding={3}
   >
 
-    <Flex
-      flexDirection="column"
-      marginTop="100px">
+    <Flex flexDirection="column" marginTop="100px">
       {links.map (link => (
-        <NavLink key={link.title} aria-label={link.title} to={link.to} padding={7} fontSize="2xl" textAlign="left" borderBottom="1px"borderColor="gray.500">
+        <NavLink
+          key={link.title}
+          aria-label={link.title}
+          to={link.to}
+          padding={7}
+          fontSize="2xl"
+          textAlign="left"
+          borderBottom="1px"
+          borderColor="gray.500"
+        >
           {link.title}
         </NavLink>
       ))}
-
     </Flex>
   </Flex>
 )
@@ -105,7 +118,7 @@ const NavLink = props => (
       as="button"
       w="100%"
       fontWeight="medium"
-      transition= "0.2s ease-in-out"
+      transition="0.2s ease-in-out"
       _hover={{
         color: "aqua.600",
       }}
