@@ -27,16 +27,23 @@ const Contact = () => {
         <Heading align="center">Or send a message here</Heading>
         <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
-          <SocialIconLink icon={VscGithub} link="https://github.com/1Gokul" />
           <SocialIconLink
+            label="My Github Profile"
+            icon={VscGithub}
+            link="https://github.com/1Gokul"
+          />
+          <SocialIconLink
+            label="My Linkedin Profile"
             icon={IoLogoLinkedin}
             link="https://www.linkedin.com/in/gokul-viswanath-31383b193/"
           />
           <SocialIconLink
+            label="My Twitter Profile"
             icon={VscTwitter}
             link="https://twitter.com/1GokulV"
           />
           <SocialIconLink
+            label="My Reddit Profile"
             icon={RiRedditFill}
             link="https://old.reddit.com/user/_zygoat/"
           />
@@ -48,7 +55,7 @@ const Contact = () => {
 }
 
 const SocialIconLink = props => (
-  <Link href={props.link}>
+  <Link aria-label={props.label} href={props.link}>
     <Icon marginX={2} as={props.icon} boxSize="60px" />
   </Link>
 )

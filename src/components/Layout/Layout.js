@@ -7,6 +7,7 @@ import "@fontsource/space-mono"
 
 import Navbar from "./Header/Header"
 import Footer from "./Footer"
+import { CloudinaryContext } from "cloudinary-react"
 
 const meta = {
   title: "Gokul Viswanath",
@@ -29,7 +30,11 @@ const Layout = props => {
 
       <Flex direction="column" m="0 auto" {...props}>
         <Navbar />
-        {props.children}
+
+        <CloudinaryContext cloudName="gokulv" secure="true">
+          {props.children}
+        </CloudinaryContext>
+
         <Footer />
       </Flex>
 

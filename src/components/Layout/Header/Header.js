@@ -39,7 +39,7 @@ const Navbar = () => {
     >
       <Flex
         zIndex="5"
-        paddingY={{ base: 5, md: 5 }}
+        paddingY={{ base: 5, md: 6 }}
         paddingX={10}
         justifyContent="space-between"
         alignItems="center"

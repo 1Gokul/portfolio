@@ -7,6 +7,7 @@ const Logo = props => {
       <Image
         width="75px"
         src="https://res.cloudinary.com/gokulv/image/upload/v1628426678/Portfolio/website_logo_xzpwm1.svg"
+        alt="Website Logo"
       />
     </Flex>
   )

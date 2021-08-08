@@ -1,4 +1,3 @@
-
 import React from "react"
 import {
   Heading,
@@ -10,7 +9,10 @@ import {
   Badge,
 } from "@chakra-ui/react"
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
-import { Image as CNImage, CloudinaryContext, Transformation } from "cloudinary-react"
+import {
+  Image as CNImage,
+  Transformation,
+} from "cloudinary-react"
 
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 import { useLazyImage } from "../hooks"
@@ -22,7 +24,7 @@ const projectList = [
     tags: ["Flask", "Bootstrap", "JS", "TMDB API"],
     link: "https://mediascout.herokuapp.com/",
     github: "https://github.com/1Gokul/MediaScout",
-    source: "Portfolio/mediascout_screencap"
+    source: "Portfolio/mediascout_screencap",
   },
   {
     name: "Table2Markdown",
@@ -30,14 +32,14 @@ const projectList = [
     tags: ["Flask", "Bootstrap", "PapaParse", "JQuery"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/table2markdown",
-    source: "Portfolio/table2markdown_screencap"
+    source: "Portfolio/table2markdown_screencap",
   },
   {
     name: "MedievalRPG",
     description: "A game that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
     tags: ["Unreal Engine 4", "C++"],
     github: "https://github.com/1Gokul/MedievalCombatProject",
-    source: "Portfolio/medievalrpg_screencap"
+    source: "Portfolio/medievalrpg_screencap",
   },
   {
     name: "pic2ASCII",
@@ -45,7 +47,7 @@ const projectList = [
     tags: ["Flask", "JS"],
     link: "https://pic-2ascii.herokuapp.com/",
     github: "https://github.com/1Gokul/ASCII-generator",
-    source: "Portfolio/pic2ascii_screencap"
+    source: "Portfolio/pic2ascii_screencap",
   },
   {
     name: "insertcoin",
@@ -53,7 +55,7 @@ const projectList = [
     tags: ["GraphQL", "React.js"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/insertcoin",
-    source: "Portfolio/insertcoin_screencap"
+    source: "Portfolio/insertcoin_screencap",
   },
 ]
 
@@ -79,8 +81,20 @@ const ProjectInfo = ({ project, projectImage }) => {
       </Text>
       <Tags tags={project.tags} />
       <Flex>
-        <Link href={project.link} marginX={3}><VscLinkExternal size={20} /></Link>
-        <Link href={project.github} marginX={3}><VscGithubInverted size={20} /></Link>
+        <Link
+          aria-label={`Click to view the project, ${project.name}.`}
+          href={project.link}
+          marginX={3}
+        >
+          <VscLinkExternal size={20} />
+        </Link>
+        <Link
+          aria-label={`Click to view the GitHub repository of ${project.name}.`}
+          href={project.github}
+          marginX={3}
+        >
+          <VscGithubInverted size={20} />
+        </Link>
       </Flex>
     </Box>
   )
@@ -88,7 +102,11 @@ const ProjectInfo = ({ project, projectImage }) => {
 
 const DesktopProjectImage = ({ source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
-    <CNImage publicId={source} style={{ height: "100%", objectFit: "cover" }} loading="lazy">
+    <CNImage
+      publicId={source}
+      style={{ height: "100%", objectFit: "cover" }}
+      loading="lazy"
+    >
       <Transformation quality="20" crop="scale" />
     </CNImage>
   </Box>
@@ -96,16 +114,15 @@ const DesktopProjectImage = ({ source }) => (
 
 const Tags = ({ tags }) => (
   <Flex marginY={5} flexWrap="wrap">
-    {tags.map(tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
+    {tags.map (tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
   </Flex>
-
 )
 
 const ProjectCard = props => {
-
   // Lazy load background image for mobile
-  const lazyLoadedImage = useLazyImage(
-    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`)
+  const lazyLoadedImage = useLazyImage (
+    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`
+  )
 
   return (
     <SimpleGrid
@@ -123,7 +140,6 @@ const ProjectCard = props => {
   )
 }
 
-
 const Projects = () => {
   return (
     <MainContainer>
@@ -131,15 +147,11 @@ const Projects = () => {
         Some of my projects
       </SectionHeading>
 
-      <CloudinaryContext cloudName="gokulv" secure="true">
-        <SimpleGrid flexGrow={1} columns={1} width="100%">
-          {projectList.map(project => (
-            <ProjectCard key={project.name} project={project} />
-          ))}
-        </SimpleGrid>
-      </CloudinaryContext>
-
-
+      <SimpleGrid flexGrow={1} columns={1} width="100%">
+        {projectList.map (project => (
+          <ProjectCard key={project.name} project={project} />
+        ))}
+      </SimpleGrid>
     </MainContainer>
   )
 }
