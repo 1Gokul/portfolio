@@ -1,11 +1,12 @@
 import React from "react"
 import { Flex } from "@chakra-ui/react"
-import { Image as CNImage } from "cloudinary-react"
+import { Image as CNImage, Transformation } from "cloudinary-react"
 
 const Logo = props => {
   return (
-    <Flex {...props} width="75px">
-      <CNImage publicId="Portfolio/website_logo.svg" >
+    <Flex {...props}>
+      <CNImage publicId="Portfolio/website_logo.svg" alt="Website Logo"  width="75px">
+        <Transformation quality="10"/>
       </CNImage>
     </Flex>
   )

@@ -38,6 +38,7 @@ const projectList = [
     name: "MedievalRPG",
     description: "A game that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
     tags: ["Unreal Engine 4", "C++"],
+    link: "https://github.com/1Gokul/MedievalCombatProject",
     github: "https://github.com/1Gokul/MedievalCombatProject",
     source: "Portfolio/medievalrpg_screencap",
   },
@@ -100,12 +101,13 @@ const ProjectInfo = ({ project, projectImage }) => {
   )
 }
 
-const DesktopProjectImage = ({ source }) => (
+const DesktopProjectImage = ({ name, source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage
       publicId={`${source}.jpg`}
       style={{ height: "100%", objectFit: "cover" }}
       loading="lazy"
+      alt={name}
     >
       <Transformation quality="10" crop="scale" />
     </CNImage>
@@ -134,7 +136,7 @@ const ProjectCard = props => {
       color="white"
     >
       <ProjectInfo project={props.project} projectImage={lazyLoadedImage} />
-      <DesktopProjectImage source={props.project.source} />
+      <DesktopProjectImage name={props.project.name} source={props.project.source} />
       <Box />
     </SimpleGrid>
   )

@@ -18,6 +18,7 @@
            siteMetadata {
              title
              description
+             siteUrl
              author
              image
            }
@@ -26,10 +27,11 @@
      `
    )
  
-   const image = site.siteMetadata.image
+   const image = `${site.siteMetadata.siteUrl}/${site.siteMetadata.image}`
    const metaDescription = description || site.siteMetadata.description
    const defaultTitle = site.siteMetadata?.title
- 
+   const googleVerification = "EhcoPvDY3g--UJ64MoFAjgOTxnLmzIOpVuvvxbHxEgk"
+
    return (
      <Helmet
        htmlAttributes={{
@@ -57,6 +59,10 @@
          {
            property: `og:type`,
            content: `website`,
+         },
+         {
+           name: `google-site-verification`,
+           content: googleVerification,
          },
          {
            name: `twitter:card`,
