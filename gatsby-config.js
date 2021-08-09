@@ -1,7 +1,10 @@
 module.exports = { //eslint-disable-line
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "portfolio",
+    title: "Gokul Viswanath",
+    description: "Gokul Viswanath develops web applications and games. He is currently pursuing his Computer Engineering degree.",
+    author: "@1GokulV",
+    image: "src/images/gv.png",
+    siteUrl: "https://gokulv.netlify.app",
   },
   plugins: [
     "gatsby-plugin-gatsby-cloud",

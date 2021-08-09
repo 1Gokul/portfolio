@@ -43,7 +43,7 @@ const projectList = [
   },
   {
     name: "pic2ASCII",
-    description: "Front-end to an ASCII generator GitHub repository. Made with Python, Flask, HTML, CSS, and JavaScript.",
+    description: "Front-end to an ASCII generator GitHub repository. Built for a college project.",
     tags: ["Flask", "JS"],
     link: "https://pic-2ascii.herokuapp.com/",
     github: "https://github.com/1Gokul/ASCII-generator",
@@ -51,7 +51,7 @@ const projectList = [
   },
   {
     name: "insertcoin",
-    description: "A Steam clone with accounts and payments. Currently undergoing a revamp.",
+    description: "A basic Steam-clone CRUD app. Currently undergoing a revamp.",
     tags: ["GraphQL", "React.js"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/insertcoin",

@@ -1,6 +1,5 @@
 import React from "react"
 import { Flex, Heading } from "@chakra-ui/react"
-import { Helmet } from "react-helmet"
 
 import "@fontsource/inter/variable.css"
 import "@fontsource/space-mono"
@@ -9,25 +8,11 @@ import Navbar from "./Header/Header"
 import Footer from "./Footer"
 import { CloudinaryContext } from "cloudinary-react"
 
-const meta = {
-  title: "Gokul Viswanath",
-  url: "https://gokulv.netlify.app/",
-  description: "I am a full-stack developer based in Pune, India. This is my portfolio!"
-}
 
 
 const Layout = props => {
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <meta name="description" content={meta.description} />
-        <meta property="og:url" content={meta.url} />
-        <meta property="og:title" content={meta.title} />
-        <meta property="og:description" content={meta.description} />
-        <title>{meta.title}</title>
-      </Helmet>
-
       <Flex direction="column" m="0 auto" {...props}>
         <CloudinaryContext cloudName="gokulv" secure="true">
           <Navbar />
