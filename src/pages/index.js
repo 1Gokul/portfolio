@@ -11,7 +11,7 @@ import Seo from "../components/SEO"
 
 const MainPage = () => {
 
-  const sections = ["about","skills","projects","contact"]
+  const sections = ["about","skills","projects","say hi"]
 
   return(
     <Layout sections={sections}>

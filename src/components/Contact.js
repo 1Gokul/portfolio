@@ -8,7 +8,7 @@ import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const Contact = () => {
   return (
-    <MainContainer alignItems="center" justifyContent="space-evenly" id="contact">
+    <MainContainer alignItems="center" justifyContent="space-evenly" id="say hi">
       <SectionHeading>
         Say Hi
       </SectionHeading>

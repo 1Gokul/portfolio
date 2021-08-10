@@ -8,6 +8,7 @@ const DesktopNavMenu = ({ sections }) => (
     {sections.map (section => (
       <NavLink
         padding={1}
+        offset={section === "say hi" ? 0 : -100}
         key={section}
         to={section}
       >
@@ -22,6 +23,7 @@ const DesktopNavMenu = ({ sections }) => (
 export const NavLink = props => (
   <ScrollLink
     to={props.to}
+    offset={props.offset}
   >
     <Box
       as="button"

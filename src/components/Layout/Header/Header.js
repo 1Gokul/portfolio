@@ -63,7 +63,7 @@ export const ScrollLink = props => (
     to={props.to}
     spy="easeInQuart"
     smooth={true}
-    offset={-100}
+    offset={props.offset}
     duration={750}
   >
     {props.children}

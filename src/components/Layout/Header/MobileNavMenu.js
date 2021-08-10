@@ -21,8 +21,8 @@ const MobileNavMenu = props => (
       {props.sections.map (section => (
         <NavLink
           key={section}
-          aria-label={section}
           to={section}
+          offset={section === "say hi" ? 0 : -100}
           onClick={() => props.toggleExpanded()}
         >
           {section}
@@ -33,9 +33,10 @@ const MobileNavMenu = props => (
 )
 
 const NavLink = props => (
-  <ScrollLink to={props.to}>
+  <ScrollLink to={props.to} offset={props.offset}>
     <Button
       variant="ghost"
+      aria-label={props.to}
       width="100%"
       justifyContent="flex-start"
       fontSize="2xl"

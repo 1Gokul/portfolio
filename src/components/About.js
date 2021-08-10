@@ -32,8 +32,8 @@ const About = () => {
         </Box>
 
         <Flex justifyContent="center">
-          <CNImage publicId="Portfolio/GV_StickPhoto_fjfu7i.png" alt="My photo" loading="lazy">
-            <Transformation quality="20" radius="10"  width="300" crop="scale" loading="lazy"/>
+          <CNImage publicId="Portfolio/about_photo.png" alt="My photo" width="300px" loading="lazy">
+            <Transformation quality="20" radius="10"  width="300" crop="scale"/>
           </CNImage>
         </Flex>
       </SimpleGrid>
