@@ -3,7 +3,7 @@ import { Flex, Heading } from "@chakra-ui/react"
 import { CloudinaryContext } from "cloudinary-react"
 import { ScrollElement } from "react-scroll"
 
-import "@fontsource/inter/variable.css"
+import "@fontsource/manrope/variable.css"
 import "@fontsource/space-mono"
 
 import Header from "./Header/Header"
@@ -51,28 +51,12 @@ export const MainContainer = props => {
 }
 
 
-const sectionHeadingStyle = {
-  content: `""`, // eslint-disable-line
-  display: "inline-block",
-  width: "20%",
-  margin: "0 .5em 0 -55%",
-  verticalAlign: "middle",
-  borderBottom: "1px solid"
-}
-
 export const SectionHeading = props => (
   <Heading size="3xl"
     textAlign="center"
     marginBottom={14}
     display="inline-block"
-    _before={{ base: "none", md:sectionHeadingStyle }}
-    _after={{
-      base: "none",
-      md: {
-        ...sectionHeadingStyle,
-        margin: "0 -55% 0 .5em"
-      }
-    }}
+    color="gray.300"
     {...props}
   >
     {props.children}

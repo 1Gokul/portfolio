@@ -100,7 +100,7 @@ const Skills = () => {
       </SectionHeading>
       <Flex
         direction={{ base: "column", md: "row" }}
-        justifyContent="space-evenly"
+        justifyContent="space-between"
       >
 
         <SkillSet title="Frontend" skills={skills.frontend} />

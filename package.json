@@ -20,7 +20,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "@fontsource/inter": "^4.5.0",
+    "@fontsource/manrope": "^4.5.0",
     "@fontsource/space-mono": "^4.5.0",
     "cloudinary-react": "^1.7.0",
     "eslint": "^7.31.0",
