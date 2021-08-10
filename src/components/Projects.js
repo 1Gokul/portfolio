@@ -52,7 +52,7 @@ const projectList = [
   },
   {
     name: "insertcoin",
-    description: "My first webdev project. A basic Steam-clone CRUD app.",
+    description: "My first webdev project. A basic Steam-clone CRUD app with adding, modifying and deleting users.",
     tags: ["Flask", "HTML5", "CSS3", "MongoDB"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/insertcoin",
@@ -123,7 +123,7 @@ const Tags = ({ tags }) => (
 const ProjectCard = props => {
   // Lazy load background image for mobile
   const lazyLoadedImage = useLazyImage (
-    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_10/v1627890100/${props.project.source}.jpg`
+    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`
   )
 
   return (
