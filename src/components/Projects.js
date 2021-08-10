@@ -52,8 +52,8 @@ const projectList = [
   },
   {
     name: "insertcoin",
-    description: "A basic Steam-clone CRUD app. Currently undergoing a revamp.",
-    tags: ["GraphQL", "React.js"],
+    description: "My first webdev project. A basic Steam-clone CRUD app.",
+    tags: ["Flask", "HTML5", "CSS3", "MongoDB"],
     link: "https://insertcoin-store.herokuapp.com/",
     github: "https://github.com/1Gokul/insertcoin",
     source: "Portfolio/insertcoin_screencap",
