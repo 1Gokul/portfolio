@@ -15,7 +15,7 @@ const AboutDescription = [
 
 const About = () => {
   return (
-    <MainContainer>
+    <MainContainer id="about">
 
       <SectionHeading>
         About me

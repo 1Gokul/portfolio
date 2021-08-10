@@ -144,7 +144,7 @@ const ProjectCard = props => {
 
 const Projects = () => {
   return (
-    <MainContainer>
+    <MainContainer id="projects">
       <SectionHeading>
         Some of my projects
       </SectionHeading>

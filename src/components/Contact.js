@@ -1,13 +1,14 @@
-import { Box, Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import React from "react"
+import { Box, Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
+
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 
 const Contact = () => {
   return (
-    <MainContainer alignItems="center" justifyContent="space-evenly">
+    <MainContainer alignItems="center" justifyContent="space-evenly" id="contact">
       <SectionHeading>
         Say Hi
       </SectionHeading>
@@ -24,7 +25,7 @@ const Contact = () => {
       </Box>
 
       <Box>
-        <Heading align="center">Or send a message here</Heading>
+        <Heading align="center">Or reach out to me here</Heading>
         <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
           <SocialIconLink

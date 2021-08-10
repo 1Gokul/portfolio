@@ -1,22 +1,23 @@
 import React from "react"
 import { Flex, Heading } from "@chakra-ui/react"
+import { CloudinaryContext } from "cloudinary-react"
+import { ScrollElement } from "react-scroll"
 
 import "@fontsource/inter/variable.css"
 import "@fontsource/space-mono"
 
-import Navbar from "./Header/Header"
+import Header from "./Header/Header"
 import Footer from "./Footer"
-import { CloudinaryContext } from "cloudinary-react"
-
 
 
 const Layout = props => {
+
   return (
     <>
-      <Flex direction="column" m="0 auto" {...props}>
+      <Flex direction="column" m="0 auto">
         <CloudinaryContext cloudName="gokulv" secure="true">
-          <Navbar />
-
+          <Header sections={props.sections}/>
+          <Flex id="header"></Flex>
           {props.children}
 
           <Footer />
@@ -43,6 +44,7 @@ export const MainContainer = props => {
       paddingX={{ base: 5, md: 10 }}
       {...props}
     >
+      <ScrollElement name={props.name}></ScrollElement>
       {props.children}
     </Flex>
   )
@@ -71,6 +73,7 @@ export const SectionHeading = props => (
         margin: "0 -55% 0 .5em"
       }
     }}
+    {...props}
   >
     {props.children}
   </Heading>

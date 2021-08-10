@@ -94,7 +94,7 @@ const iconColour = "aqua.200"
 
 const Skills = () => {
   return (
-    <MainContainer>
+    <MainContainer id="skills">
       <SectionHeading>
         My skill set
       </SectionHeading>
