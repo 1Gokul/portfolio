@@ -31,9 +31,9 @@ const About = () => {
           </Text>
         </Box>
 
-        <Flex justifyContent="center">
-          <CNImage publicId="Portfolio/about_photo.png" alt="My photo" width="300px" loading="lazy">
-            <Transformation quality="20" radius="10"  width="300" crop="scale"/>
+        <Flex marginX="auto" height="350px" width="300px" >
+          <CNImage publicId="Portfolio/about_photo.png" alt="My photo" loading="lazy">
+            <Transformation quality="20" radius="10"  width="300" height="330"/>
           </CNImage>
         </Flex>
       </SimpleGrid>
