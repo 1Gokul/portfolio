@@ -58,14 +58,13 @@ const components = {
     }
 
   },
-  NavLink: {
+  Link: {
     baseStyle: {
-      bg: "pink.200",
-      padding: "50px",
-      margin: "50px",
+      color: "grey.200",
       _hover: {
-        color: "aqua.400"
-      },
+        textDecoration: "none",
+        color: "aqua.600"
+      }
     }
   }
 }

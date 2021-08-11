@@ -6,6 +6,33 @@ import { VscGithub, VscTwitter } from "react-icons/vsc"
 
 import { MainContainer, SectionHeading } from "./Layout/Layout"
 
+const socialLinks = [
+  {
+    label: "GitHub",
+    icon: VscGithub,
+    color: "#2ea650",
+    link: "https://github.com/1Gokul"
+  },
+  {
+    label: "Linkedin",
+    icon: IoLogoLinkedin,
+    color: "#0077b5",
+    link: "https://www.linkedin.com/in/gokul-viswanath-31383b193/"
+  },
+  {
+    label: "Twitter",
+    icon: VscTwitter,
+    color: "#1da1f2",
+    link: "https://twitter.com/1GokulV"
+  },
+  {
+    label: "Reddit",
+    icon: RiRedditFill,
+    color: "#ff4500",
+    link: "https://old.reddit.com/user/_zygoat/"
+  },
+]
+
 const Contact = () => {
   return (
     <MainContainer alignItems="center" justifyContent="space-evenly" id="say hi">
@@ -28,26 +55,10 @@ const Contact = () => {
         <Heading align="center">Or reach out to me here</Heading>
         <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
-          <SocialIconLink
-            label="My Github Profile"
-            icon={VscGithub}
-            link="https://github.com/1Gokul"
-          />
-          <SocialIconLink
-            label="My Linkedin Profile"
-            icon={IoLogoLinkedin}
-            link="https://www.linkedin.com/in/gokul-viswanath-31383b193/"
-          />
-          <SocialIconLink
-            label="My Twitter Profile"
-            icon={VscTwitter}
-            link="https://twitter.com/1GokulV"
-          />
-          <SocialIconLink
-            label="My Reddit Profile"
-            icon={RiRedditFill}
-            link="https://old.reddit.com/user/_zygoat/"
-          />
+          {socialLinks.map(socialLink =>
+            <SocialIconLink key={socialLink.label} {...socialLink}
+            />
+          )}
         </Flex>
       </Box>
 
@@ -55,10 +66,12 @@ const Contact = () => {
   )
 }
 
-const SocialIconLink = props => (
-  <Link aria-label={props.label} href={props.link}>
-    <Icon marginX={2} as={props.icon} boxSize="60px" />
-  </Link>
-)
+const SocialIconLink = props => {
+  console.log(props)
+  return(
+    <Link aria-label={props.label} href={props.link}>
+      <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />
+    </Link>
+  )}
 
 export default Contact
