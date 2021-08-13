@@ -1,14 +1,12 @@
 import React, { useState } from "react"
 import { Flex, IconButton } from "@chakra-ui/react"
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
-import { Link } from "react-scroll"
 
 import Logo from "./Logo"
 import MobileNavMenu from "./MobileNavMenu"
 import DesktopNavMenu from "./DesktopNavMenu"
 
-
-const Navbar = ({ sections }) => {
+const Navbar = ({ internalLinks, externalLinks }) => {
   const [expanded, setExpanded] = useState (false)
 
   const toggleExpanded = () => {
@@ -36,12 +34,17 @@ const Navbar = ({ sections }) => {
         <Logo />
 
         <Flex alignItems="center">
-          <DesktopNavMenu sections={sections}/>
+          <DesktopNavMenu internalLinks={internalLinks} externalLinks={externalLinks} />
           <NavMenuToggler toggler={toggleExpanded} expanded={expanded} />
         </Flex>
       </Flex>
 
-      <MobileNavMenu sections={sections} expanded={expanded} toggleExpanded={toggleExpanded} />
+      <MobileNavMenu
+        internalLinks={internalLinks}
+        externalLinks={externalLinks}
+        expanded={expanded}
+        toggleExpanded={toggleExpanded}
+      />
     </Flex>
   )
 }
@@ -58,16 +61,5 @@ const NavMenuToggler = props => (
   </IconButton>
 )
 
-export const ScrollLink = props => (
-  <Link
-    to={props.to}
-    spy="easeInQuart"
-    smooth={true}
-    offset={props.offset}
-    duration={750}
-  >
-    {props.children}
-  </Link>
-)
 
 export default Navbar

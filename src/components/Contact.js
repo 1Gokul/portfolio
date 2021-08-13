@@ -4,7 +4,7 @@ import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
 
-import { MainContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/Layout"
 
 const socialLinks = [
   {
@@ -35,7 +35,7 @@ const socialLinks = [
 
 const Contact = () => {
   return (
-    <MainContainer alignItems="center" justifyContent="space-evenly" id="say hi">
+    <HomeContainer alignItems="center" justifyContent="space-evenly" id="say hi">
       <SectionHeading>
         Say Hi
       </SectionHeading>
@@ -62,7 +62,7 @@ const Contact = () => {
         </Flex>
       </Box>
 
-    </MainContainer>
+    </HomeContainer>
   )
 }
 

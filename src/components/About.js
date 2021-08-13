@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react"
 import { Image as CNImage, Transformation } from "cloudinary-react"
 
-import { MainContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/Layout"
 
 const AboutDescription = [
   `Hello! I'm Gokul. I am currently in the final year of my Computer Engineering degree. 
@@ -15,7 +15,7 @@ const AboutDescription = [
 
 const About = () => {
   return (
-    <MainContainer id="about">
+    <HomeContainer id="about">
 
       <SectionHeading>
         About me
@@ -37,7 +37,7 @@ const About = () => {
           </CNImage>
         </Flex>
       </SimpleGrid>
-    </MainContainer>
+    </HomeContainer>
   )
 }
 

@@ -58,6 +58,14 @@ const components = {
     }
 
   },
+  LinkBox: {
+    defaultProps: {
+      color: "pink.200",
+      _hover: {
+        color: "aqua.600"
+      }
+    }
+  },
   Link: {
     baseStyle: {
       color: "grey.200",

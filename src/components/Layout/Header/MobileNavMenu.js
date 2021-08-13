@@ -1,6 +1,8 @@
-import { Button, Flex } from "@chakra-ui/react"
 import React from "react"
-import { ScrollLink } from "./Header"
+import { Button, Flex, Icon } from "@chakra-ui/react"
+import { IoArrowForward } from "react-icons/io5"
+
+import { ExternalLink, InternalLink } from "./Links"
 
 
 const MobileNavMenu = props => (
@@ -18,40 +20,48 @@ const MobileNavMenu = props => (
   >
 
     <Flex flexDirection="column" marginTop="100px">
-      {props.sections.map (section => (
-        <NavLink
-          key={section}
-          to={section}
-          offset={section === "say hi" ? 0 : -100}
-          onClick={() => props.toggleExpanded()}
-        >
-          {section}
-        </NavLink>
+      {props.internalLinks.map(({ name, offset=-100 }) => (
+        <InternalLink key={name} to={name} offset={offset}>
+          <NavLink onClick={props.toggleExpanded}>
+            {name}
+          </NavLink>
+        </InternalLink>
+      ))
+      }
+
+
+      {props.externalLinks.map(link => (
+        <ExternalLink key={link.name} to={link.to}>
+          <NavLink>
+            {link.name}
+            <Icon marginTop={2} as={IoArrowForward} />
+          </NavLink>
+        </ExternalLink>
       ))}
     </Flex>
   </Flex>
 )
 
+export default MobileNavMenu
+
 const NavLink = props => (
-  <ScrollLink to={props.to} offset={props.offset}>
-    <Button
-      variant="ghost"
-      aria-label={props.to}
-      width="100%"
-      justifyContent="flex-start"
-      fontSize="2xl"
-      fontWeight="medium"
-      textTransform="capitalize"
-      borderRadius={0}
-      paddingX={5}
-      paddingY={10}
-      borderBottom="1px"
-      borderColor="gray.500"
-      {...props}
-    >
-      {props.children}
-    </Button>
-  </ScrollLink>
+  <Button
+    variant="ghost"
+    aria-label={props.to}
+    width="100%"
+    alignContent="center"
+    justifyContent="flex-start"
+    fontSize="2xl"
+    fontWeight="medium"
+    textTransform="capitalize"
+    borderRadius={0}
+    paddingX={5}
+    paddingY={10}
+    borderBottom="1px"
+    borderColor="gray.500"
+    {...props}
+  >
+    {props.children}
+  </Button>
 )
 
-export default MobileNavMenu

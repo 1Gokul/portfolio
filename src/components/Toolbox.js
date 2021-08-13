@@ -20,7 +20,7 @@ import {
   SiGraphql,
 } from "react-icons/si"
 
-import { MainContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/Layout"
 
 const skills = {
   frontend: [
@@ -111,11 +111,11 @@ const skills = {
 
 const largeIconSize = "100px"
 
-const Skills = () => {
+const Toolbox = () => {
   return (
-    <MainContainer id="skills">
+    <HomeContainer id="toolbox">
       <SectionHeading>
-        My skill set
+        My Toolbox
       </SectionHeading>
       <Flex
         direction={{ base: "column", lg: "row" }}
@@ -126,7 +126,7 @@ const Skills = () => {
         <SkillSet title="Backend" skills={skills.backend} />
         <SkillSet title="Others" skills={skills.others} />
       </Flex>
-    </MainContainer>
+    </HomeContainer>
   )
 }
 
@@ -148,4 +148,4 @@ const LargeSkill = props => (
   </Flex>
 )
 
-export default Skills
+export default Toolbox

@@ -14,7 +14,7 @@ import {
   Transformation,
 } from "cloudinary-react"
 
-import { MainContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/Layout"
 import { useLazyImage } from "../hooks"
 
 const projectList = [
@@ -144,7 +144,7 @@ const ProjectCard = props => {
 
 const Projects = () => {
   return (
-    <MainContainer id="projects">
+    <HomeContainer id="projects">
       <SectionHeading>
         Some of my projects
       </SectionHeading>
@@ -154,7 +154,7 @@ const Projects = () => {
           <ProjectCard key={project.name} project={project} />
         ))}
       </SimpleGrid>
-    </MainContainer>
+    </HomeContainer>
   )
 }
 

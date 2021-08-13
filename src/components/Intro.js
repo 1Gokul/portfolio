@@ -1,10 +1,10 @@
 import React from "react"
 import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react"
-import { MainContainer } from "./Layout/Layout"
+import { HomeContainer } from "./Layout/Layout"
 
 const Intro = () => {
   return (
-    <MainContainer>
+    <HomeContainer>
       <Flex direction="column" flexGrow={1} marginLeft={{ base: 0, md: 10 }}>
         <Box justifySelf="flex-start" flexGrow={1}>
           <Heading size="lg" marginY={5}>Hey there! My name&apos;s</Heading>
@@ -33,7 +33,7 @@ const Intro = () => {
         </Box>
       </Flex>
 
-    </MainContainer>
+    </HomeContainer>
   )
 }
 

@@ -4,21 +4,19 @@ import Layout from "../components/Layout/Layout"
 import Contact from "../components/Contact"
 import Intro from "../components/Intro"
 import Projects from "../components/Projects"
-import Skills from "../components/Skills"
+import Toolbox from "../components/Toolbox"
 import About from "../components/About"
 import Seo from "../components/SEO"
 
 
 const MainPage = () => {
 
-  const sections = ["about","skills","projects","say hi"]
-
   return(
-    <Layout sections={sections}>
+    <Layout type="home">
       <Seo title="Home" />
       <Intro />
       <About />
-      <Skills />
+      <Toolbox />
       <Projects />
       <Contact />
     </Layout>

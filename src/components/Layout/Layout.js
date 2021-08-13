@@ -1,7 +1,6 @@
 import React from "react"
 import { Flex, Heading } from "@chakra-ui/react"
 import { CloudinaryContext } from "cloudinary-react"
-import { ScrollElement } from "react-scroll"
 
 import "@fontsource/manrope/variable.css"
 import "@fontsource/space-mono"
@@ -12,19 +11,55 @@ import Footer from "./Footer"
 
 const Layout = props => {
 
+  let internalLinks = [], externalLinks = []
+
+  if (props.type === "home"){
+    internalLinks = [
+      {
+        name: "about"
+      },
+      {
+        name: "toolbox"
+      },
+      {
+        name: "projects"
+      },
+      {
+        name: "about",
+        offset: 0
+      }
+    ]
+    externalLinks=[
+      {
+        name: "Blog",
+        to: "/blogs"
+      }
+    ]
+  }
+  else if (props.type === "blog"){
+    externalLinks = [
+      {
+        name: "Home",
+        to: "/"
+      },
+      {
+        name: "Blog",
+        to: "/blogs"
+      }
+    ]
+  }
+
   return (
     <>
       <Flex direction="column" m="0 auto">
         <CloudinaryContext cloudName="gokulv" secure="true">
-          <Header sections={props.sections}/>
-          <Flex id="header"></Flex>
+          <Header type={props.type} internalLinks={internalLinks} externalLinks={externalLinks}/>
+
           {props.children}
 
           <Footer />
         </CloudinaryContext>
       </Flex>
-
-
     </>
   )
 }
@@ -32,7 +67,7 @@ const Layout = props => {
 export default Layout
 
 
-export const MainContainer = props => {
+export const HomeContainer = props => {
   return (
     <Flex
       flexDirection="column"
@@ -44,7 +79,23 @@ export const MainContainer = props => {
       paddingX={{ base: 5, md: 10 }}
       {...props}
     >
-      <ScrollElement name={props.name}></ScrollElement>
+      {props.children}
+    </Flex>
+  )
+}
+
+export const BlogContainer = props => {
+  return (
+    <Flex
+      flexDirection="column"
+      marginX="auto"
+      marginTop="8rem"
+      minH="100vh"
+      minW="20vw"
+      maxW={{ base: "95vw", md: "2xl" }}
+      paddingX={{ base: 5, md: 10 }}
+      {...props}
+    >
       {props.children}
     </Flex>
   )
