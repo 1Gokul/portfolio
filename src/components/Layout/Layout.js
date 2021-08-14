@@ -7,6 +7,7 @@ import "@fontsource/space-mono"
 
 import Header from "./Header/Header"
 import Footer from "./Footer"
+import "../../css/style.css"
 
 
 const Layout = props => {
@@ -25,7 +26,7 @@ const Layout = props => {
         name: "projects"
       },
       {
-        name: "about",
+        name: "say hi",
         offset: 0
       }
     ]

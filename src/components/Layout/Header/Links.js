@@ -9,7 +9,7 @@ export const InternalLink = props => (
   <ScrollLink
     to={props.to}
     smooth="easeOutQuad"
-    offset={props.offset | -100}
+    offset={props.offset}
     duration={500}
   >
     {props.children}

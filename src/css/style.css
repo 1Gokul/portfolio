@@ -1,0 +1,10 @@
+.blog-permalink svg{
+  width: 30px;
+  height: 30px;
+  fill: #F687B3;
+}
+
+code.language-text:not(pre){
+  font-family: Space Mono, monospace;
+  color: #F687B3 !important;
+}

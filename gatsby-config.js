@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -38,14 +39,40 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: "blog-permalink",
+              offsetY: -100,
+              isIconAfterHeader: true,              
+              elements: [`h2`],
+            }
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+              wrapperStyle: `margin: 20px 0; border: 2px #F687B3`
+            },
+          },
+          {
+            resolve: `gatsby-remark-external-links`,
+            options: {
+              target: `_blank`,
+              rel: `noopener`,
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`
           },
         ],
       },
-    },    
+    },
   ],
 }

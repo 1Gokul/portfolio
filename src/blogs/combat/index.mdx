@@ -1,0 +1,216 @@
+---
+title: "Combat"
+date: 2020-07-20
+---
+
+
+
+### Melee
+
+Attacks(for now) are very basic melee attacks with Swords, Maces and Axes. Attacks are performed when the Player presses the **LMB**.
+
+Once the **LMB** is pressed, a check is done to see if the Player is not performing any other action at that time. If not, `MeleeAttack()` is called.
+
+`MeleeAttack()` sets up the Character for attacks(Resets the IdleTimer, increments the AttackComboSection(Used for Combo Attacks)) and then calls
+`PlayMeleeAttack()`.
+
+#### MeleeAttack()
+```cpp 
+void AMain::MeleeAttack()
+{
+	ResetIdleTimer();
+
+	if (!bAttacking && (MovementStatus != EMovementStatus::EMS_Dead))
+	{
+		bAttacking = true;
+
+		SetInterpToEnemy(true);
+
+		/** AttackSection
+		 *  == 0 OR 1 -> Normal Attack
+		 *  == 2 -> Combo Attack
+		*/
+		PlayMeleeAttack((AttackComboSection++) % NumberOfMeleeAttacks);
+	}
+}
+```
+`PlayMeleeAttack()` is responsible for using `AttackComboSection` to pick a particular animation out of the attack animations located in an 
+Anim Montage called `CombatMontage`.
+
+#### PlayMeleeAttack()
+```cpp
+void AMain::PlayMeleeAttack(int32 Section)
+{
+	UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+
+
+	// Attack Sections start from 1
+	Section += 1;
+
+
+	if (AnimInstance && CombatMontage)
+	{
+		// Used for Enemy Hit Reaction
+		if (EquippedWeapon)EquippedWeapon->MainAttackSection = Section;
+
+
+		FString AttackName;
+
+		// Append Section number
+
+		// If attack is using a weapon
+		if (bIsWeaponDrawn)
+		{
+			if (EquippedWeapon->bIsTwoHanded)AttackName.Append("TwoHandedAttack_");
+			else AttackName.Append("OneHandedAttack_");
+
+			if (!bCrouched)
+			{
+				// Get a random Final Combo Attack (Ranges from Attack_3 to Attack_5)
+				if (Section == 3)Section += FMath::RandRange(0, NumberOfMeleeComboAttacks);
+			}
+			else
+			{	// Only one Section for crouched attacks
+				Section = 1;
+				AttackName.Append("Crouched_");
+			}
+		}
+		
+		// else if melee attack
+		else
+		{
+			// If Player has a Shield equipped, play the even-numbered attacks(right-handed attacks) only.
+			if (PlayerStatus == EPlayerStatus::EPS_ShieldUnarmed)
+			{
+				// Override Section  todo Find a better way to find the even AttackSection
+				Section = FMath::RandRange(2, 4);
+				if (Section % 2)Section -= 1;	// Set Section to play the 2nd Animation if RandRange returns 3.
+			}
+
+			AttackName.Append("MeleeAttack_");
+		}
+
+		AttackName.AppendInt(Section);
+
+		UE_LOG(LogTemp, Warning, TEXT("Attack = %s"), *AttackName);
+
+		// Play Montage
+		AnimInstance->Montage_Play(CombatMontage, 1.0f);
+		AnimInstance->Montage_JumpToSection(*AttackName, CombatMontage);
+	}
+}
+```
+
+After the attack ends, `MeleeAttackEnd()` checks if the Player is still holding **LMB** down. If they are, `Attack()` will be called again.
+If not, the Character will be restored to its normal state and will not be ready to attack.
+
+#### MeleeAttackEnd()
+```cpp
+void AMain::MeleeAttackEnd()
+{
+	bAttacking = false;
+
+	SetInterpToEnemy(false);
+
+	// Reset Swing Sound index
+	SwingSoundIndex = 0;
+
+	// Reset Combo Attack Section if Player does not press LMB within AttackComboSectionResetTime.
+	GetWorldTimerManager().SetTimer(AttackTimerHandle, this, &AMain::ResetMeleeAttackComboSection, AttackComboSectionResetTime);
+
+	// If Player is still holding LMBDown, attack again.
+	if (bLMBDown)
+	{
+		GetWorldTimerManager().ClearTimer(AttackTimerHandle);
+		MeleeAttack();
+	}
+}
+```
+### Weapons
+
+Following is one of the Weapons used in the game.
+
+![GreatBlade.png](GreatBlade.png)
+
+The `CombatCollision` BoxCollision on the Weapon is used to check if the Weapon has hit an Enemy during an attack, very similar to
+the `CombatCollision` on the Enemies. 
+
+### Checking for Hits
+
+Anim Notifies are used in the attack animations to call functions during the attacks. 
+
+![OneHandedAttack2_AnimNotifies.png](OneHandedAttack2_AnimNotifies.png)
+
+There are 4 main Anim Notifies used in attack animations:
+
+1. **ActivateCollision**: Activates `CombatCollision` to check for overlaps during the attack.
+2. **DeactivateCollision**: Deactivates `CombatCollision` after the attack has finished.
+3. **SwingSound**: Plays a sword swoosh sound.
+4. **AttackEnd**: Calls `AttackEnd()`.
+
+If an overlap is detected by `CombatCollision` during an attack, its `OnOverlapBegin()` function gets called.
+
+#### CombatOnOverlapBegin()
+```cpp
+void AWeapon::CombatOnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
+                                   UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep,
+                                   const FHitResult& SweepResult)
+{
+	if (OtherActor)
+	{
+		AEnemy* Enemy = Cast<AEnemy>(OtherActor);
+
+		// If OtherActor is an Enemy
+		if (Enemy)
+		{
+			// Deactivate CombatCollisions of the Enemy in case their attack was interrupted
+			Enemy->DeactivateCollisionLeft();
+			Enemy->DeactivateCollisionRight();
+
+			Enemy->AttackEnd();
+
+			//Play Enemy Impact Animation
+			Enemy->Impact(MainAttackSection);
+
+			if (Enemy->HitParticles)
+			{
+				const USkeletalMeshSocket* WeaponSocket = SkeletalMesh->GetSocketByName("WeaponSocket");
+
+				if (WeaponSocket)
+				{
+					FVector SocketLocation = WeaponSocket->GetSocketLocation(SkeletalMesh);
+
+					// Spawn a particle effect at WeaponSocket
+					UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), Enemy->HitParticles, SocketLocation,
+					                                         FRotator(0.0f), true);
+				}
+			}
+			if (Enemy->HitSound)
+			{
+				UGameplayStatics::PlaySound2D(this, Enemy->HitSound);
+			}
+			// Inflict damage on the Enemy
+			if (DamageTypeClass)
+			{
+				UGameplayStatics::ApplyDamage(Enemy, Damage, WeaponInstigator, this, DamageTypeClass);
+			}
+		}
+	}
+}
+```
+The above function inflicts damage on the Enemy that the `CombatCollision` overlaps with, along with emitting particle effects
+and impact sounds.
+
+Attacks still have some minor bugs that will be fixed soon(example being the *occasional* incident of attacks registering twice on Enemies).
+
+Am seeing ways on making the combat more interesting. One option is adding powers to stun Enemies or to dodge their attacks.
+
+You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
+
+#### In Action 
+
+- While Unarmed and not in Combat Mode
+<iframe src="https://www.youtube.com/embed/9-j5ZczCl1M" width="560" height="315" frameborder="0"> </iframe> 
+
+- While Unarmed and in Combat Mode
+<iframe src="https://www.youtube.com/embed/Hxo1z0V2Xec" width="560" height="315" frameborder="0"> </iframe> 

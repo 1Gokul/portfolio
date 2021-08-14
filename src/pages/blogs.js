@@ -15,7 +15,9 @@ import { Link as GatsbyLink } from "gatsby"
 import Seo from "../components/SEO"
 
 const Blogs = ({ data }) => {
-  const { posts } = data.blogs
+  const  posts  = data.allMdx.nodes
+
+  console.log(posts)
 
   return (
     <Layout type="blog">
@@ -34,7 +36,7 @@ const Blogs = ({ data }) => {
                 color: "aqua.300",
               }}
             >
-              <LinkOverlay as={GatsbyLink} href={`blog${post.fields.slug}`}>
+              <LinkOverlay as={GatsbyLink} href={post.slug}>
                 <Heading>{post.frontmatter.title}</Heading>
               </LinkOverlay>
               <Text fontSize="sm">{post.frontmatter.date}</Text>
@@ -51,19 +53,17 @@ const Blogs = ({ data }) => {
 export default Blogs
 
 export const pageQuery = graphql`
-  query MyQuery {
-    blogs: allMarkdownRemark {
-      posts: nodes {
-        frontmatter {
-          date(fromNow: true)
-          title
-          author
-        }
-        fields{
-          slug
-        }
-
-        excerpt        
+{
+  allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    nodes {
+      id
+      slug
+      excerpt
+      frontmatter {
+        date(formatString: "DD MMMM, YYYY")
+        title
       }
     }
-  }`
+  }
+}
+`

@@ -35,7 +35,7 @@ const styles = {
   global: {
     body: {
       bg: "aqua.1000",
-      color: "gray.200"
+      color: "gray.50"
     }
   }
 }
@@ -62,7 +62,7 @@ const components = {
     defaultProps: {
       color: "pink.200",
       _hover: {
-        color: "aqua.600"
+        color: "aqua.300"
       }
     }
   },
@@ -71,10 +71,10 @@ const components = {
       color: "grey.200",
       _hover: {
         textDecoration: "none",
-        color: "aqua.600"
+        color: "aqua.300"
       }
     }
-  }
+  },
 }
 
 

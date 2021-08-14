@@ -1,0 +1,111 @@
+---
+title: "Basic Bow Aiming Setup"
+date: 2020-12-19
+---
+
+
+
+This is the initial setup of the new weapon added to the project, the Bow! 
+
+For now, the Character performs the actions of pulling and arrow and aiming the bow depending on the Control Rotation.
+
+I will be adding Arrows next which the Character would be able to pull and release during Attacking.
+
+Below is the Bow's basic functionality.
+
+## The Bow class
+
+The **`Bow`** class was the reason for the branching out of the **`Weapon`** class into Melee and Non-Melee classes. 
+
+Initially, there was only one class - **`Weapon`** which was used for the One and Two-Handed Melee Weapons. The addition of the Bow into the same class would make things congested and would cause many problems. Additionally, the Melee Weapons and Bow class had little in common, the only similar feature being Equipping and Unequipping.
+
+Thus, the **`Weapon`** class was changed to have only those basic features that would be then derived by its children. 
+
+## The Bow model
+
+The Bows could be static FBX models, but to show the effect of the string being pulled, they had to be *[rigged](https://conceptartempire.com/what-is-rigging/)*: by adding bones so that movement of one part of the Bow would affect another part; just like a skeleton would work. 
+
+I managed to rig one bow using [Blender](https://www.blender.org/) and by following [this tutorial](https://www.youtube.com/watch?v=jpsd0Aw1qvA).
+
+The other models were sourced from 3D model websites like [TurboSquid](https://www.turbosquid.com/) and [CGTrader](https://www.cgtrader.com/).
+
+## Aiming with the Bow
+
+When the **LMB** is pressed while the Bow is equipped, the Character will start aiming and will draw the arrow. 
+
+If the **LMB** is released while drawing the arrow, the aiming will be cancelled. If the arrow was already drawn, it will be released.
+
+### ReloadBow()	(Drawing the Arrow)
+
+```cpp
+void AMain::ReloadBow()
+{
+	bIsDrawingArrow = true;
+
+	// Zoom in
+	BowAim_TargetArmLength = 100.0f; 	
+	BowAimingCameraZoomIn();
+
+	// Play the Arrow Drawing Animation
+	UMainAnimInstance* MainAnimInstance = Cast<UMainAnimInstance>(GetMesh()->GetAnimInstance());
+
+	if (MainAnimInstance)
+	{
+		MainAnimInstance->Montage_Play(BowAimMontage, 1.0f);
+	}
+}
+```
+
+Like a normal aiming system, the Character would turn in the direction the User points to using the crosshair. 
+
+Turning, however for now is done in "hybrid" manner, mixing two types of turning.
+
+I initially had set up the bow aiming system using an [Aim Offset](https://docs.unrealengine.com/en-US/AnimatingObjects/SkeletalMeshAnimation/AimOffset/index.html), which helps us to blend aiming poses. These Aiming Poses can be changed depending on certain values, like the [Blend Spaces](https://www.google.com/search?q=blendspaces) used for the Character's movement. 
+
+For turning left and right while aiming *(i.e. changing the Yaw value of the rotation)*, the Character automatically uses the Control Rotation's `Yaw` value to orient itself. This is done by simply setting the value of `bUseControllerRotationYaw` to `true`. 
+
+Using an Aim Offset for the Yaw has been bringing up some bugs and glitches for some reason I am yet to determine. The above method seems to be a good alternative, though!
+
+For turning up and down *(changing the Pitch value of the rotation)*, I used the Aim Offset and it seems to be working fine. 
+
+The Blueprint for it is as follows:
+
+*(Move the mouse while holding the Right Mouse Button down to see the entire Blueprint.)*
+<iframe src="https://blueprintue.com/render/5l6yz54n" width="700" height="560" scrolling="no" allowfullscreen></iframe>	
+
+Two things need to be passed into the AO as you can see above: A Base pose and the Pitch value. This blueprint is added to the AnimGraph at the end. 
+
+It takes in the current `Pitch` value from the `Control Rotation` and changes the pose of the Character accordingly. A `Layered Blend per Bone` node after that makes sure the pose changes apply only to the upper part of the body.
+
+## Firing the Arrow
+
+For now, firing the arrow just means that the animation would play on the Character. Firing and the sounds of firing would be added soon!
+
+### BowAttack()
+```cpp
+void AMain::BowAttack()
+{
+	bIsFiringArrow = true;
+
+	// Play the Arrow Firing Animation
+	UMainAnimInstance* MainAnimInstance = Cast<UMainAnimInstance>(GetMesh()->GetAnimInstance());
+
+	if (MainAnimInstance)
+	{
+		MainAnimInstance->Montage_Play(UpperBodyMontage, 1.0f);
+
+		MainAnimInstance->Montage_JumpToSection(FName("FireArrow"), UpperBodyMontage);
+	}
+	
+	// Zoom out
+	BowAim_TargetArmLength = 400.0f;
+	BowAimingCameraZoomOut();
+}
+```
+Thhe initial setup of MedievalCombat's Bow and Arrow System was thus complete.
+
+You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
+
+## In Action
+
+<iframe src="https://www.youtube.com/embed/mpyW89xbfZc" width="560" height="315" frameborder="0"> </iframe>

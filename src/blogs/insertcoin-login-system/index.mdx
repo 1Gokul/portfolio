@@ -1,0 +1,172 @@
+---
+title: "Website Login system using Flask and Python"
+date: 2020-12-06
+---
+
+## insertcoin-store
+
+I and a classmate had made a mini-project for college that implemented Database concepts using MongoDB. I took it as a oppurtunity to skill myself in Web Development. 
+
+### The Project
+
+The project was titled **"Insertcoin: Game Marketplace"**. We took the topic of a game markteplace as it involves all of the basic [**CRUD**](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations that were required in the mini-project.
+
+The base layout of the website was made keeping [Steam](https://store.steampowered.com/) in mind.
+
+## The Webpages
+
+I first made a basic `home.html` page that had the basic layout of all pages of the site. All other webpages would be able to inherit from that layout by using `extends` like so:
+
+### library.html
+```html
+{% raw %}
+{% extends "layout.html" %}
+
+    <!-- **Page content** -->
+
+    {% block title %}
+    <title>insertcoin: Library</title>
+    {% endblock %}
+
+    {% block content %}
+
+    <span class="pageheading">Library</span>
+
+    {% endblock %}
+{% endraw %}
+```
+
+The website's `home`, `login` and `register` pages inherit from `home.html`.
+## Connecting to MongoDB
+
+I signed up to MongoDB to use the free version of their [Atlas](https://www.mongodb.com/cloud/atlas) service. This database would be used to store the login information of the users.
+
+After creating a database, I was able to acquire the connection string required to connect to the it. We can then connect using PyMongo like so:
+
+```python
+CONNECTION_STRING = os.environ.get("MONGO_KEY")
+client = pymongo.MongoClient(CONNECTION_STRING)
+```
+Now any connected database would be accessible by `client['<db_name>']`!
+
+## Registering to the website
+
+### Register.html
+![register_html.png](register_html.png)
+
+After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database. 
+
+The `register()` function below checks if- 
+    
+- The entered passwords match
+- There is no existing user with the same username (using MongoDB's `find_one()` function)
+
+and then pushes the data to the MongoDB document if both the coniditons are satisfied.
+
+Passwords passed to the Database are hashed using the Python module **`Bcrypt`**.  
+
+
+```python
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+
+    if request.method == 'POST':
+        # If the passwords match
+        if request.form['pass'] == request.form['passconfirm']:
+            users = db['UserInfo']
+            existing_user = users.find_one(
+                {'username': request.form['username']})
+
+            # If there is no existing user with the same username
+            if existing_user is None:
+                hashpass = bcrypt.generate_password_hash(
+                    request.form['pass'].encode('utf-8'))
+                users.insert({
+                    'email': request.form['email'],
+                    'profilename': request.form['profilename'],
+                    'username': request.form['username'],
+                    'password': hashpass,
+                    'games': [],
+                    'balance': 5000
+                })
+                # session['username'] = request.form['username']
+                return render_template(
+                    'login.html',
+                    account="Log In",
+                    comment='Your account was added successfully!')
+
+            else:
+                error = "The username that you entered already exists."
+                return render_template('register.html',
+                                       account="Log In",
+                                       error=error)
+
+        else:
+            error = "The passwords you entered do not match."
+            return render_template('register.html',
+                                   account="Log In",
+                                   error=error)
+
+    else:
+        return render_template('register.html',
+                               account="Log In",
+                               acclink=loginlink)
+
+```
+## Logging in
+
+### login.html
+![login_html.png](login_html.png)
+
+When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database. 
+If yes, the user's password is compared to the password (again using **`Bcrypt`**) entered and if that matches too, the user is redirected to the **Library** page.
+
+Using the `session` module, we can add an object `session['username']` with the user's username. This can be used later to check if there is a user currently logged in.
+
+The `login()` function is as follows:
+
+```python 
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if request.method == 'POST':
+        users = db['UserInfo']
+        login_user = users.find_one({'username': request.form['username']})
+
+        # if the user exists in the database
+        if login_user:
+            if bcrypt.check_password_hash(
+                    login_user['password'],
+                    request.form.get('pass', False).encode('utf-8')):
+                session['username'] = request.form['username']
+                return redirect(url_for('index'))
+
+            else:
+                error = "The username or password that you have entered is incorrect."
+                return render_template('login.html',
+                                    account="Log In",
+                                    error=error)
+        else:
+            error = "The username or password that you have entered is incorrect."
+            return render_template('login.html',
+                                   account="Log In",
+                                   error=error)
+
+    else:
+        return render_template('login.html', account="Log In")
+```
+## Logging out
+
+Logging out is a easy process. We clear the **`session`** dictionary object with the key `'username'` using the function `session.pop()`, and then redirect the user back to the homepage.
+
+```python
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('index'))
+```
+
+The above code together forms a complete login system to log in to the website!
+
+Check out the website [here](https://insertcoin-store.herokuapp.com/)!
+
+You can view the rest of the code in my Github repository, [**insertcoin**](https://github.com/1Gokul/insertcoin).

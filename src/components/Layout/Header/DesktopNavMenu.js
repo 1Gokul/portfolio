@@ -7,8 +7,8 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
   <SimpleGrid alignItems="center" rows={1} spacing={10} display={{ base: "none", md: "flex" }}>
 
     {
-      internalLinks.map(({ name, offset=-100 }) => (
-        <InternalLink key={name} to={name} offset={offset}>
+      internalLinks.map(({ name, offset }) => (
+        <InternalLink key={name} to={name} offset={offset? offset : -100}>
           <NavLink>
             {name}
           </NavLink>
@@ -53,7 +53,7 @@ const NavLink = props => (
     transition="0.2s ease-in-out"
     textTransform="capitalize"
     _hover={{
-      color: "aqua.600",
+      color: "aqua.300",
     }}
   >
     {props.children}

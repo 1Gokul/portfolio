@@ -1,0 +1,129 @@
+---
+title: "Interaction, Inventory and Using Items"
+date: 2020-07-18
+---
+
+
+
+#### Interaction
+
+Interaction is performed using the **E** key. When the Character is overlapping with an Item, they can press **E** to Interact with it.
+
+**Note:** `Item` is a C++ class derived from `AActor`. It is used as a base class for all items that can be interacted with by the Character.
+The `Shield`, `Weapon`, `FoodItem` classes are all children of `Item` and override its functions.
+
+For now, `Interact` functionality is the same for all Items. Interaction with any Item would `Destroy()` it and add a copy into the Character's 
+Inventory.
+
+This functionality was done by making a class `UInteractInterface` deriving from UE4's 
+[Interface](https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Interfaces/index.html) C++ class.  
+This InteractInterface has a virtual function `Interact(AActor* Interacter)` that gets overriden in `Item` like so:
+
+#### Interact()
+```cpp
+void AItem::Interact(AActor* Interacter)
+{
+	// Cast Interacter to Main
+	AMain* Main = Cast<AMain>(Interacter);
+
+	if (Main)
+	{
+		Main->ResetIdleTimer();
+		
+		//Add values to a SlotStructure Object
+		FSlotStructure SlotStructure;
+		SlotStructure.ItemStructure = ItemStructure;
+		SlotStructure.Quantity = 1;
+
+		// Add the object to the Inventory
+		bool Success = Main->Inventory->AddToInventory(SlotStructure);
+
+		if (Success)Destroy();
+	}
+}
+```
+
+#### Inventory menu
+
+The Inventory menu is toggled by the Tab key and shows a grid of the Items that the Character has in its Inventory.
+
+- Inventory menu
+<iframe src="https://www.youtube.com/embed/TqSOrnQjPPs" width="560" height="315" frameborder="0"> </iframe> 
+
+Each Item slot on the grid shows a thumbnail image and quantity. When the player hovers the mouse pointer over a slot, an Item tooltip
+appears next to the pointer to show the Item's name, description and an Use text (for example: *"Click to Eat."*).
+
+Clicking on the Item slot calls a virtual function `UseItem()` declared in `Item`.
+
+If the Item was labeled as Consumable, it would be spawned with scale `(0.0, 0.0, 0.0)` and if labeled as Equippable, `(1.0, 1.0, 1.0)`.
+A Consumable Item's Quantity would also be decremented after calling its `UseItem()` function.
+
+Following is `UseItem()` defined in class `Weapon`. Using the Item removes the currently Equipped Weapon and attaches
+itself to the required socket.
+
+#### UseItem()
+```cpp
+bool AWeapon::UseItem(AMain* Main)
+{
+	// Call the base function
+	Super::UseItem(Main);
+	
+	// If this is a Two-Handed Weapon, remove the equipped Shield, if any
+	if (bIsTwoHanded)
+	{
+		if (Main->EquippedShield)
+		{
+			Main->EquippedShield->Destroy();
+			Main->SetEquippedShield(nullptr);
+		}
+	}
+
+	Main->SetEquippedWeapon(this);
+
+	// Disable collision of the CollisionVolume
+	CollisionVolume->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	CollisionVolume->SetCollisionResponseToAllChannels(ECR_Ignore);
+
+	// Set Weapon Instigator
+	SetInstigator(Main->GetController());
+
+	SkeletalMesh->SetCollisionResponseToChannel(ECC_Camera, ECR_Ignore);
+	SkeletalMesh->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
+
+	SkeletalMesh->SetSimulatePhysics(false);
+
+	bShouldRotate = false;
+
+	if (!bWeaponParticles)
+	{
+		IdleParticlesComponent->Deactivate();
+	}
+
+	// Attach Weapon to Sheath Socket.
+	Main->TimedSheathe();
+
+	// Set bIsWeaponDrawn as false as the Weapon is sheathed.
+	Main->bIsWeaponDrawn = false;
+
+	// If in Combat Mode, draw the weapon.
+	if (Main->bInCombatMode)
+	{ 		
+		Main->DrawWeapon();
+	}
+
+	return true;
+}
+```
+
+You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
+
+#### In Action 
+
+- Adding and Using Item: Herb
+<iframe src="https://www.youtube.com/embed/HPPYCE8QTnY" width="560" height="315" frameborder="0"> </iframe> 
+
+- Adding and Using Item: Bread
+<iframe src="https://www.youtube.com/embed/W-0xqa9WUIM" width="560" height="315" frameborder="0"> </iframe> 
+
+
+

@@ -1,0 +1,253 @@
+---
+title: "Working around Heroku's 30-second timeout"
+date: 2021-01-18
+---
+
+## Pic2ASCII
+
+If you have used Heroku as a platform for your web applications, you would have found out that it has a **30-second** timeout for any type of request. This becomes a problem for any apps that involve uploading or processing of large files.
+
+In the [previous](/pic2ascii/2020-12-11/pic2ascii-converter/) **Pic2ASCII** post, you can see that there are 3 main operations: _uploading_ the submitted file, _processing_ it, and _uploading_ it again to show the processed image. On top of all that, the duration these tasks take _heavily_ depends on the size of the files submitted.
+
+As the API can expect large image files to convert, I eventually got the `"Application Error"` page, as the requests to upload to Imgur took it past Heroku's 30-second limit.
+
+Changing gunicorn's timeout duration in the `Procfile` would also not work and would still timeout after 30 seconds.
+
+## The Workaround
+
+I had 2 ways to upload the images to Imgur:
+
+1. [Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
+2. [Uploading files as a background task using **R**edis **Q**ueue in Python and JQuery](#using-redis-queue-in-python-and-jquery)
+
+I personally prefer the second option because (familiarity and bias towards Python aside), the functions made can be _easily_ reused for other purposes, not just uploading.
+
+The second method was also used for the API's conversion functions.
+
+## Using JQuery and Ajax
+
+Once the **Submit** button is clicked, its [click()](https://api.jquery.com/click/) function in the `input.js` file would be called and the file would be taken.
+
+The file is first checked to see if it is valid and falls within the 20MB size limit that Imgur sets.
+
+```js
+    // Get the file from the form
+    var $file = $("#inputform-file").prop('files')[0];
+
+    if ($file) {
+
+        var fileType = $file["type"];
+
+        // If the file's type is not supported
+        var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+        if ($.inArray(fileType, validImageTypes) < 0) {
+            send_error("Select a <b>valid</b> image file.");
+        }
+
+        // Else if file is larger than 20MB(Imgur's upload size limit)
+        else if ($file.size > parseInt(maxFileSize) * 1024 * 1024) {
+            send_error("The file was bigger than the 20MB limit! Select a smaller one.");
+            return false;
+        }
+        // Else if the file is good to go
+        else {
+            if ($('#error').length) {
+                send_error("Nice!");
+            }
+
+            // Disable the submit button to prevent repeated submissions.
+            $(this).css('background', '#d44444');
+            $(this).val('Uploading...')
+                .attr('disabled', 'disabled');
+
+
+            console.log("uploading submitted file...");
+            send_file_to_upload($file, "convert_image");
+        }
+
+
+    }
+    // If no file was selected at all
+    else {
+        send_error("Select a file first, goofball.");
+    }
+```
+
+ If valid, an Ajax POST request with the image's data would be sent to Imgur, with help taken from their [API documentation](https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139).
+
+**`upload_to_imgur()`**
+```js
+// Send an Ajax POST request to Imgur's API to upload a file.
+    function upload_to_imgur(fileToUpload) {
+
+        // The image's data
+        var formData = new FormData();
+        formData.append('image', fileToUpload);
+
+        // Taken from: https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
+        var settings = {
+            "url": "https://api.imgur.com/3/image",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Client-ID "
+            },
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": formData
+        };
+
+        // Upload the file to Imgur.
+        var parsedResponse;
+
+        $.ajax(settings).done(function (response) {
+
+            // Parse the returned JSON and return the link to the image.
+            parsedResponse = $.parseJSON(response);
+
+            return parsedResponse.data.link;
+        });
+    }
+```
+ 
+Conversion would take place as usual in the API, and the resultant image file would be again returned and uploaded to Imgur using the same method.
+
+This method works properly without any timeouts, with the exceptions being _unusually_ large files, which would cause a timeout during their conversion.
+
+## Using Redis Queue in Python and JQuery
+
+In this method, each task is done in this manner:
+
+- In the view function, once called, create a task and add it to the Redis Queue and then return the task's ID.
+- In JQuery, after receiving the ID of the task, keep checking if the task is complete (every second) and access the results and errors in the returned JSON file.
+
+Let us take the example of uploading a file:
+
+### Example: Uploading a file
+
+Like the above method, the file is checked to see if it is valid. After that, an Ajax POST request is sent to the view function `upload_file()` in the API.
+
+```js
+window.send_file_to_upload = function ($file, funcToCallOnceCompleted) {
+  // Would be accessed as a form in the API
+  var formData = new FormData();
+  formData.append("file", $file);
+
+  // Ajax POST request to upload_file() in the API
+  $.ajax({
+    type: "POST",
+    url: Flask.url_for("upload_file"),
+    data: formData,
+    cache: false,
+    processData: false,
+    contentType: false,
+  })
+    // If done, get the status of the background job that was started for this file's upload.
+    .done((response) => {
+      get_status(response.data.taskID, funcToCallOnceCompleted);
+    })
+
+    .fail((error) => {
+      console.log("Error during file upload: " + error);
+    });
+};
+```
+
+In the API, `upload_file()` then creates a task and begins the conversion like so:
+
+```python
+@app.route('/upload', methods=['POST'])
+def upload_file():
+    if (request.method == 'POST'):
+        if (is_base64(request.files.get('file'))):
+            imgData = request.files.get('file')
+        else:
+            imgData = b64encode(request.files.get('file').read())
+
+    # Start the upload as a background task in the Redis queue
+    task = q.enqueue(upload_image, imgData)
+
+    # create a dictionary with the ID of the task
+    responseObject = {"status": "success", "data": {"taskID": task.get_id()}}
+    # return the dictionary as JSON
+    return jsonify(responseObject)
+```
+
+The functions which are part of the tasks put in the Queue (like `upload_image()` above) are kept in a separate file, `imageoperations.py`.
+
+Once the function returns the ID of the task, we can start checking if the task is complete. Using JavaScript's [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) function, we can check the status by calling the `get_status()` view function every 1000 milliseconds.
+
+**In JQuery**
+
+```javascript
+/* Get the status of the task from the API.
+       funcToCall is the name of the function to call once the task returns 'finished' 
+    */
+function get_status(taskID, funcToCall) {
+  $.ajax({
+    method: "GET",
+    url: `tasks/${taskID}`,
+  })
+    .done((response) => {
+      const taskStatus = response.data.taskStatus;
+
+      if (taskStatus === "failed") {
+        console.log(response);
+        return false;
+      } else if (taskStatus == "finished") {
+        // Parse the returned JSON and return the link to the image.
+        console.log(response);
+
+        window[funcToCall](
+          response.data.taskResult.result,
+          response.data.taskResult.errors
+        );
+        return false;
+      }
+
+      // If the task hasn't been finished, try again in 1 second.
+      setTimeout(function () {
+        get_status(response.data.taskID, funcToCall);
+      }, 1000);
+    })
+    .fail((error) => {
+      console.log(error);
+    });
+}
+```
+
+**In the API**
+
+```python
+@app.route('/tasks/<taskID>', methods=['GET'])
+def get_status(taskID):
+    task = q.fetch_job(taskID)
+
+    # If such a job exists, return its info
+    if (task):
+        responseObject = {
+            "success": "success",
+            "data": {
+                "taskID": task.get_id(),
+                "taskStatus": task.get_status(),
+                "taskResult": task.result
+            }
+        }
+
+    # Else, return an error
+    else:
+        responseObject = {"status": "error"}
+
+    return responseObject
+```
+
+So, once the task is completed, the status returned is either **'finished'** or **'failed'**. If finished, the result is taken from the returned JSON file (responseObject from the view function).
+
+In PicASCII, image conversion and uploading of the converted image is also done with this method.
+
+The result is no timeouts!
+
+You can check the updated app [here](https://pic-2ascii.herokuapp.com/).
+
+The code is in my Github repository, [**ASCII-generator**](https://github.com/1Gokul/ASCII-generator/).
