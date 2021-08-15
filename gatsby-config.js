@@ -47,7 +47,6 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               className: "blog-permalink",
-              offsetY: -100,
               isIconAfterHeader: true,              
               elements: [`h2`],
             }

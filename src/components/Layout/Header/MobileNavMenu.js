@@ -32,7 +32,7 @@ const MobileNavMenu = props => (
 
       {props.externalLinks.map(link => (
         <ExternalLink key={link.name} to={link.to}>
-          <NavLink>
+          <NavLink onClick={props.toggleExpanded}>
             {link.name}
             <Icon marginTop={2} as={IoArrowForward} />
           </NavLink>
