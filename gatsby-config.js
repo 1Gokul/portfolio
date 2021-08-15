@@ -9,6 +9,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-netlify`,
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,

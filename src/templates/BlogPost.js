@@ -23,13 +23,11 @@ export default function BlogPost({ data }) {
 }
 
 export const query = graphql`
-  query PostBySlug($slug: String) {
-    mdx(slug: { eq: $slug }) {
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
       id
-      slug
       body
       frontmatter {
-        date
         title
       }
     }
