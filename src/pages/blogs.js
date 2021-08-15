@@ -36,7 +36,7 @@ const Blogs = ({ data }) => {
                 color: "aqua.300",
               }}
             >
-              <LinkOverlay as={GatsbyLink} href={post.slug}>
+              <LinkOverlay as={GatsbyLink} href={`blog/${post.slug}`}>
                 <Heading>{post.frontmatter.title}</Heading>
               </LinkOverlay>
               <Text fontSize="sm">{post.frontmatter.date}</Text>

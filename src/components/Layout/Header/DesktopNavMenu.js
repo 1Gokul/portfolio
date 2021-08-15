@@ -10,7 +10,7 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
       internalLinks.map(({ name, offset=-100 }) => (
         <InternalLink key={name} to={name} offset={offset}>
           <NavLink>
-            {offset}
+            {name}
           </NavLink>
         </InternalLink>
       ))

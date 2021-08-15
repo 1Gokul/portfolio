@@ -17,10 +17,13 @@ Changing gunicorn's timeout duration in the `Procfile` would also not work and w
 
 I had 2 ways to upload the images to Imgur:
 
-1. [Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
-2. [Uploading files as a background task using **R**edis **Q**ueue](#using-redis-and-ajax)
+ [1.Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
 
-I personally prefer the second option because (familiarity and bias towards Python aside), the functions made can be _easily_ reused for other purposes, not just uploading.
+ Or
+
+ [2.Uploading files as a background task using **R**edis **Q**ueue.](#using-redis-and-ajax)
+
+I personally prefer the second option because *(familiarity and bias towards Python aside,)* the functions made can be _easily_ reused for other purposes, not just uploading.
 
 The second method was also used for the API's conversion functions.
 

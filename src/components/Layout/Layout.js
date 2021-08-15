@@ -109,6 +109,7 @@ export const SectionHeading = props => (
     marginBottom={14}
     display="inline-block"
     color="gray.300"
+    lineHeight="1.1em"
     {...props}
   >
     {props.children}
