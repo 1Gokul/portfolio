@@ -77,13 +77,6 @@ const components = {
       }
     }
   },
-  Flex: {
-    as: {
-      nav: {
-        bgColor: "pink.500"
-      }
-    }
-  }
 }
 
 

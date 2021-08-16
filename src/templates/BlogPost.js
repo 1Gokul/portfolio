@@ -2,9 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout, { BlogContainer, SectionHeading } from "../components/Layout/Layout"
 import MDXProvider from "../components/MDXProvider"
+import Seo from "../components/SEO"
 
 require("../css/prismjs/prismjs-night-owl.css") // eslint-disable-line
-require("prismjs/plugins/line-numbers/prism-line-numbers.css") // eslint-disable-line
 
 export default function BlogPost({ data }) {
   const {
@@ -14,6 +14,7 @@ export default function BlogPost({ data }) {
 
   return (
     <Layout type="blog">
+      <Seo title={title} />
       <BlogContainer>
         <SectionHeading>{title}</SectionHeading>
         <MDXProvider>{body}</MDXProvider>

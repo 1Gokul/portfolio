@@ -1,12 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout"
+import { Link as GatsbyLink } from "gatsby"
+
 
 import Layout, {
   BlogContainer,
   SectionHeading,
 } from "../components/Layout/Layout"
-import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout"
-import { Link as GatsbyLink } from "gatsby"
 import Seo from "../components/SEO"
 
 const Blogs = ({ data }) => {
@@ -14,7 +15,6 @@ const Blogs = ({ data }) => {
 
   return (
     <Layout type="blog">
-
       <Seo title="Blogs" />
       <BlogContainer>
         <SectionHeading>DevLogs</SectionHeading>

@@ -1,55 +1,39 @@
 import * as React from "react"
-import { Link } from "gatsby"
+import { Center, Code, Divider, Flex, Heading, Link, Text } from "@chakra-ui/react"
+import { Link as GatsbyLink } from "gatsby"
+
+
+import Layout, { HomeContainer } from "../components/Layout/Layout"
 import Seo from "../components/SEO"
+import bgImg from "../images/404.jpg"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <Seo title="404!" />
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji" fontSize={50}>
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <Layout type="blog">
+      <Seo title="Not Found!" />
+      <HomeContainer
+        backgroundImage={bgImg}
+        backgroundPosition={{ base: "center", md:"left top" }}
+        backgroundSize={{base: "cover", md: "100% 100%"}}
+        backgroundRepeat="no-repeat"
+        overflow="hidden"
+      >
+        <Flex flexDirection="column" justifyContent="space-between" flexGrow={1}>
+          <Flex flexDirection="column" alignItems="center">
+            <Heading marginRight={{ base: 0, md: 3 }} fontSize="200">
+            404
+            </Heading>
+            <Code fontSize="2xl">Not Found</Code>
+          </Flex>
+          <Flex flexDirection="column" marginBottom={5}>
+            <Text fontSize="4xl">This is not the page you are looking for. <Link textDecoration="underline" as={GatsbyLink} href="/">Move along.</Link></Text>
+            <Text>Image credit: Lucasfilm Ltd, Walt Disney Studios</Text>
+          </Flex>
+        </Flex>
+
+      </HomeContainer>
+    </Layout>
+
   )
 }
 
