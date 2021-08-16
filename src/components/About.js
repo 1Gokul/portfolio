@@ -22,11 +22,11 @@ const About = () => {
       </SectionHeading>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Box>
-          <Text fontSize="lg">
+          <Text fontSize="xl">
             {AboutDescription[0]}
           </Text>
           <br />
-          <Text fontSize="lg">
+          <Text fontSize="xl">
             {AboutDescription[1]}
           </Text>
         </Box>

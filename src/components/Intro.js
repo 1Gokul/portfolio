@@ -10,7 +10,7 @@ const Intro = () => {
           <Heading size="lg" marginY={5}>Hey there! My name&apos;s</Heading>
           <Heading
             marginBottom={5}
-            fontSize={{ base: "6xl", md: "7xl" }}
+            fontSize={{ base: "6xl", md: "8xl" }}
             letterSpacing="-2px"
             bgGradient="linear(to-r, #8000FF, #30FFB3, #07F49E)"
             bgClip="text"

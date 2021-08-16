@@ -69,7 +69,10 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              showLineNumbers: true
+            }
           },
         ],
       },

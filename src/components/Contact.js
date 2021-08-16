@@ -29,7 +29,7 @@ const socialLinks = [
     label: "Reddit",
     icon: RiRedditFill,
     color: "#ff4500",
-    link: "https://old.reddit.com/user/_zygoat/"
+    link: "https://old.reddit.com/message/compose?to=_zygoat"
   },
 ]
 

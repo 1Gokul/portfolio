@@ -18,7 +18,7 @@ const Navbar = ({ internalLinks, externalLinks }) => {
     <Flex
       position="fixed"
       width="100%"
-      bgColor="rgb(0, 27, 43, 0.8)"
+      bgColor="rgb(0, 40, 63, 0.7)"
       top="0"
       as="nav"
       zIndex="5"

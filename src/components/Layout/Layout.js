@@ -32,7 +32,7 @@ const Layout = props => {
     ]
     externalLinks=[
       {
-        name: "Blog",
+        name: "DevLogs",
         to: "/blogs"
       }
     ]
@@ -44,7 +44,7 @@ const Layout = props => {
         to: "/"
       },
       {
-        name: "Blog",
+        name: "DevLogs",
         to: "/blogs"
       }
     ]

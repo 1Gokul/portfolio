@@ -17,7 +17,7 @@ const Blogs = ({ data }) => {
 
       <Seo title="Blogs" />
       <BlogContainer>
-        <SectionHeading>My Blogs</SectionHeading>
+        <SectionHeading>DevLogs</SectionHeading>
 
         <Flex flexDirection="column" justifyContent="space-evenly">
           {posts.map (({ node: post }) => (
@@ -26,14 +26,14 @@ const Blogs = ({ data }) => {
               marginY={5}
               transition="0.2s linear"
               _hover={{
-                color: "aqua.300",
+                color: "aqua.200",
               }}
             >
               <LinkOverlay as={GatsbyLink} href={post.fields.slug}>
                 <Heading>{post.frontmatter.title}</Heading>
               </LinkOverlay>
-              <Text fontSize="sm">{post.frontmatter.date}</Text>
-              <Text fontStyle="italic" marginTop={2}>{post.excerpt}</Text>
+              <Text color="gray.300" fontSize="sm">{post.frontmatter.date}</Text>
+              <Text color="gray.300" fontStyle="italic" marginTop={2}>{post.excerpt}</Text>
             </LinkBox>
           ))}
         </Flex>
@@ -54,6 +54,7 @@ export const pageQuery = graphql`
         excerpt
         frontmatter {
           title
+          date(formatString: "DD MMMM, YYYY")
         }
         fields {
           slug
