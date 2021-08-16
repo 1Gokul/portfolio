@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Center, Code, Divider, Flex, Heading, Link, Text } from "@chakra-ui/react"
+import { Code, Flex, Heading, Link, Text } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
 
 
@@ -14,7 +14,7 @@ const NotFoundPage = () => {
       <HomeContainer
         backgroundImage={bgImg}
         backgroundPosition={{ base: "center", md:"left top" }}
-        backgroundSize={{base: "cover", md: "100% 100%"}}
+        backgroundSize={{ base: "cover", md: "100% 100%" }}
         backgroundRepeat="no-repeat"
         overflow="hidden"
       >
