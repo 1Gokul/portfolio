@@ -13,7 +13,7 @@ If no Weapon was equipped, the Character would be ready for melee combat.
 Sheathing and Drawing is done in two parts: the first being setting up the Character for combat and the second
 being the attachment of the Weapon to the Hand/Sheath.
 
-#### Sheathing Setup
+## Sheathing Setup
 ```cpp
 void AMain::SheatheWeapon()
 {
@@ -50,7 +50,7 @@ void AMain::SheatheWeapon()
 The above function sets up the Character for Sheathing the Weapon. Attaching the Weapon to the Sheath is done 
 by a *BlueprintCallable* function, `TimedSheathe`:
 
-#### TimedSheathe()
+## TimedSheathe()
 ```cpp
 void AMain::TimedSheathe()
 {
@@ -74,7 +74,7 @@ This function is called as an Anim Notify in the Sheathing Animation, at the mom
 
 ![TimedSheathe.png](TimedSheathe.png)
 
-#### Drawing Setup
+## Drawing Setup
 ```cpp
 void AMain::DrawWeapon()
 {
@@ -107,7 +107,7 @@ void AMain::DrawWeapon()
 The above function sets up the Character for Drawing the Weapon. Attaching the Weapon to the Hand is done 
 by a *BlueprintCallable* function, `TimedDraw`:
 
-#### TimedDraw()
+## TimedDraw()
 ```cpp 
 void AMain::TimedDraw()
 {
@@ -130,7 +130,7 @@ Similarly, this function is called as an Anim Notify in the Sheathing Animation,
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### In Action 
+## In Action 
 
 - One-Handed Weapon
 <iframe src="https://www.youtube.com/embed/U46rnurwsqs" width="100%" height="300px" frameborder="0"> </iframe> 

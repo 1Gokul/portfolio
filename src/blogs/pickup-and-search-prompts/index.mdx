@@ -7,6 +7,8 @@ date: 2020-08-01
 
 The ItemInteract or Search prompts appear when the Character overlaps with an Object that they can interact with.
 
+## The prompts
+
 If overlapping with an Item, the ItemInteract prompt will appear prompting the Player to take the Item, also showing the Weight and Value 
 of the Item.
 
@@ -30,7 +32,7 @@ Logic for displaying and removing the widget has been done in Blueprints as it i
 The virtual `OnOverlapBegin(...)` function below has been defined in the `Item` parent class. Also, every child `Item` that overrides this function
 also calls the parent's version, using `Super::OnOverlapBegin(...)`.
 
-#### OnOverlapBegin()
+## OnOverlapBegin()
 ```cpp
 void AItem::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                            int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -56,7 +58,7 @@ The Item's Name, Weight and Value are passed through and are used in the `MainPl
 
 Similarly, the virtual `OnOverlapEnd` function below is defined in the `Item` class and is called by the children classes which override the function.
 
-#### OnOverlapEnd()
+## OnOverlapEnd()
 ```cpp
 void AItem::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
                          int32 OtherBodyIndex)
@@ -81,7 +83,7 @@ The Blueprint implementation to remove the prompt is as follows:
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### In Action 
+## In Action 
 
 - ItemInteract Prompt
 <iframe src="https://www.youtube.com/embed/3ONy3fMEnmE" width="100%" height="300px" frameborder="0"> </iframe> 

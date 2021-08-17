@@ -4,8 +4,7 @@ date: 2020-07-20
 ---
 
 
-
-### Melee
+# Melee
 
 Attacks(for now) are very basic melee attacks with Swords, Maces and Axes. Attacks are performed when the Player presses the **LMB**.
 
@@ -14,7 +13,7 @@ Once the **LMB** is pressed, a check is done to see if the Player is not perform
 `MeleeAttack()` sets up the Character for attacks(Resets the IdleTimer, increments the AttackComboSection(Used for Combo Attacks)) and then calls
 `PlayMeleeAttack()`.
 
-#### MeleeAttack()
+## MeleeAttack()
 ```cpp 
 void AMain::MeleeAttack()
 {
@@ -37,7 +36,7 @@ void AMain::MeleeAttack()
 `PlayMeleeAttack()` is responsible for using `AttackComboSection` to pick a particular animation out of the attack animations located in an 
 Anim Montage called `CombatMontage`.
 
-#### PlayMeleeAttack()
+## PlayMeleeAttack()
 ```cpp
 void AMain::PlayMeleeAttack(int32 Section)
 {
@@ -104,7 +103,7 @@ void AMain::PlayMeleeAttack(int32 Section)
 After the attack ends, `MeleeAttackEnd()` checks if the Player is still holding **LMB** down. If they are, `Attack()` will be called again.
 If not, the Character will be restored to its normal state and will not be ready to attack.
 
-#### MeleeAttackEnd()
+## MeleeAttackEnd()
 ```cpp
 void AMain::MeleeAttackEnd()
 {
@@ -126,7 +125,7 @@ void AMain::MeleeAttackEnd()
 	}
 }
 ```
-### Weapons
+## Weapons
 
 Following is one of the Weapons used in the game.
 
@@ -135,7 +134,7 @@ Following is one of the Weapons used in the game.
 The `CombatCollision` BoxCollision on the Weapon is used to check if the Weapon has hit an Enemy during an attack, very similar to
 the `CombatCollision` on the Enemies. 
 
-### Checking for Hits
+## Checking for Hits
 
 Anim Notifies are used in the attack animations to call functions during the attacks. 
 
@@ -207,7 +206,7 @@ Am seeing ways on making the combat more interesting. One option is adding power
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### In Action 
+## In Action 
 
 - While Unarmed and not in Combat Mode
 <iframe src="https://www.youtube.com/embed/9-j5ZczCl1M" width="100%" height="300px" frameborder="0"> </iframe> 

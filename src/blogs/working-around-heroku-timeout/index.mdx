@@ -3,7 +3,7 @@ title: "Working around Heroku's 30-second timeout"
 date: 2021-01-18
 ---
 
-## Pic2ASCII
+### Pic2ASCII
 
 If you have used Heroku as a platform for your web applications, you would have found out that it has a **30-second** timeout for any type of request. This becomes a problem for any apps that involve uploading or processing of large files.
 
@@ -78,7 +78,7 @@ The file is first checked to see if it is valid and falls within the 20MB size l
 
  If valid, an Ajax POST request with the image's data would be sent to Imgur, with help taken from their [API documentation](https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139).
 
-**`upload_to_imgur()`**
+`upload_to_imgur()`
 ```js
 // Send an Ajax POST request to Imgur's API to upload a file.
     function upload_to_imgur(fileToUpload) {
@@ -181,7 +181,7 @@ The functions which are part of the tasks put in the Queue (like `upload_image()
 
 Once the function returns the ID of the task, we can start checking if the task is complete. Using JavaScript's [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) function, we can check the status by calling the `get_status()` view function every 1000 milliseconds.
 
-**In JQuery**
+### In the browser
 
 ```javascript
 /* Get the status of the task from the API.
@@ -220,7 +220,7 @@ function get_status(taskID, funcToCall) {
 }
 ```
 
-**In the API**
+### In the API
 
 ```python
 @app.route('/tasks/<taskID>', methods=['GET'])

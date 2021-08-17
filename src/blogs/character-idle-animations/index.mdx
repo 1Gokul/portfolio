@@ -25,7 +25,7 @@ The code below in Main's Tick function sets a Timer if the Player is not moving.
 ```
 If the Player performs any action, the `IdleTimer` is paused and the `IdleAnimSlot` is set to zero.
 
-#### ResetIdleTimer()
+## ResetIdleTimer()
 ```cpp
 void AMain::ResetIdleTimer()
 {
@@ -42,7 +42,7 @@ void AMain::ResetIdleTimer()
 The below function chooses one random number from [0 -> NumberOfAnimations - 1] and assigns this value to 
 a variable called IdleAnimSlot. NumberOfAnimations is unique for every Player State (i.e UnarmedNormal, Armed-OneHanded).
 
-#### IdleEnd()
+## IdleEnd()
 ```cpp 
 /**
  * Every time after an Idle Animation plays, the base Idle Animation should be played.
@@ -68,7 +68,7 @@ for the same amount of time (10 seconds), playing another Idle Animation if the 
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### In Action 
+## In Action 
 
 - While Unarmed and not in Combat Mode
 <iframe src="https://www.youtube.com/embed/tc39nbjUEmc" width="100%" height="300px" frameborder="0"> </iframe> 

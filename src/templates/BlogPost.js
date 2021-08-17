@@ -83,6 +83,8 @@ const TableOfContents = ({ headings }) => {
   // Depth is equal to 2 for h2 headings
   const h2Headings = headings.filter (heading => heading.depth === 2)
 
+  h2Headings.forEach(heading => heading.url=heading.value.toLowerCase().replace("()", "").split(" ").join ("-"))
+
   const [visible, setVisible] = useState(false)
 
   return (
@@ -102,7 +104,7 @@ const TableOfContents = ({ headings }) => {
             display="block"
             padding={3}
             onClick={() => setVisible (!visible)}
-            href={`#${heading.value.toLowerCase().split (" ").join ("-")}`}
+            href={`#${heading.url}`}
           >
             {heading.value}
           </Link>

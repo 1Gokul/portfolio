@@ -16,7 +16,7 @@ The `Footstep` Anim Notify is triggered at the moment the Character sets their f
 
 ![FootstepAnimNotify.png](FootstepAnimNotify.png)
 
-#### Footstep()
+## Footstep()
 
 This function does a [Raycast by Channel](https://docs.unrealengine.com/en-US/Engine/Physics/Tracing/HowTo/SingleLineTraceByChannel/index.html)
 from the Character to the ground.
@@ -30,7 +30,7 @@ enum class instead for readability.)*
 **IMPORTANT**: To make sure the Hit Result returns a Physical Material, you must set *YOUR_TRACE_PARAM_NAME.bReturnPhysicalMaterial* to 
 `true` before the raycast.
 
-Footstep()'s code:
+
 ```cpp
 void AMain::Footstep()
 {
@@ -98,7 +98,7 @@ void AMain::Footstep()
 	}
 }
 ```
-#### PlayFootstepSound()
+## PlayFootstepSound()
 
 This function receives the Physical Material type and Location and plays the Footstep sound.
 
@@ -106,8 +106,6 @@ To store the Footstep sounds, I made two TArrays of type `USoundCue*`, one for F
 `RunningFootstepSounds` and `SprintingFootstepSounds` store all the Sound Cues for Running and Sprinting respectively.
 
 Each Physical Material has 5 sounds each for both TArrays, out of which one sound will be picked at random.
-
-PlayFootstepSound()'s code:
 
 ```cpp
 void AMain::PlayFootstepSound(EPhysicalMaterials& PhysicalMaterial, FVector& LocationToPlayAt)
@@ -151,7 +149,7 @@ void AMain::PlayFootstepSound(EPhysicalMaterials& PhysicalMaterial, FVector& Loc
 ```
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### The result:
+## In Action:
 
 - Footsteps on Wood
 <iframe src="https://www.youtube.com/embed/DNbTKY93jek" width="100%" height="300px" frameborder="0"> </iframe>

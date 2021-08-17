@@ -8,17 +8,17 @@ date: 2020-12-11
 This, along with [insertcoin](https://1gokul.github.io/insertcoin-store/2020-12-06/insertcoin-login-system/) was also made as a college project. This one was made in collaboration with my classmate, [Shubham Bhagwat](https://shubhamxb.github.io/). 
 
 
-### The Project
+## The Project
 
 The project was called **"Pic2ASCII"**. Self-explanatory title, it would just convert any image that you upload into an ASCII-fied image or text. The PlayStation logo below is an example:
 ![pslogo_conversion.png](pslogo_conversion.png)
 
 
-## Conversion Logic
+### Conversion Logic
 
 Our repo was forked from this [repository](https://github.com/uvipen/ASCII-generator).
 
-### Input
+## Input
 
 A few things in the python files were changed, such as the way the program receives parameters. The program initally took arguments like so:
 
@@ -48,7 +48,7 @@ In my case on Windows, it chose the `C:\Temp` folder. It can be changed to the `
 
 Once this is done, the temporary file can be created and used like so:
 
-### img2txt.py
+`img2txt.py`
 ```python
 # create and open the temporary file in text mode
 temp = tempfile.TemporaryFile(mode='w+t')
@@ -72,12 +72,12 @@ return temp.read(), errors
 ```
 The value returned is a tuple with the file itself and the errors encountered(if any).
 
-### Uploading the converted text to Paste.ee 
+## Uploading the converted text to Paste.ee 
 This was done using this [Python module](https://github.com/i-ghost/pasteee) for [Paste.ee](https://paste.ee/), a free pastebin.
 
 As the converted text was returned as a string, all that was left to do was to use the `pastee` module's `Paste()` function to upload the text.
 
-### main.py
+`main.py`
 ```python
 # upload the converted text to paste.ee
 paste = Paste(outputtxt, private=False, desc=inlink, views=10)
@@ -103,7 +103,7 @@ BytesIO can be used in the place of an actual file object while not being a file
 
 The image is written to and returned as follows:
 
-### img2img.py
+`img2img.py`
 ```python
 # Create the image and write to it
 out_image = Image.new("L", (out_width, out_height), bg_code)
@@ -136,7 +136,7 @@ out_image.save(output, format('JPEG'))
 outimg_data = output.getvalue()
 return outimg_data, errors
 ```
-### Uploading the Image to Imgur
+## Uploading the Image to Imgur
 This was done using the [PyImgur](https://github.com/Damgaard/PyImgur) Python module. The library's functions made it easy to upload the converted image to store in Imgur.
 
 Firstly, to upload any file to Imgur, we had to:

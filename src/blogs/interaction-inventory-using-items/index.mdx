@@ -5,7 +5,7 @@ date: 2020-07-18
 
 
 
-#### Interaction
+### Interaction
 
 Interaction is performed using the **E** key. When the Character is overlapping with an Item, they can press **E** to Interact with it.
 
@@ -19,7 +19,7 @@ This functionality was done by making a class `UInteractInterface` deriving from
 [Interface](https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Reference/Interfaces/index.html) C++ class.  
 This InteractInterface has a virtual function `Interact(AActor* Interacter)` that gets overriden in `Item` like so:
 
-#### Interact()
+## Interact()
 ```cpp
 void AItem::Interact(AActor* Interacter)
 {
@@ -43,7 +43,7 @@ void AItem::Interact(AActor* Interacter)
 }
 ```
 
-#### Inventory menu
+## Inventory menu
 
 The Inventory menu is toggled by the Tab key and shows a grid of the Items that the Character has in its Inventory.
 
@@ -61,7 +61,7 @@ A Consumable Item's Quantity would also be decremented after calling its `UseIte
 Following is `UseItem()` defined in class `Weapon`. Using the Item removes the currently Equipped Weapon and attaches
 itself to the required socket.
 
-#### UseItem()
+## UseItem()
 ```cpp
 bool AWeapon::UseItem(AMain* Main)
 {
@@ -117,7 +117,7 @@ bool AWeapon::UseItem(AMain* Main)
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-#### In Action 
+## In Action 
 
 - Adding and Using Item: Herb
 <iframe src="https://www.youtube.com/embed/HPPYCE8QTnY" width="100%" height="300px" frameborder="0"> </iframe> 

@@ -3,11 +3,11 @@ title: "Website Login system using Flask and Python"
 date: 2020-12-06
 ---
 
-## insertcoin-store
+### insertcoin-store
 
 I and a classmate had made a mini-project for college that implemented Database concepts using MongoDB. I took it as a oppurtunity to skill myself in Web Development. 
 
-### The Project
+## The Project
 
 The project was titled **"Insertcoin: Game Marketplace"**. We took the topic of a game markteplace as it involves all of the basic [**CRUD**](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations that were required in the mini-project.
 
@@ -17,7 +17,7 @@ The base layout of the website was made keeping [Steam](https://store.steampower
 
 I first made a basic `home.html` page that had the basic layout of all pages of the site. All other webpages would be able to inherit from that layout by using `extends` like so:
 
-### library.html
+`library.html`
 ```html
 {% raw %}
 {% extends "layout.html" %}
@@ -51,7 +51,7 @@ Now any connected database would be accessible by `client['<db_name>']`!
 
 ## Registering to the website
 
-### Register.html
+`Register.html`
 ![register_html.png](register_html.png)
 
 After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database. 
@@ -115,7 +115,7 @@ def register():
 ```
 ## Logging in
 
-### login.html
+`login.html`
 ![login_html.png](login_html.png)
 
 When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database. 
