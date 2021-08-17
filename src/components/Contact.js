@@ -67,7 +67,6 @@ const Contact = () => {
 }
 
 const SocialIconLink = props => {
-  console.log(props)
   return(
     <Link aria-label={props.label} href={props.link}>
       <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />

@@ -1,37 +1,60 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
-import { Divider, Flex, Icon, Link, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Divider,
+  Flex,
+  Icon,
+  IconButton,
+  Link,
+  Text,
+} from "@chakra-ui/react"
+import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
 
-import Layout, { BlogContainer, SectionHeading } from "../components/Layout/Layout"
+import Layout, {
+  BlogContainer,
+  SectionHeading,
+} from "../components/Layout/Layout"
 import MDXProvider from "../components/MDXProvider"
 import Seo from "../components/SEO"
-import { IoArrowBack, IoArrowForward } from "react-icons/io5"
 
-require("../css/prismjs/prismjs-night-owl.css") // eslint-disable-line
+require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 
 export default function BlogPost({ data, pageContext }) {
-
-  const {
-    body,
-    frontmatter: { title, date },
-  } = data.mdx
+  const { body, frontmatter: { title, date }, headings } = data.mdx
 
   const { prev, next } = pageContext
-
-  console.log(prev)
-  console.log(next)
 
   return (
     <Layout type="blog">
       <Seo title={title} />
+
+      <TableOfContents headings={headings} />
       <BlogContainer>
         <SectionHeading marginBottom={2}>{title}</SectionHeading>
         <Text marginBottom={14} textAlign="center">{date}</Text>
         <MDXProvider>{body}</MDXProvider>
+
         <Divider />
-        <Flex marginTop={10} justifyContent="space-between" fontSize="xl" alignItems="center">
-          {prev !== null && <Link href={prev.fields.slug}><Icon as={IoArrowBack} /> Previous post</Link>}
-          {next !== null && <Link href={next.fields.slug}>Next post <Icon as={IoArrowForward} /></Link>}
+
+        <Flex
+          marginTop={10}
+          justifyContent="space-between"
+          fontSize="xl"
+          alignItems="center"
+        >
+          {prev !== null &&
+            <Link href={prev.fields.slug}>
+              <Icon as={IoArrowBack} />
+              Previous post
+            </Link>
+          }
+          {next !== null &&
+            <Link href={next.fields.slug}>
+              Next post
+              <Icon as={IoArrowForward} />
+            </Link>
+          }
         </Flex>
       </BlogContainer>
     </Layout>
@@ -47,7 +70,53 @@ export const query = graphql`
         title
         date(formatString: "DD MMMM, YYYY")
       }
-
+      headings {
+        value
+        depth
+      }
     }
   }
 `
+
+const TableOfContents = ({ headings }) => {
+
+  // Depth is equal to 2 for h2 headings
+  const h2Headings = headings.filter (heading => heading.depth === 2)
+
+  const [visible, setVisible] = useState(false)
+
+  return (
+    <Flex
+      borderRadius="lg"
+      bgColor="aqua.1000"
+      position="fixed"
+      right={{ base: 5, md: 10 }}
+      bottom={20}
+      marginRight={3}
+      zIndex={4}
+    >
+      <Box display={visible ? "inline" : "none"} padding={3}>
+        {h2Headings.map (heading => (
+          <Link
+            key={heading.value}
+            display="block"
+            padding={3}
+            onClick={() => setVisible (!visible)}
+            href={`#${heading.value.toLowerCase().split (" ").join ("-")}`}
+          >
+            {heading.value}
+          </Link>
+        ))}
+      </Box>
+      <IconButton
+        aria-label="Click to toggle the table of contents."
+        alignSelf="flex-end"
+        size="lg"
+        borderRadius="full"
+        fontSize="2xl"
+        icon={visible ? <IoClose /> : <IoMenu />}
+        onClick={() => setVisible (!visible)}
+      />
+    </Flex>
+  )
+}
