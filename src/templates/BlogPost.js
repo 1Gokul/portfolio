@@ -1,5 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
+import { Text } from "@chakra-ui/react"
+
 import Layout, { BlogContainer, SectionHeading } from "../components/Layout/Layout"
 import MDXProvider from "../components/MDXProvider"
 import Seo from "../components/SEO"
@@ -9,14 +11,15 @@ require("../css/prismjs/prismjs-night-owl.css") // eslint-disable-line
 export default function BlogPost({ data }) {
   const {
     body,
-    frontmatter: { title },
+    frontmatter: { title, date },
   } = data.mdx
 
   return (
     <Layout type="blog">
       <Seo title={title} />
       <BlogContainer>
-        <SectionHeading>{title}</SectionHeading>
+        <SectionHeading marginBottom={2}>{title}</SectionHeading>
+        <Text marginBottom={14} textAlign="center">{date}</Text>
         <MDXProvider>{body}</MDXProvider>
       </BlogContainer>
     </Layout>
@@ -30,6 +33,7 @@ export const query = graphql`
       body
       frontmatter {
         title
+        date(formatString: "DD MMMM, YYYY")
       }
     }
   }
