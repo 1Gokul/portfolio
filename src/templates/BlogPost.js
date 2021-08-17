@@ -89,7 +89,7 @@ const TableOfContents = ({ headings }) => {
 
   return (
     <Flex
-      borderRadius="lg"
+      borderRadius={visible? "lg" : "full"}
       bgColor="aqua.1000"
       position="fixed"
       right={{ base: 5, md: 10 }}
