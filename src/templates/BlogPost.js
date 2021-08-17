@@ -18,14 +18,14 @@ import Layout, {
 import MDXProvider from "../components/MDXProvider"
 import Seo from "../components/SEO"
 
-require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
+require('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 
 export default function BlogPost({ data, pageContext }) {
   const { body, frontmatter: { title, date }, headings } = data.mdx
 
   const { prev, next } = pageContext
 
-  return (
+  return(
     <Layout type="blog">
       <Seo title={title} />
 
@@ -47,14 +47,12 @@ export default function BlogPost({ data, pageContext }) {
             <Link href={prev.fields.slug}>
               <Icon as={IoArrowBack} />
               Previous post
-            </Link>
-          }
+            </Link>}
           {next !== null &&
             <Link href={next.fields.slug}>
               Next post
               <Icon as={IoArrowForward} />
-            </Link>
-          }
+            </Link>}
         </Flex>
       </BlogContainer>
     </Layout>
@@ -78,18 +76,24 @@ export const query = graphql`
   }
 `
 
-const TableOfContents = ({ headings }) => {
-
+const TableOfContents =({ headings }) => {
   // Depth is equal to 2 for h2 headings
-  const h2Headings = headings.filter (heading => heading.depth === 2)
+  const h2Headings = headings.filter(heading => heading.depth === 2)
 
-  h2Headings.forEach(heading => heading.url=heading.value.toLowerCase().replace("()", "").split(" ").join ("-"))
+  h2Headings.forEach(
+    heading =>
+      (heading.url = heading.value
+        .toLowerCase()
+        .replace("()", "")
+        .split(" ")
+        .join("-"))
+  )
 
   const [visible, setVisible] = useState(false)
 
-  return (
+  return(
     <Flex
-      borderRadius={visible? "lg" : "full"}
+      borderRadius={visible ? "lg" : "full"}
       bgColor="aqua.1000"
       position="fixed"
       right={{ base: 5, md: 10 }}
@@ -98,13 +102,13 @@ const TableOfContents = ({ headings }) => {
       zIndex={4}
     >
       <Box display={visible ? "inline" : "none"} padding={3}>
-        <Text padding={2} color="pink.300" borderBottom="2px">Contents</Text>
-        {h2Headings.map (heading => (
+        <Text padding={3} color="pink.300">Contents</Text>
+        {h2Headings.map(heading => (
           <Link
             key={heading.value}
             display="block"
             padding={3}
-            onClick={() => setVisible (!visible)}
+            onClick={() => setVisible(!visible)}
             href={`#${heading.url}`}
           >
             {heading.value}
@@ -118,7 +122,7 @@ const TableOfContents = ({ headings }) => {
         borderRadius="full"
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
-        onClick={() => setVisible (!visible)}
+        onClick={() => setVisible(!visible)}
       />
     </Flex>
   )
