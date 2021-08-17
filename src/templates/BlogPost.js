@@ -98,6 +98,7 @@ const TableOfContents = ({ headings }) => {
       zIndex={4}
     >
       <Box display={visible ? "inline" : "none"} padding={3}>
+        <Text padding={2} color="pink.300" borderBottom="2px">Contents</Text>
         {h2Headings.map (heading => (
           <Link
             key={heading.value}
