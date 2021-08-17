@@ -17,7 +17,7 @@ exports.onCreateNode = ({node, actions, getNode}) => {
 exports.createPages = async ({actions, graphql}) => {
   const result = await graphql (`
     query{
-      allMdx {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC })  {
         edges {
           node {
             id
@@ -33,14 +33,17 @@ exports.createPages = async ({actions, graphql}) => {
   if (result.errors) {
     reporter.panicOnBuild ('ERROR: Loading "createPages" query');
   }
+
   const posts = result.data.allMdx.edges
 
-  posts.forEach (({node}) => {
+  posts.forEach (({node}, index) => {
     actions.createPage ({
       path: node.fields.slug,
       component: require.resolve (`./src/templates/BlogPost.js`),
       context: {
         id: node.id,
+        next: index === 0 ? null : posts[index - 1].node,
+        prev: index === (posts.length - 1) ? null : posts[index + 1].node 
       },
     });
   });

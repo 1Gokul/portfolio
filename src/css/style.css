@@ -1,4 +1,6 @@
 .blog-permalink svg{
+  display: inline;
+  margin-left: 10px;
   width: 30px;
   height: 30px;
   fill: #F687B3;
