@@ -1,17 +1,22 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout"
 import { Link as GatsbyLink } from "gatsby"
-
 
 import Layout, {
   BlogContainer,
   SectionHeading,
 } from "../components/Layout/Layout"
 import Seo from "../components/SEO"
+import { Input } from "@chakra-ui/react"
 
 const Blogs = ({ data }) => {
   const { edges: posts } = data.allMdx
+  const [filter, setFilter] = useState ("")
+
+  const blogsToShow = posts.filter (({ node: post }) =>
+    post.frontmatter.title.toLowerCase ().includes (filter)
+  )
 
   return (
     <Layout type="blog">
@@ -19,8 +24,19 @@ const Blogs = ({ data }) => {
       <BlogContainer>
         <SectionHeading>DevLogs</SectionHeading>
 
+        <Input
+          marginBottom={5}
+          _placeholder={{ color: "white" }}
+          value={filter}
+          placeholder="Search for a blog..."
+          onChange={({ target }) => setFilter (target.value)}
+          size="lg"
+          variant="filled"
+          borderRadius="xl"
+        />
+
         <Flex flexDirection="column" justifyContent="space-evenly">
-          {posts.map (({ node: post }) => (
+          {blogsToShow.map (({ node: post }) => (
             <LinkBox
               key={post.id}
               marginY={5}
@@ -32,8 +48,12 @@ const Blogs = ({ data }) => {
               <LinkOverlay as={GatsbyLink} href={post.fields.slug}>
                 <Heading>{post.frontmatter.title}</Heading>
               </LinkOverlay>
-              <Text color="gray.300" fontSize="sm">{post.frontmatter.date}</Text>
-              <Text color="gray.300" fontStyle="italic" marginTop={2}>{post.excerpt}</Text>
+              <Text color="gray.300" fontSize="sm">
+                {post.frontmatter.date}
+              </Text>
+              <Text color="gray.300" fontStyle="italic" marginTop={2}>
+                {post.excerpt}
+              </Text>
             </LinkBox>
           ))}
         </Flex>
