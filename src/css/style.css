@@ -9,4 +9,5 @@
 code.language-text:not(pre){
   font-family: Space Mono, monospace;
   color: #F687B3 !important;
+  background: none !important;
 }

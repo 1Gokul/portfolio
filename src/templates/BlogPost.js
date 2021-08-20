@@ -18,14 +18,14 @@ import Layout, {
 import MDXProvider from "../components/MDXProvider"
 import Seo from "../components/SEO"
 
-require('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
+require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 
 export default function BlogPost({ data, pageContext }) {
   const { body, frontmatter: { title, date }, headings } = data.mdx
 
   const { prev, next } = pageContext
 
-  return(
+  return (
     <Layout type="blog">
       <Seo title={title} />
 
@@ -76,39 +76,42 @@ export const query = graphql`
   }
 `
 
-const TableOfContents =({ headings }) => {
+const TableOfContents = ({ headings }) => {
   // Depth is equal to 2 for h2 headings
-  const h2Headings = headings.filter(heading => heading.depth === 2)
+  const h2Headings = headings.filter (heading => heading.depth === 2)
 
-  h2Headings.forEach(
+  h2Headings.forEach (
     heading =>
       (heading.url = heading.value
-        .toLowerCase()
-        .replace("()", "")
-        .split(" ")
-        .join("-"))
+        .toLowerCase ()
+        .replace ("()", "")
+        .split (" ")
+        .join ("-"))
   )
 
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState (false)
 
-  return(
+  return (
     <Flex
-      borderRadius={visible ? "lg" : "full"}
-      bgColor="aqua.1000"
       position="fixed"
       right={{ base: 5, md: 10 }}
       bottom={20}
       marginRight={3}
       zIndex={4}
     >
-      <Box display={visible ? "inline" : "none"} padding={3}>
+      <Box
+        display={visible ? "inline" : "none"}
+        padding={3}
+        maxWidth="75vw"
+        bgColor="aqua.1000"
+      >
         <Text padding={3} color="pink.300">Contents</Text>
-        {h2Headings.map(heading => (
+        {h2Headings.map (heading => (
           <Link
             key={heading.value}
             display="block"
             padding={3}
-            onClick={() => setVisible(!visible)}
+            onClick={() => setVisible (!visible)}
             href={`#${heading.url}`}
           >
             {heading.value}
@@ -122,7 +125,7 @@ const TableOfContents =({ headings }) => {
         borderRadius="full"
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
-        onClick={() => setVisible(!visible)}
+        onClick={() => setVisible (!visible)}
       />
     </Flex>
   )
