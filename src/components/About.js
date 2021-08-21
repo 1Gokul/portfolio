@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react"
 import { Image as CNImage, Transformation } from "cloudinary-react"
 
-import { HomeContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const AboutDescription = [
   `Hello! I'm Gokul. I am currently in the final year of my Computer Engineering degree. 

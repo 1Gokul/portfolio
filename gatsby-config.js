@@ -6,7 +6,7 @@ module.exports = {
     author: `@1GokulV`,
     image: `images/gv.png`,
     siteUrl: `https://gokulv.netlify.app`,
-  },
+  },  
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-netlify`,

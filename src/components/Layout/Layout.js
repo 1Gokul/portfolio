@@ -1,13 +1,12 @@
 import React from "react"
-import { Flex, Heading } from "@chakra-ui/react"
+import { Flex } from "@chakra-ui/react"
 import { CloudinaryContext } from "cloudinary-react"
-
-import "@fontsource/manrope/variable.css"
-import "@fontsource/space-mono"
 
 import Header from "./Header/Header"
 import Footer from "./Footer"
-import "../../css/style.css"
+
+import "../../css/global.css"
+import { Helmet } from "react-helmet"
 
 
 const Layout = props => {
@@ -53,6 +52,17 @@ const Layout = props => {
   return (
     <>
       <Flex direction="column" m="0 auto">
+
+        <Helmet>
+          <link
+            rel="preload"
+            href="../../fonts/GeneralSans-Variable.woff2"
+            as="font"
+            crossOrigin="anonymous"
+            type="font/woff2"
+          />
+        </Helmet>
+
         <CloudinaryContext cloudName="gokulv" secure="true">
           <Header type={props.type} internalLinks={internalLinks} externalLinks={externalLinks}/>
 
@@ -66,53 +76,3 @@ const Layout = props => {
 }
 
 export default Layout
-
-
-export const HomeContainer = props => {
-  return (
-    <Flex
-      flexDirection="column"
-      marginX="auto"
-      marginTop="8rem"
-      minH="80vh"
-      minW="70vw"
-      maxW={{ base: "95vw", md: "75vw" }}
-      paddingX={{ base: 5, md: 10 }}
-      {...props}
-    >
-      {props.children}
-    </Flex>
-  )
-}
-
-export const BlogContainer = props => {
-  return (
-    <Flex
-      flexDirection="column"
-      marginX="auto"
-      marginTop="8rem"
-      minH="100vh"
-      minW="20vw"
-      maxW={{ base: "95vw", md: "2xl" }}
-      paddingX={{ base: 5, md: 10 }}
-      {...props}
-    >
-      {props.children}
-    </Flex>
-  )
-}
-
-
-export const SectionHeading = props => (
-  <Heading size="3xl"
-    textAlign="center"
-    marginBottom={14}
-    display="inline-block"
-    color="gray.300"
-    lineHeight="1.1em"
-    {...props}
-  >
-    {props.children}
-  </Heading>
-
-)

@@ -4,7 +4,7 @@ import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
 
-import { HomeContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const socialLinks = [
   {

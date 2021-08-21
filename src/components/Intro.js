@@ -1,6 +1,7 @@
 import React from "react"
 import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react"
-import { HomeContainer } from "./Layout/Layout"
+
+import { HomeContainer } from "./Layout//LayoutComponents"
 
 const Intro = () => {
   return (
@@ -14,6 +15,7 @@ const Intro = () => {
             letterSpacing="-2px"
             bgGradient="linear(to-r, #8000FF, #30FFB3, #07F49E)"
             bgClip="text"
+            fontWeight="extrabold"
           >
             Gokul Viswanath.
           </Heading>

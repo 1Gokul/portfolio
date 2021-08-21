@@ -7,11 +7,11 @@ const config = {
 
 const fonts = {
   heading: `
-    ManropeVariable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
+    GeneralSans-Variable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
   body: `
-    ManropeVariable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
+    GeneralSans-Variable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
   mono: `
-    Space Mono, -apple-system, Menlo, Monaco, Consolas`
+    InconsolataVariable, -apple-system, Menlo, Monaco, Consolas`
 }
 
 const colors = {

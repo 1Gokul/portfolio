@@ -20,7 +20,7 @@ import {
   SiGraphql,
 } from "react-icons/si"
 
-import { HomeContainer, SectionHeading } from "./Layout/Layout"
+import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const skills = {
   frontend: [

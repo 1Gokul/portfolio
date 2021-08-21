@@ -11,10 +11,8 @@ import {
 } from "@chakra-ui/react"
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
 
-import Layout, {
-  BlogContainer,
-  SectionHeading,
-} from "../components/Layout/Layout"
+import Layout from "../components/Layout/Layout"
+import { BlogContainer,SectionHeading } from "../components/Layout/LayoutComponents"
 import MDXProvider from "../components/MDXProvider"
 import Seo from "../components/SEO"
 
