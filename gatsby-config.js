@@ -9,7 +9,6 @@ module.exports = {
   },  
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
-    `gatsby-plugin-netlify`,
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
@@ -72,6 +71,18 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        headers: {
+          '/fonts/*': [
+            'Cache-Control: public',
+            'Cache-Control: max-age=365000000',
+            'Cache-Control: immutable',
+          ],
+        },
       },
     },
   ],

@@ -16,7 +16,7 @@ const Intro = () => {
             bgGradient="linear(to-r, #8000FF, #30FFB3, #07F49E)"
             bgClip="text"
             fontWeight="extrabold"
-            delay="1"
+            delay={1}
           >
             Gokul Viswanath.
           </AnimatedHeading>

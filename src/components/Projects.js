@@ -14,7 +14,7 @@ import {
   Transformation,
 } from "cloudinary-react"
 
-import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 import { useLazyImage } from "../hooks"
 
 const projectList = [
@@ -150,8 +150,10 @@ const Projects = () => {
       </SectionHeading>
 
       <SimpleGrid flexGrow={1} columns={1} width="100%">
-        {projectList.map (project => (
-          <ProjectCard key={project.name} project={project} />
+        {projectList.map ((project, index) => (
+          <AnimatedContainer key={index}>
+            <ProjectCard project={project} />
+          </AnimatedContainer>
         ))}
       </SimpleGrid>
     </HomeContainer>

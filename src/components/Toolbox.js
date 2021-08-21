@@ -20,7 +20,7 @@ import {
   SiGraphql,
 } from "react-icons/si"
 
-import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedBox, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const skills = {
   frontend: [
@@ -117,15 +117,18 @@ const Toolbox = () => {
       <SectionHeading>
         My Toolbox
       </SectionHeading>
-      <Flex
-        direction={{ base: "column", lg: "row" }}
-        justifyContent="space-between"
-      >
+      <AnimatedBox delay={0.8}>
+        <Flex
+          direction={{ base: "column", lg: "row" }}
+          justifyContent="space-between"
+        >
 
-        <SkillSet title="Frontend" skills={skills.frontend} />
-        <SkillSet title="Backend" skills={skills.backend} />
-        <SkillSet title="Others" skills={skills.others} />
-      </Flex>
+          <SkillSet title="Frontend" skills={skills.frontend} />
+          <SkillSet title="Backend" skills={skills.backend} />
+          <SkillSet title="Others" skills={skills.others} />
+        </Flex>
+      </AnimatedBox>
+
     </HomeContainer>
   )
 }
