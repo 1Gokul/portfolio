@@ -14,7 +14,7 @@ import {
   Transformation,
 } from "cloudinary-react"
 
-import { HomeContainer, SectionHeading} from "./Layout/LayoutComponents"
+import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 import { useLazyImage } from "../hooks"
 
 const projectList = [

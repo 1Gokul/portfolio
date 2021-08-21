@@ -1,31 +1,43 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Flex, Heading } from "@chakra-ui/react"
-import { motion } from "framer-motion"
+import { motion, useAnimation } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
-const MotionFlex = motion(Flex)
+const MotionFlex = motion (Flex),
+  MotionHeading = motion (Heading)
 
+export const AnimatedBox = props => {
+  const controls = useAnimation()
+  const [ref, inView] = useInView()
 
-const Container = props => {
-
-  const transition = {
-    opacity: {
-      duration: 0.75
-    },
-    y: {
-      duration: 0.5
-    }
+  const variants = {
+    visible: { opacity: 1, y: 0 ,  transition:{ delay: props.delay | 0, duration: 0.5, } },
+    hidden: { opacity: 0, y: 150 }
   }
+
+  useEffect (() => {
+    if (inView) {
+      controls.start ("visible")
+    }
+  }, [controls, inView]
+  )
 
   return (
     <MotionFlex
-      initial={{ opacity:0, y:150 }} animate={{ opacity:1, y:0 }} transition={transition} {...props}>
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      variants={variants}
+      {...props}
+    >
       {props.children}
-    </MotionFlex>)
+    </MotionFlex>
+  )
 }
 
 export const HomeContainer = props => {
   return (
-    <Container
+    <AnimatedBox
       flexDirection="column"
       marginX="auto"
       marginTop="8rem"
@@ -36,13 +48,13 @@ export const HomeContainer = props => {
       {...props}
     >
       {props.children}
-    </Container>
+    </AnimatedBox>
   )
 }
 
 export const BlogContainer = props => {
   return (
-    <Container
+    <AnimatedBox
       flexDirection="column"
       marginX="auto"
       marginTop="8rem"
@@ -53,10 +65,9 @@ export const BlogContainer = props => {
       {...props}
     >
       {props.children}
-    </Container>
+    </AnimatedBox>
   )
 }
-
 
 export const SectionHeading = props => (
   <Heading
@@ -66,12 +77,33 @@ export const SectionHeading = props => (
     display="inline-block"
     color="gray.300"
     lineHeight="1.1em"
-
-    initial={{ y:500, opacity: 0 }}
-    animate={{ y:0, opacity:1 }}
+    initial={{ y: 500, opacity: 0 }}
+    animate={{ y: 0, opacity: 1 }}
     {...props}
   >
     {props.children}
   </Heading>
+)
 
+const initial = {
+    opacity: 0,
+    y: 150,
+  },
+  animate = {
+    opacity: 1,
+    y: 0,
+  }
+
+export const AnimatedHeading = props => (
+  <MotionHeading
+    initial={initial}
+    animate={animate}
+    transition={{
+      duration: 0.5,
+      delay: props.delay | 0,
+    }}
+    {...props}
+  >
+    {props.children}
+  </MotionHeading>
 )
