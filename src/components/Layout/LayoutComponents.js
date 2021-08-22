@@ -44,7 +44,7 @@ export const AnimatedContainer = props => {
 
 export const HomeContainer = props => {
   return(
-    <AnimatedContainer
+    <Flex
       flexDirection="column"
       marginX="auto"
       marginTop="8rem"
@@ -55,7 +55,7 @@ export const HomeContainer = props => {
       {...props}
     >
       {props.children}
-    </AnimatedContainer>
+    </Flex>
   )
 }
 
