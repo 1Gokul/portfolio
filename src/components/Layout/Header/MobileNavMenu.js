@@ -1,46 +1,69 @@
-import React from "react"
+import React, { useState } from "react"
 import { Button, Flex, Icon } from "@chakra-ui/react"
 import { IoArrowForward } from "react-icons/io5"
+import { motion } from "framer-motion"
 
 import { ExternalLink, InternalLink } from "./Links"
 
+const MotionFlex = motion(Flex)
 
-const MobileNavMenu = props => (
-  <Flex
-    flexDir="column"
-    display={{ base: props.expanded ? "flex" : "none", md: "none" }}
-    w="100vw"
-    h="100vh"
-    pos="fixed"
-    top="0"
-    left="0"
-    overflowY="auto"
-    bgColor="aqua.900"
-    padding={3}
-  >
+const variants = {
+  open: {
+    x:0
+  },
+  closed: {
+    x:350
+  },
+}
 
-    <Flex flexDirection="column" marginTop="100px">
-      {props.internalLinks.map(({ name, offset=-100 }) => (
-        <InternalLink key={name} to={name} offset={offset}>
-          <NavLink onClick={props.toggleExpanded}>
-            {name}
-          </NavLink>
-        </InternalLink>
-      ))
-      }
+const MobileNavMenu = props => {
+
+  const [visible, setVisible] = useState(false)
+
+  return (
+    <MotionFlex
+      flexDir="column"
+      display={{ base: visible || props.expanded ? "flex" : "none", md: "none" }}
+      w="100vw"
+      h="100vh"
+      pos="fixed"
+      top="0"
+      left="0"
+      overflowY="auto"
+      bgColor="aqua.900"
+      padding={3}
+      transition={{ type: "tween" }}
+      animate={props.expanded ? "open" : "closed"}
+      onAnimationComplete = {definition => {
+        setVisible(definition !== "closed")
+      }}
+      variants={variants}
+    >
+
+      <Flex flexDirection="column" marginTop="100px">
+        {props.internalLinks.map(({ name, offset=-100 }) => (
+          <InternalLink key={name} to={name} offset={offset}>
+            <NavLink onClick={props.toggleExpanded}>
+              {name}
+            </NavLink>
+          </InternalLink>
+        ))
+        }
 
 
-      {props.externalLinks.map(link => (
-        <ExternalLink key={link.name} to={link.to}>
-          <NavLink onClick={props.toggleExpanded}>
-            {link.name}
-            <Icon marginTop={2} as={IoArrowForward} />
-          </NavLink>
-        </ExternalLink>
-      ))}
-    </Flex>
-  </Flex>
-)
+        {props.externalLinks.map(link => (
+          <ExternalLink key={link.name} to={link.to}>
+            <NavLink onClick={props.toggleExpanded}>
+              {link.name}
+              <Icon marginTop={2} as={IoArrowForward} />
+            </NavLink>
+          </ExternalLink>
+        ))}
+      </Flex>
+    </MotionFlex>
+  )
+}
+
 
 export default MobileNavMenu
 

@@ -32,9 +32,9 @@ export const AnimatedContainer = props => {
   return(
     <MotionFlex
       ref={ref}
-      animate={controls}
-      initial="hidden"
-      variants={variants}
+      animate={ props.animate || controls}
+      initial={ props.initial || "hidden" }
+      variants={props.variants || variants}
       {...props}
     >
       {props.children}
@@ -117,8 +117,8 @@ export const AnimatedHeading = props => (
 
 export const AnimatedBox = props => (
   <MotionBox
-    initial={initial}
-    animate={animate}
+    initial={ props.initial  || initial}
+    animate={ props.animate || animate}
     transition={{
       duration: 0.5,
       delay: props.delay || 0,

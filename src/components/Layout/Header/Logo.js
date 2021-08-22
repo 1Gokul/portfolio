@@ -1,17 +1,19 @@
-import React, { useState } from "react"
+import React from "react"
 import { Flex } from "@chakra-ui/react"
 import { Image as CNImage, Transformation } from "cloudinary-react"
 import { Link } from "gatsby"
+import { motion } from "framer-motion"
+
+const MotionFlex = motion(Flex)
 
 const Logo = props => {
-  const [logoUrl, setLogoUrl] = useState("website_logo")
   return (
     <Link to="/">
-      <Flex {...props} onMouseEnter={() => setLogoUrl("website_logo_hovered")} onMouseLeave={() => setLogoUrl("website_logo")}>
-        <CNImage publicId={`Portfolio/${logoUrl}.svg`} alt="Website Logo"  width="75px">
+      <MotionFlex {...props} whileHover={{ rotate: 360 }} transition={{ duration: 2 }}>
+        <CNImage publicId={"Portfolio/website_logo.svg"} alt="Website Logo"  width="75px">
           <Transformation quality="10"/>
         </CNImage>
-      </Flex>
+      </MotionFlex>
     </Link>
 
   )
