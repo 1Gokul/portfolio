@@ -21,7 +21,7 @@ export const AnimatedContainer = props => {
   }
 
   useEffect(
-   () => {
+    () => {
       if(inView) {
         controls.start("visible")
       }
@@ -76,7 +76,7 @@ export const BlogContainer = props => {
   )
 }
 
-export const SectionHeading = props =>(
+export const SectionHeading = props => (
   <Heading
     size="3xl"
     textAlign="center"
@@ -101,7 +101,7 @@ const initial = {
     y: 0,
   }
 
-export const AnimatedHeading = props =>(
+export const AnimatedHeading = props => (
   <MotionHeading
     initial={initial}
     animate={animate}
@@ -115,7 +115,7 @@ export const AnimatedHeading = props =>(
   </MotionHeading>
 )
 
-export const AnimatedBox = props =>(
+export const AnimatedBox = props => (
   <MotionBox
     initial={initial}
     animate={animate}

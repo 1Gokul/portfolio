@@ -1,10 +1,10 @@
 import React from "react"
-import { Box, Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
+import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
 
-import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedBox, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const socialLinks = [
   {
@@ -39,19 +39,19 @@ const Contact = () => {
       <SectionHeading>
         Say Hi
       </SectionHeading>
-      <Heading textAlign="center">
+      <AnimatedHeading textAlign="center" delay={0.75}>
         Want to collab on a project?<br /> Feel free to send an email my way!
-      </Heading>
+      </AnimatedHeading>
 
-      <Box marginY={5}>
+      <AnimatedBox marginY={5} delay={1.5}>
         <Link href="mailto:viswanath1gokul@gmail.com">
           <Button aria-label="Send Email" p={10} fontSize="2xl">
             Let&apos;s work together!
           </Button>
         </Link>
-      </Box>
+      </AnimatedBox>
 
-      <Box>
+      <AnimatedBox delay={2.25}>
         <Heading align="center">Or reach out to me here</Heading>
         <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
@@ -60,7 +60,7 @@ const Contact = () => {
             />
           )}
         </Flex>
-      </Box>
+      </AnimatedBox>
 
     </HomeContainer>
   )

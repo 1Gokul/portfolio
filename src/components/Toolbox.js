@@ -20,7 +20,7 @@ import {
   SiGraphql,
 } from "react-icons/si"
 
-import { AnimatedBox, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedBox, AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const skills = {
   frontend: [
@@ -134,14 +134,17 @@ const Toolbox = () => {
 }
 
 const SkillSet = props => (
-  <Flex direction="column" marginX={10} marginY={5}>
-    <Heading alignSelf="center">{props.title}</Heading>
-    <SimpleGrid columns={2} spacing={{ base: "50px", md: "30px" }} marginY={10}>
-      {props.skills.map (skill => (
-        <LargeSkill key={skill.name}  skill={skill} />
-      ))}
-    </SimpleGrid>
-  </Flex>
+  <AnimatedContainer>
+    <Flex direction="column" marginX={10} marginY={5}>
+      <Heading alignSelf="center">{props.title}</Heading>
+      <SimpleGrid columns={2} spacing={{ base: "50px", md: "30px" }} marginY={10}>
+        {props.skills.map (skill => (
+          <LargeSkill key={skill.name}  skill={skill} />
+        ))}
+      </SimpleGrid>
+    </Flex>
+  </AnimatedContainer>
+
 )
 
 const LargeSkill = props => (
