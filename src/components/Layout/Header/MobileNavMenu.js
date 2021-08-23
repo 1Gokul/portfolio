@@ -12,14 +12,14 @@ const menuVariants = {
   open: {
     x:0,
     transition: {
-      duration: 0.7,
+      duration: 0.5,
       staggerChildren: 0.2
     }
   },
   closed: {
     x:500,
     transition: {
-      duration: 0.75,
+      duration: 0.5,
       staggerChildren: 0.1,
       staggerDirection: -1
     }

@@ -5,7 +5,7 @@ import { Link as GatsbyLink } from "gatsby"
 
 import Layout from "../components/Layout/Layout"
 import { BlogContainer, SectionHeading } from "../components/Layout/LayoutComponents"
-import Seo from "../components/SEO"
+import Seo from "../components/Layout/SEO"
 import { Input } from "@chakra-ui/react"
 
 const Blogs = ({ data }) => {

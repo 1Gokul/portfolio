@@ -11,9 +11,7 @@ import {
 import {
   SiFlask,
   SiJinja,
-  SiRedux,
   SiMongodb,
-  SiPostgresql,
   SiUnrealengine,
   SiHeroku,
   SiGit,
@@ -21,6 +19,7 @@ import {
 } from "react-icons/si"
 
 import { AnimatedBox, AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { motion } from "framer-motion"
 
 const skills = {
   frontend: [
@@ -43,11 +42,6 @@ const skills = {
       icon: IoLogoReact,
       name: "React.js",
       color: "#61DAFB"
-    },
-    {
-      icon: SiRedux,
-      name: "Redux",
-      color: "#593D88"
     },
     {
       icon: SiJinja,
@@ -77,11 +71,6 @@ const skills = {
       name: "MongoDB",
       color: "#4EA94B"
     },
-    {
-      icon: SiPostgresql,
-      name: "PostgreSQL",
-      color: "#316192"
-    },
   ],
 
   others: [
@@ -108,6 +97,8 @@ const skills = {
     },
   ],
 }
+
+const MotionFlex = motion(Flex)
 
 const largeIconSize = "100px"
 
@@ -148,10 +139,10 @@ const SkillSet = props => (
 )
 
 const LargeSkill = props => (
-  <Flex flexDirection="column" alignItems="center" textAlign="center" marginX={5}>
+  <MotionFlex flexDirection="column" alignItems="center" textAlign="center" marginX={5} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.85 }}>
     <Icon as={props.skill.icon} boxSize={largeIconSize} color={props.skill.color}/>
     {props.skill.name}
-  </Flex>
+  </MotionFlex>
 )
 
 export default Toolbox

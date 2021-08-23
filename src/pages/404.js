@@ -6,7 +6,7 @@ import { Link as GatsbyLink } from "gatsby"
 
 import Layout from "../components/Layout/Layout"
 import { HomeContainer } from "../components/Layout/LayoutComponents"
-import Seo from "../components/SEO"
+import Seo from "../components/Layout/SEO"
 import bgImg from "../images/404.jpg"
 
 const NotFoundPage = () => {

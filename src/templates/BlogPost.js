@@ -13,8 +13,8 @@ import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
 
 import Layout from "../components/Layout/Layout"
 import { BlogContainer,SectionHeading } from "../components/Layout/LayoutComponents"
-import MDXProvider from "../components/MDXProvider"
-import Seo from "../components/SEO"
+import MDXProvider from "../components/Layout/MDXProvider"
+import Seo from "../components/Layout/SEO"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 

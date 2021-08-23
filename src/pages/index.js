@@ -6,7 +6,7 @@ import Intro from "../components/Intro"
 import Projects from "../components/Projects"
 import Toolbox from "../components/Toolbox"
 import About from "../components/About"
-import Seo from "../components/SEO"
+import Seo from "../components/Layout/SEO"
 
 
 const MainPage = () => {
