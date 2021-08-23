@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import {
-  Box,
   Divider,
   Flex,
   Icon,
@@ -12,11 +11,17 @@ import {
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
 
 import Layout from "../components/Layout/Layout"
-import { BlogContainer,SectionHeading } from "../components/Layout/LayoutComponents"
+import {
+  BlogContainer,
+  SectionHeading,
+} from "../components/Layout/LayoutComponents"
 import MDXProvider from "../components/Layout/MDXProvider"
 import Seo from "../components/Layout/SEO"
+import { motion } from "framer-motion"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
+
+const MotionFlex = motion (Flex)
 
 const BlogPost = ({ data, pageContext }) => {
   const { body, frontmatter: { title, date }, headings } = data.mdx
@@ -76,6 +81,43 @@ export const query = graphql`
   }
 `
 
+const tocVariants = {
+  open: {
+    height: "auto",
+    opacity: 1,
+    transition: {
+      duration: 0.35,
+      staggerChildren: 0.1,
+    },
+  },
+  closed: {
+    height: 0,
+    opacity: 0,
+    transition: {
+      duration: 0.35,
+      staggerChildren: 0.1,
+      staggerDirection: -1,
+    },
+  },
+}
+
+const headingLinkVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.25,
+    },
+  },
+  closed: {
+    y: 10,
+    opacity: 0,
+    transition: {
+      duration: 0.25,
+    },
+  },
+}
+
 const TableOfContents = ({ headings }) => {
   // Depth is equal to 2 for h2 headings
   const h2Headings = headings.filter (heading => heading.depth === 2)
@@ -99,25 +141,30 @@ const TableOfContents = ({ headings }) => {
       marginRight={3}
       zIndex={4}
     >
-      <Box
-        display={visible ? "inline" : "none"}
+      <MotionFlex
+        flexDirection="column"
         padding={3}
         maxWidth="75vw"
         bgColor="aqua.1000"
+        overflow="hidden"
+        initial="closed"
+        animate={visible ? "open" : "closed"}
+        variants={tocVariants}
       >
         <Text padding={3} color="pink.300">Contents</Text>
         {h2Headings.map (heading => (
-          <Link
-            key={heading.value}
-            display="block"
-            padding={3}
-            onClick={() => setVisible (!visible)}
-            href={`#${heading.url}`}
-          >
-            {heading.value}
-          </Link>
+          <MotionFlex key={heading.value} variants={headingLinkVariants}>
+            <Link
+              display="block"
+              padding={3}
+              onClick={() => setVisible (!visible)}
+              href={`#${heading.url}`}
+            >
+              {heading.value}
+            </Link>
+          </MotionFlex>
         ))}
-      </Box>
+      </MotionFlex>
       <IconButton
         aria-label="Click to toggle the table of contents."
         alignSelf="flex-end"

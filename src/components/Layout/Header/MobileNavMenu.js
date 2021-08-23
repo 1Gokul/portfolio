@@ -5,30 +5,27 @@ import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 
 import { ExternalLink, InternalLink } from "./Links"
 
-const MotionFlex = motion(Flex)
+const MotionFlex = motion (Flex)
 
 const menuVariants = {
   open: {
-    x:0,
+    x: 0,
     transition: {
       duration: 0.5,
-      staggerChildren: 0.2
-    }
+      staggerChildren: 0.2,
+    },
   },
   closed: {
-    x:500,
+    x: 500,
     transition: {
       duration: 0.5,
       staggerChildren: 0.1,
-      staggerDirection: -1
-    }
+      staggerDirection: -1,
+    },
   },
 }
 
-
-
 const MobileNavMenu = props => {
-
   const [expanded, setExpanded] = useState (false)
 
   const toggleExpanded = () => {
@@ -59,17 +56,15 @@ const MobileNavMenu = props => {
         variants={menuVariants}
       >
 
-        {props.internalLinks.map(({ name, offset=-100 }) => (
+        {props.internalLinks.map (({ name, offset = -100 }) => (
           <InternalLink key={name} to={name} offset={offset}>
             <NavLink onClick={toggleExpanded}>
               {name}
             </NavLink>
           </InternalLink>
-        ))
-        }
+        ))}
 
-
-        {props.externalLinks.map(link => (
+        {props.externalLinks.map (link => (
           <ExternalLink key={link.name} to={link.to}>
             <NavLink onClick={toggleExpanded}>
               {link.name}
@@ -78,10 +73,8 @@ const MobileNavMenu = props => {
         ))}
       </MotionFlex>
     </Flex>
-
   )
 }
-
 
 export default MobileNavMenu
 
@@ -106,7 +99,6 @@ const NavLink = props => (
     {props.children}
   </Button>
 )
-
 
 const NavMenuToggler = props => (
   <IconButton
