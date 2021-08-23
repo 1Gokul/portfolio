@@ -62,7 +62,7 @@ const MobileNavMenu = props => {
 
         {props.internalLinks.map(({ name, offset=-100 }) => (
           <InternalLink key={name} to={name} offset={offset}>
-            <NavLink onClick={props.toggleExpanded}>
+            <NavLink onClick={toggleExpanded}>
               {name}
             </NavLink>
           </InternalLink>
@@ -72,7 +72,7 @@ const MobileNavMenu = props => {
 
         {props.externalLinks.map(link => (
           <ExternalLink key={link.name} to={link.to}>
-            <NavLink onClick={props.toggleExpanded}>
+            <NavLink onClick={toggleExpanded}>
               {link.name}
               <Icon marginTop={2} as={IoArrowForward} />
             </NavLink>
