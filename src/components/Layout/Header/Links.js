@@ -16,7 +16,7 @@ const navlinkVariants = {
     }
   },
   closed: {
-    y: 150,
+    y: 50,
     opacity: 0,
     transition: {
       duration: 0.25
