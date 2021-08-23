@@ -1,18 +1,12 @@
 import React, { useState } from "react"
 import { Flex, IconButton } from "@chakra-ui/react"
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 
 import Logo from "./Logo"
 import MobileNavMenu from "./MobileNavMenu"
 import DesktopNavMenu from "./DesktopNavMenu"
 
 const Navbar = ({ internalLinks, externalLinks }) => {
-  const [expanded, setExpanded] = useState (false)
 
-  const toggleExpanded = () => {
-    document.body.style.overflow = !expanded ? "hidden" : "visible"
-    setExpanded (!expanded)
-  }
 
   return (
     <Flex
@@ -35,31 +29,18 @@ const Navbar = ({ internalLinks, externalLinks }) => {
 
         <Flex alignItems="center">
           <DesktopNavMenu internalLinks={internalLinks} externalLinks={externalLinks} />
-          <NavMenuToggler toggler={toggleExpanded} expanded={expanded} />
+          <MobileNavMenu
+            internalLinks={internalLinks}
+            externalLinks={externalLinks}
+          />
         </Flex>
       </Flex>
 
-      <MobileNavMenu
-        internalLinks={internalLinks}
-        externalLinks={externalLinks}
-        expanded={expanded}
-        toggleExpanded={toggleExpanded}
-      />
+
     </Flex>
   )
 }
 
-const NavMenuToggler = props => (
-  <IconButton
-    variant="ghost"
-    aria-label="Open Navigation Menu"
-    display={{ base: "flex", md: "none" }}
-    onClick={props.toggler}
-    fontSize={30}
-  >
-    {props.expanded ? <RiCloseLine /> : <RiMenu3Line />}
-  </IconButton>
-)
 
 
 export default Navbar
