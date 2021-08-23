@@ -10,11 +10,17 @@ const MotionLink = motion(Box)
 const navlinkVariants = {
   open: {
     y: 0,
-    opacity: 1
+    opacity: 1,
+    transition: {
+      duration: 0.25
+    }
   },
   closed: {
-    y:150,
-    opacity: 0
+    y: 150,
+    opacity: 0,
+    transition: {
+      duration: 0.25
+    }
   }
 }
 

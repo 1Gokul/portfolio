@@ -15,6 +15,7 @@ import Layout from "../components/Layout/Layout"
 import { BlogContainer,SectionHeading } from "../components/Layout/LayoutComponents"
 import MDXProvider from "../components/Layout/MDXProvider"
 import Seo from "../components/Layout/SEO"
+import { motion } from "framer-motion"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 

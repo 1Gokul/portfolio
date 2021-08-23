@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { Button, Flex, Icon, IconButton } from "@chakra-ui/react"
-import { IoArrowForward } from "react-icons/io5"
+import { Button, Flex, IconButton } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri"
 
@@ -74,7 +73,6 @@ const MobileNavMenu = props => {
           <ExternalLink key={link.name} to={link.to}>
             <NavLink onClick={toggleExpanded}>
               {link.name}
-              <Icon marginTop={2} as={IoArrowForward} />
             </NavLink>
           </ExternalLink>
         ))}
