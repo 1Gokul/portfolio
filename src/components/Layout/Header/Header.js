@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { Flex, IconButton } from "@chakra-ui/react"
+import React from "react"
+import { Flex } from "@chakra-ui/react"
 
 import Logo from "./Logo"
 import MobileNavMenu from "./MobileNavMenu"
