@@ -7,6 +7,7 @@ import {
   IoLogoJavascript,
   IoLogoNodejs,
   IoLogoGithub,
+  IoLogoPython,
 } from "react-icons/io5"
 import {
   SiFlask,
@@ -52,14 +53,14 @@ const skills = {
 
   backend: [
     {
+      icon: IoLogoPython,
+      name: "Python",
+      color: "#4584b6"
+    },
+    {
       icon: SiFlask,
       name: "Flask",
       color: "#EEEEEE"
-    },
-    {
-      icon: IoLogoNodejs,
-      name: "Node.js",
-      color: "#339933"
     },
     {
       icon: SiGraphql,
