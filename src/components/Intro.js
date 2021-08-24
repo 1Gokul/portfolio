@@ -13,7 +13,7 @@ const Intro = () => {
             marginBottom={5}
             fontSize={{ base: "6xl", md: "8xl" }}
             letterSpacing="-2px"
-            bgGradient="linear(to-r, #8000FF, #30FFB3, #07F49E)"
+            bgGradient="linear(to-r, #00d4ff, #00ff73)"
             bgClip="text"
             fontWeight="extrabold"
             delay={1}

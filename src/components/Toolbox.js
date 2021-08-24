@@ -5,7 +5,6 @@ import {
   IoLogoCss3,
   IoLogoReact,
   IoLogoJavascript,
-  IoLogoNodejs,
   IoLogoGithub,
   IoLogoPython,
 } from "react-icons/io5"
