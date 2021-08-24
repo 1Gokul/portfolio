@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
+import { motion } from "framer-motion"
 
 import Layout from "../components/Layout/Layout"
 import {
@@ -17,9 +18,10 @@ import {
 } from "../components/Layout/LayoutComponents"
 import MDXProvider from "../components/Layout/MDXProvider"
 import Seo from "../components/Layout/SEO"
-import { motion } from "framer-motion"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
+
+
 
 const MotionFlex = motion (Flex)
 
