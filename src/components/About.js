@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react"
 import { Image as CNImage, Transformation } from "cloudinary-react"
 
-import { HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 const AboutDescription = [
   `Hello! I'm Gokul. I am currently in the final year of my Computer Engineering degree. 
@@ -20,23 +20,26 @@ const About = () => {
       <SectionHeading>
         About me
       </SectionHeading>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-        <Box>
-          <Text fontSize="xl">
-            {AboutDescription[0]}
-          </Text>
-          <br />
-          <Text fontSize="xl">
-            {AboutDescription[1]}
-          </Text>
-        </Box>
+      <AnimatedContainer>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          <Box>
+            <Text fontSize="xl">
+              {AboutDescription[0]}
+            </Text>
+            <br />
+            <Text fontSize="xl">
+              {AboutDescription[1]}
+            </Text>
+          </Box>
 
-        <Flex marginX="auto" height="350px" width="300px" >
-          <CNImage publicId="Portfolio/about_photo.png" alt="My photo" loading="lazy">
-            <Transformation quality="20" radius="10"  width="300" height="330"/>
-          </CNImage>
-        </Flex>
-      </SimpleGrid>
+          <Flex marginX="auto" height="350px" width="300px" >
+            <CNImage publicId="Portfolio/about_photo.png" alt="My photo" loading="lazy">
+              <Transformation quality="20" radius="10"  width="300" height="330"/>
+            </CNImage>
+          </Flex>
+        </SimpleGrid>
+      </AnimatedContainer>
+
     </HomeContainer>
   )
 }

@@ -3,8 +3,11 @@ import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
+import { motion } from "framer-motion"
 
 import { AnimatedBox, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+
+const MotionFlex = motion(Flex)
 
 const socialLinks = [
   {
@@ -68,9 +71,12 @@ const Contact = () => {
 
 const SocialIconLink = props => {
   return(
-    <Link aria-label={props.label} href={props.link}>
-      <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />
-    </Link>
+    <MotionFlex whileHover={{ scale: 1.1 }} whileTap= {{ scale: 0.8 }}>
+      <Link aria-label={props.label} href={props.link}>
+        <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />
+      </Link>
+    </MotionFlex>
+
   )}
 
 export default Contact
