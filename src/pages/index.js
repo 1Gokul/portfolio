@@ -16,8 +16,8 @@ const MainPage = () => {
       <Seo title="Home" />
       <Intro />
       <About />
-      <Toolbox />
       <Projects />
+      <Toolbox />
       <Contact />
     </Layout>
   )
