@@ -61,7 +61,7 @@ export const HomeContainer = props => {
 
 export const BlogContainer = forwardRef((props, ref) => {
   return(
-    <MotionFlex
+    <Flex
       ref={ref}
       flexDirection="column"
       marginX="auto"
@@ -73,7 +73,7 @@ export const BlogContainer = forwardRef((props, ref) => {
       {...props}
     >
       {props.children}
-    </MotionFlex>
+    </Flex>
   )
 })
 
