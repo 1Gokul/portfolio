@@ -1,4 +1,10 @@
 import { extendTheme } from "@chakra-ui/react"
+
+const config = {
+  initialColorMode: "dark",
+  useSystemColorMode: false
+}
+
 const fonts = {
   heading: `
     GeneralSans-Variable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
@@ -75,4 +81,4 @@ const components = {
 
 
 
-export default extendTheme ({ fonts, components, colors, styles })
+export default extendTheme ({ config, fonts, components, colors, styles })
