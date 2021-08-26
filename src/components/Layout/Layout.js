@@ -19,10 +19,10 @@ const Layout = props => {
         name: "about"
       },
       {
-        name: "toolbox"
+        name: "projects"
       },
       {
-        name: "projects"
+        name: "toolbox"
       },
       {
         name: "say hi",
