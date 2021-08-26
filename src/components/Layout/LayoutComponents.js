@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { forwardRef, useEffect } from "react"
 import { Box, Flex, Heading } from "@chakra-ui/react"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -59,9 +59,10 @@ export const HomeContainer = props => {
   )
 }
 
-export const BlogContainer = props => {
+export const BlogContainer = forwardRef((props, ref) => {
   return(
-    <AnimatedContainer
+    <MotionFlex
+      ref={ref}
       flexDirection="column"
       marginX="auto"
       marginTop="8rem"
@@ -72,9 +73,11 @@ export const BlogContainer = props => {
       {...props}
     >
       {props.children}
-    </AnimatedContainer>
+    </MotionFlex>
   )
-}
+})
+
+BlogContainer.displayName = "BlogContainer"
 
 export const SectionHeading = props => (
   <Heading

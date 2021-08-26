@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { createRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import {
+  CircularProgress,
   Divider,
   Flex,
   Icon,
@@ -21,8 +22,6 @@ import Seo from "../components/Layout/SEO"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 
-
-
 const MotionFlex = motion (Flex)
 
 const BlogPost = ({ data, pageContext }) => {
@@ -30,12 +29,14 @@ const BlogPost = ({ data, pageContext }) => {
 
   const { prev, next } = pageContext
 
+  const target = createRef ()
+
   return (
     <Layout type="blog">
       <Seo title={title} />
 
-      <TableOfContents headings={headings} />
-      <BlogContainer>
+      <TableOfContents headings={headings} target={target} />
+      <BlogContainer ref={target}>
         <SectionHeading marginBottom={2}>{title}</SectionHeading>
         <Text marginBottom={14} textAlign="center">{date}</Text>
         <MDXProvider>{body}</MDXProvider>
@@ -120,7 +121,7 @@ const headingLinkVariants = {
   },
 }
 
-const TableOfContents = ({ headings }) => {
+const TableOfContents = ({ headings, target }) => {
   // Depth is equal to 2 for h2 headings
   const h2Headings = headings.filter (heading => heading.depth === 2)
 
@@ -140,7 +141,6 @@ const TableOfContents = ({ headings }) => {
       position="fixed"
       right={{ base: 5, md: 10 }}
       bottom={20}
-      marginRight={3}
       zIndex={4}
     >
       <MotionFlex
@@ -175,7 +175,55 @@ const TableOfContents = ({ headings }) => {
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
         onClick={() => setVisible (!visible)}
+        zIndex={4}
       />
+      <ReadingProgress target={target} />
     </Flex>
+  )
+}
+
+const ReadingProgress = ({ target }) => {
+  const [readingProgress, setReadingProgress] = useState (0)
+  const scrollListener = () => {
+    if (!target.current) {
+      return
+    }
+
+    const element = target.current
+    const totalHeight =
+      element.clientHeight - element.offsetTop - window.innerHeight
+    const windowScrollTop =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0
+
+    if (windowScrollTop === 0) {
+      return setReadingProgress (0)
+    }
+
+    if (windowScrollTop > totalHeight) {
+      return setReadingProgress (100)
+    }
+    console.log (readingProgress)
+    setReadingProgress (windowScrollTop / totalHeight * 100)
+  }
+
+  useEffect (() => {
+    window.addEventListener ("scroll", scrollListener)
+    return () => window.removeEventListener ("scroll", scrollListener)
+  })
+
+  return (
+    <CircularProgress
+      value={readingProgress}
+      size="60px"
+      color="pink.500"
+      thickness="10px"
+      position="fixed"
+      right={{ base: "14px" , md:"34.5px" }}
+      bottom="73.5px"
+      zIndex={3}
+    />
   )
 }
