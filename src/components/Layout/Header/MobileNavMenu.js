@@ -16,9 +16,9 @@ const menuVariants = {
     },
   },
   closed: {
-    x: 500,
+    x: 1000,
     transition: {
-      duration: 0.5,
+      duration: 1,
       staggerChildren: 0.1,
       staggerDirection: -1,
     },
