@@ -250,7 +250,6 @@ const mdComponents = {
 };
 
 const MDX = props => {
-  console.log(props.localImages)
   return (
     <MDXProvider components={mdComponents}>
       <MDXRenderer localImages={props.localImages}>
