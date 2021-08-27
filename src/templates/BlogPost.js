@@ -182,6 +182,10 @@ const TableOfContents = ({ headings, target }) => {
   )
 }
 
+
+// Thanks to nehalist.io for the progress bar
+// https://nehalist.io/creating-a-reading-progress-bar-in-react
+
 const ReadingProgress = ({ target }) => {
   const [readingProgress, setReadingProgress] = useState (0)
   const scrollListener = () => {
