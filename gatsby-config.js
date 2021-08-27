@@ -77,7 +77,7 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {
-          '/fonts/*': [
+          '/src/fonts/*': [
             'Cache-Control: public',
             'Cache-Control: max-age=365000000',
             'Cache-Control: immutable',
