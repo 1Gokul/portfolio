@@ -1,8 +1,11 @@
 ---
 title: "Pickup and Search Prompts"
 date: 2020-08-01
+embeddedImagesLocal: 
+	- ItemInteractPrompt.jpg
+	- SearchPrompt.jpg
 ---
-
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 
 The ItemInteract or Search prompts appear when the Character overlaps with an Object that they can interact with.
@@ -12,11 +15,11 @@ The ItemInteract or Search prompts appear when the Character overlaps with an Ob
 If overlapping with an Item, the ItemInteract prompt will appear prompting the Player to take the Item, also showing the Weight and Value 
 of the Item.
 
-![ItemInteractPrompt.jpg](ItemInteractPrompt.jpg)
+<GatsbyImage alt="ItemInteractPrompt.jpg" image={getImage(props.localImages[0])} />
 
 If overlapping with a Container, the Search prompt will appear prompting the Player to search the Container.
 
-![SearchPrompt.jpg](SearchPrompt.jpg)
+<GatsbyImage alt="SearchPrompt.jpg" image={getImage(props.localImages[1])} />
 
 This was done by creating four `BlueprintNative` functions, two each for the ItemInteract and Search prompts
 (One for displaying and the other for removing the prompt). 

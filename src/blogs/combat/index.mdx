@@ -1,8 +1,11 @@
 ---
 title: "Combat"
 date: 2020-07-20
+embeddedImagesLocal:
+		- GreatBlade.jpg
+		- OneHandedAttack2_AnimNotifies.jpg
 ---
-
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 # Melee
 
@@ -129,7 +132,7 @@ void AMain::MeleeAttackEnd()
 
 Following is one of the Weapons used in the game.
 
-![GreatBlade.jpg](GreatBlade.jpg)
+<GatsbyImage alt="GreatBlade.jpg" image={getImage(props.localImages[0])} />
 
 The `CombatCollision` BoxCollision on the Weapon is used to check if the Weapon has hit an Enemy during an attack, very similar to
 the `CombatCollision` on the Enemies. 
@@ -138,7 +141,7 @@ the `CombatCollision` on the Enemies.
 
 Anim Notifies are used in the attack animations to call functions during the attacks. 
 
-![OneHandedAttack2_AnimNotifies.jpg](OneHandedAttack2_AnimNotifies.jpg)
+<GatsbyImage alt="OneHandedAttack2_AnimNotifies.jpg" image={getImage(props.localImages[1])} />
 
 There are 4 main Anim Notifies used in attack animations:
 

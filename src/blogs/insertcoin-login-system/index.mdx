@@ -1,7 +1,11 @@
 ---
 title: "Website Login system using Flask and Python"
 date: 2020-12-06
+embeddedImagesLocal: 
+    - login_html.jpg
+    - register_html.jpg
 ---
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 ### insertcoin-store
 
@@ -52,7 +56,7 @@ Now any connected database would be accessible by `client['<db_name>']`!
 ## Registering to the website
 
 `Register.html`
-![register_html.png](register_html.png)
+<GatsbyImage alt="register_html.png" image={getImage(props.localImages[1])} />
 
 After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database. 
 
@@ -116,7 +120,7 @@ def register():
 ## Logging in
 
 `login.html`
-![login_html.png](login_html.png)
+<GatsbyImage alt="login_html.png" image={getImage(props.localImages[0])} />
 
 When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database. 
 If yes, the user's password is compared to the password (again using **`Bcrypt`**) entered and if that matches too, the user is redirected to the **Library** page.

@@ -1,8 +1,10 @@
 ---
 title: "Footsteps!"
 date: 2020-08-11
+embeddedImagesLocal: 
+	- FootstepAnimNotify.jpg
 ---
-
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 
 Now when the Character's foot hits the ground while Running or Sprinting, a sound will be played at the location where the foot fell.
@@ -14,7 +16,8 @@ The first one is `Footstep()`. It is a `BlueprintCallable` function called in Bl
 
 The `Footstep` Anim Notify is triggered at the moment the Character sets their foot down in the Movement Animations.
 
-![FootstepAnimNotify.jpg](FootstepAnimNotify.jpg)
+
+<GatsbyImage alt="FootstepAnimNotify.jpg" image={getImage(props.localImages[0])} />
 
 ## Footstep()
 

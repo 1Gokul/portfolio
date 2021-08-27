@@ -1,8 +1,10 @@
 ---
 title: "Movement Updates"
 date: 2020-09-17
+embeddedImagesLocal: 
+  - UnarmedNormal2DBlendSpace.jpg
 ---
-
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 
 The Character's movement has been updated with strafing depending on the Player's keyboard input.
@@ -19,7 +21,7 @@ Additionally, I added 4 Animations for *Diagonal* jogging in case the Player hol
 
 After setting up, the Animations were put in a **2D** BlendSpace (as opposed to the **1D** BlendSpace used before) like so:
 
-![UnarmedNormal2DBlendSpace.jpg](UnarmedNormal2DBlendSpace.jpg)
+<GatsbyImage alt="UnarmedNormal2DBlendSpace.jpg" image={getImage(props.localImages[0])} />
 
 The Axes in the BlendSpace are **SpeedForward** (Y Axis) and **SpeedRight** (X Axis). These two values determine which Movement Animation has 
 to be played. 

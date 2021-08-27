@@ -1,7 +1,15 @@
 ---
 title: MediaScout
 date:  2021-05-19
+embeddedImagesLocal: 
+  - actor-detail.jpg
+  - episodes.jpg
+  - homepage.jpg
+  - movie-detail.jpg
+  - search-results.jpg
+  - seasons.jpg
 ---
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 MediaScout is a webapp that takes information of movies, tv series and actors from an API and shows it to the user. 
 Users can also search for media and see similar movies and shows by genre/keywords.
@@ -28,7 +36,7 @@ The Home, Movies and TV sections would make requests to the API for media of a p
 
 This is how the main movie page looks like: 
 
-![homepage_screencap](homepage.jpg)
+<GatsbyImage alt="homepage.jpg" image={getImage(props.localImages[2])} />
 
 An example of a request made to the API: 
 
@@ -117,24 +125,28 @@ simplifies the rest of the results to show just the main information like Direct
 
 This is how a media detail page looks like: 
 
-![detail_screencap](movie-detail.jpg)
+
+<GatsbyImage alt="movie-detail.jpg" image={getImage(props.localImages[3])} />
 
 ### TV details
 
 If the media being viewed is of a series, the seasons and their descriptions are also shown to the user. 
 
-![tv_seasons](seasons.jpg)
+
+<GatsbyImage alt="seasons.jpg" image={getImage(props.localImages[5])} />
 
 The seasons too, can be clicked to show small descriptions of each episode.
 
-![tv_episodes](episodes.jpg)
+
+<GatsbyImage alt="episodes.jpg" image={getImage(props.localImages[1])} />
 
 ## Actor information 
 
 Information of actors (description and filmography) can also be searched and viewed. The information is requested in a 
 similar fashion to the movie/tv details.
 
-![actor_example](actor-detail.jpg)
+
+<GatsbyImage alt="actor-detail.jpg" image={getImage(props.localImages[1])} />
 
 ## Searching by query and by keywords
 
@@ -145,7 +157,7 @@ On the navbar is a searchbar, through which users can search for media by a quer
 The pagination for the results was also relatively easy to implement, as I had to just pass in a page number to the API to get
 another set of results.
 
-![search_example](search-results.jpg)
+<GatsbyImage alt="search-results.jpg" image={getImage(props.localImages[4])} />
 
 ## Finishing up 
 

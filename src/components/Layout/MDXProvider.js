@@ -3,9 +3,9 @@
 // Many thanks to Ryosuke- https://whoisryosuke.com/ for the component
 // https://github.com/whoisryosuke/next-mdx-chakra-docs/blob/master/components/MDXProvider.jsx
 
-import React from "react"
-import { MDXProvider } from "@mdx-js/react"
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import React from 'react';
+import {MDXProvider} from '@mdx-js/react';
+import {MDXRenderer} from 'gatsby-plugin-mdx';
 import {
   Accordion,
   AccordionItem,
@@ -105,29 +105,44 @@ import {
   Tab,
   TabPanel,
   Tag,
-  TagIcon, 
-  TagLabel, 
+  TagIcon,
+  TagLabel,
   TagCloseButton,
   Text,
   Textarea,
   Tooltip,
   VisuallyHidden,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 const mdComponents = {
-  h1: (props) => <Heading as="h1" size="2xl" mt={4} {...props} />,
-  h2: (props) => <Heading as="h2" size="xl" mt={4} {...props} />,
-  h3: (props) => <Heading as="h3" size="lg" mt={4} {...props} />,
-  h4: (props) => <Heading as="h4" size="md" mt={4} {...props} />,
-  h5: (props) => <Heading as="h5" size="sm" mt={4} {...props} />,
-  h6: (props) => <Heading as="h6" size="xs" mt={4} {...props} />,
-  p: (props) => <Text as="p" marginY={5} fontSize="xl" {...props} />,
-  a: (props) => <Link as="a" color="pink.500" {...props} />,
-  ul: (props) => <List px={3} styleType="square" alignSelf="center" fontSize="xl" {...props} />,
-  ol: (props) => <List as="ol" styleType="decimal" alignSelf="center" fontSize="xl" {...props} />,
-  li: (props) => <ListItem {...props} />,
-  img: (props) => <Image marginX="auto" width="100%" {...props} />,
-  hr: (props) => <Divider my={8} {...props} />,
+  h1: props => <Heading as="h1" size="2xl" mt={4} {...props} />,
+  h2: props => <Heading as="h2" size="xl" mt={4} {...props} />,
+  h3: props => <Heading as="h3" size="lg" mt={4} {...props} />,
+  h4: props => <Heading as="h4" size="md" mt={4} {...props} />,
+  h5: props => <Heading as="h5" size="sm" mt={4} {...props} />,
+  h6: props => <Heading as="h6" size="xs" mt={4} {...props} />,
+  p: props => <Text as="p" marginY={5} fontSize="xl" {...props} />,
+  a: props => <Link as="a" color="pink.500" {...props} />,
+  ul: props => (
+    <List
+      px={3}
+      styleType="square"
+      alignSelf="center"
+      fontSize="xl"
+      {...props}
+    />
+  ),
+  ol: props => (
+    <List
+      as="ol"
+      styleType="decimal"
+      alignSelf="center"
+      fontSize="xl"
+      {...props}
+    />
+  ),
+  li: props => <ListItem {...props} />,
+  hr: props => <Divider my={8} {...props} />,
   Accordion,
   AccordionItem,
   AccordionHeader,
@@ -232,8 +247,14 @@ const mdComponents = {
   Textarea,
   Tooltip,
   VisuallyHidden,
-}
+};
 
-export default ({ children }) => {
-  return <MDXProvider components={mdComponents}><MDXRenderer>{children}</MDXRenderer></MDXProvider>
-}
+export default props => {
+  return (
+    <MDXProvider components={mdComponents}>
+      <MDXRenderer localImages={props.localImages}>
+        {props.children}
+      </MDXRenderer>
+    </MDXProvider>
+  );
+};

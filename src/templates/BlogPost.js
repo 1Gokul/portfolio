@@ -25,7 +25,7 @@ require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
 const MotionFlex = motion (Flex)
 
 const BlogPost = ({ data, pageContext }) => {
-  const { body, frontmatter: { title, date }, headings } = data.mdx
+  const { body, frontmatter: { title, date, embeddedImagesLocal }, headings } = data.mdx
 
   const { prev, next } = pageContext
 
@@ -39,7 +39,7 @@ const BlogPost = ({ data, pageContext }) => {
       <BlogContainer ref={target}>
         <SectionHeading marginBottom={2}>{title}</SectionHeading>
         <Text marginBottom={14} textAlign="center">{date}</Text>
-        <MDXProvider>{body}</MDXProvider>
+        <MDXProvider localImages={embeddedImagesLocal}>{body}</MDXProvider>
 
         <Divider />
 
@@ -75,6 +75,11 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
+        embeddedImagesLocal {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
       }
       headings {
         value
