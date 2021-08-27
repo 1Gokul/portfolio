@@ -249,7 +249,8 @@ const mdComponents = {
   VisuallyHidden,
 };
 
-export default props => {
+const MDX = props => {
+  console.log(props.localImages)
   return (
     <MDXProvider components={mdComponents}>
       <MDXRenderer localImages={props.localImages}>
@@ -258,3 +259,5 @@ export default props => {
     </MDXProvider>
   );
 };
+
+export default MDX

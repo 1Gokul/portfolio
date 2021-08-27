@@ -11,8 +11,6 @@ module.exports = {
     `gatsby-plugin-gatsby-cloud`,
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -55,13 +53,6 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1200,
-              wrapperStyle: `margin: 20px auto; border: 3px solid #F687B3;`
-            },
-          },
-          {
             resolve: `gatsby-remark-external-links`,
             options: {
               target: `_blank`,
@@ -86,5 +77,17 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          quality: 70,
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'blurred',
+        },
+      },
+    },
+    `gatsby-transformer-sharp`,
   ],
 }

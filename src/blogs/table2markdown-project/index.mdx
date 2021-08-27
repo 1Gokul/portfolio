@@ -2,13 +2,14 @@
 title: Table2Markdown
 date: 2021-04-27
 embeddedImagesLocal:
-    - csv2md.jpg
-    - excel2md.jpg
-    - insert2md.jpg
-    - keyguides_changing.gif
-    - keyguides.png
-    - result_md_table.png
+  - csv2md.png
+  - excel2md.png
+  - insert2md.png
+  - keyguides_changing.gif
+  - keyguides.png
+  - result_md_table.png
 ---
+import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
 ### Table converter project
 
@@ -29,7 +30,7 @@ This is an example table created with the website:
 ```
 This is the result:
 
-<GatsbyImage alt="result_md_table" image={getImage(props.localImages[5])} />
+<GatsbyImage alt="result_md_table" image={getImage(props.localImages[5])} object-fit="contain"/>
 
 I then started to create a clone of the website, with all the website's other functionalities, like converting 
 a CSV file or an Excel table.
@@ -162,7 +163,7 @@ This was a major thing I wanted to implement as it would be beneficial to users 
 operations on the rows and columns is a repetetive process. I then added events to perform actions on certain keypresses and showed 
 a guide to the user, like so:
 
-<GatsbyImage alt="keyguides.png" image={getImage(props.localImages[4])} />
+<GatsbyImage alt="keyguides.png" image={getImage(props.localImages[4])}  object-fit="contain"/>
 
 The controls shown in the guide also change depending on the context i.e. only those controls are shown which can be pressed 
 in that particular situation.

@@ -17,7 +17,7 @@ import {
   BlogContainer,
   SectionHeading,
 } from "../components/Layout/LayoutComponents"
-import MDXProvider from "../components/Layout/MDXProvider"
+import MDX from "../components/Layout/MDXProvider"
 import Seo from "../components/Layout/SEO"
 
 require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
@@ -39,7 +39,7 @@ const BlogPost = ({ data, pageContext }) => {
       <BlogContainer ref={target}>
         <SectionHeading marginBottom={2}>{title}</SectionHeading>
         <Text marginBottom={14} textAlign="center">{date}</Text>
-        <MDXProvider localImages={embeddedImagesLocal}>{body}</MDXProvider>
+        <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
         <Divider />
 
@@ -214,7 +214,6 @@ const ReadingProgress = ({ target }) => {
     if (windowScrollTop > totalHeight) {
       return setReadingProgress (100)
     }
-    console.log (readingProgress)
     setReadingProgress (windowScrollTop / totalHeight * 100)
   }
 
