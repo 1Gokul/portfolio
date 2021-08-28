@@ -72,7 +72,7 @@ const Contact = () => {
 const SocialIconLink = props => {
   return(
     <MotionFlex whileHover={{ scale: 1.1 }} whileTap= {{ scale: 0.8 }}>
-      <Link aria-label={props.label} href={props.link}>
+      <Link aria-label={props.label} href={props.link} target="_blank">
         <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />
       </Link>
     </MotionFlex>
