@@ -30,7 +30,7 @@ const projectList = [
     name: "Table2Markdown",
     description: "A webapp that converts any type of table into a GitHub-flavoured Markdown table.",
     tags: ["Flask", "Bootstrap", "PapaParse", "JQuery"],
-    link: "https://insertcoin-store.herokuapp.com/",
+    link: "https://table2markdown.herokuapp.com/",
     github: "https://github.com/1Gokul/table2markdown",
     source: "Portfolio/table2markdown_screencap",
   },
