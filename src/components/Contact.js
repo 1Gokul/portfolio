@@ -3,11 +3,9 @@ import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
-import { motion } from "framer-motion"
 
 import { AnimatedBox, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
-const MotionFlex = motion(Flex)
 
 const socialLinks = [
   {
@@ -71,11 +69,9 @@ const Contact = () => {
 
 const SocialIconLink = props => {
   return(
-    <MotionFlex whileHover={{ scale: 1.1 }} whileTap= {{ scale: 0.8 }}>
-      <Link aria-label={props.label} href={props.link} target="_blank">
-        <Icon marginX={2} as={props.icon} color={props.color} boxSize="60px" />
-      </Link>
-    </MotionFlex>
+    <Link aria-label={props.label} href={props.link} target="_blank">
+      <Icon marginX={2} as={props.icon} transition="0.2s linear" _hover={{ color: props.color }} boxSize="60px" />
+    </Link>
 
   )}
 
