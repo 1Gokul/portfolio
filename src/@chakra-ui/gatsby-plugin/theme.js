@@ -52,7 +52,7 @@ const components = {
         color: "black",
         _hover: {
           bg: "aqua.600",
-          color: "gray.200"
+          color: "gray.100"
         }
       }
 

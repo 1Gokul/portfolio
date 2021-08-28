@@ -3,6 +3,8 @@ import {
   Heading,
   Box,
   Link,
+  LinkBox,
+  LinkOverlay,
   Text,
   Flex,
   SimpleGrid,
@@ -82,19 +84,19 @@ const ProjectInfo = ({ project, projectImage }) => {
       </Text>
       <Tags tags={project.tags} />
       <Flex>
-        <Link
+        <LinkOverlay
           aria-label={`Click to view the project, ${project.name}.`}
           href={project.link}
           marginX={3}
         >
-          <VscLinkExternal size={20} />
-        </Link>
+          <VscLinkExternal size={30} />
+        </LinkOverlay>
         <Link
           aria-label={`Click to view the GitHub repository of ${project.name}.`}
           href={project.github}
           marginX={3}
         >
-          <VscGithubInverted size={20} />
+          <VscGithubInverted size={30} />
         </Link>
       </Flex>
     </Box>
@@ -127,18 +129,20 @@ const ProjectCard = props => {
   )
 
   return (
-    <SimpleGrid
-      marginY={5}
-      columns={{ base: 1, md: 2 }}
-      alignItems="center"
-      borderRadius="md"
-      bg={{ base: "none", md: "aqua.700" }}
-      color="white"
-    >
-      <ProjectInfo project={props.project} projectImage={lazyLoadedImage} />
-      <DesktopProjectImage name={props.project.name} source={props.project.source} />
-      <Box />
-    </SimpleGrid>
+    <LinkBox>
+      <SimpleGrid
+        marginY={5}
+        columns={{ base: 1, md: 2 }}
+        alignItems="center"
+        borderRadius="md"
+        bg={{ base: "none", md: "aqua.700" }}
+        color="white"
+      >
+        <ProjectInfo project={props.project} projectImage={lazyLoadedImage} />
+        <DesktopProjectImage name={props.project.name} source={props.project.source} />
+        <Box />
+      </SimpleGrid>
+    </LinkBox>
   )
 }
 
