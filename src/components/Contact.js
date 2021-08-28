@@ -4,7 +4,7 @@ import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
 
-import { AnimatedBox, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { AnimatedBox, AnimatedContainer, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
 
 const socialLinks = [
@@ -36,32 +36,35 @@ const socialLinks = [
 
 const Contact = () => {
   return (
-    <HomeContainer alignItems="center" justifyContent="space-evenly" id="say hi">
+    <HomeContainer id="say hi">
       <SectionHeading>
         Say Hi
       </SectionHeading>
-      <AnimatedHeading textAlign="center" delay={0.75}>
+      <AnimatedContainer flexDirection="column" alignItems="center" justifyContent="space-evenly" flexGrow={1}>
+        <AnimatedHeading textAlign="center">
         Want to collab on a project?<br /> Feel free to send an email my way!
-      </AnimatedHeading>
+        </AnimatedHeading>
 
-      <AnimatedBox marginY={5} delay={1.5}>
-        <Link href="mailto:viswanath1gokul@gmail.com">
-          <Button aria-label="Send Email" p={10} fontSize="2xl">
+        <AnimatedBox marginY={5}>
+          <Link href="mailto:viswanath1gokul@gmail.com">
+            <Button aria-label="Send Email" p={10} fontSize="2xl">
             Let&apos;s work together!
-          </Button>
-        </Link>
-      </AnimatedBox>
+            </Button>
+          </Link>
+        </AnimatedBox>
 
-      <AnimatedBox delay={2.25}>
-        <Heading align="center">Or reach out to me here</Heading>
-        <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
+        <AnimatedBox>
+          <Heading align="center">Or reach out to me here</Heading>
+          <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
 
-          {socialLinks.map(socialLink =>
-            <SocialIconLink key={socialLink.label} {...socialLink}
-            />
-          )}
-        </Flex>
-      </AnimatedBox>
+            {socialLinks.map(socialLink =>
+              <SocialIconLink key={socialLink.label} {...socialLink}
+              />
+            )}
+          </Flex>
+        </AnimatedBox>
+      </AnimatedContainer>
+
 
     </HomeContainer>
   )
