@@ -152,7 +152,7 @@ const TableOfContents = ({ headings, target }) => {
         flexDirection="column"
         padding={3}
         maxWidth="75vw"
-        bgColor="aqua.1000"
+        bgColor="#001b2b"
         overflow="hidden"
         initial="closed"
         animate={visible ? "open" : "closed"}
