@@ -110,8 +110,8 @@ const Toolbox = () => {
       </SectionHeading>
       <AnimatedBox delay={0.8}>
         <Flex
-          direction={{ base: "column", lg: "row" }}
-          justifyContent="space-between"
+          direction={{ base: "column", xl: "row" }}
+          justifyContent="space-between" alignItems={{ base: "center", xl: "flex-start"}}
         >
 
           <SkillSet title="Frontend" skills={skills.frontend} />
