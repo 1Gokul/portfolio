@@ -28,7 +28,7 @@ const Intro = () => {
           </AnimatedHeading>
         </Box>
         <AnimatedBox flexGrow={1} delay={3}>
-          <Link href="https://github.com/1Gokul">
+          <Link href="https://github.com/1Gokul" target="_blank">
             <Button aria-label="Send Email" p={10} fontSize="2xl">
               My GitHub profile
             </Button>
