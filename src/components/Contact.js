@@ -1,8 +1,9 @@
 import React from "react"
-import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react"
+import { Button, Flex, Heading, Icon } from "@chakra-ui/react"
 import { IoLogoLinkedin } from "react-icons/io5"
 import { RiRedditFill } from "react-icons/ri"
 import { VscGithub, VscTwitter } from "react-icons/vsc"
+import { Link as GatsbyLink } from "gatsby"
 
 import { AnimatedBox, AnimatedContainer, AnimatedHeading, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 
@@ -46,11 +47,11 @@ const Contact = () => {
         </AnimatedHeading>
 
         <AnimatedBox marginY={5}>
-          <Link href="mailto:viswanath1gokul@gmail.com">
+          <GatsbyLink href="mailto:viswanath1gokul@gmail.com">
             <Button aria-label="Send Email" p={10} fontSize="2xl">
             Let&apos;s work together!
             </Button>
-          </Link>
+          </GatsbyLink>
         </AnimatedBox>
 
         <AnimatedBox>
@@ -72,9 +73,9 @@ const Contact = () => {
 
 const SocialIconLink = props => {
   return(
-    <Link aria-label={props.label} href={props.link} target="_blank">
+    <GatsbyLink aria-label={props.label} href={props.link} target="_blank">
       <Icon marginX={2} as={props.icon} transition="0.2s linear" _hover={{ color: props.color }} boxSize="60px" />
-    </Link>
+    </GatsbyLink>
 
   )}
 
