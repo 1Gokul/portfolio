@@ -1,4 +1,5 @@
 import React from "react"
+import "focus-visible/dist/focus-visible"
 import { Flex } from "@chakra-ui/react"
 import { CloudinaryContext } from "cloudinary-react"
 import { Helmet } from "react-helmet"

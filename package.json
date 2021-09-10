@@ -24,6 +24,7 @@
     "@mdx-js/react": "^1.6.22",
     "cloudinary-react": "^1.7.0",
     "eslint": "^7.31.0",
+    "focus-visible": "^5.2.0",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.10.2",
     "gatsby-plugin-gatsby-cloud": "^2.10.0",
