@@ -21,6 +21,14 @@ import { useLazyImage } from "../hooks"
 
 const projectList = [
   {
+    name: "pcpartfinder",
+    description: "A web app that scrapes information from Indian pc component stores and displays them to the user. It can also give price drop alerts to users. (ongoing)",
+    tags: ["React", "Next.js", "Chakra-UI", "FastAPI"],
+    link: "https://pcpartfinder.vercel.app",
+    github: "https://github.com/1Gokul/pcpartfinder",
+    source: "Portfolio/pcpartfinder_screencap",
+  },
+  {
     name: "MediaScout",
     description: "A media recommender web application that shows the current trending movies and TV shows along with their details.",
     tags: ["Flask", "Bootstrap", "JS", "TMDB API"],
@@ -51,14 +59,6 @@ const projectList = [
     link: "https://pic-2ascii.herokuapp.com/",
     github: "https://github.com/1Gokul/ASCII-generator",
     source: "Portfolio/pic2ascii_screencap",
-  },
-  {
-    name: "insertcoin",
-    description: "My first webdev project. A basic Steam-clone CRUD app with adding, modifying and deleting users.",
-    tags: ["Flask", "HTML5", "CSS3", "MongoDB"],
-    link: "https://insertcoin-store.herokuapp.com/",
-    github: "https://github.com/1Gokul/insertcoin",
-    source: "Portfolio/insertcoin_screencap",
   },
 ]
 
@@ -113,7 +113,7 @@ const DesktopProjectImage = ({ name, source }) => (
       loading="lazy"
       alt={name}
     >
-      <Transformation quality="10" crop="scale" />
+      <Transformation crop="scale" />
     </CNImage>
   </Box>
 )
@@ -127,7 +127,7 @@ const Tags = ({ tags }) => (
 const ProjectCard = props => {
   // Lazy load background image for mobile
   const lazyLoadedImage = useLazyImage (
-    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80,q_20/v1627890100/${props.project.source}.jpg`
+    `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80/v1627890100/${props.project.source}.jpg`
   )
 
   return (

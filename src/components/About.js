@@ -34,7 +34,7 @@ const About = () => {
 
           <Flex marginX="auto" height="350px" width="300px" >
             <CNImage publicId="Portfolio/about_photo.png" alt="My photo" loading="lazy">
-              <Transformation radius="10"  width="300" height="330"/>
+              <Transformation quality="20" radius="10"  width="300" height="330"/>
             </CNImage>
           </Flex>
         </SimpleGrid>
