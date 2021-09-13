@@ -88,6 +88,7 @@ const ProjectInfo = ({ project, projectImage }) => {
           aria-label={`Click to view the project, ${project.name}.`}
           href={project.link}
           marginX={3}
+          target="_blank"
         >
           <VscLinkExternal size={30} />
         </LinkOverlay>
@@ -95,6 +96,7 @@ const ProjectInfo = ({ project, projectImage }) => {
           aria-label={`Click to view the GitHub repository of ${project.name}.`}
           href={project.github}
           marginX={3}
+          target="_blank"
         >
           <VscGithubInverted size={30} />
         </Link>
