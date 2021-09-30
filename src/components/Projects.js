@@ -109,7 +109,7 @@ const DesktopProjectImage = ({ name, source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage
       publicId={`${source}.jpg`}
-      style={{ height: "100%", objectFit: "cover" }}
+      style={{ height: "100%", objectFit: "cover", borderRadius: "var(--chakra-radii-md)" }}
       loading="lazy"
       alt={name}
     >
