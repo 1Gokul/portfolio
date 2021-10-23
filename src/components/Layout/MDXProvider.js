@@ -116,14 +116,16 @@ import {
 } from '@chakra-ui/react';
 
 const mdComponents = {
-  h1: props => <Heading as="h1" size="2xl" mt={4} {...props} />,
-  h2: props => <Heading as="h2" size="xl" mt={4} {...props} />,
-  h3: props => <Heading as="h3" size="lg" mt={4} {...props} />,
-  h4: props => <Heading as="h4" size="md" mt={4} {...props} />,
-  h5: props => <Heading as="h5" size="sm" mt={4} {...props} />,
-  h6: props => <Heading as="h6" size="xs" mt={4} {...props} />,
+  h1: props => <Heading as="h1" size="2xl" mt={12} {...props} />,
+  h2: props => <Heading as="h2" size="xl" mt={12} {...props} />,
+  h3: props => <Heading as="h3" size="lg" mt={12} {...props} />,
+  h4: props => <Heading as="h4" size="md" mt={12} {...props} />,
+  h5: props => <Heading as="h5" size="sm" mt={12} {...props} />,
+  h6: props => <Heading as="h6" size="xs" mt={12} {...props} />,
   p: props => <Text as="p" marginY={5} fontSize="xl" {...props} />,
-  a: props => <Link as="a" color="pink.500" {...props} />,
+  a: props => <Link as="a" color="pink.500" {...props} />,  
+  pre: (props) => <Box as="pre" {...props} p={2} my={8}  />,
+  code: (props) => <Code {...props} bgColor="transparent" />,
   ul: props => (
     <List
       px={3}

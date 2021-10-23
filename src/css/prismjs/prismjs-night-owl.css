@@ -53,8 +53,8 @@
  
  /* Code blocks */
  pre[class*="language-"] {
-   padding: 1em;
-   margin: 0.5em 0;
+   padding: 2em;
+   margin: 1em 0;
    overflow: auto;
  }
  

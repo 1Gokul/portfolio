@@ -68,7 +68,7 @@ export const BlogContainer = forwardRef((props, ref) => {
       marginTop="8rem"
       minH="100vh"
       minW="20vw"
-      maxW={{ base: "95vw", md: "2xl" }}
+      maxW={{ base: "95vw", md: "3xl" }}
       paddingX={{ base: 5, md: 10 }}
       {...props}
     >
