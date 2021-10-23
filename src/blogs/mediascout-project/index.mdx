@@ -61,9 +61,23 @@ as no requests would be made to the API.
 
 Updating the data, however, was a problem I had not handled before. 
 
-After some digging, I set up SQLAlchemy on my app with its 
-[Flask extension](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) and setup a
-Postgres DB on [Heroku](https://www.heroku.com/postgres).
+After some digging, I set up pymongo and a database on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register). It's free and more
+than enough for small projects.
+
+The process was simple:
+
+```python
+tv_home = db.media_data.update_one(
+    {"page": "tv_home"},
+    {"$set": {"content": get_tv_home_info()}},
+    upsert=True,
+)
+```
+<Alert status="warning">
+  <AlertIcon />
+  P.S. "Upsert = True" means that the data should be inserted even if there is no matching document in the collection. 
+  This helps when the database is cleared and there is no document to match with.
+</Alert>
 
 I then created a `/update-db/<id>` route on the application to handle a route and take a parameter `id`. This would
 later get changed to a simple POST request with the id in the passed JSON.
