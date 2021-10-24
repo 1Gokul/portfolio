@@ -1,106 +1,13 @@
 import React from "react"
 import { Flex, Heading, Icon, SimpleGrid } from "@chakra-ui/react"
-import {
-  IoLogoHtml5,
-  IoLogoCss3,
-  IoLogoReact,
-  IoLogoJavascript,
-  IoLogoGithub,
-  IoLogoPython,
-} from "react-icons/io5"
-import {
-  SiFlask,
-  SiJinja,
-  SiMongodb,
-  SiUnrealengine,
-  SiHeroku,
-  SiGit,
-  SiGraphql,
-} from "react-icons/si"
-
-import { AnimatedBox, AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
 import { motion } from "framer-motion"
 
-const skills = {
-  frontend: [
-    {
-      icon: IoLogoHtml5,
-      name: "HTML5",
-      color: "#e34c26"
-    },
-    {
-      icon: IoLogoCss3,
-      name: "CSS3",
-      color: "#1572B6"
-    },
-    {
-      icon: IoLogoJavascript,
-      name: "Javascript",
-      color: "#F7DF1E"
-    },
-    {
-      icon: IoLogoReact,
-      name: "React.js",
-      color: "#61DAFB"
-    },
-    {
-      icon: SiJinja,
-      name: "Jinja",
-      color: "#b51010"
-    },
-  ],
+import { AnimatedBox, AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
+import { skills } from "../data/Toolbox"
 
-  backend: [
-    {
-      icon: IoLogoPython,
-      name: "Python",
-      color: "#4584b6"
-    },
-    {
-      icon: SiFlask,
-      name: "Flask",
-      color: "#EEEEEE"
-    },
-    {
-      icon: SiGraphql,
-      name: "GraphQL",
-      color: "#E10098"
-    },
-    {
-      icon: SiMongodb,
-      name: "MongoDB",
-      color: "#4EA94B"
-    },
-  ],
-
-  others: [
-    {
-      icon: SiGit,
-      name: "Git",
-      color: "#F05032"
-    },
-    {
-      icon: IoLogoGithub,
-      name: "GitHub",
-      color: "#2ea650"
-    },
-
-    {
-      icon: SiHeroku,
-      name: "Heroku",
-      color: "#6762a6"
-    },
-    {
-      icon: SiUnrealengine,
-      name: "Unreal Engine 4",
-      color: "#D2D7D3"
-    },
-  ],
-}
 
 const MotionFlex = motion(Flex)
-
-const largeIconSize = "100px"
+const LARGE_ICON_SIZE = "100px"
 
 const Toolbox = () => {
   return (
@@ -140,7 +47,7 @@ const SkillSet = props => (
 
 const LargeSkill = props => (
   <MotionFlex flexDirection="column" alignItems="center" textAlign="center" marginX={5} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.85 }}>
-    <Icon as={props.skill.icon} boxSize={largeIconSize} color={props.skill.color}/>
+    <Icon as={props.skill.icon} boxSize={LARGE_ICON_SIZE} color={props.skill.color}/>
     {props.skill.name}
   </MotionFlex>
 )

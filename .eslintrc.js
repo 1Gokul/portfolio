@@ -3,12 +3,17 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: ["eslint:recommended", "plugin:react/recommended",  "plugin:react-hooks/recommended"],
+  extends: ["eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 2018,
+    ecmaVersion: 2021,
     sourceType: "module",
   },
   plugins: ["react"],
