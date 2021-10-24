@@ -13,7 +13,7 @@ import {
   SiUnrealengine,
   SiHeroku,
   SiGit,
-  SiGraphql,
+  SiFastapi,
 } from "react-icons/si"
 
 export const skills = {
@@ -57,9 +57,9 @@ export const skills = {
       color: "#EEEEEE"
     },
     {
-      icon: SiGraphql,
-      name: "GraphQL",
-      color: "#E10098"
+      icon: SiFastapi,
+      name: "FastAPI",
+      color: "#05998b"
     },
     {
       icon: SiMongodb,
