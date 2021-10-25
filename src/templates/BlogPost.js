@@ -12,7 +12,7 @@ import {
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
 import { motion } from "framer-motion"
 
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout/BaseLayout"
 import {
   BlogContainer,
   SectionHeading,

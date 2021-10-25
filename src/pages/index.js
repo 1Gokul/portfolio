@@ -1,6 +1,6 @@
 import React from "react"
 
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout/BaseLayout"
 import Contact from "../components/Contact"
 import Intro from "../components/Intro"
 import Projects from "../components/Projects"

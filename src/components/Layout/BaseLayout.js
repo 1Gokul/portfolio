@@ -4,7 +4,7 @@ import { Flex } from "@chakra-ui/react"
 import { CloudinaryContext } from "cloudinary-react"
 import { Helmet } from "react-helmet"
 
-import Header from "./Header/Header"
+import Header from "./Header/BaseHeader"
 import Footer from "./Footer"
 import "../../css/global.css"
 import GeneralSansFont from "../../fonts/GeneralSans-Variable.woff2"

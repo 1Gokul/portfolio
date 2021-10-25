@@ -4,7 +4,7 @@ import { Code, Flex, Heading, Link, Text } from "@chakra-ui/react"
 import { Link as GatsbyLink } from "gatsby"
 
 
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout/BaseLayout"
 import { HomeContainer } from "../components/Layout/LayoutComponents"
 import Seo from "../components/Layout/SEO"
 import bgImg from "../images/404.jpg"

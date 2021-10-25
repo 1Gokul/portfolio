@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout"
 import { Link as GatsbyLink } from "gatsby"
 
-import Layout from "../components/Layout/Layout"
+import Layout from "../components/Layout/BaseLayout"
 import { BlogContainer, SectionHeading } from "../components/Layout/LayoutComponents"
 import Seo from "../components/Layout/SEO"
 import { Input } from "@chakra-ui/react"
