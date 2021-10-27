@@ -31,12 +31,4 @@ export const projectList = [
     github: "https://github.com/1Gokul/MedievalCombatProject",
     source: "Portfolio/medievalrpg_screencap",
   },
-  {
-    name: "pic2ASCII",
-    description: "My first ever web app. Front-end to an ASCII generator GitHub repository. Built for a college project.",
-    tags: ["Flask", "JS"],
-    link: "https://pic-2ascii.herokuapp.com/",
-    github: "https://github.com/1Gokul/ASCII-generator",
-    source: "Portfolio/pic2ascii_screencap",
-  },
 ]
