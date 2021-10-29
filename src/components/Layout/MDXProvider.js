@@ -146,6 +146,7 @@ const mdComponents = {
   ),
   li: props => <ListItem {...props} />,
   hr: props => <Divider my={8} {...props} />,
+  note: props => <Alert colorScheme="aqua" variant="left-accent" {...props} />,
   Accordion,
   AccordionItem,
   AccordionHeader,

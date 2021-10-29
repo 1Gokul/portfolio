@@ -73,11 +73,10 @@ tv_home = db.media_data.update_one(
     upsert=True,
 )
 ```
-<Alert status="warning">
-  <AlertIcon />
+<note>
   P.S. "Upsert = True" means that the data should be inserted even if there is no matching document in the collection. 
   This helps when the database is cleared and there is no document to match with.
-</Alert>
+</note>
 
 I then created a `/update-db/<id>` route on the application to handle a route and take a parameter `id`. This would
 later get changed to a simple POST request with the id in the passed JSON.
