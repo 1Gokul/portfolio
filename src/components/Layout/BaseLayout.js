@@ -1,20 +1,19 @@
-import React from "react"
-import "focus-visible/dist/focus-visible"
-import { Flex } from "@chakra-ui/react"
-import { CloudinaryContext } from "cloudinary-react"
-import { Helmet } from "react-helmet"
+import React from "react";
+import "focus-visible/dist/focus-visible";
+import { Flex } from "@chakra-ui/react";
+import { CloudinaryContext } from "cloudinary-react";
+import { Helmet } from "react-helmet";
 
-import Header from "./Header/BaseHeader"
-import Footer from "./Footer"
-import "../../css/global.css"
-import GeneralSansFont from "../../fonts/GeneralSans-Variable.woff2"
+import Header from "./Header/BaseHeader";
+import Footer from "./Footer";
+import "../../css/global.css";
+import GeneralSansFont from "../../fonts/GeneralSans-Variable.woff2";
 
+const Layout = (props) => {
+  let internalLinks = [],
+    externalLinks = [];
 
-const Layout = props => {
-
-  let internalLinks = [], externalLinks = []
-
-  if (props.type === "home"){
+  if (props.type === "home") {
     internalLinks = [
       {
         name: "about"
@@ -29,15 +28,14 @@ const Layout = props => {
         name: "say hi",
         offset: 0
       }
-    ]
-    externalLinks=[
+    ];
+    externalLinks = [
       {
         name: "DevLogs",
         to: "/blogs"
       }
-    ]
-  }
-  else if (props.type === "blog"){
+    ];
+  } else if (props.type === "blog") {
     externalLinks = [
       {
         name: "Home",
@@ -47,13 +45,12 @@ const Layout = props => {
         name: "DevLogs",
         to: "/blogs"
       }
-    ]
+    ];
   }
 
   return (
     <>
       <Flex direction="column" m="0 auto">
-
         <Helmet>
           <link
             rel="preload"
@@ -65,7 +62,11 @@ const Layout = props => {
         </Helmet>
 
         <CloudinaryContext cloudName="gokulv" secure="true">
-          <Header type={props.type} internalLinks={internalLinks} externalLinks={externalLinks}/>
+          <Header
+            type={props.type}
+            internalLinks={internalLinks}
+            externalLinks={externalLinks}
+          />
 
           {props.children}
 
@@ -73,7 +74,7 @@ const Layout = props => {
         </CloudinaryContext>
       </Flex>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

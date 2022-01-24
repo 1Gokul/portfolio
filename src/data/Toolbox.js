@@ -4,8 +4,8 @@ import {
   IoLogoReact,
   IoLogoJavascript,
   IoLogoGithub,
-  IoLogoPython,
-} from "react-icons/io5"
+  IoLogoPython
+} from "react-icons/io5";
 import {
   SiFlask,
   SiJinja,
@@ -13,8 +13,8 @@ import {
   SiUnrealengine,
   SiHeroku,
   SiGit,
-  SiFastapi,
-} from "react-icons/si"
+  SiFastapi
+} from "react-icons/si";
 
 export const skills = {
   frontend: [
@@ -42,7 +42,7 @@ export const skills = {
       icon: SiJinja,
       name: "Jinja",
       color: "#b51010"
-    },
+    }
   ],
 
   backend: [
@@ -65,7 +65,7 @@ export const skills = {
       icon: SiMongodb,
       name: "MongoDB",
       color: "#4EA94B"
-    },
+    }
   ],
 
   others: [
@@ -89,6 +89,6 @@ export const skills = {
       icon: SiUnrealengine,
       name: "Unreal Engine 4",
       color: "#D2D7D3"
-    },
-  ],
-}
+    }
+  ]
+};

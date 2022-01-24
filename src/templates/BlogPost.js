@@ -1,5 +1,5 @@
-import React, { createRef, useEffect, useState } from "react"
-import { graphql } from "gatsby"
+import React, { createRef, useEffect, useState } from "react";
+import { graphql } from "gatsby";
 import {
   CircularProgress,
   Divider,
@@ -7,29 +7,33 @@ import {
   Icon,
   IconButton,
   Link,
-  Text,
-} from "@chakra-ui/react"
-import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5"
-import { motion } from "framer-motion"
+  Text
+} from "@chakra-ui/react";
+import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5";
+import { motion } from "framer-motion";
 
-import Layout from "../components/Layout/BaseLayout"
+import Layout from "../components/Layout/BaseLayout";
 import {
   BlogContainer,
-  SectionHeading,
-} from "../components/Layout/LayoutComponents"
-import MDX from "../components/Layout/MDXProvider"
-import Seo from "../components/Layout/SEO"
+  SectionHeading
+} from "../components/Layout/LayoutComponents";
+import MDX from "../components/Layout/MDXProvider";
+import Seo from "../components/Layout/SEO";
 
-require ('../css/prismjs/prismjs-night-owl.css'); // eslint-disable-line
+require("../css/prismjs/prismjs-night-owl.css"); // eslint-disable-line
 
-const MotionFlex = motion (Flex)
+const MotionFlex = motion(Flex);
 
 const BlogPost = ({ data, pageContext }) => {
-  const { body, frontmatter: { title, date, embeddedImagesLocal }, headings } = data.mdx
+  const {
+    body,
+    frontmatter: { title, date, embeddedImagesLocal },
+    headings
+  } = data.mdx;
 
-  const { prev, next } = pageContext
+  const { prev, next } = pageContext;
 
-  const target = createRef ()
+  const target = createRef();
 
   return (
     <Layout type="blog">
@@ -38,7 +42,9 @@ const BlogPost = ({ data, pageContext }) => {
       <TableOfContents headings={headings} target={target} />
       <BlogContainer ref={target}>
         <SectionHeading marginBottom={2}>{title}</SectionHeading>
-        <Text marginBottom={14} textAlign="center">{date}</Text>
+        <Text marginBottom={14} textAlign="center">
+          {date}
+        </Text>
         <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
         <Divider />
@@ -49,23 +55,25 @@ const BlogPost = ({ data, pageContext }) => {
           fontSize="xl"
           alignItems="center"
         >
-          {prev !== null &&
+          {prev !== null && (
             <Link href={prev.fields.slug}>
               <Icon as={IoArrowBack} />
               Previous post
-            </Link>}
-          {next !== null &&
+            </Link>
+          )}
+          {next !== null && (
             <Link href={next.fields.slug}>
               Next post
               <Icon as={IoArrowForward} />
-            </Link>}
+            </Link>
+          )}
         </Flex>
       </BlogContainer>
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogPost
+export default BlogPost;
 
 export const query = graphql`
   query BlogPostQuery($id: String) {
@@ -87,7 +95,7 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const tocVariants = {
   open: {
@@ -95,8 +103,8 @@ const tocVariants = {
     opacity: 1,
     transition: {
       duration: 0.35,
-      staggerChildren: 0.1,
-    },
+      staggerChildren: 0.1
+    }
   },
   closed: {
     height: 0,
@@ -104,50 +112,45 @@ const tocVariants = {
     transition: {
       duration: 0.35,
       staggerChildren: 0.1,
-      staggerDirection: -1,
-    },
-  },
-}
+      staggerDirection: -1
+    }
+  }
+};
 
 const headingLinkVariants = {
   open: {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.25,
-    },
+      duration: 0.25
+    }
   },
   closed: {
     y: 10,
     opacity: 0,
     transition: {
-      duration: 0.25,
-    },
-  },
-}
+      duration: 0.25
+    }
+  }
+};
 
 const TableOfContents = ({ headings, target }) => {
   // Depth is equal to 2 for h2 headings
-  const h2Headings = headings.filter (heading => heading.depth === 2)
+  const h2Headings = headings.filter((heading) => heading.depth === 2);
 
-  h2Headings.forEach (
-    heading =>
+  h2Headings.forEach(
+    (heading) =>
       (heading.url = heading.value
-        .toLowerCase ()
-        .replace ("()", "")
-        .split (" ")
-        .join ("-"))
-  )
+        .toLowerCase()
+        .replace("()", "")
+        .split(" ")
+        .join("-"))
+  );
 
-  const [visible, setVisible] = useState (false)
+  const [visible, setVisible] = useState(false);
 
   return (
-    <Flex
-      position="fixed"
-      right={{ base: 5, md: 10 }}
-      bottom={20}
-      zIndex={4}
-    >
+    <Flex position="fixed" right={{ base: 5, md: 10 }} bottom={20}>
       <MotionFlex
         flexDirection="column"
         padding={3}
@@ -158,13 +161,15 @@ const TableOfContents = ({ headings, target }) => {
         animate={visible ? "open" : "closed"}
         variants={tocVariants}
       >
-        <Text padding={3} color="pink.300">Contents</Text>
-        {h2Headings.map (heading => (
+        <Text padding={3} color="pink.300">
+          Contents
+        </Text>
+        {h2Headings.map((heading) => (
           <MotionFlex key={heading.value} variants={headingLinkVariants}>
             <Link
               display="block"
               padding={3}
-              onClick={() => setVisible (!visible)}
+              onClick={() => setVisible(!visible)}
               href={`#${heading.url}`}
             >
               {heading.value}
@@ -179,48 +184,47 @@ const TableOfContents = ({ headings, target }) => {
         borderRadius="full"
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
-        onClick={() => setVisible (!visible)}
-        zIndex={4}
+        onClick={() => setVisible(!visible)}
+        zIndex={1}
       />
       <ReadingProgress target={target} />
     </Flex>
-  )
-}
-
+  );
+};
 
 // Thanks to nehalist.io for the progress bar
 // https://nehalist.io/creating-a-reading-progress-bar-in-react
 
 const ReadingProgress = ({ target }) => {
-  const [readingProgress, setReadingProgress] = useState (0)
+  const [readingProgress, setReadingProgress] = useState(0);
   const scrollListener = () => {
     if (!target.current) {
-      return
+      return;
     }
 
-    const element = target.current
+    const element = target.current;
     const totalHeight =
-      element.clientHeight - element.offsetTop - window.innerHeight
+      element.clientHeight - element.offsetTop - window.innerHeight;
     const windowScrollTop =
       window.pageYOffset ||
       document.documentElement.scrollTop ||
       document.body.scrollTop ||
-      0
+      0;
 
     if (windowScrollTop === 0) {
-      return setReadingProgress (0)
+      return setReadingProgress(0);
     }
 
     if (windowScrollTop > totalHeight) {
-      return setReadingProgress (100)
+      return setReadingProgress(100);
     }
-    setReadingProgress (windowScrollTop / totalHeight * 100)
-  }
+    setReadingProgress((windowScrollTop / totalHeight) * 100);
+  };
 
-  useEffect (() => {
-    window.addEventListener ("scroll", scrollListener)
-    return () => window.removeEventListener ("scroll", scrollListener)
-  })
+  useEffect(() => {
+    window.addEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
+  });
 
   return (
     <CircularProgress
@@ -229,9 +233,9 @@ const ReadingProgress = ({ target }) => {
       color="pink.500"
       thickness="10px"
       position="fixed"
-      right={{ base: "14px" , md:"34.5px" }}
+      right={{ base: "14px", md: "34.5px" }}
       bottom="73.5px"
-      zIndex={3}
+      zIndex={0}
     />
-  )
-}
+  );
+};

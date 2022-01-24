@@ -1,14 +1,20 @@
-import React from "react"
-import { Box, Button, Flex, Link } from "@chakra-ui/react"
+import React from "react";
+import { Box, Button, Flex, Link } from "@chakra-ui/react";
 
-import { AnimatedBox, AnimatedHeading, HomeContainer } from "./Layout/LayoutComponents"
+import {
+  AnimatedBox,
+  AnimatedHeading,
+  HomeContainer
+} from "./Layout/LayoutComponents";
 
 const Intro = () => {
   return (
     <HomeContainer>
       <Flex direction="column" flexGrow={1} marginLeft={{ base: 0, md: 10 }}>
         <Box justifySelf="flex-start" flexGrow={1}>
-          <AnimatedHeading size="lg" marginY={5}>Hey there! My name&apos;s</AnimatedHeading>
+          <AnimatedHeading size="lg" marginY={5}>
+            Hey there! My name&apos;s
+          </AnimatedHeading>
           <AnimatedHeading
             marginBottom={5}
             fontSize={{ base: "6xl", md: "8xl" }}
@@ -23,8 +29,7 @@ const Intro = () => {
           <AnimatedHeading size="xl" delay={2}>
             {" "}
             I am a full-stack web developer.
-            <br />
-            I also make games on the side.
+            <br />I also make games on the side.
           </AnimatedHeading>
         </Box>
         <AnimatedBox flexGrow={1} delay={3}>
@@ -35,9 +40,8 @@ const Intro = () => {
           </Link>
         </AnimatedBox>
       </Flex>
-
     </HomeContainer>
-  )
-}
+  );
+};
 
-export default Intro
+export default Intro;

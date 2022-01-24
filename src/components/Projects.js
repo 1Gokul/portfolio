@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {
   Heading,
   Box,
@@ -8,24 +8,25 @@ import {
   Text,
   Flex,
   SimpleGrid,
-  Badge,
-} from "@chakra-ui/react"
-import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc"
-import {
-  Image as CNImage,
-  Transformation,
-} from "cloudinary-react"
+  Badge
+} from "@chakra-ui/react";
+import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc";
+import { Image as CNImage, Transformation } from "cloudinary-react";
 
-import { projectList } from "../data/Projects"
-import { AnimatedContainer, HomeContainer, SectionHeading } from "./Layout/LayoutComponents"
-import { useLazyImage } from "../hooks"
+import { projectList } from "../data/Projects";
+import {
+  AnimatedContainer,
+  HomeContainer,
+  SectionHeading
+} from "./Layout/LayoutComponents";
+import { useLazyImage } from "../hooks";
 
 const ProjectInfo = ({ project, projectImage }) => {
   return (
     <Box
       backgroundImage={{
         base: projectImage,
-        md: "none",
+        md: "none"
       }}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
@@ -37,9 +38,7 @@ const ProjectInfo = ({ project, projectImage }) => {
       <Heading size="lg" marginBottom={5}>
         {project.name}
       </Heading>
-      <Text marginY={8}>
-        {project.description}
-      </Text>
+      <Text marginY={8}>{project.description}</Text>
       <Tags tags={project.tags} />
       <Flex>
         <LinkOverlay
@@ -60,33 +59,41 @@ const ProjectInfo = ({ project, projectImage }) => {
         </Link>
       </Flex>
     </Box>
-  )
-}
+  );
+};
 
 const DesktopProjectImage = ({ name, source }) => (
   <Box display={{ base: "none", md: "block" }} height="100%">
     <CNImage
       publicId={`${source}.jpg`}
-      style={{ height: "100%", objectFit: "cover", borderRadius: "var(--chakra-radii-md)" }}
+      style={{
+        height: "100%",
+        objectFit: "cover",
+        borderRadius: "var(--chakra-radii-md)"
+      }}
       loading="lazy"
       alt={name}
     >
       <Transformation crop="scale" />
     </CNImage>
   </Box>
-)
+);
 
 const Tags = ({ tags }) => (
   <Flex marginY={5} flexWrap="wrap">
-    {tags.map (tag => <Badge margin={2} key={tag}>{tag}</Badge>)}
+    {tags.map((tag) => (
+      <Badge margin={2} key={tag}>
+        {tag}
+      </Badge>
+    ))}
   </Flex>
-)
+);
 
-const ProjectCard = props => {
+const ProjectCard = (props) => {
   // Lazy load background image for mobile
-  const lazyLoadedImage = useLazyImage (
+  const lazyLoadedImage = useLazyImage(
     `https://res.cloudinary.com/gokulv/image/upload/co_rgb:09424c,e_colorize:80/v1627890100/${props.project.source}.jpg`
-  )
+  );
 
   return (
     <LinkBox>
@@ -99,29 +106,30 @@ const ProjectCard = props => {
         color="white"
       >
         <ProjectInfo project={props.project} projectImage={lazyLoadedImage} />
-        <DesktopProjectImage name={props.project.name} source={props.project.source} />
+        <DesktopProjectImage
+          name={props.project.name}
+          source={props.project.source}
+        />
         <Box />
       </SimpleGrid>
     </LinkBox>
-  )
-}
+  );
+};
 
 const Projects = () => {
   return (
     <HomeContainer id="projects">
-      <SectionHeading>
-        Some of my projects
-      </SectionHeading>
+      <SectionHeading>Some of my projects</SectionHeading>
 
       <SimpleGrid flexGrow={1} columns={1} width="100%">
-        {projectList.map ((project, index) => (
+        {projectList.map((project, index) => (
           <AnimatedContainer key={index}>
             <ProjectCard project={project} />
           </AnimatedContainer>
         ))}
       </SimpleGrid>
     </HomeContainer>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

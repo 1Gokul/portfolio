@@ -1,11 +1,10 @@
-import React from "react"
-import { Box, Link } from "@chakra-ui/react"
-import { Link as ScrollLink } from "react-scroll"
-import { Link as GatsbyLink } from "gatsby"
-import { motion } from "framer-motion"
+import React from "react";
+import { Box, Link } from "@chakra-ui/react";
+import { Link as ScrollLink } from "react-scroll";
+import { Link as GatsbyLink } from "gatsby";
+import { motion } from "framer-motion";
 
-const MotionLink = motion(Box)
-
+const MotionLink = motion(Box);
 
 const navlinkVariants = {
   open: {
@@ -22,10 +21,9 @@ const navlinkVariants = {
       duration: 0.25
     }
   }
-}
+};
 
-
-export const InternalLink = props => (
+export const InternalLink = (props) => (
   <MotionLink variants={navlinkVariants}>
     <ScrollLink
       to={props.to}
@@ -36,14 +34,12 @@ export const InternalLink = props => (
       {props.children}
     </ScrollLink>
   </MotionLink>
+);
 
-)
-
-export const ExternalLink = props => (
+export const ExternalLink = (props) => (
   <MotionLink variants={navlinkVariants}>
     <Link as={GatsbyLink} to={props.to}>
       {props.children}
     </Link>
   </MotionLink>
-)
-
+);

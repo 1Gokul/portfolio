@@ -1,6 +1,6 @@
-import { IoLogoLinkedin } from "react-icons/io5"
-import { RiRedditFill } from "react-icons/ri"
-import { VscGithub, VscTwitter } from "react-icons/vsc"
+import { IoLogoLinkedin } from "react-icons/io5";
+import { RiRedditFill } from "react-icons/ri";
+import { VscGithub, VscTwitter } from "react-icons/vsc";
 
 export const socialLinks = [
   {
@@ -26,5 +26,5 @@ export const socialLinks = [
     icon: RiRedditFill,
     color: "#ff4500",
     link: "https://old.reddit.com/message/compose?to=_zygoat"
-  },
-]
+  }
+];
