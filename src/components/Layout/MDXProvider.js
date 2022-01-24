@@ -216,7 +216,6 @@ const mdComponents = {
   Progress,
   Radio,
   RadioGroup,
-  RadioButtonGroup,
   Select,
   Skeleton,
   Slider,
