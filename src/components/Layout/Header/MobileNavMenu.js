@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Flex, IconButton } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
@@ -25,27 +25,17 @@ const menuVariants = {
   }
 };
 
-const MobileNavMenu = (props) => {
-  const [expanded, setExpanded] = useState(false);
-
-  const toggleExpanded = () => {
-    document.body.style.overflow = !expanded ? "hidden" : "visible";
-    setExpanded(!expanded);
-  };
-
+const MobileNavMenu = ({ expanded, toggler, internalLinks, externalLinks }) => {
   return (
     <Flex direction="column">
-      <NavMenuToggler toggler={toggleExpanded} expanded={expanded} />
-
       <MotionFlex
         flexDir="column"
         display={{ base: "flex", md: "none" }}
-        w="100vw"
-        h="100vh"
         pos="fixed"
         top="0"
         left="0"
-        overflowY="auto"
+        w="100%"
+        h="100%"
         bgColor="aqua.900"
         padding={3}
         paddingTop="100px"
@@ -53,15 +43,15 @@ const MobileNavMenu = (props) => {
         animate={expanded ? "open" : "closed"}
         variants={menuVariants}
       >
-        {props.internalLinks.map(({ name, offset = -100 }) => (
+        {internalLinks.map(({ name, offset = -100 }) => (
           <InternalLink key={name} to={name} offset={offset}>
-            <NavLink onClick={toggleExpanded}>{name}</NavLink>
+            <NavLink onClick={toggler}>{name}</NavLink>
           </InternalLink>
         ))}
 
-        {props.externalLinks.map((link) => (
+        {externalLinks.map((link) => (
           <ExternalLink key={link.name} to={link.to}>
-            <NavLink onClick={toggleExpanded}>{link.name}</NavLink>
+            <NavLink onClick={toggler}>{link.name}</NavLink>
           </ExternalLink>
         ))}
       </MotionFlex>
@@ -92,7 +82,7 @@ const NavLink = (props) => (
   </Button>
 );
 
-const NavMenuToggler = (props) => (
+export const NavMenuToggler = (props) => (
   <IconButton
     variant="ghost"
     aria-label="Open Navigation Menu"
