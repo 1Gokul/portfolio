@@ -14,7 +14,7 @@ export const AnimatedContainer = (props) => {
   const variants = {
     visible: {
       opacity: 1,
-      y: 0,
+      y: "5rem",
       transition: { delay: props.delay || 0, duration: 0.5 }
     },
     hidden: { opacity: 0, y: 150 }
@@ -45,7 +45,7 @@ export const HomeContainer = (props) => {
       flexDirection="column"
       marginX="auto"
       marginTop="3rem"
-      minH="80vh"
+      minH="90vh"
       minW="70vw"
       maxW={{ base: "95vw", md: "75vw" }}
       paddingX={{ base: 5, md: 10 }}

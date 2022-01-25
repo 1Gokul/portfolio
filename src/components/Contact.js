@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, Flex, Heading, Icon } from "@chakra-ui/react";
-import { Link as GatsbyLink } from "gatsby";
+import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react";
 
 import {
   AnimatedBox,
@@ -27,11 +26,11 @@ const Contact = () => {
         </AnimatedHeading>
 
         <AnimatedBox marginY={5}>
-          <GatsbyLink href="mailto:gokulviswanath@protonmail.com">
+          <Link href="mailto:gokulviswanath@protonmail.com">
             <Button aria-label="Send Email" p={10} fontSize="2xl">
               Let&apos;s work together!
             </Button>
-          </GatsbyLink>
+          </Link>
         </AnimatedBox>
 
         <AnimatedBox>
@@ -49,7 +48,7 @@ const Contact = () => {
 
 const SocialIconLink = (props) => {
   return (
-    <GatsbyLink aria-label={props.label} href={props.link} target="_blank">
+    <Link aria-label={props.label} to={props.link} target="_blank">
       <Icon
         marginX={2}
         as={props.icon}
@@ -57,7 +56,7 @@ const SocialIconLink = (props) => {
         _hover={{ color: props.color }}
         boxSize="60px"
       />
-    </GatsbyLink>
+    </Link>
   );
 };
 

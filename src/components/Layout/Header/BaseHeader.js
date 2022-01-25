@@ -13,9 +13,17 @@ const Navbar = ({ internalLinks, externalLinks }) => {
     setExpanded(!expanded);
   };
   return (
-    <Flex direction="column">
+    <Flex
+      direction="column"
+      position="sticky"
+      width="100%"
+      bgColor="rgb(0, 40, 63, 0.7)"
+      top="0"
+      as="nav"
+      zIndex="3"
+    >
       <Flex
-        zIndex={2}
+        zIndex="3"
         w="100%"
         justifyContent="space-between"
         alignItems="center"

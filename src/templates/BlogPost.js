@@ -150,7 +150,7 @@ const TableOfContents = ({ headings, target }) => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Flex position="fixed" right={{ base: 5, md: 10 }} bottom={20}>
+    <Flex position="fixed" right={{ base: 5, md: 10 }} bottom={20} zIndex="1">
       <MotionFlex
         flexDirection="column"
         padding={3}
@@ -185,7 +185,7 @@ const TableOfContents = ({ headings, target }) => {
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
         onClick={() => setVisible(!visible)}
-        zIndex={1}
+        zIndex="1"
       />
       <ReadingProgress target={target} />
     </Flex>
@@ -235,7 +235,7 @@ const ReadingProgress = ({ target }) => {
       position="fixed"
       right={{ base: "14px", md: "34.5px" }}
       bottom="73.5px"
-      zIndex={0}
+      zIndex="0"
     />
   );
 };

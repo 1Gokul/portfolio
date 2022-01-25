@@ -29,6 +29,7 @@ const MobileNavMenu = ({ expanded, toggler, internalLinks, externalLinks }) => {
   return (
     <Flex direction="column">
       <MotionFlex
+        zIndex={1}
         flexDir="column"
         display={{ base: "flex", md: "none" }}
         pos="fixed"
