@@ -6,8 +6,8 @@ import {
   AnimatedContainer,
   HomeContainer,
   SectionHeading
-} from "./Layout/LayoutComponents";
-import { AboutDescription } from "../data/About";
+} from "../components/LayoutComponents";
+import { AboutDescription } from "../../static/data/About";
 
 const About = () => {
   return (

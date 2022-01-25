@@ -7,8 +7,8 @@ import {
   AnimatedHeading,
   HomeContainer,
   SectionHeading
-} from "./Layout/LayoutComponents";
-import { socialLinks } from "../data/Contact";
+} from "../components/LayoutComponents";
+import { socialLinks } from "../../static/data/Contact";
 
 const Contact = () => {
   return (

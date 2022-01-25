@@ -12,13 +12,10 @@ import {
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5";
 import { motion } from "framer-motion";
 
-import Layout from "../components/Layout/BaseLayout";
-import {
-  BlogContainer,
-  SectionHeading
-} from "../components/Layout/LayoutComponents";
-import MDX from "../components/Layout/MDXProvider";
-import Seo from "../components/Layout/SEO";
+import Layout from "../components/Layout";
+import { BlogContainer, SectionHeading } from "../components/LayoutComponents";
+import MDX from "../components/MDXProvider";
+import Seo from "../components/SEO";
 
 require("../css/prismjs/prismjs-night-owl.css"); // eslint-disable-line
 

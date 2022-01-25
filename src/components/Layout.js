@@ -6,7 +6,7 @@ import "@fontsource/inconsolata";
 
 import Header from "./Header/BaseHeader";
 import Footer from "./Footer";
-import "../../css/global.css";
+import "../css/global.css";
 
 const Layout = (props) => {
   let internalLinks = [],

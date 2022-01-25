@@ -13,12 +13,12 @@ import {
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc";
 import { Image as CNImage, Transformation } from "cloudinary-react";
 
-import { projectList } from "../data/Projects";
+import { projectList } from "../../static/data/Projects";
 import {
   AnimatedContainer,
   HomeContainer,
   SectionHeading
-} from "./Layout/LayoutComponents";
+} from "../components/LayoutComponents";
 import { useLazyImage } from "../hooks";
 
 const ProjectInfo = ({ project, projectImage }) => {

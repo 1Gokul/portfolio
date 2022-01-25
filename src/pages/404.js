@@ -3,9 +3,9 @@ import React from "react";
 import { Code, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 
-import Layout from "../components/Layout/BaseLayout";
-import { HomeContainer } from "../components/Layout/LayoutComponents";
-import Seo from "../components/Layout/SEO";
+import Layout from "../components/Layout";
+import { HomeContainer } from "../components/LayoutComponents";
+import Seo from "../components/SEO";
 import bgImg from "../images/404.jpg";
 
 const NotFoundPage = () => {

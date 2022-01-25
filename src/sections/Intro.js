@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading, SlideFade } from "@chakra-ui/react";
 
-import { HomeContainer } from "./Layout/LayoutComponents";
+import { HomeContainer } from "../components/LayoutComponents";
 
 const Intro = () => {
   return (

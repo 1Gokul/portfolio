@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import { graphql, Link as GatsbyLink } from "gatsby";
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout";
 
-import Layout from "../components/Layout/BaseLayout";
-import {
-  BlogContainer,
-  SectionHeading
-} from "../components/Layout/LayoutComponents";
-import Seo from "../components/Layout/SEO";
+import Layout from "../components/Layout";
+import { BlogContainer, SectionHeading } from "../components/LayoutComponents";
+import Seo from "../components/SEO";
 import { Input } from "@chakra-ui/react";
 
 const Blogs = ({ data }) => {

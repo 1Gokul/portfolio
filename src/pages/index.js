@@ -1,12 +1,12 @@
 import React from "react";
 
-import Layout from "../components/Layout/BaseLayout";
-import Contact from "../components/Contact";
-import Intro from "../components/Intro";
-import Projects from "../components/Projects";
-import Toolbox from "../components/Toolbox";
-import About from "../components/About";
-import Seo from "../components/Layout/SEO";
+import Layout from "../components/Layout";
+import Seo from "../components/SEO";
+import Contact from "../sections/Contact";
+import Intro from "../sections/Intro";
+import Projects from "../sections/Projects";
+import Toolbox from "../sections/Toolbox";
+import About from "../sections/About";
 
 const MainPage = () => {
   return (

@@ -7,8 +7,8 @@ import {
   AnimatedContainer,
   HomeContainer,
   SectionHeading
-} from "./Layout/LayoutComponents";
-import { skills } from "../data/Toolbox";
+} from "../components/LayoutComponents";
+import { skills } from "../../static/data/Toolbox";
 
 const MotionFlex = motion(Flex);
 const LARGE_ICON_SIZE = "100px";
