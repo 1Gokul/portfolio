@@ -18,8 +18,7 @@ const menuVariants = {
   closed: {
     x: 1000,
     transition: {
-      duration: 1,
-      staggerChildren: 0.1,
+      duration: 0.8,
       staggerDirection: -1
     }
   }

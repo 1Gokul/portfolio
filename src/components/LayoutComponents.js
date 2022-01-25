@@ -80,7 +80,7 @@ export const SectionHeading = (props) => (
   <Heading
     size="3xl"
     textAlign="center"
-    marginBottom={10}
+    marginBottom={{ base: 0, md: 10 }}
     display="inline-block"
     color="gray.300"
     lineHeight="1.1em"
