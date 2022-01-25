@@ -12,13 +12,13 @@ import { socialLinks } from "../data/Contact";
 
 const Contact = () => {
   return (
-    <HomeContainer id="say hi">
+    <HomeContainer id="say hi" marginBottom="0">
       <SectionHeading>Say Hi</SectionHeading>
       <AnimatedContainer
         flexDirection="column"
         alignItems="center"
-        justifyContent="space-evenly"
-        flexGrow={1}
+        justifyContent="space-between"
+        flexGrow={0.5}
       >
         <AnimatedHeading textAlign="center">
           Want to collab on a project?

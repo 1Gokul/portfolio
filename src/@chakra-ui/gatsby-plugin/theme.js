@@ -11,7 +11,7 @@ const fonts = {
   body: `
     GeneralSans-Variable,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol`,
   mono: `
-    InconsolataVariable, -apple-system, Menlo, Monaco, Consolas`
+    Inconsolata, -apple-system, Menlo, Monaco, Consolas`
 };
 
 const colors = {

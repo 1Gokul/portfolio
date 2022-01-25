@@ -1,20 +1,21 @@
 import React from "react";
-import { Box, Button, Flex, Heading, Link, SlideFade } from "@chakra-ui/react";
+import { Heading, SlideFade } from "@chakra-ui/react";
 
-import { AnimatedBox, HomeContainer } from "./Layout/LayoutComponents";
+import { HomeContainer } from "./Layout/LayoutComponents";
 
 const Intro = () => {
   return (
     <HomeContainer>
       <SlideFade
         in={true}
+        offsetY="30"
         transition={{ enter: { duration: 0.3, delay: 0.5 } }}
       >
         <Heading size="lg" marginY={5}>
-          Hey there! My name&apos;s
+          Hey there! My name is
         </Heading>
         <Heading
-          marginBottom={5}
+          marginY={8}
           fontSize={{ base: "6xl", md: "9xl" }}
           letterSpacing="-2px"
           bgGradient="linear(to-r, #00d4ff, #00ff73)"
@@ -24,7 +25,7 @@ const Intro = () => {
           Gokul Viswanath.
         </Heading>
         <Heading size="xl">
-          I create web applications from end-to-end!
+          I develop web applications from end-to-end!
           <br />I also make games on the side.
         </Heading>
       </SlideFade>

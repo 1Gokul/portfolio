@@ -25,6 +25,23 @@ const menuVariants = {
   }
 };
 
+const navlinkVariants = {
+  open: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.25
+    }
+  },
+  closed: {
+    y: 50,
+    opacity: 0,
+    transition: {
+      duration: 0.25
+    }
+  }
+};
+
 const MobileNavMenu = ({ expanded, toggler, internalLinks, externalLinks }) => {
   return (
     <Flex direction="column">
@@ -45,15 +62,19 @@ const MobileNavMenu = ({ expanded, toggler, internalLinks, externalLinks }) => {
         variants={menuVariants}
       >
         {internalLinks.map(({ name, offset = -100 }) => (
-          <InternalLink key={name} to={name} offset={offset}>
-            <NavLink onClick={toggler}>{name}</NavLink>
-          </InternalLink>
+          <motion.div key={name} variants={navlinkVariants}>
+            <InternalLink to={name} offset={offset}>
+              <NavLink onClick={toggler}>{name}</NavLink>
+            </InternalLink>
+          </motion.div>
         ))}
 
         {externalLinks.map((link) => (
-          <ExternalLink key={link.name} to={link.to}>
-            <NavLink onClick={toggler}>{link.name}</NavLink>
-          </ExternalLink>
+          <motion.div key={link.name} variants={navlinkVariants}>
+            <ExternalLink key={link.name} to={link.to}>
+              <NavLink onClick={toggler}>{link.name}</NavLink>
+            </ExternalLink>
+          </motion.div>
         ))}
       </MotionFlex>
     </Flex>

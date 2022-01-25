@@ -1,13 +1,11 @@
 import React from "react";
-import { SimpleGrid } from "@chakra-ui/layout";
 import { ExternalLink, InternalLink } from "./Links";
-import { Box, Center, Divider } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex } from "@chakra-ui/react";
 
 const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
-  <SimpleGrid
+  <Flex
     alignItems="center"
-    rows={1}
-    spacing={10}
+    justifyContent="space-between"
     display={{ base: "none", md: "flex" }}
   >
     {internalLinks.map(({ name, offset = -100 }) => (
@@ -18,7 +16,7 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
 
     {internalLinks.length > 0 && (
       <Center height="40px">
-        <Divider bg="aqua.200" orientation="vertical" />
+        <Divider bg="aqua.200" orientation="vertical" marginX={5} />
       </Center>
     )}
 
@@ -27,7 +25,7 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
         <NavLink>{link.name}</NavLink>
       </ExternalLink>
     ))}
-  </SimpleGrid>
+  </Flex>
 );
 
 export default DesktopNavMenu;
@@ -36,7 +34,7 @@ const NavLink = (props) => (
   <Box
     padding={1}
     as="button"
-    w="100%"
+    marginX={3}
     fontSize="xl"
     textAlign="center"
     fontWeight="medium"

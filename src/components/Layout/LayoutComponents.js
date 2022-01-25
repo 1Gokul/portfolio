@@ -39,19 +39,19 @@ export const AnimatedContainer = (props) => {
   );
 };
 
-export const HomeContainer = (props) => {
+export const HomeContainer = ({ children, ...props }) => {
   return (
     <Flex
       flexDirection="column"
-      marginX="auto"
-      marginTop="3rem"
-      minH="90vh"
+      margin="3rem auto 10rem"
+      minH="80vh"
+      maxH="100%"
       minW="70vw"
       maxW={{ base: "95vw", md: "75vw" }}
-      paddingX={{ base: 5, md: 10 }}
+      padding={{ base: 5, md: 10 }}
       {...props}
     >
-      {props.children}
+      {children}
     </Flex>
   );
 };
@@ -80,7 +80,7 @@ export const SectionHeading = (props) => (
   <Heading
     size="3xl"
     textAlign="center"
-    marginBottom={14}
+    marginBottom={10}
     display="inline-block"
     color="gray.300"
     lineHeight="1.1em"

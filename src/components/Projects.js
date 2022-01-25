@@ -98,7 +98,7 @@ const ProjectCard = (props) => {
   return (
     <LinkBox>
       <SimpleGrid
-        marginY={5}
+        marginY={8}
         columns={{ base: 1, md: 2 }}
         alignItems="center"
         borderRadius="md"
@@ -119,15 +119,15 @@ const ProjectCard = (props) => {
 const Projects = () => {
   return (
     <HomeContainer id="projects">
-      <SectionHeading>Some of my projects</SectionHeading>
+      <SectionHeading>My Projects</SectionHeading>
 
-      <SimpleGrid flexGrow={1} columns={1} width="100%">
+      <Flex direction="column">
         {projectList.map((project, index) => (
           <AnimatedContainer key={index}>
             <ProjectCard project={project} />
           </AnimatedContainer>
         ))}
-      </SimpleGrid>
+      </Flex>
     </HomeContainer>
   );
 };

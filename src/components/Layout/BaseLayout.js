@@ -2,12 +2,11 @@ import React from "react";
 import "focus-visible/dist/focus-visible";
 import { Flex } from "@chakra-ui/react";
 import { CloudinaryContext } from "cloudinary-react";
-import { Helmet } from "react-helmet";
+import "@fontsource/inconsolata";
 
 import Header from "./Header/BaseHeader";
 import Footer from "./Footer";
 import "../../css/global.css";
-import GeneralSansFont from "../../fonts/GeneralSans-Variable.woff2";
 
 const Layout = (props) => {
   let internalLinks = [],
@@ -25,8 +24,7 @@ const Layout = (props) => {
         name: "toolbox"
       },
       {
-        name: "say hi",
-        offset: 0
+        name: "say hi"
       }
     ];
     externalLinks = [
@@ -49,31 +47,18 @@ const Layout = (props) => {
   }
 
   return (
-    <>
-      <Flex direction="column" m="0 auto">
-        <Helmet>
-          <link
-            rel="preload"
-            href={GeneralSansFont}
-            as="font"
-            crossOrigin="anonymous"
-            type="font/woff2"
-          />
-        </Helmet>
+    <Flex height="100%" direction="column">
+      <Header
+        type={props.type}
+        internalLinks={internalLinks}
+        externalLinks={externalLinks}
+      />
 
-        <CloudinaryContext cloudName="gokulv" secure="true">
-          <Header
-            type={props.type}
-            internalLinks={internalLinks}
-            externalLinks={externalLinks}
-          />
-
-          {props.children}
-
-          <Footer />
-        </CloudinaryContext>
-      </Flex>
-    </>
+      <CloudinaryContext cloudName="gokulv" secure="true">
+        {props.children}
+      </CloudinaryContext>
+      <Footer />
+    </Flex>
   );
 };
 
