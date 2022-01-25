@@ -23,7 +23,7 @@ const Blogs = ({ data }) => {
 
         <Input
           marginBottom={5}
-          _placeholder={{ color: "white" }}
+          _placeholder={{ color: "gray.300" }}
           value={filter}
           placeholder="Search for a blog..."
           onChange={({ target }) => setFilter(target.value)}
@@ -42,7 +42,7 @@ const Blogs = ({ data }) => {
                 color: "aqua.200"
               }}
             >
-              <LinkOverlay as={GatsbyLink} href={post.fields.slug}>
+              <LinkOverlay as={GatsbyLink} to={post.fields.slug}>
                 <Heading>{post.frontmatter.title}</Heading>
               </LinkOverlay>
               <Text color="gray.300" fontSize="sm">
