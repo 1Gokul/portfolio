@@ -15,6 +15,7 @@ const Contact = () => {
     <HomeContainer id="say hi" marginBottom={16}>
       <SectionHeading>Say Hi</SectionHeading>
       <AnimatedContainer
+        color="gray.200"
         flexDirection="column"
         alignItems="center"
         justifyContent="space-between"

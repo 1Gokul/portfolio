@@ -1,4 +1,4 @@
-import { Box, Grid, Link, Text } from "@chakra-ui/react";
+import { Flex, Link, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { animateScroll } from "react-scroll";
 
@@ -12,23 +12,20 @@ const BackToTop = () => {
   };
 
   return (
-    <Box as="button" onClick={sendToTop} marginLeft="auto">
+    <Flex as="button" onClick={sendToTop}>
       {buttonText}&#8593;
-    </Box>
+    </Flex>
   );
 };
 
 const Footer = () => {
   return (
-    <Grid
-      templateColumns={{ base: "1fr .5fr", md: "1fr 1fr 1fr" }}
-      width="100%"
-      justifyItems="center"
-      marginTop={10}
-      marginBottom={3}
-      paddingX={5}
+    <Flex
+      marginY={{ base: "2rem ", md: "1rem" }}
+      paddingX={{ base: 8, md: 5 }}
+      justifyContent={{ base: "space-between", md: "space-evenly" }}
     >
-      <Box gridColumnStart={{ base: 1, md: 2 }} color="gray.400">
+      <Flex>
         <Link href="https://github.com/1Gokul/portfolio">
           <Text align="center">
             By Gokul Viswanath
@@ -36,10 +33,9 @@ const Footer = () => {
             Built with Gatsby
           </Text>
         </Link>
-      </Box>
-
+      </Flex>
       <BackToTop />
-    </Grid>
+    </Flex>
   );
 };
 

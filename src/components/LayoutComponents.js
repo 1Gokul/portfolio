@@ -62,7 +62,7 @@ export const BlogContainer = forwardRef((props, ref) => {
       ref={ref}
       flexDirection="column"
       marginX="auto"
-      marginTop="8rem"
+      marginTop={{ base: "2rem", md: "8rem" }}
       minH="100vh"
       minW="20vw"
       maxW={{ base: "95vw", md: "3xl" }}
@@ -82,7 +82,6 @@ export const SectionHeading = (props) => (
     textAlign="center"
     marginBottom={{ base: 0, md: 10 }}
     display="inline-block"
-    color="gray.300"
     lineHeight="1.1em"
     initial={{ y: 500, opacity: 0 }}
     animate={{ y: 0, opacity: 1 }}

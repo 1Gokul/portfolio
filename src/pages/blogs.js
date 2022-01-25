@@ -19,7 +19,7 @@ const Blogs = ({ data }) => {
     <Layout type="blog">
       <Seo title="Blogs" />
       <BlogContainer>
-        <SectionHeading>DevLogs</SectionHeading>
+        <SectionHeading marginBottom={10}>DevLogs</SectionHeading>
 
         <Input
           marginBottom={5}
