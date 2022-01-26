@@ -3,7 +3,6 @@ import { Flex, Heading, Icon, SimpleGrid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 import {
-  AnimatedBox,
   AnimatedContainer,
   HomeContainer,
   SectionHeading
@@ -15,9 +14,9 @@ const LARGE_ICON_SIZE = "100px";
 
 const Toolbox = () => {
   return (
-    <HomeContainer id="toolbox">
+    <HomeContainer id="toolbox" marginBottom="0">
       <SectionHeading>My Toolbox</SectionHeading>
-      <AnimatedBox delay={0.8}>
+      <AnimatedContainer delay={0.8}>
         <Flex
           direction={{ base: "column", xl: "row" }}
           justifyContent="space-between"
@@ -27,7 +26,7 @@ const Toolbox = () => {
           <SkillSet title="Backend" skills={skills.backend} />
           <SkillSet title="Others" skills={skills.others} />
         </Flex>
-      </AnimatedBox>
+      </AnimatedContainer>
     </HomeContainer>
   );
 };

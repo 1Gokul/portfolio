@@ -119,7 +119,7 @@ const ProjectCard = (props) => {
 const Projects = () => {
   return (
     <HomeContainer id="projects">
-      <SectionHeading>My Projects</SectionHeading>
+      <SectionHeading>My projects</SectionHeading>
 
       <Flex direction="column">
         {projectList.map((project, index) => (

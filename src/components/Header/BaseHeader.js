@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Flex } from "@chakra-ui/react";
+import { Flex, Image } from "@chakra-ui/react";
 
-import Logo from "./Logo";
+import LogoImg from "../../images/website_logo.svg";
 import MobileNavMenu, { NavMenuToggler } from "./MobileNavMenu";
 import DesktopNavMenu from "./DesktopNavMenu";
+import { Link } from "gatsby";
 
 const Navbar = ({ internalLinks, externalLinks }) => {
   const [expanded, setExpanded] = useState(false);
@@ -24,13 +25,14 @@ const Navbar = ({ internalLinks, externalLinks }) => {
     >
       <Flex
         zIndex="3"
-        w="100%"
         justifyContent="space-between"
         alignItems="center"
         paddingY={{ base: 5, md: 6 }}
         paddingX={10}
       >
-        <Logo />
+        <Link to="/" onClick={expanded ? toggleExpanded : null}>
+          <Image src={LogoImg} alt="Website Logo" width="75px" />
+        </Link>
 
         <DesktopNavMenu
           internalLinks={internalLinks}

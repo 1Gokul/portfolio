@@ -1,32 +1,27 @@
 import React from "react";
-import { Button, Flex, Heading, Icon, Link } from "@chakra-ui/react";
+import { Box, Button, Flex, Icon, Link, Text } from "@chakra-ui/react";
 
-import {
-  AnimatedBox,
-  AnimatedContainer,
-  AnimatedHeading,
-  HomeContainer,
-  SectionHeading
-} from "../components/LayoutComponents";
+import { HomeContainer, SectionHeading } from "../components/LayoutComponents";
 import { socialLinks } from "../../static/data/Contact";
 
 const Contact = () => {
   return (
-    <HomeContainer id="say hi" marginBottom={16}>
+    <HomeContainer id="say hi" marginBottom={{ base: 16, md: 0 }}>
       <SectionHeading>Say Hi</SectionHeading>
-      <AnimatedContainer
+      <Flex
         color="gray.200"
         flexDirection="column"
         alignItems="center"
         justifyContent="space-between"
+        marginTop={4}
         flexGrow={0.5}
       >
-        <AnimatedHeading textAlign="center">
+        <Text fontSize="2xl" textAlign="center">
           Want to collab on a project?
           <br /> Feel free to send an email my way!
-        </AnimatedHeading>
+        </Text>
 
-        <AnimatedBox marginY={5}>
+        <Box marginY={8}>
           <Link href="mailto:gokulviswanath@protonmail.com">
             <Button
               aria-label="Send Email"
@@ -36,17 +31,19 @@ const Contact = () => {
               Let&apos;s work together!
             </Button>
           </Link>
-        </AnimatedBox>
+        </Box>
 
-        <AnimatedBox>
-          <Heading align="center">Or reach out to me here</Heading>
+        <Box>
+          <Text fontSize="2xl" align="center">
+            Or reach out to me here
+          </Text>
           <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
             {socialLinks.map((socialLink) => (
               <SocialIconLink key={socialLink.label} {...socialLink} />
             ))}
           </Flex>
-        </AnimatedBox>
-      </AnimatedContainer>
+        </Box>
+      </Flex>
     </HomeContainer>
   );
 };

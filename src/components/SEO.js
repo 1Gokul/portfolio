@@ -28,7 +28,7 @@ function Seo({ description, lang, meta, title }) {
   );
 
   const image = `${site.siteMetadata.siteUrl}/${site.siteMetadata.image}`;
-  const metaDescription = description || site.siteMetadata.description;
+  const metaDescription = description ?? site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
   const googleVerification = "EhcoPvDY3g--UJ64MoFAjgOTxnLmzIOpVuvvxbHxEgk";
 
@@ -41,47 +41,47 @@ function Seo({ description, lang, meta, title }) {
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
-          name: `description`,
+          name: "description",
           content: metaDescription
         },
         {
-          property: `og:title`,
+          property: "og:title",
           content: title
         },
         {
-          property: `og:description`,
+          property: "og:description",
           content: metaDescription
         },
         {
-          property: `og:image`,
+          property: "og:image",
           content: image
         },
         {
-          property: `og:type`,
-          content: `website`
+          property: "og:type",
+          content: "website"
         },
         {
-          name: `google-site-verification`,
+          name: "google-site-verification",
           content: googleVerification
         },
         {
-          name: `twitter:card`,
-          content: `summary`
+          name: "twitter:card",
+          content: "summary"
         },
         {
-          property: `twitter:image`,
+          property: "twitter:image",
           content: image
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``
+          name: "twitter:creator",
+          content: site.siteMetadata?.author ?? ""
         },
         {
-          name: `twitter:title`,
+          name: "twitter:title",
           content: title
         },
         {
-          name: `twitter:description`,
+          name: "twitter:description",
           content: metaDescription
         }
       ].concat(meta)}
@@ -90,9 +90,9 @@ function Seo({ description, lang, meta, title }) {
 }
 
 Seo.defaultProps = {
-  lang: `en`,
+  lang: "en",
   meta: [],
-  description: ``
+  description: ""
 };
 
 Seo.propTypes = {
