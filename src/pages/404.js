@@ -33,7 +33,7 @@ const NotFoundPage = () => {
           <Flex flexDirection="column" marginBottom={5}>
             <Text fontSize="4xl">
               This is not the page you are looking for.{" "}
-              <Link textDecoration="underline" as={GatsbyLink} href="/">
+              <Link textDecoration="underline" as={GatsbyLink} to="/">
                 Move along.
               </Link>
             </Text>

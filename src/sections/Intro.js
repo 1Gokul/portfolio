@@ -1,5 +1,6 @@
 import React from "react";
-import { Heading, SlideFade } from "@chakra-ui/react";
+import { Button, Heading, Icon, Link, SlideFade } from "@chakra-ui/react";
+import { VscGithubInverted } from "react-icons/vsc";
 
 import { HomeContainer } from "../components/LayoutComponents";
 
@@ -8,7 +9,7 @@ const Intro = () => {
     <HomeContainer>
       <SlideFade
         in={true}
-        offsetY="30"
+        offsetY="30px"
         transition={{ enter: { duration: 0.3, delay: 0.5 } }}
       >
         <Heading size="lg" marginY={5}>
@@ -24,10 +25,16 @@ const Intro = () => {
         >
           Gokul Viswanath.
         </Heading>
-        <Heading size="xl">
+        <Heading size="xl" marginBottom={16}>
           I develop web applications from end-to-end!
           <br />I also make games on the side.
         </Heading>
+
+        <Link href="https://github.com/1Gokul" target="_blank" rel="noreferrer">
+          <Button aria-label="Send Email" p={10} fontSize="2xl" borderRadius="2xl">
+            <Icon as={VscGithubInverted} marginRight={4} /> My GitHub
+          </Button>
+        </Link>
       </SlideFade>
     </HomeContainer>
   );

@@ -22,7 +22,7 @@ const Contact = () => {
         </Text>
 
         <Box marginY={8}>
-          <Link href="mailto:gokulviswanath@protonmail.com">
+          <Link href="mailto:gokulviswanath@protonmail.com" target="_blank"  rel="noreferrer">
             <Button
               aria-label="Send Email"
               p={10}
@@ -50,7 +50,7 @@ const Contact = () => {
 
 const SocialIconLink = (props) => {
   return (
-    <Link aria-label={props.label} href={props.link} target="_blank">
+    <Link aria-label={props.label} href={props.link} target="_blank"  rel="noreferrer">
       <Icon
         marginX={2}
         as={props.icon}

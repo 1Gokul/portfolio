@@ -46,6 +46,7 @@ const ProjectInfo = ({ project, projectImage }) => {
           href={project.link}
           marginX={3}
           target="_blank"
+          rel="noreferrer"
         >
           <VscLinkExternal size={30} />
         </LinkOverlay>

@@ -26,7 +26,11 @@ const Footer = () => {
       justifyContent={{ base: "space-between", md: "space-evenly" }}
     >
       <Flex>
-        <Link href="https://github.com/1Gokul/portfolio">
+        <Link
+          href="https://github.com/1Gokul/portfolio"
+          target="_blank"
+          rel="noreferrer"
+        >
           <Text align="center">
             By Gokul Viswanath
             <br />

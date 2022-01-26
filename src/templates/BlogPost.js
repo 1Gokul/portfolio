@@ -1,12 +1,11 @@
 import React, { createRef, useEffect, useState } from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import {
   CircularProgress,
   Divider,
   Flex,
   Icon,
   IconButton,
-  Link,
   Text
 } from "@chakra-ui/react";
 import { IoArrowBack, IoArrowForward, IoMenu, IoClose } from "react-icons/io5";
@@ -53,13 +52,13 @@ const BlogPost = ({ data, pageContext }) => {
           alignItems="center"
         >
           {prev !== null && (
-            <Link href={prev.fields.slug}>
+            <Link to={prev.fields.slug}>
               <Icon as={IoArrowBack} />
               Previous post
             </Link>
           )}
           {next !== null && (
-            <Link href={next.fields.slug}>
+            <Link to={next.fields.slug}>
               Next post
               <Icon as={IoArrowForward} />
             </Link>
