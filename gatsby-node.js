@@ -1,6 +1,5 @@
 /* eslint-disable */
 const {createFilePath} = require (`gatsby-source-filesystem`);
-const path = require (`path`);
 
 exports.onCreateNode = ({node, actions, getNode}) => {
   const {createNodeField} = actions;
@@ -39,7 +38,7 @@ exports.createPages = async ({actions, graphql}) => {
   posts.forEach (({node}, index) => {
     actions.createPage ({
       path: node.fields.slug,
-      component: require.resolve (`./src/templates/BlogPost.js`),
+      component: require.resolve (`./src/templates/BlogPost/BlogPost.js`),
       context: {
         id: node.id,
         next: index === 0 ? null : posts[index - 1].node,

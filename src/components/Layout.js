@@ -1,8 +1,8 @@
 import React from "react";
-import "focus-visible/dist/focus-visible";
 import { Flex } from "@chakra-ui/react";
 import { CloudinaryContext } from "cloudinary-react";
 import "@fontsource/inconsolata";
+import "focus-visible/dist/focus-visible";
 
 import Header from "./Header/BaseHeader";
 import Footer from "./Footer";
