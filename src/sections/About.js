@@ -11,9 +11,9 @@ import { AboutDescription } from "../../static/data/About";
 
 const About = () => {
   return (
-    <HomeContainer id="about">
+    <HomeContainer id="about" justifyContent="center">
       <SectionHeading>About me</SectionHeading>
-      <AnimatedContainer>
+      <AnimatedContainer justifySelf="center">
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <Box>
             <Text fontSize="xl">{AboutDescription[0]}</Text>
@@ -21,18 +21,18 @@ const About = () => {
             <Text fontSize="xl">{AboutDescription[1]}</Text>
           </Box>
 
-          <Flex marginX="auto" height="350px" width="300px">
+          <Flex
+            marginX="auto"
+            width="300px"
+            border="4px solid"
+            borderColor="var(--theme-aqua)"
+          >
             <CNImage
               publicId="Portfolio/about_photo.png"
               alt="My photo"
               loading="lazy"
             >
-              <Transformation
-                quality="20"
-                radius="10"
-                width="300"
-                height="330"
-              />
+              <Transformation quality="auto:low" />
             </CNImage>
           </Flex>
         </SimpleGrid>

@@ -25,7 +25,7 @@ const Navbar = ({ internalLinks, externalLinks }) => {
     >
       <Box
         height="0.25rem"
-        background="linear-gradient(to right, #00d4ff, #00ff73)"
+        background="linear-gradient(to right, var(--theme-aqua), #00ff73)"
       />
 
       <Flex

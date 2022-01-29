@@ -19,7 +19,7 @@ const Intro = () => {
           marginY={8}
           fontSize={{ base: "6xl", md: "9xl" }}
           letterSpacing="-2px"
-          bgGradient="linear(to-r, #00d4ff, #00ff73)"
+          bgGradient="linear(to-r, var(--theme-aqua), #00ff73)"
           bgClip="text"
           fontWeight="extrabold"
         >

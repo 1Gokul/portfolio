@@ -16,7 +16,7 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
 
     {internalLinks.length > 0 && (
       <Center height="40px">
-        <Divider bg="aqua.200" orientation="vertical" marginX={5} />
+        <Divider bg="var(--theme-aqua)" orientation="vertical" marginX={5} />
       </Center>
     )}
 

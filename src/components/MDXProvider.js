@@ -39,7 +39,20 @@ const mdComponents = {
   h5: (props) => <Heading as="h5" size="sm" mt={12} {...props} />,
   h6: (props) => <Heading as="h6" size="xs" mt={12} {...props} />,
   p: (props) => <Text as="p" marginY={5} fontSize="xl" {...props} />,
-  a: (props) => <Link as="a" color="#F687B3" {...props} />,
+  a: (props) => (
+    <Link
+      as="a"
+      color="var(--theme-aqua)"
+      textUnderlineOffset="0.25rem"
+      textDecoration="underline"
+      textDecorationStyle="dotted"
+      _hover={{
+        color: "var(--theme-pink)",
+        textDecorationStyle: "wavy"
+      }}
+      {...props}
+    />
+  ),
   pre: (props) => <Box as="pre" {...props} p={2} my={8} />,
   code: (props) => <Code {...props} bgColor="transparent" />,
   ul: (props) => (

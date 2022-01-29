@@ -33,7 +33,8 @@ const styles = {
   global: {
     body: {
       background: "#001b2b",
-      color: "gray.50"
+      color: "gray.50",
+      borderColor: "var(--theme-aqua)"
     }
   }
 };
@@ -53,9 +54,9 @@ const components = {
   },
   LinkBox: {
     defaultProps: {
-      color: "#F687B3",
+      color: "var(--theme-aqua)",
       _hover: {
-        color: "aqua.300"
+        color: "var(--theme-pink)"
       }
     }
   },
@@ -63,8 +64,8 @@ const components = {
     baseStyle: {
       color: "gray.200",
       _hover: {
-        textDecoration: "none",
-        color: "aqua.300"
+        color: "var(--theme-pink)",
+        textDecoration: "none"
       }
     }
   }
