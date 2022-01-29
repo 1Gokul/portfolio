@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Image } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 
 import LogoImg from "../../images/website_logo.svg";
 import MobileNavMenu, { NavMenuToggler } from "./MobileNavMenu";
@@ -18,20 +18,25 @@ const Navbar = ({ internalLinks, externalLinks }) => {
       direction="column"
       position="sticky"
       width="100%"
-      bgColor="rgb(0, 40, 63, 0.7)"
+      backgroundColor="#001b2b"
       top="0"
       as="nav"
       zIndex="3"
     >
+      <Box
+        height="0.25rem"
+        background="linear-gradient(to right, #00d4ff, #00ff73)"
+      />
+
       <Flex
         zIndex="3"
         justifyContent="space-between"
         alignItems="center"
-        paddingY={{ base: 5, md: 6 }}
+        paddingY={5}
         paddingX={10}
       >
         <Link to="/" onClick={expanded ? toggleExpanded : null}>
-          <Image src={LogoImg} alt="Website Logo" width="75px" />
+          <Image src={LogoImg} alt="Website Logo" width="80px" />
         </Link>
 
         <DesktopNavMenu

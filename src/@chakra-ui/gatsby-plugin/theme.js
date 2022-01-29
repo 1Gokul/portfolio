@@ -33,8 +33,6 @@ const styles = {
   global: {
     body: {
       background: "#001b2b",
-      backgroundImage: `
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%23004b78' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");)`,
       color: "gray.50"
     }
   }
@@ -55,7 +53,7 @@ const components = {
   },
   LinkBox: {
     defaultProps: {
-      color: "pink.200",
+      color: "#F687B3",
       _hover: {
         color: "aqua.300"
       }
@@ -63,7 +61,7 @@ const components = {
   },
   Link: {
     baseStyle: {
-      color: "grey.200",
+      color: "gray.200",
       _hover: {
         textDecoration: "none",
         color: "aqua.300"

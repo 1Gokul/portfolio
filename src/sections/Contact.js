@@ -1,14 +1,18 @@
 import React from "react";
 import { Box, Button, Flex, Icon, Link, Text } from "@chakra-ui/react";
 
-import { HomeContainer, SectionHeading } from "../components/LayoutComponents";
+import {
+  AnimatedContainer,
+  HomeContainer,
+  SectionHeading
+} from "../components/LayoutComponents";
 import { socialLinks } from "../../static/data/Contact";
 
 const Contact = () => {
   return (
     <HomeContainer id="say hi" marginBottom={{ base: 16, md: 0 }}>
       <SectionHeading>Say Hi</SectionHeading>
-      <Flex
+      <AnimatedContainer
         color="gray.200"
         flexDirection="column"
         alignItems="center"
@@ -22,7 +26,11 @@ const Contact = () => {
         </Text>
 
         <Box marginY={8}>
-          <Link href="mailto:gokulviswanath@protonmail.com" target="_blank"  rel="noreferrer">
+          <Link
+            href="mailto:gokulviswanath@protonmail.com"
+            target="_blank"
+            rel="noreferrer"
+          >
             <Button
               aria-label="Send Email"
               p={10}
@@ -43,14 +51,19 @@ const Contact = () => {
             ))}
           </Flex>
         </Box>
-      </Flex>
+      </AnimatedContainer>
     </HomeContainer>
   );
 };
 
 const SocialIconLink = (props) => {
   return (
-    <Link aria-label={props.label} href={props.link} target="_blank"  rel="noreferrer">
+    <Link
+      aria-label={props.label}
+      href={props.link}
+      target="_blank"
+      rel="noreferrer"
+    >
       <Icon
         marginX={2}
         as={props.icon}

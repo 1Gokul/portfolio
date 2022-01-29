@@ -16,7 +16,7 @@ export const AnimatedContainer = (props) => {
     <SlideFade
       in={visible}
       offsetY="100px"
-      transition={{ enter: { duration: 0.5, delay: 0.2 } }}
+      transition={{ enter: { duration: 0.5 } }}
     >
       <Flex ref={ref} {...props}>
         {props.children}
@@ -29,7 +29,7 @@ export const HomeContainer = ({ children, ...props }) => {
   return (
     <Flex
       flexDirection="column"
-      margin="3rem auto 8rem"
+      margin="0 auto 8rem"
       minH="80vh"
       maxH="100%"
       minW="70vw"

@@ -164,11 +164,10 @@ const TableOfContents = ({ headings, target }) => {
           <MotionFlex key={heading.value} variants={headingLinkVariants}>
             <Link
               display="block"
-              padding={3}
               onClick={() => setVisible(!visible)}
-              href={`#${heading.url}`}
+              to={`#${heading.url}`}
             >
-              {heading.value}
+              <Text padding={3}>{heading.value}</Text>
             </Link>
           </MotionFlex>
         ))}

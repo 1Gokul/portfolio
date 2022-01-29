@@ -6,11 +6,11 @@ import { HomeContainer } from "../components/LayoutComponents";
 
 const Intro = () => {
   return (
-    <HomeContainer>
+    <HomeContainer marginTop={{ base: 0, md: 5 }}>
       <SlideFade
         in={true}
         offsetY="30px"
-        transition={{ enter: { duration: 0.3, delay: 0.5 } }}
+        transition={{ enter: { duration: 0.3, delay: 0.2 } }}
       >
         <Heading size="lg" marginY={5}>
           Hey there! My name is
@@ -31,7 +31,12 @@ const Intro = () => {
         </Heading>
 
         <Link href="https://github.com/1Gokul" target="_blank" rel="noreferrer">
-          <Button aria-label="Send Email" p={10} fontSize="2xl" borderRadius="2xl">
+          <Button
+            aria-label="Send Email"
+            p={10}
+            fontSize="2xl"
+            borderRadius="2xl"
+          >
             <Icon as={VscGithubInverted} marginRight={4} /> My GitHub
           </Button>
         </Link>
