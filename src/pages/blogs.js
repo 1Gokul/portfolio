@@ -3,7 +3,7 @@ import { graphql, Link as GatsbyLink } from "gatsby";
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout";
 
 import Layout from "../components/Layout";
-import { BlogContainer, SectionHeading } from "../components/LayoutComponents";
+import { HomeContainer, SectionHeading } from "../components/LayoutComponents";
 import Seo from "../components/SEO";
 import { Input } from "@chakra-ui/react";
 
@@ -18,8 +18,8 @@ const Blogs = ({ data }) => {
   return (
     <Layout type="blog">
       <Seo title="Blogs" />
-      <BlogContainer>
-        <SectionHeading marginBottom={10}>DevLogs</SectionHeading>
+      <HomeContainer minW="40vw" maxW={{ base: "90vw", lg: "45vw" }}>
+        <SectionHeading marginBottom={20}>DevLogs</SectionHeading>
 
         <Input
           marginBottom={5}
@@ -54,7 +54,7 @@ const Blogs = ({ data }) => {
             </LinkBox>
           ))}
         </Flex>
-      </BlogContainer>
+      </HomeContainer>
     </Layout>
   );
 };

@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useState } from "react";
-import { Flex, Heading, SlideFade } from "@chakra-ui/react";
+import { Flex, Grid, Heading, SlideFade } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
 export const AnimatedContainer = (props) => {
@@ -44,19 +44,19 @@ export const HomeContainer = ({ children, ...props }) => {
 
 export const BlogContainer = forwardRef((props, ref) => {
   return (
-    <Flex
+    <Grid
       ref={ref}
-      flexDirection="column"
+      templateColumns={{ base: "1fr", lg: "2fr 1fr" }}
+      gap={{ base: 0, lg: 20 }}
       marginX="auto"
-      marginTop={{ base: "2rem", md: "8rem" }}
+      marginTop={{ base: "2rem", lg: "8rem" }}
       minH="100vh"
-      minW="20vw"
-      maxW={{ base: "95vw", md: "3xl" }}
-      paddingX={{ base: 5, md: 10 }}
+      maxW={{ base: "95vw", lg: "65vw" }}
+      paddingX={{ base: 2, lg: 10 }}
       {...props}
     >
       {props.children}
-    </Flex>
+    </Grid>
   );
 });
 

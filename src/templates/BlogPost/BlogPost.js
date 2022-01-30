@@ -1,11 +1,6 @@
 import React, { createRef } from "react";
 import { graphql, Link } from "gatsby";
-import {
-  Divider,
-  Flex,
-  Icon,
-  Text
-} from "@chakra-ui/react";
+import { Divider, Flex, Icon, Text } from "@chakra-ui/react";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import Layout from "../../components/Layout";
@@ -34,35 +29,39 @@ const BlogPost = ({ data, pageContext }) => {
     <Layout type="blog">
       <Seo title={title} />
 
-      <TableOfContents headings={headings} target={target} />
       <BlogContainer ref={target}>
-        <SectionHeading marginBottom={2}>{title}</SectionHeading>
-        <Text marginBottom={14} textAlign="center">
-          {date}
-        </Text>
-        <MDX localImages={embeddedImagesLocal}>{body}</MDX>
+        <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
+          <SectionHeading marginBottom={2}>{title}</SectionHeading>
+          <Text marginBottom={14} textAlign="center">
+            {date}
+          </Text>
+          <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
-        <Divider />
+          <Divider />
 
-        <Flex
-          marginTop={10}
-          justifyContent="space-between"
-          fontSize="xl"
-          alignItems="center"
-        >
-          {prev !== null && (
-            <Link to={prev.fields.slug}>
-              <Icon as={IoArrowBack} />
-              Previous post
-            </Link>
-          )}
-          {next !== null && (
-            <Link to={next.fields.slug}>
-              Next post
-              <Icon as={IoArrowForward} />
-            </Link>
-          )}
+          <Flex
+            marginTop={10}
+            justifyContent="space-between"
+            fontSize="xl"
+            alignItems="center"
+          >
+            {prev !== null && (
+              <Link to={prev.fields.slug}>
+                <Icon as={IoArrowBack} />
+                Previous post
+              </Link>
+            )}
+            {next !== null && (
+              <Link to={next.fields.slug}>
+                Next post
+                <Icon as={IoArrowForward} />
+              </Link>
+            )}
+          </Flex>
         </Flex>
+        <aside>
+          <TableOfContents headings={headings} target={target} />
+        </aside>
       </BlogContainer>
     </Layout>
   );

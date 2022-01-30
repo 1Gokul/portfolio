@@ -1,10 +1,66 @@
-import { Flex, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, IconButton, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 
-import ReadingProgress from "./ReadingProgress";
+// import ReadingProgress from "./ReadingProgress";
+
+const TableOfContents = ({ headings /*, target */ }) => {
+  // Depth is equal to 2 for h2 headings
+  const h2Headings = headings.filter((heading) => heading.depth === 2);
+
+  // Convert the text inside into urls that lead to the headings
+  h2Headings.forEach(
+    (heading) =>
+      (heading.url = heading.value
+        .toLowerCase()
+        .replace("()", "")
+        .split(" ")
+        .join("-"))
+  );
+
+  // Create 2 TOC, one for desktop without button and hiding
+  // make progress bar sticky on top of blog container
+
+  return (
+    <>
+      <DesktopTOC headings={h2Headings} />
+      <MobileTOC headings={h2Headings} />
+      {/* <ReadingProgress target={target} /> */}
+    </>
+  );
+};
+
+export default TableOfContents;
+
+const DesktopTOC = ({ headings }) => (
+  <Box
+    position="sticky"
+    top="15rem"
+    width="20rem"
+    padding={3}
+    border="2px solid"
+    display={{ base: "none", lg: "block" }}
+  >
+    <Heading size="lg" borderBottom="2px dotted" padding={3} color="pink.300">
+      Contents
+    </Heading>
+    {headings.map((heading) => (
+      <Box
+        key={heading.value}
+        _hover={{
+          color: "var(--theme-aqua)",
+          borderBottom: "2px dotted"
+        }}
+      >
+        <Link display="block" to={`#${heading.url}`}>
+          <Text padding={3}>{heading.value}</Text>
+        </Link>
+      </Box>
+    ))}
+  </Box>
+);
 
 const MotionFlex = motion(Flex);
 
@@ -45,28 +101,20 @@ const headingLinkVariants = {
   }
 };
 
-const TableOfContents = ({ headings, target }) => {
-  // Depth is equal to 2 for h2 headings
-  const h2Headings = headings.filter((heading) => heading.depth === 2);
-
-  h2Headings.forEach(
-    (heading) =>
-      (heading.url = heading.value
-        .toLowerCase()
-        .replace("()", "")
-        .split(" ")
-        .join("-"))
-  );
-
+const MobileTOC = ({ headings }) => {
   const [visible, setVisible] = useState(false);
-
   return (
-    <Flex position="fixed" right={{ base: 5, md: 10 }} bottom={20} zIndex="1">
+    <Box
+      display={{ base: "flex", md: "none" }}
+      position="fixed"
+      right={{ base: 5, md: 10 }}
+      bottom={20}
+      zIndex={4}
+    >
       <MotionFlex
         flexDirection="column"
-        padding={3}
-        maxWidth="75vw"
-        bgColor="#001b2b"
+        paddingX={1}
+        bgColor="#00304d"
         overflow="hidden"
         initial="closed"
         animate={visible ? "open" : "closed"}
@@ -75,14 +123,18 @@ const TableOfContents = ({ headings, target }) => {
         <Text padding={3} color="pink.300">
           Contents
         </Text>
-        {h2Headings.map((heading) => (
-          <MotionFlex key={heading.value} variants={headingLinkVariants}>
+        {headings.map((heading) => (
+          <MotionFlex
+            key={heading.value}
+            padding={3}
+            variants={headingLinkVariants}
+          >
             <Link
               display="block"
               onClick={() => setVisible(!visible)}
               to={`#${heading.url}`}
             >
-              <Text padding={3}>{heading.value}</Text>
+              {heading.value}
             </Link>
           </MotionFlex>
         ))}
@@ -95,11 +147,8 @@ const TableOfContents = ({ headings, target }) => {
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
         onClick={() => setVisible(!visible)}
-        zIndex="1"
+        zIndex={4}
       />
-      <ReadingProgress target={target} />
-    </Flex>
+    </Box>
   );
 };
-
-export default TableOfContents;
