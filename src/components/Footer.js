@@ -21,7 +21,7 @@ const BackToTop = () => {
 const Footer = () => {
   return (
     <Flex
-      marginY={{ base: "2rem ", md: "1rem" }}
+      marginY="2rem"
       paddingX={{ base: 8, md: 5 }}
       justifyContent={{ base: "space-between", md: "space-evenly" }}
     >

@@ -37,10 +37,12 @@ const BlogPost = ({ data, pageContext }) => {
           </Text>
           <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
+          {/* Links to the previous and next blogs */}
+
           <Divider />
 
           <Flex
-            marginTop={10}
+            marginY={10}
             justifyContent="space-between"
             fontSize="xl"
             alignItems="center"
@@ -58,6 +60,8 @@ const BlogPost = ({ data, pageContext }) => {
               </Link>
             )}
           </Flex>
+
+          <Divider />
         </Flex>
         <aside>
           <TableOfContents headings={headings} target={target} />
