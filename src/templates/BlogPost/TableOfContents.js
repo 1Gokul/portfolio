@@ -20,9 +20,6 @@ const TableOfContents = ({ headings /*, target */ }) => {
         .join("-"))
   );
 
-  // Create 2 TOC, one for desktop without button and hiding
-  // make progress bar sticky on top of blog container
-
   return (
     <>
       <DesktopTOC headings={h2Headings} />

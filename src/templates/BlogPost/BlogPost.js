@@ -1,6 +1,6 @@
 import React, { createRef } from "react";
-import { graphql, Link } from "gatsby";
-import { Divider, Flex, Icon, Text } from "@chakra-ui/react";
+import { graphql, Link as GatsbyLink } from "gatsby";
+import { Box, Divider, Flex, Icon, Link, Text } from "@chakra-ui/react";
 import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 
 import Layout from "../../components/Layout";
@@ -11,6 +11,7 @@ import {
 import MDX from "../../components/MDXProvider";
 import Seo from "../../components/SEO";
 import TableOfContents from "./TableOfContents";
+import ReadingProgress from "./ReadingProgress";
 
 require("../../css/prismjs/prismjs-night-owl.css"); // eslint-disable-line
 
@@ -28,45 +29,47 @@ const BlogPost = ({ data, pageContext }) => {
   return (
     <Layout type="blog">
       <Seo title={title} />
+      <Box>
+        <BlogContainer ref={target}>
+          <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
+            <ReadingProgress target={target} />
+            <SectionHeading marginBottom={2}>{title}</SectionHeading>
+            <Text marginBottom={14} textAlign="center">
+              {date}
+            </Text>
+            <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
-      <BlogContainer ref={target}>
-        <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
-          <SectionHeading marginBottom={2}>{title}</SectionHeading>
-          <Text marginBottom={14} textAlign="center">
-            {date}
-          </Text>
-          <MDX localImages={embeddedImagesLocal}>{body}</MDX>
+            {/* Links to the previous and next blogs */}
 
-          {/* Links to the previous and next blogs */}
+            <Divider />
 
-          <Divider />
+            <Flex
+              marginY={10}
+              justifyContent="space-between"
+              fontSize="xl"
+              alignItems="center"
+            >
+              {prev !== null && (
+                <Link as={GatsbyLink} to={prev.fields.slug}>
+                  <Icon as={IoArrowBack} />
+                  Previous post
+                </Link>
+              )}
+              {next !== null && (
+                <Link as={GatsbyLink} to={next.fields.slug}>
+                  Next post
+                  <Icon alignSelf="center" as={IoArrowForward} />
+                </Link>
+              )}
+            </Flex>
 
-          <Flex
-            marginY={10}
-            justifyContent="space-between"
-            fontSize="xl"
-            alignItems="center"
-          >
-            {prev !== null && (
-              <Link to={prev.fields.slug}>
-                <Icon as={IoArrowBack} />
-                Previous post
-              </Link>
-            )}
-            {next !== null && (
-              <Link to={next.fields.slug}>
-                Next post
-                <Icon as={IoArrowForward} />
-              </Link>
-            )}
+            <Divider />
           </Flex>
-
-          <Divider />
-        </Flex>
-        <aside>
-          <TableOfContents headings={headings} target={target} />
-        </aside>
-      </BlogContainer>
+          <aside>
+            <TableOfContents headings={headings} target={target} />
+          </aside>
+        </BlogContainer>
+      </Box>
     </Layout>
   );
 };

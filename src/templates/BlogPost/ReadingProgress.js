@@ -1,7 +1,7 @@
 // Thanks to nehalist.io for the progress bar
 // https://nehalist.io/creating-a-reading-progress-bar-in-react
 
-import { CircularProgress } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 const ReadingProgress = ({ target }) => {
@@ -36,15 +36,15 @@ const ReadingProgress = ({ target }) => {
   });
 
   return (
-    <CircularProgress
-      value={readingProgress}
+    <Flex
+      width={`${readingProgress}%`}
       size="60px"
+      position="sticky"
+      top="5rem"
+      background="linear-gradient(to right, var(--theme-aqua), #00ff73)"
       color="pink.500"
-      thickness="10px"
-      position="fixed"
-      right={{ base: "14px", md: "34.5px" }}
-      bottom="73.5px"
-      zIndex="0"
+      height="0.25rem"
+      zIndex={3}
     />
   );
 };
