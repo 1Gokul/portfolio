@@ -1,7 +1,8 @@
 import React, { createRef } from "react";
 import { graphql, Link as GatsbyLink } from "gatsby";
-import { Box, Divider, Flex, Icon, Link, Text } from "@chakra-ui/react";
-import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import { Box, Divider, Flex, Icon, Link } from "@chakra-ui/react";
+import { IoArrowBack, IoArrowForward, IoPerson } from "react-icons/io5";
+import { HiClock, HiCalendar } from "react-icons/hi";
 
 import Layout from "../../components/Layout";
 import {
@@ -18,6 +19,7 @@ require("../../css/prismjs/prismjs-night-owl.css"); // eslint-disable-line
 const BlogPost = ({ data, pageContext }) => {
   const {
     body,
+    timeToRead,
     frontmatter: { title, date, embeddedImagesLocal },
     headings
   } = data.mdx;
@@ -33,10 +35,20 @@ const BlogPost = ({ data, pageContext }) => {
         <BlogContainer ref={target}>
           <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
             <SectionHeading marginBottom={2}>{title}</SectionHeading>
-            <Text marginBottom={14} textAlign="center">
-              {date}
-            </Text>
-
+            <Box marginBottom={14} alignSelf="center">
+              <Flex marginY={5} alignItems="center">
+                <Icon as={IoPerson} marginRight={2} />
+                Gokul Viswanath
+              </Flex>
+              <Flex marginY={5} alignItems="center">
+                <Icon as={HiCalendar} marginRight={2} />
+                {date}
+              </Flex>
+              <Flex marginY={5} alignItems="center">
+                <Icon as={HiClock} marginRight={2} />
+                {timeToRead} minute read
+              </Flex>
+            </Box>
 
             <ReadingProgress target={target} />
 
@@ -44,7 +56,6 @@ const BlogPost = ({ data, pageContext }) => {
             <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
             {/* Links to the previous and next blogs */}
-
             <Divider />
 
             <Flex
@@ -87,6 +98,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       id
       body
+      timeToRead
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
