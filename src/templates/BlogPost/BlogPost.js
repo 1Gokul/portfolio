@@ -32,11 +32,15 @@ const BlogPost = ({ data, pageContext }) => {
       <Box>
         <BlogContainer ref={target}>
           <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
-            <ReadingProgress target={target} />
             <SectionHeading marginBottom={2}>{title}</SectionHeading>
             <Text marginBottom={14} textAlign="center">
               {date}
             </Text>
+
+
+            <ReadingProgress target={target} />
+
+            {/* The blog's body */}
             <MDX localImages={embeddedImagesLocal}>{body}</MDX>
 
             {/* Links to the previous and next blogs */}
@@ -65,6 +69,8 @@ const BlogPost = ({ data, pageContext }) => {
 
             <Divider />
           </Flex>
+
+          {/* Table of Contents */}
           <aside>
             <TableOfContents headings={headings} target={target} />
           </aside>
