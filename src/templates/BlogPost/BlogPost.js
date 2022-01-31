@@ -35,6 +35,7 @@ const BlogPost = ({ data, pageContext }) => {
         <BlogContainer ref={target}>
           <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
             <SectionHeading marginBottom={2}>{title}</SectionHeading>
+
             <Box marginBottom={14} alignSelf="center">
               <Flex marginY={5} alignItems="center">
                 <Icon as={IoPerson} marginRight={2} />
@@ -83,7 +84,7 @@ const BlogPost = ({ data, pageContext }) => {
 
           {/* Table of Contents */}
           <aside>
-            <TableOfContents headings={headings} target={target} />
+            <TableOfContents headings={headings} />
           </aside>
         </BlogContainer>
       </Box>

@@ -4,9 +4,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 
-// import ReadingProgress from "./ReadingProgress";
-
-const TableOfContents = ({ headings /*, target */ }) => {
+const TableOfContents = ({ headings }) => {
   // Depth is equal to 2 for h2 headings
   const h2Headings = headings.filter((heading) => heading.depth === 2);
 
@@ -24,7 +22,6 @@ const TableOfContents = ({ headings /*, target */ }) => {
     <>
       <DesktopTOC headings={h2Headings} />
       <MobileTOC headings={h2Headings} />
-      {/* <ReadingProgress target={target} /> */}
     </>
   );
 };
@@ -106,7 +103,7 @@ const MobileTOC = ({ headings }) => {
       position="fixed"
       right={{ base: 5, md: 10 }}
       bottom={20}
-      zIndex={4}
+      zIndex="2"
     >
       <MotionFlex
         flexDirection="column"
@@ -144,7 +141,7 @@ const MobileTOC = ({ headings }) => {
         fontSize="2xl"
         icon={visible ? <IoClose /> : <IoMenu />}
         onClick={() => setVisible(!visible)}
-        zIndex={4}
+        zIndex="2"
       />
     </Box>
   );
