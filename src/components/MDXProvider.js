@@ -76,7 +76,10 @@ const mdComponents = {
   li: (props) => <ListItem {...props} />,
   hr: (props) => <Divider my={8} {...props} />,
   note: (props) => (
-    <Alert colorScheme="aqua" variant="left-accent" {...props} />
+    <Alert status="info" variant="left-accent" {...props}>
+      <AlertIcon />
+      {props.children}
+    </Alert>
   ),
   Alert,
   AlertIcon,
