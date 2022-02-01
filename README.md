@@ -1,6 +1,16 @@
-# Portfolio
+# gokulv.netlify.app
 
-[gokulv.netlify.app](https://gokulv.netlify.app/)
+- **Framework**- [Gatsby](https://www.gatsbyjs.com)
+- **Styling**- [Chakra UI](https://chakra-ui.com)
+- **Content**- [MDX](https://github.com/mdx-js/mdx)
+- **Deployment**- [Netlify](https://www.netlify.com)
 
+## Working on the code yourself
 
-To work on the code, navigate to the folder, run `npm install` in the terminal followed by `gatsby develop` to run the app in development mode.
+```bash
+$ git clone https://github.com/1Gokul/portfolio.git
+$ cd portfolio
+$ npm install
+$ npm run develop
+ ```
+
