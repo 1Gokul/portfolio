@@ -4,11 +4,11 @@ import {
   Box,
   Link,
   LinkBox,
-  LinkOverlay,
   Text,
   Flex,
   SimpleGrid,
-  Badge
+  Badge,
+  Button
 } from "@chakra-ui/react";
 import { VscLinkExternal, VscGithubInverted } from "react-icons/vsc";
 import { Image as CNImage, Transformation } from "cloudinary-react";
@@ -40,23 +40,37 @@ const ProjectInfo = ({ project, projectImage }) => {
       </Heading>
       <Text marginY={8}>{project.description}</Text>
       <Tags tags={project.tags} />
-      <Flex>
-        <LinkOverlay
+      <Flex direction={{ base: "column", md: "row" }}>
+        <Link
           aria-label={`Click to view the project, ${project.name}.`}
           href={project.link}
           marginX={3}
           target="_blank"
           rel="noreferrer"
         >
-          <VscLinkExternal size={30} />
-        </LinkOverlay>
+          <Button
+            bgColor="gray.100"
+            color="gray.800"
+            borderRadius="full"
+            rightIcon={<VscLinkExternal />}
+          >
+            Website
+          </Button>
+        </Link>
         <Link
           aria-label={`Click to view the GitHub repository of ${project.name}.`}
           href={project.github}
           marginX={3}
           target="_blank"
         >
-          <VscGithubInverted size={30} />
+          <Button
+            bgColor="gray.100"
+            color="gray.800"
+            borderRadius="full"
+            rightIcon={<VscGithubInverted />}
+          >
+            Source Code
+          </Button>
         </Link>
       </Flex>
     </Box>
