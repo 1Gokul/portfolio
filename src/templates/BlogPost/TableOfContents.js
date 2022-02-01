@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, IconButton, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  IconButton,
+  Text
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
@@ -108,13 +115,20 @@ const MobileTOC = ({ headings }) => {
       <MotionFlex
         flexDirection="column"
         paddingX={1}
-        bgColor="#00304d"
+        borderRadius="xl"
+        bgColor="#003c61"
         overflow="hidden"
         initial="closed"
         animate={visible ? "open" : "closed"}
         variants={tocVariants}
       >
-        <Text padding={3} color="pink.300">
+        <Text
+          padding={3}
+          color="pink.300"
+          fontWeight="bold"
+          fontSize="xl"
+          borderBottom="2px dotted"
+        >
           Contents
         </Text>
         {headings.map((heading) => (
