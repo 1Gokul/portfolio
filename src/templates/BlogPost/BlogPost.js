@@ -1,7 +1,7 @@
 import React, { createRef } from "react";
 import { graphql, Link as GatsbyLink } from "gatsby";
 import { Box, Divider, Flex, Icon, Link } from "@chakra-ui/react";
-import { IoArrowBack, IoArrowForward, IoPerson } from "react-icons/io5";
+import { IoArrowBack, IoArrowForward } from "react-icons/io5";
 import { HiClock, HiCalendar } from "react-icons/hi";
 
 import Layout from "../../components/Layout";
@@ -36,11 +36,11 @@ const BlogPost = ({ data, pageContext }) => {
           <Flex direction="column" maxW={{ base: "90vw", lg: "40vw" }}>
             <SectionHeading marginBottom={2}>{title}</SectionHeading>
 
-            <Box marginBottom={14} alignSelf="center">
-              <Flex marginY={5} alignItems="center">
-                <Icon as={IoPerson} marginRight={2} />
-                Gokul Viswanath
-              </Flex>
+            <Flex
+              marginBottom={5}
+              justifyContent="space-evenly"
+              color="gray.300"
+            >
               <Flex marginY={5} alignItems="center">
                 <Icon as={HiCalendar} marginRight={2} />
                 {date}
@@ -49,7 +49,7 @@ const BlogPost = ({ data, pageContext }) => {
                 <Icon as={HiClock} marginRight={2} />
                 {timeToRead} minute read
               </Flex>
-            </Box>
+            </Flex>
 
             <ReadingProgress target={target} />
 
