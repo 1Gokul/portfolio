@@ -8,38 +8,45 @@ embeddedImagesLocal:
   - keyguides_changing.gif
   - keyguides.png
   - result_md_table.png
+  - table2markdown_thumbnail.jpg
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
-### Table converter project
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
-[pic2ascii](/blog/pic2ascii-converter/) taught me a lot about about styling with CSS and how to structure HTML documents properly. 
+<GatsbyImage alt="thumbnail" image={getImage(props.localImages[6])} />
+
+[pic2ascii](/blog/pic2ascii-converter/) taught me a lot about about styling with CSS and how to structure HTML documents properly.
 I also learnt how to accept files, process them and send them back to the user.
 
-While building the project, I had to create a table of items and then store it in Markdown. After some searching, 
-I found a website that helped me do it: [TablesGenerator](https://www.tablesgenerator.com/markdown_tables), where I 
-entered items and then could convert it into markdown text. 
+While building the project, I had to create a table of items and then store it in Markdown. After some searching,
+I found a website that helped me do it: [TablesGenerator](https://www.tablesgenerator.com/markdown_tables), where I
+entered items and then could convert it into markdown text.
 
 This is an example table created with the website:
 
 ```md
-| Hey | Hi | Hello! |
-| --- | --- | ------ |
-| **This** | is | *an* |
-| example | Markdown | table! |
+| Hey      | Hi       | Hello! |
+| -------- | -------- | ------ |
+| **This** | is       | _an_   |
+| example  | Markdown | table! |
 ```
+
 This is the result:
 
-<GatsbyImage alt="result_md_table" image={getImage(props.localImages[5])} object-fit="contain"/>
+<GatsbyImage
+  alt="result_md_table"
+  image={getImage(props.localImages[5])}
+  object-fit="contain"
+/>
 
-I then started to create a clone of the website, with all the website's other functionalities, like converting 
+I then started to create a clone of the website, with all the website's other functionalities, like converting
 a CSV file or an Excel table.
 
 I also decided to use a CSS framework to style my website, as I was comfortable with CSS at that time. For that purpose,
-I picked [Bootstrap](https://getbootstrap.com/). This also helped make the website responsive for 
+I picked [Bootstrap](https://getbootstrap.com/). This also helped make the website responsive for
 mobile devices with little to no effort.
 
-For the backend, I picked Flask as I was still inexperienced in it and wanted to learn more. 
+For the backend, I picked Flask as I was still inexperienced in it and wanted to learn more.
 
 ## Sections of the project
 
@@ -49,9 +56,8 @@ There were three sections:
 2. Uploading a CSV file
 3. Pasting an Excel table
 
-
 Conversion was the same for each part. The first row of the table was always treated as the header.
-Iterating through the rows, the program surrounds the cells with pipes (`|`) and spaces in between, while also 
+Iterating through the rows, the program surrounds the cells with pipes (`|`) and spaces in between, while also
 formatting them properly. Here is a snippet of the code:
 
 `converter.py`
@@ -138,45 +144,54 @@ def convert_table(input_data, convert_type, file_id):
 After this conversion, the results are returned to the user **while also** writing the results to a text file and Markdown
 file in case the user wishes to download their results or view the raw text.
 
-**DISCLAIMER**: These temporary files cannot be read by me or ANYONE and reside on Heroku's 
-[ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), which is cleared every time the 
+**DISCLAIMER**: These temporary files cannot be read by me or ANYONE and reside on Heroku's
+[ephemeral filesystem](https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem), which is cleared every time the
 dynos are restarted, so absolutely **zero** data from the user is kept.
 
 ## Inserting Data and converting
 
-<GatsbyImage alt="Insert_and_convert_screencap" image={getImage(props.localImages[2])} />
+<GatsbyImage
+  alt="Insert_and_convert_screencap"
+  image={getImage(props.localImages[2])}
+/>
 
 This was honestly the hardest one of them all. For this, I had to have an editable table where each cell and row can be selected
-and edited with options like **Bold**, *Italic* and <ins>Underlined</ins> text, along with buttons to add and delete rows 
+and edited with options like **Bold**, _Italic_ and <ins>Underlined</ins> text, along with buttons to add and delete rows
 and columns in each direction.
 
-I was able to get the table editable by adding a JQuery *(yeah I know, I got around to using ES6 later)* plugin to add, edit
+I was able to get the table editable by adding a JQuery _(yeah I know, I got around to using ES6 later)_ plugin to add, edit
 and delete rows. Column add/removal/deletion was done by yours truly. I also learnt how to use JQuery animations to hide and show
 different buttons.
 
-Another hard part was adding Undo/Redo functionality. I created a history array that stored the last 10 actions of the user. Once an action is performed in the middle of history, the elements in front were deleted. It was fun as I had to rack my brains to 
-implement it properly. 
+Another hard part was adding Undo/Redo functionality. I created a history array that stored the last 10 actions of the user. Once an action is performed in the middle of history, the elements in front were deleted. It was fun as I had to rack my brains to
+implement it properly.
 
 ## Accessibility
 
 This was a major thing I wanted to implement as it would be beneficial to users without mice. Additionally,
-operations on the rows and columns is a repetetive process. I then added events to perform actions on certain keypresses and showed 
+operations on the rows and columns is a repetetive process. I then added events to perform actions on certain keypresses and showed
 a guide to the user, like so:
 
-<GatsbyImage alt="keyguides.png" image={getImage(props.localImages[4])}  object-fit="contain"/>
+<GatsbyImage
+  alt="keyguides.png"
+  image={getImage(props.localImages[4])}
+  object-fit="contain"
+/>
 
-The controls shown in the guide also change depending on the context i.e. only those controls are shown which can be pressed 
+The controls shown in the guide also change depending on the context i.e. only those controls are shown which can be pressed
 in that particular situation.
 
 ![Keyguides changing](keyguides_changing.gif)
 
-
 ## Converting CSV files
 
-<GatsbyImage alt="convert_csv_screencap" image={getImage(props.localImages[0])} />
+<GatsbyImage
+  alt="convert_csv_screencap"
+  image={getImage(props.localImages[0])}
+/>
 
-This was relatively simple compared to the first part and was a good change in pace. In this method, I used the lightweight 
-but powerful [Papaparse](https://www.papaparse.com/) library to quickly parse the uploaded CSV files in the client-side 
+This was relatively simple compared to the first part and was a good change in pace. In this method, I used the lightweight
+but powerful [Papaparse](https://www.papaparse.com/) library to quickly parse the uploaded CSV files in the client-side
 itself, before sending the file to the backend.
 
 Before submitting the file, the user is given the choice to either directly convert and download the file, or further edit the
@@ -184,8 +199,7 @@ converted CSV table before downloading.
 
 Server-side, the csv file could be accessed easily and converted to a table using the function `convert_table()` shown above.
 
-
-Once completed, the user is directed to the insert-and-convert page in case they chose to edit the table, or they are shown the 
+Once completed, the user is directed to the insert-and-convert page in case they chose to edit the table, or they are shown the
 download links.
 
 I used [uuid](https://docs.python.org/3/library/uuid.html)s to generate unique tables for the users to handle multiple users
@@ -193,12 +207,16 @@ simultaneously.
 
 ## Converting Excel tables
 
-<GatsbyImage alt="convert_excel_screencap" image={getImage(props.localImages[1])} />
+<GatsbyImage
+  alt="convert_excel_screencap"
+  image={getImage(props.localImages[1])}
+/>
 
-This was the easiest one. Excel stores the elements with tabs in between them, so all I had to do was split the input and 
+This was the easiest one. Excel stores the elements with tabs in between them, so all I had to do was split the input and
 convert them using the usual function.
 
 `converter.py`
+
 ```python
 # Parses the passed excel table and puts the content into an array.
 # The array is then passed to the convert_table() function.
@@ -215,7 +233,7 @@ def convert_excel(input_table, file_id):
     return response_object
 ```
 
-Overall, this was a great project, and I felt accomplished after finishing it to its entirety *(barring some minor nitpickings)*.
+Overall, this was a great project, and I felt accomplished after finishing it to its entirety _(barring some minor nitpickings)_.
 
 [You can check out the app here!](https://table2markdown.herokuapp.com)
 

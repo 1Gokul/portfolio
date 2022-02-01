@@ -2,40 +2,44 @@
 title: "Enemies, Enemy Attacks and Attack Blocking"
 date: 2020-07-21
 embeddedImagesLocal:
-- CharacterFOV.jpg
-- MinionCombatCollisions.jpg
-- MinionSpheres.jpg
+  - CharacterFOV.jpg
+  - MinionCombatCollisions.jpg
+  - MinionSpheres.jpg
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 For now, the Player will face Enemies of only one type - Minion. These Minion assets were sourced from the **Paragon: Minions** Asset Pack
-from the Epic Games Store. I will be adding more Enemies very soon from the **Infinity Blade: Adversaries** Asset Pack. 
+from the Epic Games Store. I will be adding more Enemies very soon from the **Infinity Blade: Adversaries** Asset Pack.
 
 An Enemy's Collision Volumes are as below:
 
-<GatsbyImage alt="minioncombatcollisions" image={getImage(props.localImages[1])} />
+<GatsbyImage
+  alt="minioncombatcollisions"
+  image={getImage(props.localImages[1])}
+/>
 
 All such Collision Volumes use the `OnComponentBeginOverlap` and `OnComponentEndOverlap` functions to perform actions if an overlap occurs.
 
-- AgroSphere - If the Character enters this sphere, the Enemy will get agressive and chase the Character. 
-Chasing is done with UE4's inbuilt MoveToTarget() function, using which the Enemy will follow a path to reach the Character's location. This
-functionality only works inside NavMeshBounds Volumes.
+- AgroSphere - If the Character enters this sphere, the Enemy will get agressive and chase the Character.
+  Chasing is done with UE4's inbuilt MoveToTarget() function, using which the Enemy will follow a path to reach the Character's location. This
+  functionality only works inside NavMeshBounds Volumes.
 
 - CombatSphere - When the Enemy reaches close enough to the Character to make it overlap with the CombatSphere, the Enemy will begin attacking.
 
-Additional functionality added is the ability for the Enemy to turn so that attacks hit the Character i.e. if the Character moves when 
+Additional functionality added is the ability for the Enemy to turn so that attacks hit the Character i.e. if the Character moves when
 it is attacking, it will turn so that it can look directly at the Character.
 
 <GatsbyImage alt="minionspheres" image={getImage(props.localImages[2])} />
 
 - LeftCombatCollision & RightCombatCollision - Used to check if the Enemy's attack has hit the Character or not. They are box collisions covering
-the swords of the Enemies completely. By default, they do not respond to any types of overlaps. They are only activated to register overlaps when the
-Enemy performs an attack. 
+  the swords of the Enemies completely. By default, they do not respond to any types of overlaps. They are only activated to register overlaps when the
+  Enemy performs an attack.
 
 Attack Animations for Enemies are kept together in an Animation Montage. Out of the set of Animations, one is chosen at random.
 
 ## Attack()
+
 ```cpp
 void AEnemy::Attack()
 {
@@ -76,13 +80,14 @@ If the CombatCollision overlaps with the Character, a check will be performed to
 
 ## If not blocking
 
-If the Character was not blocking, a function `InflictDamageOnMain` is called. This function uses UE4's ApplyDamage() function to decrease the 
+If the Character was not blocking, a function `InflictDamageOnMain` is called. This function uses UE4's ApplyDamage() function to decrease the
 Character's health, along with calling functions to emit blood particles and playing hit sounds.
 
 The hit reaction animations are not picked at random, but are related to the `AttackSection` shown above AND if the Character is facing the
 attacking Enemy. As a result, the appropriate animation plays in reaction to the Enemy's attack.
 
 #### `InflictDamageOnMain()`
+
 ```cpp
 void AEnemy::InflictDamageOnMain(AMain* Main, bool bHitFromBehind)
 {
@@ -135,24 +140,45 @@ void AEnemy::InflictDamageOnMain(AMain* Main, bool bHitFromBehind)
 ## In Action
 
 - Character hit reaction when not blocking
-<iframe src="https://www.youtube.com/embed/M6Bvj2696RA" width="100%" height="300px" frameborder="0"> </iframe>
+  <iframe
+    src="https://www.youtube.com/embed/M6Bvj2696RA"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>
 
 ## If blocking
 
-Performed using the Right Mouse Button(RMB). The Character can block attacks using a One-Handed Weapon AND a Shield OR with a Two-Handed Weapon. 
+Performed using the Right Mouse Button(RMB). The Character can block attacks using a One-Handed Weapon AND a Shield OR with a Two-Handed Weapon.
 One-Handed Weapons alone cannot be used for blocking.
 
 The Character can walk while blocking. This is done by using UE4's `Layered Blend per bone` node, done before in the
 [Crouching](https://1gokul.github.io/2020-07-15/Character-Crouching/) post.
 
-### Walking while Blocking: 
+### Walking while Blocking:
 
 - Blocking with Shield
-<iframe src="https://www.youtube.com/embed/k9Bv3js7mxU" width="100%" height="300px" frameborder="0"> </iframe>
+
+  <iframe
+    src="https://www.youtube.com/embed/k9Bv3js7mxU"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>
 
 - Blocking with Two-Handed Weapon
-<iframe src="https://www.youtube.com/embed/P1oTZ67NyiY" width="100%" height="300px" frameborder="0"> </iframe>
-
+  <iframe
+    src="https://www.youtube.com/embed/P1oTZ67NyiY"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>
 
 To successfully block an Enemy's attack, the Character has to be blocking AND has to be facing the attacking Enemy,
 while also having sufficient Stamina available.
@@ -163,18 +189,30 @@ Facing an Enemy means that the Enemy should be inside the Character's Field of V
 
 If the attack was blocked, the Character's Stamina will reduce by `BlockStaminaCost`(declared in the Weapon and Shield classes).
 
-Additionally, if a Two-Handed Weapon was used for blocking, the Character's Health will decrease by an amount `DamageIfBlocked`, 
+Additionally, if a Two-Handed Weapon was used for blocking, the Character's Health will decrease by an amount `DamageIfBlocked`,
 as Weapons cannot block as effectively as Shields.
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-## Blocking in Action 
+## Blocking in Action
 
 - One-Handed Weapon + Shield
-<iframe src="https://www.youtube.com/embed/J_KpgKHG55c" width="100%" height="300px" frameborder="0"> </iframe> 
+
+  <iframe
+    src="https://www.youtube.com/embed/J_KpgKHG55c"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}
 
 - Two-Handed Weapon
-<iframe src="https://www.youtube.com/embed/Lrt6pQSxiIQ" width="100%" height="300px" frameborder="0"> </iframe> 
-
-
-
+  <iframe
+    src="https://www.youtube.com/embed/Lrt6pQSxiIQ"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}

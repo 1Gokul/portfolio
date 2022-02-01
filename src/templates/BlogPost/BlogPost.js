@@ -67,14 +67,18 @@ const BlogPost = ({ data, pageContext }) => {
             >
               {prev !== null && (
                 <Link as={GatsbyLink} to={prev.fields.slug}>
-                  <Icon as={IoArrowBack} />
-                  Previous post
+                  <Flex alignItems="center">
+                    <Icon as={IoArrowBack} alignSlef="center" />
+                    Previous post
+                  </Flex>
                 </Link>
               )}
               {next !== null && (
                 <Link as={GatsbyLink} to={next.fields.slug}>
-                  Next post
-                  <Icon alignSelf="center" as={IoArrowForward} />
+                  <Flex alignItems="center">
+                    Next post
+                    <Icon alignSelf="center" as={IoArrowForward} />
+                  </Flex>
                 </Link>
               )}
             </Flex>

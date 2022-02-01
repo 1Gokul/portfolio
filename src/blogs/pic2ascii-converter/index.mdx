@@ -2,22 +2,22 @@
 title: "Image to ASCII converter website using Python and Flask"
 date: 2020-12-11
 embeddedImagesLocal:
-    - img2img_param_after.png
-    - img2img_param_before.png
-    - pslogo_conversion.png
+  - img2img_param_after.png
+  - img2img_param_before.png
+  - pslogo_conversion.png
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
-###  Pic2ASCII
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
-This, along with [insertcoin](https://1gokul.github.io/insertcoin-store/2020-12-06/insertcoin-login-system/) was also made as a college project. This one was made in collaboration with my classmate, [Shubham Bhagwat](https://shubhamxb.github.io/). 
+### Pic2ASCII
 
+This, along with [insertcoin](https://1gokul.github.io/insertcoin-store/2020-12-06/insertcoin-login-system/) was also made as a college project. This one was made in collaboration with my classmate, [Shubham Bhagwat](https://shubhamxb.github.io/).
 
 ## The Project
 
 The project was called **"Pic2ASCII"**. Self-explanatory title, it would just convert any image that you upload into an ASCII-fied image or text. The PlayStation logo below is an example:
-<GatsbyImage alt="pslogo" image={getImage(props.localImages[2])} />
 
+<GatsbyImage alt="pslogo" image={getImage(props.localImages[2])} />
 
 ### Conversion Logic
 
@@ -27,25 +27,33 @@ Our repo was forked from this [repository](https://github.com/uvipen/ASCII-gener
 
 A few things in the python files were changed, such as the way the program receives parameters. The program initally took arguments like so:
 
-``` img2img.py --input rockstar.png --output output/rockstar.png --mode simple ```
+`img2img.py --input rockstar.png --output output/rockstar.png --mode simple`
 
 It was not possible to execute this program as such in a web application. So, I changed the way we had to call the program by directly calling the main function and adding the necessary parameters.
 
 Before
-<GatsbyImage alt="img2img_param_before.png" image={getImage(props.localImages[1])} />
+
+<GatsbyImage
+  alt="img2img_param_before.png"
+  image={getImage(props.localImages[1])}
+/>
 
 After
-<GatsbyImage alt="img2img_param_before.png" image={getImage(props.localImages[0])} />
+
+<GatsbyImage
+  alt="img2img_param_before.png"
+  image={getImage(props.localImages[0])}
+/>
 
 This sorted out the programs' input.
 
-### Output 
+### Output
 
 ## Image to ASCII-fied Text
 
 The [`Tempfile`](https://docs.python.org/3/library/tempfile.html) Python library creates temporary files and directories that can be used for a short time. They get deleted and cleaned up soon afterward.
 
-**IMPORTANT:** If using such an library in a web application, you should change the default storage directory of the temporary files because they get stored in the *system's* temp folder by default.
+**IMPORTANT:** If using such an library in a web application, you should change the default storage directory of the temporary files because they get stored in the _system's_ temp folder by default.
 
 In my case on Windows, it chose the `C:\Temp` folder. It can be changed to the `tmp/` folder in the project's root by adding this line in the program:
 
@@ -54,6 +62,7 @@ In my case on Windows, it chose the `C:\Temp` folder. It can be changed to the `
 Once this is done, the temporary file can be created and used like so:
 
 `img2txt.py`
+
 ```python
 # create and open the temporary file in text mode
 temp = tempfile.TemporaryFile(mode='w+t')
@@ -75,14 +84,17 @@ for i in range(num_rows):
 temp.seek(0)
 return temp.read(), errors
 ```
+
 The value returned is a tuple with the file itself and the errors encountered(if any).
 
-## Uploading the converted text to Paste.ee 
+## Uploading the converted text to Paste.ee
+
 This was done using this [Python module](https://github.com/i-ghost/pasteee) for [Paste.ee](https://paste.ee/), a free pastebin.
 
 As the converted text was returned as a string, all that was left to do was to use the `pastee` module's `Paste()` function to upload the text.
 
 `main.py`
+
 ```python
 # upload the converted text to paste.ee
 paste = Paste(outputtxt, private=False, desc=inlink, views=10)
@@ -93,22 +105,21 @@ dl_link = paste['download']
 
 # Reduce the size of the preview text so that it doesn't overflow
 font_size = 0.4 * (int(request.form.get('num_cols')) / 125)
-               
+
 ```
-
-
 
 ## Image to ASCII-fied Image
 
-The changes here are relatively small. The original program saved the converted image file to the specified output location. 
+The changes here are relatively small. The original program saved the converted image file to the specified output location.
 
-The file saving code was replaced to save the converted image contents to a buffer, instead of a file itself. This was made possible with the [`BytesIO`](https://docs.python.org/3/library/io.html#binary-i-o) module. 
+The file saving code was replaced to save the converted image contents to a buffer, instead of a file itself. This was made possible with the [`BytesIO`](https://docs.python.org/3/library/io.html#binary-i-o) module.
 
 BytesIO can be used in the place of an actual file object while not being a file itself. Any data written to it actually goes to an in-memory buffer.
 
 The image is written to and returned as follows:
 
 `img2img.py`
+
 ```python
 # Create the image and write to it
 out_image = Image.new("L", (out_width, out_height), bg_code)
@@ -141,18 +152,22 @@ out_image.save(output, format('JPEG'))
 outimg_data = output.getvalue()
 return outimg_data, errors
 ```
+
 ## Uploading the Image to Imgur
+
 This was done using the [PyImgur](https://github.com/Damgaard/PyImgur) Python module. The library's functions made it easy to upload the converted image to store in Imgur.
 
 Firstly, to upload any file to Imgur, we had to:
+
 - [Register our application](https://api.imgur.com/oauth2/addclient), and
 - Get the API key from Imgur after registration..
 
-Authorization with the Imgur API was done in a similar manner to the [previous post](https://1gokul.github.io/insertcoin-store/2020-12-06/insertcoin-login-system/) in which we authorized our application with MongoDB. We add the API key as an environment variable (say `IMGUR_KEY`), and connect using 
+Authorization with the Imgur API was done in a similar manner to the [previous post](https://1gokul.github.io/insertcoin-store/2020-12-06/insertcoin-login-system/) in which we authorized our application with MongoDB. We add the API key as an environment variable (say `IMGUR_KEY`), and connect using
 
 ```python
 im = pyimgur.Imgur(os.environ.get("IMGUR_KEY"))
 ```
+
 After this, uploading is done using the `send_request()` function:
 
 ```python
@@ -160,10 +175,10 @@ out = im._send_request('https://api.imgur.com/3/image',
                                        method='POST',
                                        params={'image': outputimg})
 ```
+
 where `outputimg` is the ASCII-fied image encoded using `b64encode()`.
 
-
-The front-end of the ASCII generator was thus complete! 
+The front-end of the ASCII generator was thus complete!
 
 You can check out the web app [here](https://pic-2ascii.herokuapp.com/).
 

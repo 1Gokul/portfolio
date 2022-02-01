@@ -1,15 +1,15 @@
 ---
 title: "Movement Updates"
 date: 2020-09-17
-embeddedImagesLocal: 
+embeddedImagesLocal:
   - UnarmedNormal2DBlendSpace.jpg
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 The Character's movement has been updated with strafing depending on the Player's keyboard input.
 
-In comparison, in the earlier versions, the Character would rotate in the direction of the keyboard input (done by 
+In comparison, in the earlier versions, the Character would rotate in the direction of the keyboard input (done by
 setting `GetCharacterMovement()->bOrientRotationToMovement` to `true`).
 
 ## Setting up Animations
@@ -17,14 +17,17 @@ setting `GetCharacterMovement()->bOrientRotationToMovement` to `true`).
 I downloaded six additional animations from Mixamo for each PlayerState: Strafe Walk & Run - **Left**, **Right** and **Back**. (I already
 had the **Forward** Animations.)
 
-Additionally, I added 4 Animations for *Diagonal* jogging in case the Player holds down one of the Forward and Right movement buttons simultaneously.
+Additionally, I added 4 Animations for _Diagonal_ jogging in case the Player holds down one of the Forward and Right movement buttons simultaneously.
 
 After setting up, the Animations were put in a **2D** BlendSpace (as opposed to the **1D** BlendSpace used before) like so:
 
-<GatsbyImage alt="UnarmedNormal2DBlendSpace.jpg" image={getImage(props.localImages[0])} />
+<GatsbyImage
+  alt="UnarmedNormal2DBlendSpace.jpg"
+  image={getImage(props.localImages[0])}
+/>
 
-The Axes in the BlendSpace are **SpeedForward** (Y Axis) and **SpeedRight** (X Axis). These two values determine which Movement Animation has 
-to be played. 
+The Axes in the BlendSpace are **SpeedForward** (Y Axis) and **SpeedRight** (X Axis). These two values determine which Movement Animation has
+to be played.
 
 As the value of SpeedForward increases from `-375` to `375`, the **Backward** animations blend to the **Forward** animations. Similarly, as SpeedRight
 increases, the Left animations blend to Right.
@@ -42,24 +45,47 @@ SpeedRight = FVector::DotProduct(Pawn->GetActorRightVector(), Speed);
 
 These two values are passed in the Animation Blueprint instead of `MovementSpeed`.
 
-So as a result, the Character can strafe depending on the input instead of always rotating in the direction of input. 
+So as a result, the Character can strafe depending on the input instead of always rotating in the direction of input.
 
 ## Other changes
 
- - Added a new map "SpringLandscape"
- - Changed the original camera position to be closer to the Character (Like the recent God Of War game).
- - Made the camera smoothly zoom in and out when the Character enters and leaves Combat Mode.
- - Added a crosshair that appears when the Character goes into Combat Mode.
+- Added a new map "SpringLandscape"
+- Changed the original camera position to be closer to the Character (Like the recent God Of War game).
+- Made the camera smoothly zoom in and out when the Character enters and leaves Combat Mode.
+- Added a crosshair that appears when the Character goes into Combat Mode.
 
- You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
+You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
 ## In Action
 
-- Unarmed 
-<iframe src="https://www.youtube.com/embed/rCqZrePd7QY" width="100%" height="300px" frameborder="0"> </iframe> 
+- Unarmed
 
-- One-Handed Armed 
-<iframe src="https://www.youtube.com/embed/igm6e9REARU" width="100%" height="300px" frameborder="0"> </iframe> 
+  <iframe
+    src="https://www.youtube.com/embed/rCqZrePd7QY"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}
+
+- One-Handed Armed
+
+  <iframe
+    src="https://www.youtube.com/embed/igm6e9REARU"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}
 
 - Two-Handed Armed
-<iframe src="https://www.youtube.com/embed/7jS1zQTWJCA" width="100%" height="300px" frameborder="0"> </iframe> 
+  <iframe
+    src="https://www.youtube.com/embed/7jS1zQTWJCA"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}

@@ -1,15 +1,16 @@
 ---
 title: "Website Login system using Flask and Python"
 date: 2020-12-06
-embeddedImagesLocal: 
-    - login_html.jpg
-    - register_html.jpg
+embeddedImagesLocal:
+  - login_html.jpg
+  - register_html.jpg
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 ### insertcoin-store
 
-I and a classmate had made a mini-project for college that implemented Database concepts using MongoDB. I took it as a oppurtunity to skill myself in Web Development. 
+I and a classmate had made a mini-project for college that implemented Database concepts using MongoDB. I took it as a oppurtunity to skill myself in Web Development.
 
 ## The Project
 
@@ -22,25 +23,23 @@ The base layout of the website was made keeping [Steam](https://store.steampower
 I first made a basic `home.html` page that had the basic layout of all pages of the site. All other webpages would be able to inherit from that layout by using `extends` like so:
 
 `library.html`
+
 ```html
-{% raw %}
-{% extends "layout.html" %}
+{% raw %} {% extends "layout.html" %}
 
-    <!-- **Page content** -->
+<!-- **Page content** -->
 
-    {% block title %}
-    <title>insertcoin: Library</title>
-    {% endblock %}
+{% block title %}
+<title>insertcoin: Library</title>
+{% endblock %} {% block content %}
 
-    {% block content %}
+<span class="pageheading">Library</span>
 
-    <span class="pageheading">Library</span>
-
-    {% endblock %}
-{% endraw %}
+{% endblock %} {% endraw %}
 ```
 
 The website's `home`, `login` and `register` pages inherit from `home.html`.
+
 ## Connecting to MongoDB
 
 I signed up to MongoDB to use the free version of their [Atlas](https://www.mongodb.com/cloud/atlas) service. This database would be used to store the login information of the users.
@@ -51,24 +50,25 @@ After creating a database, I was able to acquire the connection string required 
 CONNECTION_STRING = os.environ.get("MONGO_KEY")
 client = pymongo.MongoClient(CONNECTION_STRING)
 ```
+
 Now any connected database would be accessible by `client['<db_name>']`!
 
 ## Registering to the website
 
 `Register.html`
+
 <GatsbyImage alt="register_html.png" image={getImage(props.localImages[1])} />
 
-After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database. 
+After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database.
 
-The `register()` function below checks if- 
-    
+The `register()` function below checks if-
+
 - The entered passwords match
 - There is no existing user with the same username (using MongoDB's `find_one()` function)
 
 and then pushes the data to the MongoDB document if both the coniditons are satisfied.
 
-Passwords passed to the Database are hashed using the Python module **`Bcrypt`**.  
-
+Passwords passed to the Database are hashed using the Python module **`Bcrypt`**.
 
 ```python
 @app.route('/register', methods=['POST', 'GET'])
@@ -117,19 +117,21 @@ def register():
                                acclink=loginlink)
 
 ```
+
 ## Logging in
 
 `login.html`
+
 <GatsbyImage alt="login_html.png" image={getImage(props.localImages[0])} />
 
-When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database. 
+When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database.
 If yes, the user's password is compared to the password (again using **`Bcrypt`**) entered and if that matches too, the user is redirected to the **Library** page.
 
 Using the `session` module, we can add an object `session['username']` with the user's username. This can be used later to check if there is a user currently logged in.
 
 The `login()` function is as follows:
 
-```python 
+```python
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -158,6 +160,7 @@ def login():
     else:
         return render_template('login.html', account="Log In")
 ```
+
 ## Logging out
 
 Logging out is a easy process. We clear the **`session`** dictionary object with the key `'username'` using the function `session.pop()`, and then redirect the user back to the homepage.

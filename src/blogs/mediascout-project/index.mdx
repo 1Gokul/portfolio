@@ -8,8 +8,11 @@ embeddedImagesLocal:
   - movie-detail.jpg
   - search-results.jpg
   - seasons.jpg
+  - mediascout_thumbnail.jpg
 ---
 import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+
+<GatsbyImage alt="thumbnail" image={getImage(props.localImages[6])}/>
 
 MediaScout is a webapp that takes information of movies, tv series and actors from an API and shows it to the user. 
 Users can also search for media and see similar movies and shows by genre/keywords.

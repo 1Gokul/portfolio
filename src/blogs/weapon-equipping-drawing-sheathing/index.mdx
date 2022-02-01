@@ -1,14 +1,14 @@
 ---
 title: "Weapon Sheathing and Drawing"
 date: 2020-07-19
-embeddedImagesLocal: 
-- TimedDraw.jpg
-- TimedSheathe.jpg
+embeddedImagesLocal:
+  - TimedDraw.jpg
+  - TimedSheathe.jpg
 ---
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
 
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
-When the Player presses the **R** key, the Character changes into *Combat Mode*, which makes them ready for combat.
+When the Player presses the **R** key, the Character changes into _Combat Mode_, which makes them ready for combat.
 
 If the Character has a Weapon equipped, pressing **R** would toggle Sheathing and Drawing the Weapon.
 If no Weapon was equipped, the Character would be ready for melee combat.
@@ -17,6 +17,7 @@ Sheathing and Drawing is done in two parts: the first being setting up the Chara
 being the attachment of the Weapon to the Hand/Sheath.
 
 ## Sheathing Setup
+
 ```cpp
 void AMain::SheatheWeapon()
 {
@@ -50,10 +51,11 @@ void AMain::SheatheWeapon()
 }
 ```
 
-The above function sets up the Character for Sheathing the Weapon. Attaching the Weapon to the Sheath is done 
-by a *BlueprintCallable* function, `TimedSheathe`:
+The above function sets up the Character for Sheathing the Weapon. Attaching the Weapon to the Sheath is done
+by a _BlueprintCallable_ function, `TimedSheathe`:
 
 ## TimedSheathe()
+
 ```cpp
 void AMain::TimedSheathe()
 {
@@ -70,7 +72,7 @@ void AMain::TimedSheathe()
 			SheathSocket->AttachActor(EquippedWeapon, GetMesh());
 		}
 	}
-}	
+}
 ```
 
 This function is called as an Anim Notify in the Sheathing Animation, at the moment where the Character is about to release the Weapon.
@@ -78,6 +80,7 @@ This function is called as an Anim Notify in the Sheathing Animation, at the mom
 <GatsbyImage alt="TimedSheathe.jpg" image={getImage(props.localImages[1])} />
 
 ## Drawing Setup
+
 ```cpp
 void AMain::DrawWeapon()
 {
@@ -107,11 +110,13 @@ void AMain::DrawWeapon()
 	}
 }
 ```
-The above function sets up the Character for Drawing the Weapon. Attaching the Weapon to the Hand is done 
-by a *BlueprintCallable* function, `TimedDraw`:
+
+The above function sets up the Character for Drawing the Weapon. Attaching the Weapon to the Hand is done
+by a _BlueprintCallable_ function, `TimedDraw`:
 
 ## TimedDraw()
-```cpp 
+
+```cpp
 void AMain::TimedDraw()
 {
 	if (EquippedWeapon)
@@ -127,19 +132,32 @@ void AMain::TimedDraw()
 	}
 }
 ```
+
 Similarly, this function is called as an Anim Notify in the Sheathing Animation, at the moment where the Character is about to grab the Weapon.
 
 <GatsbyImage alt="TimedDraw.jpg" image={getImage(props.localImages[0])} />
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-## In Action 
+## In Action
 
 - One-Handed Weapon
-<iframe src="https://www.youtube.com/embed/U46rnurwsqs" width="100%" height="300px" frameborder="0"> </iframe> 
+
+  <iframe
+    src="https://www.youtube.com/embed/U46rnurwsqs"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}
 
 - Two-Handed Weapon
-<iframe src="https://www.youtube.com/embed/Yf2b-jehppk" width="100%" height="300px" frameborder="0"> </iframe> 
-
-
-
+  <iframe
+    src="https://www.youtube.com/embed/Yf2b-jehppk"
+    width="100%"
+    height="300px"
+    frameborder="0"
+  >
+    {" "}
+  </iframe>{" "}

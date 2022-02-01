@@ -17,13 +17,13 @@ Changing gunicorn's timeout duration in the `Procfile` would also not work and w
 
 I had 2 ways to upload the images to Imgur:
 
- [1.Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
+[1.Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
 
- Or
+Or
 
- [2.Uploading files as a background task using **R**edis **Q**ueue.](#using-redis-and-ajax)
+[2.Uploading files as a background task using **R**edis **Q**ueue.](#using-redis-and-ajax)
 
-I personally prefer the second option because *(familiarity and bias towards Python aside,)* the functions made can be _easily_ reused for other purposes, not just uploading.
+I personally prefer the second option because _(familiarity and bias towards Python aside,)_ the functions made can be _easily_ reused for other purposes, not just uploading.
 
 The second method was also used for the API's conversion functions.
 
@@ -34,86 +34,82 @@ Once the **Submit** button is clicked, its [click()](https://api.jquery.com/clic
 The file is first checked to see if it is valid and falls within the 20MB size limit that Imgur sets.
 
 ```js
-    // Get the file from the form
-    var $file = $("#inputform-file").prop('files')[0];
+// Get the file from the form
+var $file = $("#inputform-file").prop("files")[0];
 
-    if ($file) {
+if ($file) {
+  var fileType = $file["type"];
 
-        var fileType = $file["type"];
+  // If the file's type is not supported
+  var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  if ($.inArray(fileType, validImageTypes) < 0) {
+    send_error("Select a <b>valid</b> image file.");
+  }
 
-        // If the file's type is not supported
-        var validImageTypes = ["image/gif", "image/jpeg", "image/png"];
-        if ($.inArray(fileType, validImageTypes) < 0) {
-            send_error("Select a <b>valid</b> image file.");
-        }
-
-        // Else if file is larger than 20MB(Imgur's upload size limit)
-        else if ($file.size > parseInt(maxFileSize) * 1024 * 1024) {
-            send_error("The file was bigger than the 20MB limit! Select a smaller one.");
-            return false;
-        }
-        // Else if the file is good to go
-        else {
-            if ($('#error').length) {
-                send_error("Nice!");
-            }
-
-            // Disable the submit button to prevent repeated submissions.
-            $(this).css('background', '#d44444');
-            $(this).val('Uploading...')
-                .attr('disabled', 'disabled');
-
-
-            console.log("uploading submitted file...");
-            send_file_to_upload($file, "convert_image");
-        }
-
-
+  // Else if file is larger than 20MB(Imgur's upload size limit)
+  else if ($file.size > parseInt(maxFileSize) * 1024 * 1024) {
+    send_error(
+      "The file was bigger than the 20MB limit! Select a smaller one."
+    );
+    return false;
+  }
+  // Else if the file is good to go
+  else {
+    if ($("#error").length) {
+      send_error("Nice!");
     }
-    // If no file was selected at all
-    else {
-        send_error("Select a file first, goofball.");
-    }
+
+    // Disable the submit button to prevent repeated submissions.
+    $(this).css("background", "#d44444");
+    $(this).val("Uploading...").attr("disabled", "disabled");
+
+    console.log("uploading submitted file...");
+    send_file_to_upload($file, "convert_image");
+  }
+}
+// If no file was selected at all
+else {
+  send_error("Select a file first, goofball.");
+}
 ```
 
- If valid, an Ajax POST request with the image's data would be sent to Imgur, with help taken from their [API documentation](https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139).
+If valid, an Ajax POST request with the image's data would be sent to Imgur, with help taken from their [API documentation](https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139).
 
 `upload_to_imgur()`
+
 ```js
 // Send an Ajax POST request to Imgur's API to upload a file.
-    function upload_to_imgur(fileToUpload) {
+function upload_to_imgur(fileToUpload) {
+  // The image's data
+  var formData = new FormData();
+  formData.append("image", fileToUpload);
 
-        // The image's data
-        var formData = new FormData();
-        formData.append('image', fileToUpload);
+  // Taken from: https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
+  var settings = {
+    url: "https://api.imgur.com/3/image",
+    method: "POST",
+    timeout: 0,
+    headers: {
+      Authorization: "Client-ID "
+    },
+    processData: false,
+    mimeType: "multipart/form-data",
+    contentType: false,
+    data: formData
+  };
 
-        // Taken from: https://apidocs.imgur.com/#c85c9dfc-7487-4de2-9ecd-66f727cf3139
-        var settings = {
-            "url": "https://api.imgur.com/3/image",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Authorization": "Client-ID "
-            },
-            "processData": false,
-            "mimeType": "multipart/form-data",
-            "contentType": false,
-            "data": formData
-        };
+  // Upload the file to Imgur.
+  var parsedResponse;
 
-        // Upload the file to Imgur.
-        var parsedResponse;
+  $.ajax(settings).done(function (response) {
+    // Parse the returned JSON and return the link to the image.
+    parsedResponse = $.parseJSON(response);
 
-        $.ajax(settings).done(function (response) {
-
-            // Parse the returned JSON and return the link to the image.
-            parsedResponse = $.parseJSON(response);
-
-            return parsedResponse.data.link;
-        });
-    }
+    return parsedResponse.data.link;
+  });
+}
 ```
- 
+
 Conversion would take place as usual in the API, and the resultant image file would be again returned and uploaded to Imgur using the same method.
 
 This method works properly without any timeouts, with the exceptions being _unusually_ large files, which would cause a timeout during their conversion.
@@ -144,7 +140,7 @@ window.send_file_to_upload = function ($file, funcToCallOnceCompleted) {
     data: formData,
     cache: false,
     processData: false,
-    contentType: false,
+    contentType: false
   })
     // If done, get the status of the background job that was started for this file's upload.
     .done((response) => {
@@ -190,7 +186,7 @@ Once the function returns the ID of the task, we can start checking if the task 
 function get_status(taskID, funcToCall) {
   $.ajax({
     method: "GET",
-    url: `tasks/${taskID}`,
+    url: `tasks/${taskID}`
   })
     .done((response) => {
       const taskStatus = response.data.taskStatus;
