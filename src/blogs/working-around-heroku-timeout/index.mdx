@@ -17,17 +17,17 @@ Changing gunicorn's timeout duration in the `Procfile` would also not work and w
 
 I had 2 ways to upload the images to Imgur:
 
-[1.Sending the image through an Ajax POST request in JQuery](#using-jquery-and-ajax)
+[1.Sending the image through a normal Ajax POST request](#using-ajax)
 
 Or
 
-[2.Uploading files as a background task using **R**edis **Q**ueue.](#using-redis-and-ajax)
+[2.Uploading files as a background task using Redis.](#using-redis)
 
 I personally prefer the second option because _(familiarity and bias towards Python aside,)_ the functions made can be _easily_ reused for other purposes, not just uploading.
 
 The second method was also used for the API's conversion functions.
 
-## Using JQuery and Ajax
+## Using Ajax
 
 Once the **Submit** button is clicked, its [click()](https://api.jquery.com/click/) function in the `input.js` file would be called and the file would be taken.
 
@@ -114,7 +114,7 @@ Conversion would take place as usual in the API, and the resultant image file wo
 
 This method works properly without any timeouts, with the exceptions being _unusually_ large files, which would cause a timeout during their conversion.
 
-## Using Redis and AJAX
+## Using Redis
 
 In this method, each task is done in this manner:
 
