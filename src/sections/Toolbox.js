@@ -61,6 +61,7 @@ const LargeSkill = (props) => (
       as={props.skill.icon}
       boxSize={LARGE_ICON_SIZE}
       color={props.skill.color}
+      marginBottom={1}
     />
     {props.skill.name}
   </MotionFlex>

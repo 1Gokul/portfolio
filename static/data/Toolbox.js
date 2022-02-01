@@ -8,12 +8,14 @@ import {
 } from "react-icons/io5";
 import {
   SiFlask,
-  SiJinja,
   SiMongodb,
   SiUnrealengine,
   SiHeroku,
   SiGit,
-  SiFastapi
+  SiFastapi,
+  SiTypescript,
+  SiNextdotjs,
+  SiGatsby
 } from "react-icons/si";
 
 export const skills = {
@@ -34,14 +36,24 @@ export const skills = {
       color: "#F7DF1E"
     },
     {
+      icon: SiTypescript,
+      name: "TypeScript",
+      color: "#3178c6"
+    },
+    {
       icon: IoLogoReact,
       name: "React.js",
       color: "#61DAFB"
     },
     {
-      icon: SiJinja,
-      name: "Jinja",
-      color: "#b51010"
+      icon: SiNextdotjs,
+      name: "Next.js",
+      color: "#FFFFFF"
+    },
+    {
+      icon: SiGatsby,
+      name: "Gatsby",
+      color: "#663399"
     }
   ],
 
