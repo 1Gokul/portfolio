@@ -68,7 +68,7 @@ const BlogPost = ({ data, pageContext }) => {
               {prev !== null && (
                 <Link as={GatsbyLink} to={prev.fields.slug}>
                   <Flex alignItems="center">
-                    <Icon as={IoArrowBack} alignSlef="center" />
+                    <Icon as={IoArrowBack} />
                     Previous post
                   </Flex>
                 </Link>

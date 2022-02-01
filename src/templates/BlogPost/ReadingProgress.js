@@ -40,11 +40,11 @@ const ReadingProgress = ({ target }) => {
       width={`${readingProgress}%`}
       size="3.75rem"
       position="sticky"
-      top="5.082rem"
+      top="5.332rem"
       background="linear-gradient(to right, var(--theme-aqua), #00ff73)"
       color="pink.500"
       height="0.25rem"
-      zIndex="3"
+      zIndex="2"
     />
   );
 };

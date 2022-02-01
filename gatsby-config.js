@@ -1,12 +1,12 @@
 /* eslint-disable */
-module.exports = { 
+module.exports = {
   siteMetadata: {
     title: `Gokul Viswanath`,
     description: `Gokul Viswanath develops web applications and games. He is currently pursuing his Computer Engineering degree.`,
     author: `@1GokulV`,
     image: `images/gv.png`,
-    siteUrl: `https://gokulv.netlify.app`,
-  },  
+    siteUrl: `https://gokulv.netlify.app`
+  },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
     `@chakra-ui/gatsby-plugin`,
@@ -20,29 +20,29 @@ module.exports = {
         background_color: `#001b2b`,
         theme_color: `#004066`,
         display: `standalone`,
-        icon: `src/images/favicon.png`,
-      },
+        icon: `src/images/favicon.png`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
-        path: `${__dirname}/src/blogs`,
-      },
+        path: `${__dirname}/src/blogs`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `fonts`,
-        path: `${__dirname}/src/fonts`,
-      },
+        path: `${__dirname}/src/fonts`
+      }
     },
     {
       resolve: `gatsby-plugin-mdx`,
@@ -53,7 +53,7 @@ module.exports = {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
               className: "blog-permalink",
-              isIconAfterHeader: true,              
+              isIconAfterHeader: true,
               elements: [`h2`],
             }
           },
@@ -63,26 +63,26 @@ module.exports = {
             resolve: `gatsby-remark-external-links`,
             options: {
               target: `_blank`,
-              rel: `noopener`,
-            },
+              rel: `noopener`
+            }
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-          },
-        ],
-      },
+            resolve: `gatsby-remark-prismjs`
+          }
+        ]
+      }
     },
     {
-      resolve: 'gatsby-plugin-netlify',
+      resolve: "gatsby-plugin-netlify",
       options: {
         headers: {
-          '/src/fonts/*': [
-            'Cache-Control: public',
-            'Cache-Control: max-age=365000000',
-            'Cache-Control: immutable',
-          ],
-        },
-      },
+          "/src/fonts/*": [
+            "Cache-Control: public",
+            "Cache-Control: max-age=365000000",
+            "Cache-Control: immutable"
+          ]
+        }
+      }
     },
     `gatsby-plugin-image`,
     {
@@ -90,11 +90,11 @@ module.exports = {
       options: {
         defaults: {
           quality: 70,
-          formats: ['auto', 'webp', 'avif'],
-          placeholder: 'blurred',
-        },
-      },
+          formats: ["auto", "webp", "avif"],
+          placeholder: "blurred"
+        }
+      }
     },
-    `gatsby-transformer-sharp`,
-  ],
-}
+    `gatsby-transformer-sharp`
+  ]
+};
