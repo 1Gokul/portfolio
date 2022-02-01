@@ -1,22 +1,22 @@
 /* eslint-disable */
-const {createFilePath} = require (`gatsby-source-filesystem`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.onCreateNode = ({node, actions, getNode}) => {
-  const {createNodeField} = actions;
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions;
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath ({node, getNode, basePath: 'pages'});
-    createNodeField ({
+    const value = createFilePath({ node, getNode, basePath: "pages" });
+    createNodeField({
       node,
       name: `slug`,
-      value: `/blog${value}`,
+      value: `/blog${value}`
     });
   }
 };
 
-exports.createPages = async ({actions, graphql}) => {
-  const result = await graphql (`
-    query{
-      allMdx(sort: { fields: [frontmatter___date], order: DESC })  {
+exports.createPages = async ({ actions, graphql }) => {
+  const result = await graphql(`
+    query {
+      allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             id
@@ -30,20 +30,20 @@ exports.createPages = async ({actions, graphql}) => {
   `);
 
   if (result.errors) {
-    reporter.panicOnBuild ('ERROR: Loading "createPages" query');
+    reporter.panicOnBuild('ERROR: Loading "createPages" query');
   }
 
-  const posts = result.data.allMdx.edges
+  const posts = result.data.allMdx.edges;
 
-  posts.forEach (({node}, index) => {
-    actions.createPage ({
+  posts.forEach(({ node }, index) => {
+    actions.createPage({
       path: node.fields.slug,
-      component: require.resolve (`./src/templates/BlogPost/BlogPost.js`),
+      component: require.resolve(`./src/templates/BlogPost/BlogPost.js`),
       context: {
         id: node.id,
         next: index === 0 ? null : posts[index - 1].node,
-        prev: index === (posts.length - 1) ? null : posts[index + 1].node 
-      },
+        prev: index === posts.length - 1 ? null : posts[index + 1].node
+      }
     });
   });
 };

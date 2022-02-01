@@ -54,7 +54,7 @@ module.exports = {
             options: {
               className: "blog-permalink",
               isIconAfterHeader: true,
-              elements: [`h2`],
+              elements: [`h2`]
             }
           },
           `gatsby-remark-copy-linked-files`,
