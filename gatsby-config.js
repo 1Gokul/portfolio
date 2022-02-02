@@ -4,7 +4,7 @@ module.exports = {
     title: `Gokul Viswanath`,
     description: `Gokul Viswanath develops web applications and games. He is currently pursuing his Computer Engineering degree.`,
     author: `@1GokulV`,
-    image: `images/gv.png`,
+    image: `images/gv.jpg`,
     siteUrl: `https://gokulv.netlify.app`
   },
   plugins: [
