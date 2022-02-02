@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import { Image as CNImage, Transformation } from "cloudinary-react";
 
 import {
@@ -15,11 +15,10 @@ const About = () => {
       <SectionHeading>About me</SectionHeading>
       <AnimatedContainer justifySelf="center">
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          <Box>
+          <Flex direction="column" justifyContent="space-evenly">
             <Text fontSize="xl">{AboutDescription[0]}</Text>
-            <br />
             <Text fontSize="xl">{AboutDescription[1]}</Text>
-          </Box>
+          </Flex>
 
           <Flex
             marginX="auto"

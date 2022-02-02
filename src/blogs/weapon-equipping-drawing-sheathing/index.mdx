@@ -1,12 +1,7 @@
 ---
 title: "Weapon Sheathing and Drawing"
 date: 2020-07-19
-embeddedImagesLocal:
-  - TimedDraw.jpg
-  - TimedSheathe.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 When the Player presses the **R** key, the Character changes into _Combat Mode_, which makes them ready for combat.
 
@@ -77,7 +72,7 @@ void AMain::TimedSheathe()
 
 This function is called as an Anim Notify in the Sheathing Animation, at the moment where the Character is about to release the Weapon.
 
-<GatsbyImage alt="TimedSheathe.jpg" image={getImage(props.localImages[1])} />
+![TimedSheathe.jpg](TimedSheathe.jpg)
 
 ## Drawing Setup
 
@@ -135,7 +130,7 @@ void AMain::TimedDraw()
 
 Similarly, this function is called as an Anim Notify in the Sheathing Animation, at the moment where the Character is about to grab the Weapon.
 
-<GatsbyImage alt="TimedDraw.jpg" image={getImage(props.localImages[0])} />
+![TimedDraw.jpg](TimedDraw.jpg)
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
@@ -147,17 +142,15 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/U46rnurwsqs"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - Two-Handed Weapon
   <iframe
     src="https://www.youtube.com/embed/Yf2b-jehppk"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>

@@ -1,13 +1,7 @@
 ---
 title: "Image to ASCII converter website using Python and Flask"
 date: 2020-12-11
-embeddedImagesLocal:
-  - img2img_param_after.png
-  - img2img_param_before.png
-  - pslogo_conversion.png
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 ### Pic2ASCII
 
@@ -16,8 +10,7 @@ This, along with [insertcoin](https://1gokul.github.io/insertcoin-store/2020-12-
 ## The Project
 
 The project was called **"Pic2ASCII"**. Self-explanatory title, it would just convert any image that you upload into an ASCII-fied image or text. The PlayStation logo below is an example:
-
-<GatsbyImage alt="pslogo" image={getImage(props.localImages[2])} />
+![pslogo_conversion.png](pslogo_conversion.png)
 
 ### Conversion Logic
 
@@ -32,18 +25,10 @@ A few things in the python files were changed, such as the way the program recei
 It was not possible to execute this program as such in a web application. So, I changed the way we had to call the program by directly calling the main function and adding the necessary parameters.
 
 Before
-
-<GatsbyImage
-  alt="img2img_param_before.png"
-  image={getImage(props.localImages[1])}
-/>
+![img2img_param_before.png](img2img_param_before.png)
 
 After
-
-<GatsbyImage
-  alt="img2img_param_before.png"
-  image={getImage(props.localImages[0])}
-/>
+![img2img_param_before.png](img2img_param_before.png)
 
 This sorted out the programs' input.
 

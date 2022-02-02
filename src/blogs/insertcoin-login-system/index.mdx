@@ -1,12 +1,7 @@
 ---
 title: "Website Login system using Flask and Python"
 date: 2020-12-06
-embeddedImagesLocal:
-  - login_html.jpg
-  - register_html.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 ### insertcoin-store
 
@@ -14,9 +9,7 @@ I and a classmate had made a mini-project for college that implemented Database 
 
 ## The Project
 
-The project was titled **"Insertcoin: Game Marketplace"**. We took the topic of a game markteplace as it involves all of the basic [**CRUD**](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations that were required in the mini-project.
-
-The base layout of the website was made keeping [Steam](https://store.steampowered.com/) in mind.
+The project was titled **"insertcoin"**. We took the topic of a dummy game markteplace to involve all of the basic [**CRUD**](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations that were required in the mini-project.
 
 ## The Webpages
 
@@ -56,8 +49,7 @@ Now any connected database would be accessible by `client['<db_name>']`!
 ## Registering to the website
 
 `Register.html`
-
-<GatsbyImage alt="register_html.png" image={getImage(props.localImages[1])} />
+![register_html.png](register_html.png)
 
 After the user submits the data required to register without any errors, their data gets added into a document in the Atlas database.
 
@@ -121,8 +113,7 @@ def register():
 ## Logging in
 
 `login.html`
-
-<GatsbyImage alt="login_html.png" image={getImage(props.localImages[0])} />
+![login_html.png](login_html.png)
 
 When the user submits the data, the function `find_one()` is used again to find out if the user exists in the database.
 If yes, the user's password is compared to the password (again using **`Bcrypt`**) entered and if that matches too, the user is redirected to the **Library** page.
