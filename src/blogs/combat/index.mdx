@@ -1,12 +1,7 @@
 ---
 title: "Combat"
 date: 2020-07-20
-embeddedImagesLocal:
-  - GreatBlade.jpg
-  - OneHandedAttack2_AnimNotifies.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 # Melee
 
@@ -138,7 +133,7 @@ void AMain::MeleeAttackEnd()
 
 Following is one of the Weapons used in the game.
 
-<GatsbyImage alt="GreatBlade.jpg" image={getImage(props.localImages[0])} />
+![GreatBlade.jpg](GreatBlade.jpg)
 
 The `CombatCollision` BoxCollision on the Weapon is used to check if the Weapon has hit an Enemy during an attack, very similar to
 the `CombatCollision` on the Enemies.
@@ -147,10 +142,7 @@ the `CombatCollision` on the Enemies.
 
 Anim Notifies are used in the attack animations to call functions during the attacks.
 
-<GatsbyImage
-  alt="OneHandedAttack2_AnimNotifies.jpg"
-  image={getImage(props.localImages[1])}
-/>
+![OneHandedAttack2_AnimNotifies.jpg](OneHandedAttack2_AnimNotifies.jpg)
 
 There are 4 main Anim Notifies used in attack animations:
 
@@ -228,17 +220,15 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/9-j5ZczCl1M"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - While Unarmed and in Combat Mode
   <iframe
     src="https://www.youtube.com/embed/Hxo1z0V2Xec"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>

@@ -1,10 +1,4 @@
-import {
-  Box,
-  Flex,
-  Heading,
-  IconButton,
-  Text
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, IconButton, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";

@@ -9,6 +9,8 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-gatsby-cloud`,
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
     `@chakra-ui/gatsby-plugin`,
     `gatsby-plugin-react-helmet`,
     {
@@ -54,7 +56,15 @@ module.exports = {
             options: {
               className: "blog-permalink",
               isIconAfterHeader: true,
-              elements: [`h2`],
+              elements: [`h2`]
+            }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1600,
+              wrapperStyle:
+                `margin: 1rem auto; border: 2px solid var(--theme-pink);`
             }
           },
           `gatsby-remark-copy-linked-files`,
@@ -81,17 +91,6 @@ module.exports = {
             "Cache-Control: max-age=365000000",
             "Cache-Control: immutable"
           ]
-        }
-      }
-    },
-    `gatsby-plugin-image`,
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        defaults: {
-          quality: 70,
-          formats: ["auto", "webp", "avif"],
-          placeholder: "blurred"
         }
       }
     },

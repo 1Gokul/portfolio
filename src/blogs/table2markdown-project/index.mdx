@@ -1,19 +1,9 @@
 ---
 title: Table2Markdown
 date: 2021-04-27
-embeddedImagesLocal:
-  - csv2md.png
-  - excel2md.png
-  - insert2md.png
-  - keyguides_changing.gif
-  - keyguides.png
-  - result_md_table.png
-  - table2markdown_thumbnail.jpg
 ---
 
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
-
-<GatsbyImage alt="thumbnail" image={getImage(props.localImages[6])} />
+### Table converter project
 
 [pic2ascii](/blog/pic2ascii-converter/) taught me a lot about about styling with CSS and how to structure HTML documents properly.
 I also learnt how to accept files, process them and send them back to the user.
@@ -33,11 +23,7 @@ This is an example table created with the website:
 
 This is the result:
 
-<GatsbyImage
-  alt="result_md_table"
-  image={getImage(props.localImages[5])}
-  object-fit="contain"
-/>
+![result_md_table](result_md_table.png)
 
 I then started to create a clone of the website, with all the website's other functionalities, like converting
 a CSV file or an Excel table.
@@ -150,10 +136,7 @@ dynos are restarted, so absolutely **zero** data from the user is kept.
 
 ## Inserting Data and converting
 
-<GatsbyImage
-  alt="Insert_and_convert_screencap"
-  image={getImage(props.localImages[2])}
-/>
+![Insert_and_convert_screencap](insert2md.png)
 
 This was honestly the hardest one of them all. For this, I had to have an editable table where each cell and row can be selected
 and edited with options like **Bold**, _Italic_ and <ins>Underlined</ins> text, along with buttons to add and delete rows
@@ -172,23 +155,16 @@ This was a major thing I wanted to implement as it would be beneficial to users 
 operations on the rows and columns is a repetetive process. I then added events to perform actions on certain keypresses and showed
 a guide to the user, like so:
 
-<GatsbyImage
-  alt="keyguides.png"
-  image={getImage(props.localImages[4])}
-  object-fit="contain"
-/>
+![key guides](keyguides.png)
 
 The controls shown in the guide also change depending on the context i.e. only those controls are shown which can be pressed
 in that particular situation.
 
-![Keyguides changing](keyguides_changing.gif)
+<Image src="keyguides_changing.gif" width="250" />
 
 ## Converting CSV files
 
-<GatsbyImage
-  alt="convert_csv_screencap"
-  image={getImage(props.localImages[0])}
-/>
+![convert_csv_screencap](csv2md.png)
 
 This was relatively simple compared to the first part and was a good change in pace. In this method, I used the lightweight
 but powerful [Papaparse](https://www.papaparse.com/) library to quickly parse the uploaded CSV files in the client-side
@@ -207,10 +183,7 @@ simultaneously.
 
 ## Converting Excel tables
 
-<GatsbyImage
-  alt="convert_excel_screencap"
-  image={getImage(props.localImages[1])}
-/>
+![convert_excel_screencap](excel2md.png)
 
 This was the easiest one. Excel stores the elements with tabs in between them, so all I had to do was split the input and
 convert them using the usual function.

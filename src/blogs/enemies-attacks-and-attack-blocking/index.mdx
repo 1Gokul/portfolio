@@ -1,23 +1,14 @@
 ---
 title: "Enemies, Enemy Attacks and Attack Blocking"
 date: 2020-07-21
-embeddedImagesLocal:
-  - CharacterFOV.jpg
-  - MinionCombatCollisions.jpg
-  - MinionSpheres.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 For now, the Player will face Enemies of only one type - Minion. These Minion assets were sourced from the **Paragon: Minions** Asset Pack
 from the Epic Games Store. I will be adding more Enemies very soon from the **Infinity Blade: Adversaries** Asset Pack.
 
 An Enemy's Collision Volumes are as below:
 
-<GatsbyImage
-  alt="minioncombatcollisions"
-  image={getImage(props.localImages[1])}
-/>
+![MinionSpheres.jpg](MinionSpheres.jpg)
 
 All such Collision Volumes use the `OnComponentBeginOverlap` and `OnComponentEndOverlap` functions to perform actions if an overlap occurs.
 
@@ -30,7 +21,7 @@ All such Collision Volumes use the `OnComponentBeginOverlap` and `OnComponentEnd
 Additional functionality added is the ability for the Enemy to turn so that attacks hit the Character i.e. if the Character moves when
 it is attacking, it will turn so that it can look directly at the Character.
 
-<GatsbyImage alt="minionspheres" image={getImage(props.localImages[2])} />
+![MinionCombatCollisions.jpg](MinionCombatCollisions.jpg)
 
 - LeftCombatCollision & RightCombatCollision - Used to check if the Enemy's attack has hit the Character or not. They are box collisions covering
   the swords of the Enemies completely. By default, they do not respond to any types of overlaps. They are only activated to register overlaps when the
@@ -144,10 +135,9 @@ void AEnemy::InflictDamageOnMain(AMain* Main, bool bHitFromBehind)
     src="https://www.youtube.com/embed/M6Bvj2696RA"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 ## If blocking
 
@@ -165,27 +155,25 @@ The Character can walk while blocking. This is done by using UE4's `Layered Blen
     src="https://www.youtube.com/embed/k9Bv3js7mxU"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - Blocking with Two-Handed Weapon
   <iframe
     src="https://www.youtube.com/embed/P1oTZ67NyiY"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 To successfully block an Enemy's attack, the Character has to be blocking AND has to be facing the attacking Enemy,
 while also having sufficient Stamina available.
 
 Facing an Enemy means that the Enemy should be inside the Character's Field of View (taken as 120°).
 
-<GatsbyImage alt="CharacterFOV.jpg" image={getImage(props.localImages[0])} />
+![CharacterFOV.jpg](CharacterFOV.jpg)
 
 If the attack was blocked, the Character's Stamina will reduce by `BlockStaminaCost`(declared in the Weapon and Shield classes).
 
@@ -202,17 +190,15 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/J_KpgKHG55c"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - Two-Handed Weapon
   <iframe
     src="https://www.youtube.com/embed/Lrt6pQSxiIQ"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>

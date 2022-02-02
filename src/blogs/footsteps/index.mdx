@@ -1,11 +1,7 @@
 ---
 title: "Footsteps!"
 date: 2020-08-11
-embeddedImagesLocal: 
-	- FootstepAnimNotify.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 Now when the Character's foot hits the ground while Running or Sprinting, a sound will be played at the location where the foot fell.
 The sound played also depends on the type of the ground e.g. Stone, Marble, Land, Water, Wood.
@@ -16,10 +12,7 @@ The first one is `Footstep()`. It is a `BlueprintCallable` function called in Bl
 
 The `Footstep` Anim Notify is triggered at the moment the Character sets their foot down in the Movement Animations.
 
-<GatsbyImage
-  alt="FootstepAnimNotify.jpg"
-  image={getImage(props.localImages[0])}
-/>
+![FootstepAnimNotify.jpg](FootstepAnimNotify.jpg)
 
 ## Footstep()
 
@@ -155,7 +148,7 @@ void AMain::PlayFootstepSound(EPhysicalMaterials& PhysicalMaterial, FVector& Loc
 
 You can view the code of the project [here](https://github.com/1Gokul/MedievalCombatProject)!
 
-## In Action
+## In Action:
 
 - Footsteps on Wood
 
@@ -163,17 +156,15 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/DNbTKY93jek"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-  </iframe>
+allowfullscreen
+  ></iframe>
 
 - Footsteps on Stone&Land
   <iframe
     src="https://www.youtube.com/embed/Ik2yjpyqa1g"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-  </iframe>
+allowfullscreen
+  ></iframe>

@@ -1,11 +1,7 @@
 ---
 title: "Movement Updates"
 date: 2020-09-17
-embeddedImagesLocal:
-  - UnarmedNormal2DBlendSpace.jpg
 ---
-
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 
 The Character's movement has been updated with strafing depending on the Player's keyboard input.
 
@@ -21,10 +17,7 @@ Additionally, I added 4 Animations for _Diagonal_ jogging in case the Player hol
 
 After setting up, the Animations were put in a **2D** BlendSpace (as opposed to the **1D** BlendSpace used before) like so:
 
-<GatsbyImage
-  alt="UnarmedNormal2DBlendSpace.jpg"
-  image={getImage(props.localImages[0])}
-/>
+![UnarmedNormal2DBlendSpace.jpg](UnarmedNormal2DBlendSpace.jpg)
 
 The Axes in the BlendSpace are **SpeedForward** (Y Axis) and **SpeedRight** (X Axis). These two values determine which Movement Animation has
 to be played.
@@ -64,10 +57,9 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/rCqZrePd7QY"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - One-Handed Armed
 
@@ -75,17 +67,15 @@ You can view the code of the project [here](https://github.com/1Gokul/MedievalCo
     src="https://www.youtube.com/embed/igm6e9REARU"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>
 
 - Two-Handed Armed
   <iframe
     src="https://www.youtube.com/embed/7jS1zQTWJCA"
     width="100%"
     height="300px"
-    allowfullscreen
     frameborder="0"
-  >
-</iframe>
+allowfullscreen
+  ></iframe>

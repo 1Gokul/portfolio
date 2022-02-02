@@ -20,7 +20,7 @@ const BlogPost = ({ data, pageContext }) => {
   const {
     body,
     timeToRead,
-    frontmatter: { title, date, embeddedImagesLocal },
+    frontmatter: { title, date },
     headings
   } = data.mdx;
 
@@ -54,7 +54,7 @@ const BlogPost = ({ data, pageContext }) => {
             <ReadingProgress target={target} />
 
             {/* The blog's body */}
-            <MDX localImages={embeddedImagesLocal}>{body}</MDX>
+            <MDX>{body}</MDX>
 
             {/* Links to the previous and next blogs */}
             <Divider />
@@ -107,11 +107,6 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")
-        embeddedImagesLocal {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
       }
       headings {
         value
