@@ -87,9 +87,11 @@ const BlogPost = ({ data, pageContext }) => {
           </Flex>
 
           {/* Table of Contents */}
-          <aside>
-            <TableOfContents headings={headings} />
-          </aside>
+          {headings.length > 0 && (
+            <aside>
+              <TableOfContents headings={headings} />
+            </aside>
+          )}
         </BlogContainer>
       </Box>
     </Layout>
