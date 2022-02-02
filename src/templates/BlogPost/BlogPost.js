@@ -14,7 +14,7 @@ import Seo from "../../components/SEO";
 import TableOfContents from "./TableOfContents";
 import ReadingProgress from "./ReadingProgress";
 
-require("../../css/prismjs/prismjs-night-owl.css"); // eslint-disable-line
+require("../../css/prismjs/prismjs-holi.css"); // eslint-disable-line
 
 const BlogPost = ({ data, pageContext }) => {
   const {
