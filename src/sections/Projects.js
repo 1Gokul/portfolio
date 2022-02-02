@@ -40,11 +40,12 @@ const ProjectInfo = ({ project, projectImage }) => {
       </Heading>
       <Text marginY={8}>{project.description}</Text>
       <Tags tags={project.tags} />
-      <Flex direction={{ base: "column", md: "row" }}>
+      <Flex direction={{ base: "column", md: "row" }} alignItems="flex-start">
         <Link
           aria-label={`Click to view the project, ${project.name}.`}
           href={project.link}
           marginX={3}
+          marginY={2}
           target="_blank"
           rel="noreferrer"
         >
@@ -61,6 +62,7 @@ const ProjectInfo = ({ project, projectImage }) => {
           aria-label={`Click to view the GitHub repository of ${project.name}.`}
           href={project.github}
           marginX={3}
+          marginY={2}
           target="_blank"
         >
           <Button
