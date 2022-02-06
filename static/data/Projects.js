@@ -31,7 +31,6 @@ export const projectList = [
     description:
       "A game that aims to imitate a RPG's basic game mechanics like combat, platforming, and interactions.",
     tags: ["Unreal Engine 4", "C++"],
-    link: "https://github.com/1Gokul/MedievalCombatProject",
     github: "https://github.com/1Gokul/MedievalCombatProject",
     source: "Portfolio/medievalrpg_screencap"
   }

@@ -41,39 +41,43 @@ const ProjectInfo = ({ project, projectImage }) => {
       <Text marginY={8}>{project.description}</Text>
       <Tags tags={project.tags} />
       <Flex direction={{ base: "column", md: "row" }} alignItems="flex-start">
-        <Link
-          aria-label={`Click to view the project, ${project.name}.`}
-          href={project.link}
-          marginX={3}
-          marginY={2}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Button
-            bgColor="gray.100"
-            color="gray.800"
-            borderRadius="full"
-            rightIcon={<VscLinkExternal />}
+        {project.link && (
+          <Link
+            aria-label={`Click to view the project, ${project.name}.`}
+            href={project.link}
+            marginX={3}
+            marginY={2}
+            target="_blank"
+            rel="noreferrer"
           >
-            Website
-          </Button>
-        </Link>
-        <Link
-          aria-label={`Click to view the GitHub repository of ${project.name}.`}
-          href={project.github}
-          marginX={3}
-          marginY={2}
-          target="_blank"
-        >
-          <Button
-            bgColor="gray.100"
-            color="gray.800"
-            borderRadius="full"
-            rightIcon={<VscGithubInverted />}
+            <Button
+              bgColor="gray.100"
+              color="gray.800"
+              borderRadius="full"
+              rightIcon={<VscLinkExternal />}
+            >
+              Website
+            </Button>
+          </Link>
+        )}
+        {project.github && (
+          <Link
+            aria-label={`Click to view the GitHub repository of ${project.name}.`}
+            href={project.github}
+            marginX={3}
+            marginY={2}
+            target="_blank"
           >
-            Source Code
-          </Button>
-        </Link>
+            <Button
+              bgColor="gray.100"
+              color="gray.800"
+              borderRadius="full"
+              rightIcon={<VscGithubInverted />}
+            >
+              Source Code
+            </Button>
+          </Link>
+        )}
       </Flex>
     </Box>
   );
