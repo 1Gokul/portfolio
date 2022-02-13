@@ -82,7 +82,7 @@ const MobileNavMenu = ({ expanded, toggler, internalLinks, externalLinks }) => {
 
 export default MobileNavMenu;
 
-const NavLink = (props) => (
+const NavLink = ({ children, ...props }) => (
   <Button
     variant="ghost"
     aria-label={props.to}
@@ -99,7 +99,7 @@ const NavLink = (props) => (
     borderColor="gray.500"
     {...props}
   >
-    {props.children}
+    {children}
   </Button>
 );
 

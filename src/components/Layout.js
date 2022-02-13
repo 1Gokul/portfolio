@@ -8,11 +8,11 @@ import Header from "./Header/BaseHeader";
 import Footer from "./Footer";
 import "../css/global.css";
 
-const Layout = (props) => {
+const Layout = ({ children, type }) => {
   let internalLinks = [],
     externalLinks = [];
 
-  if (props.type === "home") {
+  if (type === "home") {
     internalLinks = [
       {
         name: "about"
@@ -33,7 +33,7 @@ const Layout = (props) => {
         to: "/blogs"
       }
     ];
-  } else if (props.type === "blog") {
+  } else if (type === "blog") {
     externalLinks = [
       {
         name: "Home",
@@ -49,13 +49,13 @@ const Layout = (props) => {
   return (
     <Flex height="100%" direction="column">
       <Header
-        type={props.type}
+        type={type}
         internalLinks={internalLinks}
         externalLinks={externalLinks}
       />
 
       <CloudinaryContext cloudName="gokulv" secure="true">
-        {props.children}
+        {children}
       </CloudinaryContext>
       <Footer />
     </Flex>

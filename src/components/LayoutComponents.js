@@ -2,7 +2,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { Flex, Grid, Heading, SlideFade } from "@chakra-ui/react";
 import { useInView } from "react-intersection-observer";
 
-export const AnimatedContainer = (props) => {
+export const AnimatedContainer = ({children, ...props}) => {
   const [ref, inView] = useInView();
   const [visible, setVisible] = useState(false);
 
@@ -19,7 +19,7 @@ export const AnimatedContainer = (props) => {
       transition={{ enter: { duration: 0.5 } }}
     >
       <Flex ref={ref} {...props}>
-        {props.children}
+        {children}
       </Flex>
     </SlideFade>
   );
@@ -42,7 +42,7 @@ export const HomeContainer = ({ children, ...props }) => {
   );
 };
 
-export const BlogContainer = forwardRef((props, ref) => {
+export const BlogContainer = forwardRef(({ children, ...props }, ref) => {
   return (
     <Grid
       ref={ref}
@@ -55,14 +55,14 @@ export const BlogContainer = forwardRef((props, ref) => {
       paddingX={{ base: 2, lg: 10 }}
       {...props}
     >
-      {props.children}
+      {children}
     </Grid>
   );
 });
 
 BlogContainer.displayName = "BlogContainer";
 
-export const SectionHeading = (props) => (
+export const SectionHeading = ({ children, ...props }) => (
   <Heading
     size="3xl"
     textAlign="center"
@@ -71,6 +71,6 @@ export const SectionHeading = (props) => (
     lineHeight="1.1em"
     {...props}
   >
-    {props.children}
+    {children}
   </Heading>
 );
