@@ -10,7 +10,6 @@ import {
   SiFlask,
   SiMongodb,
   SiUnrealengine,
-  SiHeroku,
   SiGit,
   SiFastapi,
   SiTypescript,
@@ -90,12 +89,6 @@ export const skills = {
       icon: IoLogoGithub,
       name: "GitHub",
       color: "#2ea650"
-    },
-
-    {
-      icon: SiHeroku,
-      name: "Heroku",
-      color: "#6762a6"
     },
     {
       icon: SiUnrealengine,
