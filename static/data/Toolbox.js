@@ -10,7 +10,6 @@ import {
   SiFlask,
   SiMongodb,
   SiUnrealengine,
-  SiHeroku,
   SiGit,
   SiFastapi,
   SiTypescript,
