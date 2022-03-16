@@ -1,8 +1,5 @@
 import {
-  IoLogoHtml5,
-  IoLogoCss3,
   IoLogoReact,
-  IoLogoJavascript,
   IoLogoGithub,
   IoLogoPython
 } from "react-icons/io5";
@@ -20,28 +17,13 @@ import {
 export const skills = {
   frontend: [
     {
-      icon: IoLogoHtml5,
-      name: "HTML5",
-      color: "#e34c26"
-    },
-    {
-      icon: IoLogoCss3,
-      name: "CSS3",
-      color: "#1572B6"
-    },
-    {
-      icon: IoLogoJavascript,
-      name: "Javascript",
-      color: "#F7DF1E"
-    },
-    {
       icon: SiTypescript,
       name: "TypeScript",
       color: "#3178c6"
     },
     {
       icon: IoLogoReact,
-      name: "React.js",
+      name: "React",
       color: "#61DAFB"
     },
     {
