@@ -28,6 +28,7 @@
     "focus-visible": "^5.2.0",
     "framer-motion": "^6.2.1",
     "gatsby": "^4.5.4",
+    "gatsby-cli": "^4.12.1",
     "gatsby-plugin-gatsby-cloud": "^4.5.2",
     "gatsby-plugin-manifest": "^4.5.2",
     "gatsby-plugin-mdx": "^3.5.2",
@@ -53,9 +54,13 @@
     "react-scroll": "^1.8.4"
   },
   "devDependencies": {
+    "@types/node": "^17.0.24",
+    "@types/react": "^18.0.5",
+    "@types/react-dom": "^18.0.1",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "typescript": "^4.6.3"
   }
 }
