@@ -1,3 +1,5 @@
+import { reporter } from "gatsby-cli/lib/reporter/reporter";
+
 /* eslint-disable */
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
