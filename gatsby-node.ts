@@ -1,6 +1,6 @@
 import { reporter } from "gatsby-cli/lib/reporter/reporter";
+import path from "path";
 
-/* eslint-disable */
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql }) => {
   posts.forEach(({ node }, index) => {
     actions.createPage({
       path: node.fields.slug,
-      component: require.resolve(`./src/templates/BlogPost/BlogPost.js`),
+      component: path.resolve(`./src/templates/BlogPost/BlogPost.tsx`),
       context: {
         id: node.id,
         next: index === 0 ? null : posts[index - 1].node,
