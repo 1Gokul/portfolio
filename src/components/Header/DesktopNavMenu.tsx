@@ -1,6 +1,7 @@
 import React from "react";
-import { ExternalLink, InternalLink } from "./Links";
 import { Box, Center, Divider, Flex } from "@chakra-ui/react";
+
+import { ExternalLink, InternalLink } from "./Links";
 
 const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
   <Flex
@@ -40,9 +41,6 @@ const NavLink = (props) => (
     fontWeight="medium"
     transition="0.2s ease-in-out"
     textTransform="capitalize"
-    _hover={{
-      color: "aqua.300"
-    }}
   >
     {props.children}
   </Box>
