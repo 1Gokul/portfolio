@@ -12,7 +12,7 @@ import { SocialLink } from "../types/HomeSections";
 const Contact = () => {
   return (
     <HomeContainer id="say hi" marginBottom={{ base: 16, md: 0 }}>
-      <SectionHeading>Say Hi</SectionHeading>
+      <SectionHeading>Say hi</SectionHeading>
       <AnimatedContainer
         color="gray.200"
         flexDirection="column"

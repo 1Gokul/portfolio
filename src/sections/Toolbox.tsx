@@ -16,7 +16,7 @@ const MotionFlex = motion(Flex);
 const Toolbox = () => {
   return (
     <HomeContainer id="toolbox" marginBottom="0">
-      <SectionHeading>My Toolbox</SectionHeading>
+      <SectionHeading>My toolbox</SectionHeading>
       <AnimatedContainer delay={0.8}>
         <Flex
           direction={{ base: "column", xl: "row" }}
