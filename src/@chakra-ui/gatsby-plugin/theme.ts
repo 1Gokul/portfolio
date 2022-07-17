@@ -41,6 +41,7 @@ const styles = {
 
 const components = {
   Button: {
+    baseStyle: { borderRadius: "0.25rem" },
     variants: {
       solid: {
         bg: "aqua.200",
