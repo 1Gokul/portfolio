@@ -1,4 +1,4 @@
-import { IoLogoReact, IoLogoGithub, IoLogoPython } from "react-icons/io5";
+import { IoLogoReact, IoLogoPython } from "react-icons/io5";
 import {
   SiFlask,
   SiMongodb,
@@ -9,6 +9,7 @@ import {
   SiNextdotjs,
   SiGatsby
 } from "react-icons/si";
+
 import { Skill } from "../types/HomeSections";
 
 export const skills: { [skillType: string]: Skill[] } = {
@@ -63,11 +64,6 @@ export const skills: { [skillType: string]: Skill[] } = {
       icon: SiGit,
       name: "Git",
       color: "#F05032"
-    },
-    {
-      icon: IoLogoGithub,
-      name: "GitHub",
-      color: "#2ea650"
     },
     {
       icon: SiUnrealengine,
