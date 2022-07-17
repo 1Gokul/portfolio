@@ -1,6 +1,8 @@
 :root {
-  --theme-aqua: #00d4ff;
+  --theme-aqua: #B0E3FC;
   --theme-pink: #F687B3;
+  --theme-green: #00ff73;
+  --theme-bg: #212529;
 }
 
 @font-face {

@@ -26,7 +26,7 @@ const Navbar = ({
       direction="column"
       position="sticky"
       width="100%"
-      backgroundColor="#001b2b"
+      backgroundColor="#212529"
       top="0"
       as="nav"
       zIndex="3"
@@ -34,7 +34,7 @@ const Navbar = ({
       {/* The gradient at the top */}
       <Box
         height="0.25rem"
-        background="linear-gradient(to right, var(--theme-aqua), #00ff73)"
+        background="linear-gradient(90deg, var(--theme-green) 0%, var(--theme-aqua) 50%, var(--theme-pink) 90%)"
       />
 
       <Flex

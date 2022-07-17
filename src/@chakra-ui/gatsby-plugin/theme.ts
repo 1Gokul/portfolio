@@ -32,7 +32,7 @@ const colors = {
 const styles = {
   global: {
     body: {
-      background: "#001b2b",
+      background: "var(--theme-bg)",
       color: "gray.50",
       borderColor: "var(--theme-aqua)"
     }
