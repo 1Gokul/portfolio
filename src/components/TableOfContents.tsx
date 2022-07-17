@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
 
-import { BlogPostHeading } from "../../types/BlogPost";
+import { BlogPostHeading } from "../types/BlogPost";
 
 const TableOfContents = ({ headings }: { headings: BlogPostHeading[] }) => {
   // Depth is equal to 2 for h2 headings

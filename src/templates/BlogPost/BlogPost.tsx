@@ -11,8 +11,8 @@ import {
 } from "../../components/LayoutComponents";
 import MDX from "../../components/MDXProvider";
 import Seo from "../../components/SEO";
-import TableOfContents from "./TableOfContents";
-import ReadingProgress from "./ReadingProgress";
+import TableOfContents from "../../components/TableOfContents";
+import ReadingProgress from "../../components/ReadingProgress";
 import { BlogPostProps } from "../../types/BlogPost";
 
 // Styling for the code blocks
