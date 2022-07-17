@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "eslint": "eslint .",
-    "format": "prettier --write \"src/**/*.{js,jsx}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^2.0.2",
@@ -54,9 +54,11 @@
     "react-scroll": "^1.8.4"
   },
   "devDependencies": {
+    "@types/mdx-js__react": "^1.5.5",
     "@types/node": "^17.0.24",
     "@types/react": "^18.0.5",
     "@types/react-dom": "^18.0.1",
+    "@types/react-helmet": "^6.1.5",
     "@types/react-scroll": "^1.8.3",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",

@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Code, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { Link as GatsbyLink } from "gatsby";
 

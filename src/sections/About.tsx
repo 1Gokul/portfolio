@@ -7,7 +7,7 @@ import {
   HomeContainer,
   SectionHeading
 } from "../components/LayoutComponents";
-import { AboutDescription } from "../../static/data/About";
+import { AboutDescription } from "../content/About";
 
 const About = () => {
   return (
@@ -26,11 +26,7 @@ const About = () => {
             border="4px solid"
             borderColor="var(--theme-aqua)"
           >
-            <CNImage
-              publicId="Portfolio/about_photo.png"
-              alt="My photo"
-              loading="lazy"
-            >
+            <CNImage publicId="Portfolio/about_photo.png" alt="My photo">
               <Transformation quality="auto:low" />
             </CNImage>
           </Flex>

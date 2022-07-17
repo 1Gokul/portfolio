@@ -1,8 +1,9 @@
 import { IoLogoLinkedin } from "react-icons/io5";
 import { RiRedditFill } from "react-icons/ri";
 import { VscGithub, VscTwitter } from "react-icons/vsc";
+import { SocialLink } from "../types/HomeSections";
 
-export const socialLinks = [
+export const socialLinks: SocialLink[] = [
   {
     label: "GitHub",
     icon: VscGithub,

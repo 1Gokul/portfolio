@@ -1,7 +1,7 @@
 // Many thanks to Ryosuke- https://whoisryosuke.com/ for the component
 // https://github.com/whoisryosuke/next-mdx-chakra-docs/blob/master/components/MDXProvider.jsx
 
-import React from "react";
+import React, { ReactNode } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import {
@@ -31,15 +31,34 @@ import {
   Divider
 } from "@chakra-ui/react";
 
+type ComponentProps = {
+  children: ReactNode;
+  [property: string]: unknown; // extra Chakra UI properties
+};
+
 const mdComponents = {
-  h1: (props) => <Heading as="h1" size="2xl" mt={12} {...props} />,
-  h2: (props) => <Heading as="h2" size="xl" mt={12} {...props} />,
-  h3: (props) => <Heading as="h3" size="lg" mt={12} {...props} />,
-  h4: (props) => <Heading as="h4" size="md" mt={12} {...props} />,
-  h5: (props) => <Heading as="h5" size="sm" mt={12} {...props} />,
-  h6: (props) => <Heading as="h6" size="xs" mt={12} {...props} />,
-  p: (props) => <Text as="p" marginY={5} fontSize="xl" {...props} />,
-  a: (props) => (
+  h1: (props: ComponentProps) => (
+    <Heading as="h1" size="2xl" mt={12} {...props} />
+  ),
+  h2: (props: ComponentProps) => (
+    <Heading as="h2" size="xl" mt={12} {...props} />
+  ),
+  h3: (props: ComponentProps) => (
+    <Heading as="h3" size="lg" mt={12} {...props} />
+  ),
+  h4: (props: ComponentProps) => (
+    <Heading as="h4" size="md" mt={12} {...props} />
+  ),
+  h5: (props: ComponentProps) => (
+    <Heading as="h5" size="sm" mt={12} {...props} />
+  ),
+  h6: (props: ComponentProps) => (
+    <Heading as="h6" size="xs" mt={12} {...props} />
+  ),
+  p: (props: ComponentProps) => (
+    <Text as="p" marginY={5} fontSize="xl" {...props} />
+  ),
+  a: (props: ComponentProps) => (
     <Link
       as="a"
       color="var(--theme-aqua)"
@@ -53,9 +72,9 @@ const mdComponents = {
       {...props}
     />
   ),
-  pre: (props) => <Box as="pre" {...props} p={2} my={8} />,
-  code: (props) => <Code {...props} bgColor="transparent" />,
-  ul: (props) => (
+  pre: (props: ComponentProps) => <Box as="pre" {...props} p={2} my={8} />,
+  code: (props: ComponentProps) => <Code {...props} bgColor="transparent" />,
+  ul: (props: ComponentProps) => (
     <List
       px={3}
       styleType="square"
@@ -64,7 +83,7 @@ const mdComponents = {
       {...props}
     />
   ),
-  ol: (props) => (
+  ol: (props: ComponentProps) => (
     <List
       as="ol"
       styleType="decimal"
@@ -73,9 +92,9 @@ const mdComponents = {
       {...props}
     />
   ),
-  li: (props) => <ListItem {...props} />,
-  hr: (props) => <Divider my={8} {...props} />,
-  note: (props) => (
+  li: (props: ComponentProps) => <ListItem {...props} />,
+  hr: (props: ComponentProps) => <Divider my={8} {...props} />,
+  note: (props: ComponentProps) => (
     <Alert status="info" variant="left-accent" {...props}>
       <AlertIcon />
       {props.children}
@@ -105,12 +124,16 @@ const mdComponents = {
   StatGroup
 };
 
-const MDX = (props) => {
+const MDX = ({
+  children,
+  localImages
+}: {
+  children: string;
+  [property: string]: unknown;
+}) => {
   return (
     <MDXProvider components={mdComponents}>
-      <MDXRenderer localImages={props.localImages}>
-        {props.children}
-      </MDXRenderer>
+      <MDXRenderer localImages={localImages}>{children}</MDXRenderer>
     </MDXProvider>
   );
 };

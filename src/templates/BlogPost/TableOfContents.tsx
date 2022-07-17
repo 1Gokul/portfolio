@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
+import { BlogPostHeading } from "../../types/BlogPost";
 
-const TableOfContents = ({ headings }) => {
+const TableOfContents = ({ headings }: { headings: BlogPostHeading[] }) => {
   // Depth is equal to 2 for h2 headings
   const h2Headings = headings.filter((heading) => heading.depth === 2);
 
@@ -28,7 +29,7 @@ const TableOfContents = ({ headings }) => {
 
 export default TableOfContents;
 
-const DesktopTOC = ({ headings }) => (
+const DesktopTOC = ({ headings }: { headings: BlogPostHeading[] }) => (
   <Box
     position="sticky"
     top="15rem"
@@ -48,7 +49,7 @@ const DesktopTOC = ({ headings }) => (
           borderBottom: "2px dotted"
         }}
       >
-        <Link display="block" to={`#${heading.url}`}>
+        <Link to={`#${heading.url}`}>
           <Text padding={3}>{heading.value}</Text>
         </Link>
       </Box>
@@ -95,7 +96,7 @@ const headingLinkVariants = {
   }
 };
 
-const MobileTOC = ({ headings }) => {
+const MobileTOC = ({ headings }: { headings: BlogPostHeading[] }) => {
   const [visible, setVisible] = useState(false);
   return (
     <Box
@@ -130,11 +131,7 @@ const MobileTOC = ({ headings }) => {
             padding={3}
             variants={headingLinkVariants}
           >
-            <Link
-              display="block"
-              onClick={() => setVisible(!visible)}
-              to={`#${heading.url}`}
-            >
+            <Link onClick={() => setVisible(!visible)} to={`#${heading.url}`}>
               {heading.value}
             </Link>
           </MotionFlex>

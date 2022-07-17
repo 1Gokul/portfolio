@@ -13,10 +13,12 @@ import MDX from "../../components/MDXProvider";
 import Seo from "../../components/SEO";
 import TableOfContents from "./TableOfContents";
 import ReadingProgress from "./ReadingProgress";
+import { BlogPostProps } from "../../types/BlogPost";
 
+// Styling for the code blocks
 require("../../css/prismjs/prismjs-holi.css"); // eslint-disable-line
 
-const BlogPost = ({ data, pageContext }) => {
+const BlogPost = ({ data, pageContext }: BlogPostProps) => {
   const {
     body,
     timeToRead,
@@ -26,7 +28,7 @@ const BlogPost = ({ data, pageContext }) => {
 
   const { prev, next } = pageContext;
 
-  const target = createRef();
+  const target = createRef<HTMLInputElement>();
 
   return (
     <Layout type="blog">

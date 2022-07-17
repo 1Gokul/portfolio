@@ -1,8 +1,4 @@
-import {
-  IoLogoReact,
-  IoLogoGithub,
-  IoLogoPython
-} from "react-icons/io5";
+import { IoLogoReact, IoLogoGithub, IoLogoPython } from "react-icons/io5";
 import {
   SiFlask,
   SiMongodb,
@@ -13,8 +9,9 @@ import {
   SiNextdotjs,
   SiGatsby
 } from "react-icons/si";
+import { Skill } from "../types/HomeSections";
 
-export const skills = {
+export const skills: { [skillType: string]: Skill[] } = {
   frontend: [
     {
       icon: SiTypescript,

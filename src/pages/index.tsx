@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import Seo from "../components/SEO";
 import Contact from "../sections/Contact";
 import Intro from "../sections/Intro";
-import Projects from "../sections/Projects";
+import Projects from "../sections/projects/Projects";
 import Toolbox from "../sections/Toolbox";
 import About from "../sections/About";
 

@@ -1,17 +1,29 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Box, Center, Divider, Flex } from "@chakra-ui/react";
 
 import { ExternalLink, InternalLink } from "./Links";
+import { HeaderLink } from "../../types/Header";
+import { Default_Internal_Link_Offset } from "../../constants/Header";
 
-const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
+const DesktopNavMenu = ({
+  internalLinks,
+  externalLinks
+}: {
+  internalLinks: HeaderLink[];
+  externalLinks: HeaderLink[];
+}) => (
   <Flex
     alignItems="center"
     justifyContent="space-between"
     display={{ base: "none", md: "flex" }}
   >
-    {internalLinks.map(({ name, offset = -100 }) => (
-      <InternalLink key={name} to={name} offset={offset}>
-        <NavLink>{name}</NavLink>
+    {internalLinks.map((link: HeaderLink) => (
+      <InternalLink
+        key={link.name}
+        to={link.name}
+        offset={link.offset ?? Default_Internal_Link_Offset}
+      >
+        <NavLink>{link.name}</NavLink>
       </InternalLink>
     ))}
 
@@ -22,7 +34,7 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
     )}
 
     {externalLinks.map((link) => (
-      <ExternalLink key={link.name} to={link.to}>
+      <ExternalLink key={link.name} to={link.to ?? "/"}>
         <NavLink>{link.name}</NavLink>
       </ExternalLink>
     ))}
@@ -31,9 +43,8 @@ const DesktopNavMenu = ({ internalLinks, externalLinks }) => (
 
 export default DesktopNavMenu;
 
-const NavLink = (props) => (
+const NavLink = ({ children }: { children: ReactNode }) => (
   <Box
-    padding={1}
     as="button"
     marginX={3}
     fontSize="xl"
@@ -41,7 +52,10 @@ const NavLink = (props) => (
     fontWeight="medium"
     transition="0.2s ease-in-out"
     textTransform="capitalize"
+    _hover={{
+      color: "var(--theme-aqua)"
+    }}
   >
-    {props.children}
+    {children}
   </Box>
 );

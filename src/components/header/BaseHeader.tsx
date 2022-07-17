@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Box, Flex, Image } from "@chakra-ui/react";
-
-import LogoImg from "../../images/website_logo.svg";
-import MobileNavMenu, { NavMenuToggler } from "./MobileNavMenu";
-import DesktopNavMenu from "./DesktopNavMenu";
 import { Link } from "gatsby";
 
-const Navbar = ({ internalLinks, externalLinks }) => {
+import LogoImg from "../../images/website_logo.svg";
+import MobileNavMenu from "./mobileNavMenu/MobileNavMenu";
+import DesktopNavMenu from "./DesktopNavMenu";
+import { HeaderLink } from "../../types/Header";
+import { NavMenuToggler } from "./mobileNavMenu/NavLink";
+
+const Navbar = ({
+  internalLinks,
+  externalLinks
+}: {
+  internalLinks: HeaderLink[];
+  externalLinks: HeaderLink[];
+}) => {
   const [expanded, setExpanded] = useState(false);
 
   const toggleExpanded = () => {
@@ -23,6 +31,7 @@ const Navbar = ({ internalLinks, externalLinks }) => {
       as="nav"
       zIndex="3"
     >
+      {/* The gradient at the top */}
       <Box
         height="0.25rem"
         background="linear-gradient(to right, var(--theme-aqua), #00ff73)"
@@ -35,7 +44,7 @@ const Navbar = ({ internalLinks, externalLinks }) => {
         paddingY={5}
         paddingX={10}
       >
-        <Link to="/" onClick={expanded ? toggleExpanded : null}>
+        <Link to="/" onClick={() => (expanded ? toggleExpanded() : null)}>
           <Image src={LogoImg} alt="Website Logo" width="80px" />
         </Link>
 

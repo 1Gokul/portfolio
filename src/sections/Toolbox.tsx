@@ -7,10 +7,11 @@ import {
   HomeContainer,
   SectionHeading
 } from "../components/LayoutComponents";
-import { skills } from "../../static/data/Toolbox";
+import { Skill } from "../types/HomeSections";
+import { Large_Icon_Size } from "../constants/HomeSections";
+import { skills } from "../content/Toolbox";
 
 const MotionFlex = motion(Flex);
-const LARGE_ICON_SIZE = "100px";
 
 const Toolbox = () => {
   return (
@@ -31,16 +32,16 @@ const Toolbox = () => {
   );
 };
 
-const SkillSet = (props) => (
+const SkillSet = ({ title, skills }: { title: string; skills: Skill[] }) => (
   <AnimatedContainer>
     <Flex direction="column" marginX={10} marginY={5}>
-      <Heading alignSelf="center">{props.title}</Heading>
+      <Heading alignSelf="center">{title}</Heading>
       <SimpleGrid
         columns={2}
         spacing={{ base: "75px", md: "30px" }}
         marginY={10}
       >
-        {props.skills.map((skill) => (
+        {skills.map((skill: Skill) => (
           <LargeSkill key={skill.name} skill={skill} />
         ))}
       </SimpleGrid>
@@ -48,7 +49,7 @@ const SkillSet = (props) => (
   </AnimatedContainer>
 );
 
-const LargeSkill = (props) => (
+const LargeSkill = ({ skill }: { skill: Skill }) => (
   <MotionFlex
     flexDirection="column"
     alignItems="center"
@@ -58,12 +59,12 @@ const LargeSkill = (props) => (
     whileTap={{ scale: 0.85 }}
   >
     <Icon
-      as={props.skill.icon}
-      boxSize={LARGE_ICON_SIZE}
-      color={props.skill.color}
+      as={skill.icon}
+      boxSize={Large_Icon_Size}
+      color={skill.color}
       marginBottom={1}
     />
-    {props.skill.name}
+    {skill.name}
   </MotionFlex>
 );
 

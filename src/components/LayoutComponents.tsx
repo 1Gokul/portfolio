@@ -2,22 +2,20 @@ import React, {
   ComponentPropsWithRef,
   forwardRef,
   PropsWithChildren,
-  ReactNode,
   useEffect,
   useState
-} from 'react';
-import { Flex, Grid, Heading, SlideFade } from '@chakra-ui/react';
-import { useInView } from 'react-intersection-observer';
+} from "react";
+import { Flex, Grid, Heading, SlideFade } from "@chakra-ui/react";
+import { useInView } from "react-intersection-observer";
 
-interface ContainerProps {
-  children: ReactNode;
+type ContainerProps = {
   [property: string]: unknown; // extra Chakra UI properties
-}
+};
 
 export const AnimatedContainer = ({
   children,
   ...otherProps
-}: ContainerProps) => {
+}: PropsWithChildren<ContainerProps>) => {
   const [ref, inView] = useInView();
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +28,7 @@ export const AnimatedContainer = ({
   return (
     <SlideFade
       in={visible}
-      offsetY='100px'
+      offsetY="100px"
       transition={{ enter: { duration: 0.5 } }}
     >
       <Flex ref={ref} {...otherProps}>
@@ -40,15 +38,18 @@ export const AnimatedContainer = ({
   );
 };
 
-export const HomeContainer = ({ children, ...otherProps }: ContainerProps) => {
+export const HomeContainer = ({
+  children,
+  ...otherProps
+}: PropsWithChildren<ContainerProps>) => {
   return (
     <Flex
-      flexDirection='column'
-      margin='0 auto 8rem'
-      minH='80vh'
-      maxH='100%'
-      minW='70vw'
-      maxW={{ base: '95vw', md: '75vw' }}
+      flexDirection="column"
+      margin="0 auto 8rem"
+      minH="80vh"
+      maxH="100%"
+      minW="70vw"
+      maxW={{ base: "95vw", md: "75vw" }}
       padding={{ base: 5, md: 10 }}
       {...otherProps}
     >
@@ -57,9 +58,9 @@ export const HomeContainer = ({ children, ...otherProps }: ContainerProps) => {
   );
 };
 
-interface BlogContainerProps extends ComponentPropsWithRef<'div'> {
+type BlogContainerProps = ComponentPropsWithRef<"div"> & {
   [property: string]: unknown;
-}
+};
 
 export const BlogContainer = forwardRef<
   HTMLInputElement,
@@ -68,12 +69,12 @@ export const BlogContainer = forwardRef<
   return (
     <Grid
       ref={ref}
-      templateColumns={{ base: '1fr', lg: '2fr 1fr' }}
+      templateColumns={{ base: "1fr", lg: "2fr 1fr" }}
       gap={{ base: 0, lg: 20 }}
-      marginX='auto'
-      marginTop={{ base: '2rem', lg: '8rem' }}
-      minH='100vh'
-      maxW={{ base: '95vw', lg: '65vw' }}
+      marginX="auto"
+      marginTop={{ base: "2rem", lg: "8rem" }}
+      minH="100vh"
+      maxW={{ base: "95vw", lg: "65vw" }}
       paddingX={{ base: 2, lg: 10 }}
       {...otherProps}
     >
@@ -82,15 +83,18 @@ export const BlogContainer = forwardRef<
   );
 });
 
-BlogContainer.displayName = 'BlogContainer';
+BlogContainer.displayName = "BlogContainer";
 
-export const SectionHeading = ({ children, ...otherProps }: ContainerProps) => (
+export const SectionHeading = ({
+  children,
+  ...otherProps
+}: PropsWithChildren<ContainerProps>) => (
   <Heading
-    size='3xl'
-    textAlign='center'
+    size="3xl"
+    textAlign="center"
     marginBottom={10}
-    display='inline-block'
-    lineHeight='1.1em'
+    display="inline-block"
+    lineHeight="1.1em"
     {...otherProps}
   >
     {children}

@@ -1,4 +1,6 @@
-export const projectList = [
+import { Project } from "../types/HomeSections";
+
+export const projectList: Project[] = [
   {
     name: "pcpartfinder",
     description:

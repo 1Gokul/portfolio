@@ -1,60 +1,35 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Flex } from "@chakra-ui/react";
 import { CloudinaryContext } from "cloudinary-react";
 import "@fontsource/inconsolata";
 import "focus-visible/dist/focus-visible";
 
-import Header from "./Header/BaseHeader";
+import Header from "./header/BaseHeader";
 import Footer from "./Footer";
 import "../css/global.css";
+import { HeaderLink } from "../types/Header";
+import {
+  blogExternalLinks,
+  homeExternalLinks,
+  homeInternalLinks
+} from "../constants/Layout";
 
-const Layout = ({ children, type }) => {
-  let internalLinks = [],
-    externalLinks = [];
+const Layout = ({ children, type }: PropsWithChildren<{ type: string }>) => {
+  let internalLinks: HeaderLink[] = [],
+    externalLinks: HeaderLink[] = [];
 
   if (type === "home") {
-    internalLinks = [
-      {
-        name: "about"
-      },
-      {
-        name: "projects"
-      },
-      {
-        name: "toolbox"
-      },
-      {
-        name: "say hi"
-      }
-    ];
-    externalLinks = [
-      {
-        name: "DevLogs",
-        to: "/blogs"
-      }
-    ];
+    internalLinks = homeInternalLinks;
+    externalLinks = homeExternalLinks;
   } else if (type === "blog") {
-    externalLinks = [
-      {
-        name: "Home",
-        to: "/"
-      },
-      {
-        name: "DevLogs",
-        to: "/blogs"
-      }
-    ];
+    externalLinks = blogExternalLinks;
   }
 
   return (
     <Flex height="100%" direction="column">
-      <Header
-        type={type}
-        internalLinks={internalLinks}
-        externalLinks={externalLinks}
-      />
+      <Header internalLinks={internalLinks} externalLinks={externalLinks} />
 
-      <CloudinaryContext cloudName="gokulv" secure="true">
+      <CloudinaryContext cloudName="gokulv" secure={true}>
         {children}
       </CloudinaryContext>
       <Footer />

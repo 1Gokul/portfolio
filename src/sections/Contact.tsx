@@ -6,7 +6,8 @@ import {
   HomeContainer,
   SectionHeading
 } from "../components/LayoutComponents";
-import { socialLinks } from "../../static/data/Contact";
+import { socialLinks } from "../content/Contact";
+import { SocialLink } from "../types/HomeSections";
 
 const Contact = () => {
   return (
@@ -45,7 +46,7 @@ const Contact = () => {
           <Text fontSize="2xl" align="center">
             Or reach out to me here
           </Text>
-          <Flex columns={2} width="auto" justifyContent="center" marginTop={5}>
+          <Flex width="auto" justifyContent="center" marginTop={5}>
             {socialLinks.map((socialLink) => (
               <SocialIconLink key={socialLink.label} {...socialLink} />
             ))}
@@ -56,20 +57,15 @@ const Contact = () => {
   );
 };
 
-const SocialIconLink = (props) => {
+const SocialIconLink = ({ color, label, icon, link }: SocialLink) => {
   return (
-    <Link
-      aria-label={props.label}
-      href={props.link}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <Link aria-label={label} href={link} target="_blank" rel="noreferrer">
       <Icon
         marginX={2}
-        as={props.icon}
+        as={icon}
         transition="0.2s linear"
-        color={{ base: props.color, md: "gray.100" }}
-        _hover={{ color: props.color }}
+        color={{ base: color, md: "gray.100" }}
+        _hover={{ color: color }}
         boxSize="60px"
       />
     </Link>

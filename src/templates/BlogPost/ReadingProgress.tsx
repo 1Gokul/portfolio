@@ -2,9 +2,13 @@
 // https://nehalist.io/creating-a-reading-progress-bar-in-react
 
 import { Flex } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 
-const ReadingProgress = ({ target }) => {
+const ReadingProgress = ({
+  target
+}: {
+  target: RefObject<HTMLInputElement>;
+}) => {
   const [readingProgress, setReadingProgress] = useState(0);
   const scrollListener = () => {
     if (!target.current) {
@@ -38,7 +42,6 @@ const ReadingProgress = ({ target }) => {
   return (
     <Flex
       width={`${readingProgress}%`}
-      size="3.75rem"
       position="sticky"
       top="5.332rem"
       background="linear-gradient(to right, var(--theme-aqua), #00ff73)"

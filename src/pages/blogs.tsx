@@ -1,19 +1,41 @@
 import React, { useState } from "react";
-import { graphql, Link as GatsbyLink } from "gatsby";
+import { graphql, Link as GatsbyLink, PageProps } from "gatsby";
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout";
 
 import Layout from "../components/Layout";
 import { HomeContainer, SectionHeading } from "../components/LayoutComponents";
 import Seo from "../components/SEO";
 import { Input } from "@chakra-ui/react";
+import { useBlogListQuery } from "../hooks/useBlogListQuery";
 
-const Blogs = ({ data }) => {
-  const { edges: posts } = data.allMdx;
+type BlogListProps = {
+  allMdx: {
+    edges: {
+      node: {
+        id: string;
+        excerpt: string;
+        frontmatter: {
+          title: string;
+          date: string;
+        };
+        fields: {
+          slug: any;
+        };
+      };
+    };
+  };
+};
+
+const BlogList = () => {
+  const { allMdx } = useBlogListQuery();
   const [filter, setFilter] = useState("");
 
-  const blogsToShow = posts.filter(({ node: post }) =>
-    post.frontmatter.title.toLowerCase().includes(filter)
-  );
+  const blogsToShow =
+    allMdx &&
+    allMdx.edges &&
+    allMdx.edges.filter(({ node }) =>
+      node.frontmatter.title.toLowerCase().includes(filter)
+    );
 
   return (
     <Layout type="blog">
@@ -33,50 +55,31 @@ const Blogs = ({ data }) => {
         />
 
         <Flex flexDirection="column" justifyContent="space-evenly">
-          {blogsToShow.map(({ node: post }) => (
-            <LinkBox
-              key={post.id}
-              marginY={5}
-              transition="0.2s linear"
-              _hover={{
-                color: "aqua.200"
-              }}
-            >
-              <LinkOverlay as={GatsbyLink} to={post.fields.slug}>
-                <Heading>{post.frontmatter.title}</Heading>
-              </LinkOverlay>
-              <Text color="gray.300" fontSize="sm">
-                {post.frontmatter.date}
-              </Text>
-              <Text color="gray.300" fontStyle="italic" marginTop={2}>
-                {post.excerpt}
-              </Text>
-            </LinkBox>
-          ))}
+          {blogsToShow &&
+            blogsToShow.map(({ node }) => (
+              <LinkBox
+                key={node.id}
+                marginY={5}
+                transition="0.2s linear"
+                _hover={{
+                  color: "var(--theme-aqua)"
+                }}
+              >
+                <LinkOverlay as={GatsbyLink} to={node.fields.slug}>
+                  <Heading>{node.frontmatter.title}</Heading>
+                </LinkOverlay>
+                <Text color="gray.300" fontSize="sm">
+                  {node.frontmatter.date}
+                </Text>
+                <Text color="gray.300" fontStyle="italic" marginTop={2}>
+                  {node.excerpt}
+                </Text>
+              </LinkBox>
+            ))}
         </Flex>
       </HomeContainer>
     </Layout>
   );
 };
 
-export default Blogs;
-
-export const pageQuery = graphql`
-  {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            date(formatString: "DD MMMM, YYYY")
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-  }
-`;
+export default BlogList;

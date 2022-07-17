@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-export const useLazyImage = (imageSource) => {
-  const [imageLoaded, setImageLoaded] = useState(null);
+export const useLazyImage = (imageSource: string) => {
+  const [imageLoaded, setImageLoaded] = useState<string | null>(null);
 
   useEffect(() => {
     const image = new Image();
