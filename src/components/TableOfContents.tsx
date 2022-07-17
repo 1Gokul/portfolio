@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
+import {
+  headingLinkVariants,
+  tocVariants
+} from "../constants/TableOfConstants";
 
 import { BlogPostHeading } from "../types/BlogPost";
 
@@ -59,43 +63,6 @@ const DesktopTOC = ({ headings }: { headings: BlogPostHeading[] }) => (
 );
 
 const MotionFlex = motion(Flex);
-
-const tocVariants = {
-  open: {
-    height: "auto",
-    opacity: 1,
-    transition: {
-      duration: 0.35,
-      staggerChildren: 0.1
-    }
-  },
-  closed: {
-    height: 0,
-    opacity: 0,
-    transition: {
-      duration: 0.35,
-      staggerChildren: 0.1,
-      staggerDirection: -1
-    }
-  }
-};
-
-const headingLinkVariants = {
-  open: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.25
-    }
-  },
-  closed: {
-    y: 10,
-    opacity: 0,
-    transition: {
-      duration: 0.25
-    }
-  }
-};
 
 const MobileTOC = ({ headings }: { headings: BlogPostHeading[] }) => {
   const [visible, setVisible] = useState(false);
