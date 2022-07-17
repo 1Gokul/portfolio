@@ -18,7 +18,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         marginY={8}
         columns={{ base: 1, md: 2 }}
         alignItems="center"
-        borderRadius="md"
+        borderRadius="0.25rem"
         bg={{ base: "none", md: "aqua.700" }}
         color="white"
       >

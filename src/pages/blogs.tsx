@@ -1,30 +1,12 @@
 import React, { useState } from "react";
-import { graphql, Link as GatsbyLink, PageProps } from "gatsby";
+import { Input } from "@chakra-ui/react";
+import { Link as GatsbyLink } from "gatsby";
 import { LinkBox, LinkOverlay, Heading, Text, Flex } from "@chakra-ui/layout";
 
 import Layout from "../components/Layout";
 import { HomeContainer, SectionHeading } from "../components/LayoutComponents";
 import Seo from "../components/SEO";
-import { Input } from "@chakra-ui/react";
 import { useBlogListQuery } from "../hooks/useBlogListQuery";
-
-type BlogListProps = {
-  allMdx: {
-    edges: {
-      node: {
-        id: string;
-        excerpt: string;
-        frontmatter: {
-          title: string;
-          date: string;
-        };
-        fields: {
-          slug: any;
-        };
-      };
-    };
-  };
-};
 
 const BlogList = () => {
   const { allMdx } = useBlogListQuery();
@@ -51,7 +33,6 @@ const BlogList = () => {
           onChange={({ target }) => setFilter(target.value)}
           size="lg"
           variant="filled"
-          borderRadius="xl"
         />
 
         <Flex flexDirection="column" justifyContent="space-evenly">

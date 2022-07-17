@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import { IoMenu, IoClose } from "react-icons/io5";
+
 import { BlogPostHeading } from "../../types/BlogPost";
 
 const TableOfContents = ({ headings }: { headings: BlogPostHeading[] }) => {
@@ -109,10 +110,11 @@ const MobileTOC = ({ headings }: { headings: BlogPostHeading[] }) => {
       <MotionFlex
         flexDirection="column"
         paddingX={1}
-        borderRadius="xl"
-        bgColor="#003c61"
+        border="2px solid"
+        bgColor="var(--theme-mobile-nav-bg)"
         overflow="hidden"
         initial="closed"
+        padding={2}
         animate={visible ? "open" : "closed"}
         variants={tocVariants}
       >
@@ -139,6 +141,7 @@ const MobileTOC = ({ headings }: { headings: BlogPostHeading[] }) => {
       </MotionFlex>
       <IconButton
         aria-label="Click to toggle the table of contents."
+        bg="var(--theme-aqua)"
         alignSelf="flex-end"
         size="lg"
         borderRadius="full"

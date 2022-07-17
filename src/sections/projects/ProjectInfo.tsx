@@ -28,7 +28,7 @@ const ProjectInfo = ({
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
-      borderRadius="sm"
+      borderRadius="0.25rem"
       paddingY={10}
       paddingX={{ base: 6, md: 10 }}
     >
