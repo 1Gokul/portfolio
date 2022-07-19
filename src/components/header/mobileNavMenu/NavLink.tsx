@@ -3,13 +3,11 @@ import React, { PropsWithChildren } from "react";
 import { RiCloseLine, RiMenu3Line } from "react-icons/ri";
 
 type NavLinkProps = {
-  onClick: () => void;
   [property: string]: unknown; // extra Chakra UI properties
 };
 
 const NavLink = ({
   children,
-  onClick,
   ...otherProps
 }: PropsWithChildren<NavLinkProps>) => (
   <Button
