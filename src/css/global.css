@@ -34,7 +34,7 @@
 }
 
 code.language-text:not(pre) {
-  font-family: Inconsolata, monospace;
+  font-family: Roboto Mono, monospace;
   color: var(--theme-pink) !important;
   background: none !important;
 }

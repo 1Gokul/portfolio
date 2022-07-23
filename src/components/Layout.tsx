@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 import { Flex } from "@chakra-ui/react";
 import { CloudinaryContext } from "cloudinary-react";
-import "@fontsource/inconsolata";
+import "@fontsource/roboto-mono";
 import "focus-visible/dist/focus-visible";
 
 import Header from "./header/BaseHeader";
