@@ -79,7 +79,7 @@ later get changed to a simple POST request with the id in the passed JSON.
 The `id` is a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 and would be compared to the id stored as a environment variable every time the path `/update-db`
 was visited. If the id did not match, the user would get a
-[`403`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403) response. As a result, only those
+[403](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403) response. As a result, only those
 with the correct ID would be able to update the database. This was to prevent overloading the TMDB API with requests.
 
 Updating the DB _periodically_ meant using a [cron job](https://en.wikipedia.org/wiki/Cron) that would ping the `/update-db`
@@ -94,7 +94,7 @@ The contents of the file are as follows:
 
 `update_database.yml`
 
-```yml
+```yaml
 # The name of the action
 name: Refresh database with updated media data
 

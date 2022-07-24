@@ -2231,10 +2231,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/roboto-mono@^4.5.7":
-  version "4.5.7"
-  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.7.tgz#69a89b679ab962ea3591438f35833b09f0f8980f"
-  integrity sha512-1uBjM95BEz7zJlmmnpNAM5afMvIxx0wqr86eA76vRqZw8OF5wmsRqYfF3caHuVarBH9/AGN7t9h+3UXK8fjq/Q==
+"@fontsource/space-mono@^4.5.8":
+  version "4.5.8"
+  resolved "https://registry.yarnpkg.com/@fontsource/space-mono/-/space-mono-4.5.8.tgz#514a7344e706747dcace198a27f840dd104e0a06"
+  integrity sha512-qO3riZauz1yu7g8gumsmKgGitgDx7dQbwjKG+rDhF/OfNNCPyjArcNIU22nvANZ7UuDvLzo3tRprqlosaS7fKA==
 
 "@gatsbyjs/parcel-namer-relative-to-cwd@^1.3.2":
   version "1.3.2"

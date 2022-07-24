@@ -16,7 +16,7 @@ import ReadingProgress from "../../components/ReadingProgress";
 import { BlogPostProps } from "../../types/BlogPost";
 
 // Styling for the code blocks
-require("../../css/prismjs/prismjs-holi.css"); // eslint-disable-line
+require("../../css/prismjs/prism-holi.css"); // eslint-disable-line
 
 const BlogPost = ({ data, pageContext }: BlogPostProps) => {
   const {

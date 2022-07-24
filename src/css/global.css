@@ -1,6 +1,6 @@
 :root {
-  --theme-aqua: #B0E3FC;
-  --theme-pink: #F687B3;
+  --theme-aqua: #b0e3fc;
+  --theme-pink: #f687b3;
   --theme-green: #00ff73;
   --theme-bg: #212529;
   --theme-mobile-nav-bg: #1B1F22;
@@ -17,7 +17,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
     U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
-
 }
 
 ::selection {
@@ -34,12 +33,60 @@
 }
 
 code.language-text:not(pre) {
-  font-family: Roboto Mono, monospace;
+  font-family: 'Space Mono', monospace;
+  /* Unfortunately have to use !important to override the styles */
   color: var(--theme-pink) !important;
   background: none !important;
+  padding: 0 0.1rem !important;
 }
 
 .gatsby-image-wrapper.gatsby-image-wrapper-constrained {
   margin: 2rem 0;
   border: 2px solid var(--theme-pink);
+}
+
+.gatsby-highlight {
+  position: relative;
+}
+
+.gatsby-highlight pre[class*='language-']::before {
+  background: white;
+  color: black;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 1.25rem;
+}
+
+.gatsby-highlight pre.language-python::before {
+  content: 'py';
+  background: #306998;
+  color: #ffd43b;
+}
+
+.gatsby-highlight pre.language-js::before {
+  content: 'js';
+  background: #f7df1e;
+  color: #323330;
+}
+
+.gatsby-highlight pre.language-yaml::before {
+  content: 'yaml';
+  background: black;
+  color: #cc1018;
+}
+
+.gatsby-highlight pre.language-cpp::before {
+  content: 'c++';
+  background: #044f88;
+  color: white;
+}
+
+.gatsby-highlight pre.language-md::before {
+  content: 'md';
+  background: white;
+  color: black;
 }

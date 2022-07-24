@@ -19,7 +19,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         columns={{ base: 1, md: 2 }}
         alignItems="center"
         borderRadius="0.25rem"
-        bg={{ base: "none", md: "aqua.700" }}
+        bg={{ base: "none", md: "cyan.700" }}
         color="white"
       >
         <ProjectInfo project={project} projectImage={lazyLoadedImage} />
