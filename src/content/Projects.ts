@@ -15,7 +15,7 @@ export const projectList: Project[] = [
     description:
       "A media recommender web application that shows the current trending movies and TV shows along with their details.",
     tags: ["Flask", "Bootstrap", "JS", "TMDB API"],
-    link: "https://mediascout.herokuapp.com/",
+    link: "https://mediascout.onrender.com/",
     github: "https://github.com/1Gokul/MediaScout",
     source: "Portfolio/mediascout_screencap"
   },
@@ -24,7 +24,7 @@ export const projectList: Project[] = [
     description:
       "A webapp that converts any type of table into a GitHub-flavoured Markdown table.",
     tags: ["Flask", "Bootstrap", "PapaParse", "JQuery"],
-    link: "https://table2markdown.herokuapp.com/",
+    link: "https://table2markdown.onrender.com/",
     github: "https://github.com/1Gokul/table2markdown",
     source: "Portfolio/table2markdown_screencap"
   },
