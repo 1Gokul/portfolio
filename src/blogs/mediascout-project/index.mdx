@@ -108,7 +108,7 @@ jobs:
     steps:
       - name: trigger-update
         run: |
-          curl --location --request POST 'https://mediascout.herokuapp.com/update-db' \
+          curl --location --request POST 'https://mediascout.onrender.com/update-db' \
           --header 'Content-Type: application/json' \
           --data-raw '{"auth_code": "${{secrets.UPDATE_TOKEN}}"}'
 ```
@@ -170,6 +170,6 @@ another set of results.
 In the end, this project(although less challenging than [table2markdown](/blog/table2markdown-project)) taught me a lot about
 interacting with APIs, using databases and speeding up pages as much as possible.
 
-[You can view the project here!](https://mediascout.herokuapp.com/)
+[You can view the project here!](https://mediascout.onrender.com/)
 
 Thanks for reading!
